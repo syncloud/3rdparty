@@ -4,11 +4,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
 ROOT_FS_FILENAME="rootfs.tar.gz"
-
-if [ ! -f ${ROOT_FS_FILENAME} ]; then
-    echo "rootfs is not ready"
-    exit 1
-fi
+wget -O ${ROOT_FS_FILENAME} http://build.syncloud.org:8111/repository/download/image_armv7l_rootfs/lastSuccessful/${ROOT_FS_FILENAME}
 
 VERSION=2.7.10
 SOURCES_URL=https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz
