@@ -21,7 +21,7 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget http://php.net/get/${NAME}-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2
+wget http://php.net/get/${NAME}-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
 tar xjf ${NAME}-${VERSION}.tar.bz2
 cd ${NAME}-${VERSION}
 

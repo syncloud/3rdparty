@@ -18,7 +18,7 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget http://projects.unbit.it/downloads/${NAME}-${VERSION}.tar.gz
+wget http://projects.unbit.it/downloads/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 

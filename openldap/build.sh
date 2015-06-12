@@ -19,7 +19,7 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget http://www.openldap.org/software/download/OpenLDAP/openldap-release/${NAME}-${VERSION}.tgz
+wget http://www.openldap.org/software/download/OpenLDAP/openldap-release/${NAME}-${VERSION}.tgz --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tgz
 cd ${NAME}-${VERSION}
 ./configure --prefix=${PREFIX}

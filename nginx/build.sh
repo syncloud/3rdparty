@@ -19,7 +19,7 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget http://nginx.org/download/${NAME}-${VERSION}.tar.gz
+wget http://nginx.org/download/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 ./configure --prefix=${PREFIX}
