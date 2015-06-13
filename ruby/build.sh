@@ -18,4 +18,4 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 curl -sSL https://get.rvm.io | bash -s stable --ruby=${VERSION}
 
 rm -rf ${NAME}.tar.gz
-tar cpzf ${NAME}.tar.gz -C  ~/.rvm/rubies ${NAME}-${VERSION}
+tar cpzf ${NAME}.tar.gz -C  $rvm_path/rubies ${NAME}-${VERSION}
