@@ -29,6 +29,6 @@ tar zxvf ${FULL_NAME}.tar.gz
 rm -rf ${FULL_NAME}.tar.gz
 
 cd ${FULL_NAME}
-cp ../../setup.py setup.py
+#cp ../../setup.py setup.py
 python setup.py bdist_wheel
 
