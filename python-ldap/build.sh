@@ -24,11 +24,10 @@ mkdir build
 
 cd ${DIR}/build
 mkdir ${NAME}
-wget -O ${FULL_NAME}.tar.gz https://pypi.python.org/packages/source/p/python-ldap/${FULL_NAME}.tar.gz
+wget -O ${FULL_NAME}.tar.gz https://pypi.python.org/packages/source/p/${NAME}/${FULL_NAME}.tar.gz
 tar zxvf ${FULL_NAME}.tar.gz -C ${NAME} --strip-components=1
 rm -rf ${FULL_NAME}.tar.gz
 
 cd ${NAME}
-#cp ../../setup.py setup.py
 python setup.py bdist_wheel
 
