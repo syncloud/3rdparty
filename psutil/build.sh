@@ -6,7 +6,7 @@ cd ${DIR}
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME="psutil"
-VERSION="3.0.0"
+VERSION="2.1.3"
 FULL_NAME="${NAME}-${VERSION}"
 
 echo "building ${NAME}"
