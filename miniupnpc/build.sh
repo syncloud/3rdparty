@@ -8,7 +8,7 @@ export TMP=/tmp
 
 echo "building miniupnpc"
 
-apt-get install build-essential
+apt-get -y install build-essential
 
 apt-get -y install python
 wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py
