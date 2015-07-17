@@ -20,5 +20,5 @@ mkdir build
 
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 ~/.pyenv/plugins/python-build/bin/python-build 2.7.10 ${PREFIX}
-
-tar cpzf ${BINARIES_FILENAME}.tar.gz -C ${DIR}/build ${NAME}
+cd ${DIR}/build
+tar cpzf ${BINARIES_FILENAME}.tar.gz ${NAME}
