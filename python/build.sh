@@ -12,24 +12,13 @@ export TMP=/tmp
 NAME=python
 PREFIX=${DIR}/build/${NAME}
 
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev
+apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libssl-dev curl
+curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 
 rm -rf build
 mkdir build
 
-cd ${DIR}/build
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
+~/.pyenv/plugins/python-build/bin/python-build 2.7.10 ${PREFIX}
 
-wget -O sources.tgz ${SOURCES_URL}
-
-tar zxvf sources.tgz
-
-INNER_FOLDER_NAME=$(ls -1)
-
-cd ${INNER_FOLDER_NAME}
-
-./configure --prefix=${PREFIX} --enable-shared
-make install
-
-cd ..
-
-tar cpzf ${BINARIES_FILENAME}.tar.gz ${NAME}
+tar cpzf ${BINARIES_FILENAME}.tar.gz -C ${DIR}/build ${NAME}
