@@ -27,7 +27,7 @@ INNER_FOLDER_NAME=$(ls -1)
 
 cd ${INNER_FOLDER_NAME}
 
-./configure --prefix=${PREFIX}
+./configure --prefix=${PREFIX} --enable-shared
 make install
 
 cd ..
