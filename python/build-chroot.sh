@@ -10,7 +10,7 @@ VERSION=2.7.10
 SOURCES_URL=https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tgz
 
 rm -rf rootfs
-tar xzf ${ROOT_FS_FILENAME}
+mkdir rootfs
+tar xzf ${ROOT_FS_FILENAME} -C rootfs
 cp -r ./* rootfs/root
-#chroot rootfs root/build.sh ${SOURCES_URL} python-${VERSION}-armv7l
 chroot rootfs root/build.sh ${SOURCES_URL} python
