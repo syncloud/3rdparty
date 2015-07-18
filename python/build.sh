@@ -18,7 +18,7 @@ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-
 rm -rf build
 mkdir build
 
-export PYTHON_CONFIGURE_OPTS="--enable-shared"
+export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4"
 ~/.pyenv/plugins/python-build/bin/python-build 2.7.10 ${PREFIX}
 mv ${PREFIX}/bin/python ${PREFIX}/bin/python.bin
 cp python ${PREFIX}/bin/
