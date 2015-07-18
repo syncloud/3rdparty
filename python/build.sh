@@ -3,8 +3,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-SOURCES_URL=$1
-BINARIES_FILENAME=$2
+VERSION=2.7.10
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -20,7 +19,7 @@ cd ${DIR}/build
 wget https://github.com/yyuu/pyenv/archive/master.zip
 unzip master.zip
 export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4"
-./pyenv-master/plugins/python-build/bin/python-build 2.7.10 ${PREFIX}
+./pyenv-master/plugins/python-build/bin/python-build ${VERSION} ${PREFIX}
 mv ${PREFIX}/bin/python ${PREFIX}/bin/python.bin
 cp python ${PREFIX}/bin/
-tar cpzf ${BINARIES_FILENAME}.tar.gz ${NAME}
+tar cpzf python.tar.gz ${NAME}
