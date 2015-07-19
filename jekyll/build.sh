@@ -32,6 +32,6 @@ export LD_LIBRARY_PATH=${DIR}/build/ruby/lib
 ${DIR}/build/ruby/bin/gem install -V --install-dir ${DIR}/build/ruby jekyll
 ${DIR}/build/ruby/bin/jekyll -v
 
+mv ${DIR}/build/ruby ${DIR}/build/jekyll
 rm -rf ${DIR}/${NAME}.tar.gz
-
 tar cpzf ${DIR}/${NAME}.tar.gz -C ${DIR}/build ruby
