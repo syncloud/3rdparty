@@ -29,6 +29,7 @@ mkdir ${DIR}/build
 tar xzf ${DIR}/3rdparty/ruby.tar.gz -C ${DIR}/build
 export GEM_HOME=${DIR}/build/ruby
 export LD_LIBRARY_PATH=${DIR}/build/ruby/lib
+export PATH=${DIR}/build/ruby/bin:$PATH
 ${DIR}/build/ruby/bin/gem install -V --install-dir ${DIR}/build/ruby jekyll
 ${DIR}/build/ruby/bin/jekyll -v
 

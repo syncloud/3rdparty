@@ -1,15 +1,23 @@
 #!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-ROOT_FS_FILENAME="rootfs.tar.gz"
-wget -O ${ROOT_FS_FILENAME} http://build.syncloud.org:8111/guestAuth/repository/download/image_armv7l_rootfs/lastSuccessful/${ROOT_FS_FILENAME} --progress dot:giga
+if [ ! -d ${DIR}/3rdparty ]; then
+    mkdir ${DIR}/3rdparty
+fi
+if [ ! -f ${DIR}/3rdparty/rootfs.tar.gz ]; then
+    wget -O ${DIR}/3rdparty/rootfs.tar.gz http://build.syncloud.org:8111/guestAuth/repository/download/image_armv7l_rootfs/lastSuccessful/rootfs.tar.gz --progress dot:giga
+else
+    echo "skipping rootfs.tar.gz"
+fi
+
 
 mount | grep rootfs | awk '{print "umounting "$1; system("umount "$3)}'
 
-rm -rf rootfs
-mkdir rootfs
+rm -rf /tmp/rootfs
+mkdir /tmp/rootfs
 
-tar xzf rootfs.tar.gz -C rootfs
-cp -r ./* rootfs/root
+tar xzf ${DIR}/3rdparty/rootfs.tar.gz -C /tmp/rootfs
+cp -r ./* /tmp/rootfs/root
 
-chroot rootfs /bin/bash -c "mount -t proc proc /proc"
-chroot rootfs root/build.sh armv7l
+chroot /tmp/rootfs /bin/bash -c "mount -t proc proc /proc"
+chroot /tmp/rootfs root/build.sh armv7l
