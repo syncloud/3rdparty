@@ -22,7 +22,7 @@ fi
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=jekyll
-
+export DEBIAN_FRONTEND=noninteractive
 apt-get -y install build-essential nodejs
 
 rm -rf ${DIR}/build
