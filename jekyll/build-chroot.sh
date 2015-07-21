@@ -23,5 +23,6 @@ tar xzf ${DIR}/3rdparty/rootfs.tar.gz -C ${ROOTFS}
 cp -r ./* ${ROOTFS}/root
 
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
+chroot ${ROOTFS} /bin/bash -c "mount -t devpts devpts /dev/pts"
 chroot ${ROOTFS} root/build.sh armv7l
 cp ${ROOTFS}/root/jekyll.tar.gz .
