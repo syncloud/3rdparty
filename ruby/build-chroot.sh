@@ -21,3 +21,4 @@ cp -r ./* /tmp/rootfs/root
 
 chroot /tmp/rootfs /bin/bash -c "mount -t proc proc /proc"
 chroot /tmp/rootfs root/build.sh
+cp /tmp/rootfs/root/ruby.tar.gz .
