@@ -1,5 +1,8 @@
 #!/bin/bash
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd ${DIR}
+
+ROOTFS=/tmp/jekyll/rootfs
 
 if [ ! -d ${DIR}/3rdparty ]; then
     mkdir ${DIR}/3rdparty
@@ -11,13 +14,14 @@ else
 fi
 
 
-mount | grep rootfs | awk '{print "umounting "$1; system("umount "$3)}'
+mount | grep ${ROOTFS} | awk '{print "umounting "$1; system("umount "$3)}'
 
-rm -rf /tmp/rootfs
-mkdir /tmp/rootfs
+rm -rf ${ROOTFS}
+mkdir -p ${ROOTFS}
 
-tar xzf ${DIR}/3rdparty/rootfs.tar.gz -C /tmp/rootfs
-cp -r ./* /tmp/rootfs/root
+tar xzf ${DIR}/3rdparty/rootfs.tar.gz -C ${ROOTFS}
+cp -r ./* ${ROOTFS}/root
 
-chroot /tmp/rootfs /bin/bash -c "mount -t proc proc /proc"
-chroot /tmp/rootfs root/build.sh armv7l
+chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
+chroot ${ROOTFS} root/build.sh armv7l
+cp ${ROOTFS}/root/jekyll.tar.gz .

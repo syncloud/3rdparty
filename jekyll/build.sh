@@ -23,6 +23,8 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=jekyll
 
+apt-get -y install build-essential nodejs
+
 rm -rf ${DIR}/build
 mkdir ${DIR}/build
 
