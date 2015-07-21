@@ -23,7 +23,7 @@ rm -rf /tmp/rvm
 
 curl -sSL https://get.rvm.io | bash -s stable --path /tmp/rvm
 source /tmp/rvm/scripts/rvm
-rvm install ${VERSION}
+rvm install ${VERSION} --movable
 rm -rf ${DIR}/${NAME}.tar.gz
 
 rm -rd ${DIR}/build
