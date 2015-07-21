@@ -1,5 +1,10 @@
 #!/bin/bash
 
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd ${DIR}
+
+ROOTFS=/tmp/ruby/rootfs
+
 if [ ! -d ${DIR}/3rdparty ]; then
     mkdir ${DIR}/3rdparty
 fi
@@ -10,15 +15,14 @@ else
     echo "skipping rootfs.tar.gz"
 fi
 
+mount | grep ${ROOTFS} | awk '{print "umounting "$1; system("umount "$3)}'
 
-mount | grep rootfs | awk '{print "umounting "$1; system("umount "$3)}'
+rm -rf ${ROOTFS}
+mkdir -p ${ROOTFS}
 
-rm -rf /tmp/rootfs
-mkdir /tmp/rootfs
+tar xzf ${DIR}/3rdparty/rootfs.tar.gz -C ${ROOTFS}
+cp -r ./* ${ROOTFS}/root
 
-tar xzf rootfs.tar.gz -C /tmp/rootfs
-cp -r ./* /tmp/rootfs/root
-
-chroot /tmp/rootfs /bin/bash -c "mount -t proc proc /proc"
-chroot /tmp/rootfs root/build.sh
-cp /tmp/rootfs/root/ruby.tar.gz .
+chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
+chroot ${ROOTFS} root/build.sh
+cp ${ROOTFS}/root/ruby.tar.gz .
