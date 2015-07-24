@@ -17,7 +17,7 @@ python get-pip.py
 rm get-pip.py
 pip install wheel
 
-apt-get install -y python-dev
+apt-get install -y build-essential python-dev
 
 rm -rf build
 mkdir build
