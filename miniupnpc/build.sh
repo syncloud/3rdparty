@@ -23,7 +23,7 @@ mkdir build
 
 cd ${DIR}/build
 mkdir miniupnp
-wget -O miniupnp.tar.gz https://github.com/syncloud/miniupnp/archive/miniupnpc_1_9.tar.gz
+wget -O miniupnp.tar.gz https://github.com/miniupnp/miniupnp/archive/ce56baf81ea3a78d59ef68bebad742fe4f0d14d3.tar.gz
 tar zxvf miniupnp.tar.gz -C miniupnp --strip-components=1
 rm miniupnp.tar.gz
 
