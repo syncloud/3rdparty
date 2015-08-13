@@ -3,12 +3,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-if [[ -z "$1" ]]; then
-    echo "usage: $0 architecture"
-    exit 1
-fi
-
-ARCH=$1
+ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
 
 VERSION=2.7.10
 
@@ -29,4 +24,6 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4"
 ./pyenv-master/plugins/python-build/bin/python-build ${VERSION} ${PREFIX}
 mv ${PREFIX}/bin/python ${PREFIX}/bin/python.bin
 cp ${DIR}/python ${PREFIX}/bin/
+
+rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz ${NAME}
