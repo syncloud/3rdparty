@@ -4,6 +4,8 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
+
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=nginx
@@ -28,5 +30,5 @@ rm -rf ${PREFIX}
 make install
 cd ../..
 
-rm -rf ${NAME}.tar.gz
-tar cpzf ${NAME}.tar.gz -C ${ROOT} ${NAME}
+rm -rf ${NAME}-${ARCH}.tar.gz
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
