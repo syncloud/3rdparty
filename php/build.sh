@@ -3,6 +3,8 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
+
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php
@@ -55,5 +57,5 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcu
 
 cd ${DIR}
 
-rm -rf ${NAME}.tar.gz
-tar cpzf ${NAME}.tar.gz -C ${ROOT} ${NAME}
+rm -rf ${NAME}-${ARCH}.tar.gz
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}

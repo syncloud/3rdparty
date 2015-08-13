@@ -4,6 +4,8 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
+
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=ruby
@@ -33,4 +35,5 @@ cp -r /tmp/rvm/rubies/${NAME}-${VERSION} ${DIR}/build/ruby
 
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libyaml* ${DIR}/build/ruby/lib
 
-tar cpzf ${DIR}/${NAME}.tar.gz -C ${DIR}/build ruby
+rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
+tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build ruby

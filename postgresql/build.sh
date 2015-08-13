@@ -3,6 +3,8 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
+
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=postgresql
@@ -26,4 +28,6 @@ make
 make install
 
 cd ../..
-tar czf ${NAME}.tar.gz -C ${ROOT} ${NAME}
+
+rm -rf ${NAME}-${ARCH}.tar.gz
+tar czf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}

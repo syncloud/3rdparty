@@ -13,7 +13,7 @@ if [ ! -d ${DIR}/3rdparty ]; then
     mkdir ${DIR}/3rdparty
 fi
 if [ ! -f ${DIR}/3rdparty/ruby.tar.gz ]; then
-    wget http://build.syncloud.org:8111/guestAuth/repository/download/thirdparty_ruby_${ARCH}/lastSuccessful/ruby.tar.gz \
+    wget http://build.syncloud.org:8111/guestAuth/repository/download/thirdparty_ruby_${ARCH}/lastSuccessful/ruby-${ARCH}.tar.gz \
     -O ${DIR}/3rdparty/ruby.tar.gz --progress dot:giga
 else
     echo "skipping ruby.tar.gz"
@@ -39,5 +39,5 @@ mv ${DIR}/build/jekyll/bin/jekyll ${DIR}/build/jekyll/bin/jekyll.bin
 cp ${DIR}/jekyll ${DIR}/build/jekyll/bin/jekyll
 ${DIR}/build/jekyll/bin/jekyll -v
 
-rm -rf ${DIR}/${NAME}.tar.gz
-tar cpzf ${DIR}/${NAME}.tar.gz -C ${DIR}/build jekyll
+rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
+tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build jekyll
