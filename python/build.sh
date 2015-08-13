@@ -3,6 +3,13 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+if [[ -z "$1" ]]; then
+    echo "usage: $0 architecture"
+    exit 1
+fi
+
+ARCH=$1
+
 VERSION=2.7.10
 
 export TMPDIR=/tmp
@@ -22,4 +29,4 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4"
 ./pyenv-master/plugins/python-build/bin/python-build ${VERSION} ${PREFIX}
 mv ${PREFIX}/bin/python ${PREFIX}/bin/python.bin
 cp ${DIR}/python ${PREFIX}/bin/
-tar cpzf python.tar.gz ${NAME}
+tar cpzf ${NAME}-${ARCH}.tar.gz ${NAME}

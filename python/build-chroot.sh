@@ -3,6 +3,8 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+ARCH=$1
+
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export DEBCONF_FRONTEND=noninteractive
 export DEBIAN_FRONTEND=noninteractive
@@ -16,4 +18,4 @@ rm -rf rootfs
 mkdir rootfs
 tar xzf ${ROOT_FS_FILENAME} -C rootfs
 cp -r ./* rootfs/root
-chroot rootfs root/build.sh
+chroot rootfs root/build.sh ${ARCH}
