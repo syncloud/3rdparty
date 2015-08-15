@@ -6,5 +6,5 @@ wget -O ${ROOT_FS_FILENAME} http://build.syncloud.org:8111/guestAuth/repository/
 rm -rf rootfs
 mkdir rootfs
 tar xzf ${ROOT_FS_FILENAME} -C rootfs
-cp -r ./* rootfs/root
-chroot rootfs root/build.sh
+cp build.sh rootfs/root
+chroot rootfs root/build.sh armv7l
