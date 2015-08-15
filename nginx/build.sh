@@ -4,6 +4,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+apt-get -y install dpkg-dev
 ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
 
 export TMPDIR=/tmp
