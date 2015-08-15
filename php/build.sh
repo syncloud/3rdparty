@@ -3,8 +3,12 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-apt-get -y install dpkg-dev
-ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
+if [[ -z "$1" ]]; then
+    echo "usage $0 architecture"
+    exit 1
+fi
+
+ARCH=$1
 
 export TMPDIR=/tmp
 export TMP=/tmp

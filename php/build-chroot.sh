@@ -10,5 +10,5 @@ mkdir rootfs
 
 tar xzf rootfs.tar.gz -C rootfs
 
-cp -r ./* rootfs/root
-chroot rootfs root/build.sh
+cp build.sh rootfs/root
+chroot rootfs root/build.sh armv7l
