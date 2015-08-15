@@ -4,6 +4,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+apt-get -y install dpkg-dev
 ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
 
 export TMPDIR=/tmp
@@ -14,8 +15,6 @@ ROOT=/opt/app/platform
 PREFIX=${ROOT}/${NAME}
 
 echo "building ${NAME}"
-
-apt-get -y install dpkg-dev
 
 command curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
 
