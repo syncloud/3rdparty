@@ -16,10 +16,23 @@ else
     echo "${ROOTFS_FILE} is here"
 fi
 
+function cleanup {
+
+    mount | grep ${ROOTFS}
+    mount | grep ${ROOTFS} | awk '{print "umounting "$1; system("umount "$3)}'
+    mount | grep ${ROOTFS}
+
+}
+
+cleanup
+
 rm -rf ${ROOTFS}
 mkdir ${ROOTFS}
 
 tar xzf ${ROOTFS_FILE} -C ${ROOTFS}
 
 cp build.sh ${ROOTFS}/root
+chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 chroot ${ROOTFS} root/build.sh armv7l
+
+cleanup
