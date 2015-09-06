@@ -28,12 +28,9 @@ wget https://downloads.mariadb.org/f/${NAME}-${VERSION}/source/${NAME}-${VERSION
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
-
 cmake . -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make
 make install
 
-cd ${BUILD}
-
-rm -rf ${NAME}-${ARCH}.tar.gz
-tar czf ${NAME}-${ARCH}.tar.gz ${NAME}
+rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
+tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
