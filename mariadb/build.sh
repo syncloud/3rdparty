@@ -36,4 +36,4 @@ make install
 cd ${BUILD}
 
 rm -rf ${NAME}-${ARCH}.tar.gz
-tar czf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
+tar czf ${NAME}-${ARCH}.tar.gz ${NAME}
