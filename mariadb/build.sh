@@ -29,7 +29,7 @@ tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
 
-./configure --prefix ${PREFIX}
+cmake . -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make
 make install
 
