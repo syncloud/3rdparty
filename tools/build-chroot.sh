@@ -21,7 +21,7 @@ function cleanup {
     mount | grep ${ROOTFS}
     mount | grep ${ROOTFS} | awk '{print "umounting "$1; system("umount "$3)}'
     mount | grep ${ROOTFS}
-
+    echo " cleanup done"
 }
 
 cleanup
