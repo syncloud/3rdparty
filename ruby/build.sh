@@ -4,8 +4,14 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+if [[ -z "$1" ]]; then
+    echo "usage $0 architecture"
+    exit 1
+fi
+
 apt-get -y install dpkg-dev
-ARCH=$(dpkg-architecture -qDEB_HOST_GNU_CPU)
+
+ARCH=$1
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -35,4 +41,4 @@ cp -r /tmp/rvm/rubies/${NAME}-${VERSION} ${DIR}/build/ruby
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libyaml* ${DIR}/build/ruby/lib
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
-tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build ruby
+tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
