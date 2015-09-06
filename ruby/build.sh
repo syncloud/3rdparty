@@ -27,7 +27,7 @@ source /tmp/rvm/scripts/rvm
 rvm install ${VERSION} --movable
 rm -rf ${DIR}/${NAME}.tar.gz
 
-rm -rd ${DIR}/build
+rm -rf ${DIR}/build
 mkdir ${DIR}/build
 
 cp -r /tmp/rvm/rubies/${NAME}-${VERSION} ${DIR}/build/ruby
