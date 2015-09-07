@@ -17,7 +17,7 @@ VERSION=10.0.21
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-apt-get -y install build-essential cmake
+apt-get -y install build-essential cmake libncurses5-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
