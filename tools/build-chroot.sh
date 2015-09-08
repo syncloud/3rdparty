@@ -31,7 +31,7 @@ mkdir ${ROOTFS}
 
 tar xzf ${ROOTFS_FILE} -C ${ROOTFS}
 
-cp build.sh ${ROOTFS}/root
+cp -r * ${ROOTFS}/root/
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 chroot ${ROOTFS} root/build.sh armv7l
 
