@@ -14,6 +14,7 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php
 VERSION=5.6.9
+APCU_VERSION=4.0.7
 ROOT=${DIR}/build/install
 PREFIX=${ROOT}/${NAME}
 
@@ -32,6 +33,12 @@ wget http://php.net/get/${NAME}-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-$
 tar xjf ${NAME}-${VERSION}.tar.bz2
 cd ${NAME}-${VERSION}
 
+wget https://pecl.php.net/get/apcu-${APCU_VERSION}.tgz --progress dot:giga
+tar xzf apcu-${APCU_VERSION}.tgz -C ext/
+mv ext/apcu-* ext/apcu
+rm configure
+./buildconf --force
+
 ./configure \
     --enable-fpm \
     --with-pgsql \
@@ -47,7 +54,8 @@ cd ${NAME}-${VERSION}
     --with-ldap \
     --with-ldap-sasl \
     --with-libdir=lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
-    --enable-mbstring
+    --enable-mbstring \
+    --enable-apcu
 make -j2
 rm -rf ${PREFIX}
 make install
