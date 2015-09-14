@@ -15,6 +15,8 @@ export TMP=/tmp
 NAME=php
 VERSION=5.6.9
 APCU_VERSION=4.0.7
+IMAGICK_VERSION=3.1.2
+IMAGEMAGICK_VERSION=6.9.2-1
 ROOT=${DIR}/build/install
 PREFIX=${ROOT}/${NAME}
 
@@ -23,11 +25,19 @@ echo "building ${NAME}"
 apt-get -y install build-essential \
     libxml2-dev autoconf libjpeg-dev libpng12-dev libfreetype6-dev \
     libzip2 libzip-dev zlib1g-dev libcurl4-gnutls-dev dpkg-dev \
-    libpq-dev libreadline-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev
+    libpq-dev libreadline-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
+    p7zip
 
 rm -rf build
 mkdir -p build
 cd build
+
+wget http://www.imagemagick.org/download/ImageMagick-${IMAGEMAGICK_VERSION}.7z
+p7zip -d ImageMagick-${IMAGEMAGICK_VERSION}.7z
+cd ImageMagick-${IMAGEMAGICK_VERSION}
+./configure --prefix=${DIR}/build/ImageMagick
+make
+make install
 
 wget http://php.net/get/${NAME}-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
 tar xjf ${NAME}-${VERSION}.tar.bz2
@@ -36,6 +46,11 @@ cd ${NAME}-${VERSION}
 wget https://pecl.php.net/get/apcu-${APCU_VERSION}.tgz --progress dot:giga
 tar xzf apcu-${APCU_VERSION}.tgz -C ext/
 mv ext/apcu-* ext/apcu
+
+wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
+tar xzf imagick-${IMAGICK_VERSION}.tgz -C ext/
+mv ext/imagick-* ext/imagick
+
 rm configure
 ./buildconf --force
 
@@ -55,7 +70,8 @@ rm configure
     --with-ldap-sasl \
     --with-libdir=lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
     --enable-mbstring \
-    --enable-apcu
+    --enable-apcu \
+    --with-imagick=${DIR}/build/ImageMagick
 make -j2
 rm -rf ${PREFIX}
 make install
