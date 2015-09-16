@@ -10,6 +10,11 @@ ROOTFS=/tmp/rootfs
 ROOTFS_FILENAME="rootfs.tar.gz"
 ROOTFS_FILE="/tmp/${ROOTFS_FILENAME}"
 
+if [ ! -z "$TEAMCITY_VERSION" ]; then
+  echo "running under TeamCity, cleaning coin cache"
+  rm -rf ${ROOTFS_FILE}
+fi
+
 if [ ! -f ${ROOTFS_FILE} ]; then
    wget -O ${ROOTFS_FILE} http://build.syncloud.org:8111/guestAuth/repository/download/image_armv7l_rootfs/lastSuccessful/${ROOTFS_FILENAME} --progress dot:giga
 else
