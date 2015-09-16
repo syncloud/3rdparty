@@ -32,12 +32,9 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget http://www.imagemagick.org/download/ImageMagick-${IMAGEMAGICK_VERSION}.7z
-p7zip -d ImageMagick-${IMAGEMAGICK_VERSION}.7z
-cd ImageMagick-${IMAGEMAGICK_VERSION}
-./configure --prefix=${DIR}/build/ImageMagick
-make
-make install
+wget -O ImageMagick-${ARCH}.tar.gz http://build.syncloud.org:8111/guestAuth/repository/download/image_armv7l_ImageMagick/lastSuccessful/--progress dot:giga
+
+tar xzf ImageMagick-${ARCH}.tar.gz
 
 wget http://php.net/get/${NAME}-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
 tar xjf ${NAME}-${VERSION}.tar.bz2
