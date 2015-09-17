@@ -32,7 +32,7 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget -O ImageMagick-${ARCH}.tar.gz http://build.syncloud.org:8111/guestAuth/repository/download/image_armv7l_ImageMagick/lastSuccessful/--progress dot:giga
+wget -O ImageMagick-${ARCH}.tar.gz http://build.syncloud.org:8111/guestAuth/repository/download/thirdparty_ImageMagick_${ARCH}/lastSuccessful/--progress dot:giga
 
 tar xzf ImageMagick-${ARCH}.tar.gz
 
