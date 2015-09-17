@@ -67,8 +67,8 @@ rm configure
     --with-ldap-sasl \
     --with-libdir=lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
     --enable-mbstring \
-    --enable-apcu \
-    --with-imagick=${DIR}/build/ImageMagick
+    --enable-apcu #\
+    #--with-imagick=${DIR}/build/ImageMagick
 make -j2
 rm -rf ${PREFIX}
 make install
