@@ -5,10 +5,17 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+if [[ -z "$1" ]]; then
+    echo "usage $0 architecture"
+    ARCH=armv7l
+else
+    ARCH=$1
+fi
+
 HOME=/root
 ROOTFS=/tmp/rootfs
 ROOTFS_FILENAME="rootfs.tar.gz"
-ROOTFS_FILE="/tmp/${ROOTFS_FILENAME}"
+ROOTFS_FILE="/tmp/rootfs-${ARCH}.tar.gz"
 
 if [ ! -z "$TEAMCITY_VERSION" ]; then
   echo "running under TeamCity, cleaning coin cache"
@@ -16,7 +23,7 @@ if [ ! -z "$TEAMCITY_VERSION" ]; then
 fi
 
 if [ ! -f ${ROOTFS_FILE} ]; then
-   wget -O ${ROOTFS_FILE} http://build.syncloud.org:8111/guestAuth/repository/download/image_armv7l_rootfs/lastSuccessful/${ROOTFS_FILENAME} --progress dot:giga
+   wget -O ${ROOTFS_FILE} http://build.syncloud.org:8111/guestAuth/repository/download/debian_rootfs_${ARCH}/lastSuccessful/${ROOTFS_FILENAME} --progress dot:giga
 else
     echo "${ROOTFS_FILE} is here"
 fi
@@ -39,6 +46,6 @@ tar xzf ${ROOTFS_FILE} -C ${ROOTFS}
 cp -r * ${ROOTFS}/root/
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 mount --bind /dev/pts ${ROOTFS}/dev/pts
-chroot ${ROOTFS} root/build.sh armv7l
+chroot ${ROOTFS} root/build.sh ${ARCH}
 
 cleanup
