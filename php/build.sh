@@ -76,9 +76,9 @@ rm configure
     --with-libdir=lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
     --with-jpeg-dir \
     --with-png-dir
+    --with-ldap \
+    --with-ldap-sasl
 #    --with-imagick \
-#    --with-ldap \
-#    --with-ldap-sasl
 
 make -j2
 rm -rf ${PREFIX}
