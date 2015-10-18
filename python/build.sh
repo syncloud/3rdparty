@@ -30,5 +30,7 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4"
 mv ${PREFIX}/bin/python ${PREFIX}/bin/python.bin
 cp ${DIR}/python ${PREFIX}/bin/
 
+cd ${DIR}
+
 rm -rf ${NAME}-${ARCH}.tar.gz
-tar cpzf ${NAME}-${ARCH}.tar.gz ${NAME}
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
