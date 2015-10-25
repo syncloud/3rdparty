@@ -28,7 +28,7 @@ cd build
 wget http://nginx.org/download/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-./configure --prefix=${PREFIX} --with-http_ssl_module
+./configure --prefix=${PREFIX} --with-http_ssl_module --with-http_gzip_static_module --with-http_spdy_module 
 make -j2
 rm -rf ${PREFIX}
 make install
