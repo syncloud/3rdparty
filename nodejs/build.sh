@@ -31,11 +31,11 @@ cd ${BUILD}
 wget https://nodejs.org/dist/v${VERSION}/${NODE_ARCHIVE}.tar.gz \
     --progress dot:giga -O ${NAME}-${VERSION}.tar.gz
 tar xzf ${NAME}-${VERSION}.tar.gz
-cd ${NODE_ARCHIVE}
+mv ${NODE_ARCHIVE} ${NAME}
 
-./configure --prefix=${PREFIX}
-make
-make install
+#./configure --prefix=${PREFIX}
+#make
+#make install
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
