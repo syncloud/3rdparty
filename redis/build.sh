@@ -22,7 +22,6 @@ apt-get -y install build-essential libncurses5-dev
 rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
-http://download.redis.io/releases/redis-3.0.5.tar.gz
 wget http://download.redis.io/releases/${NAME}-${VERSION}.tar.gz \
     --progress dot:giga -O ${NAME}-${VERSION}.tar.gz
 tar xzf ${NAME}-${VERSION}.tar.gz
