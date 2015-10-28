@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=ImageMagick
-VERSION=6.9.2-1
+VERSION=6.9.2-4
 ROOT=${DIR}/build
 PREFIX=${ROOT}/${NAME}
 
@@ -29,7 +29,7 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget http://www.imagemagick.org/download/ImageMagick-${VERSION}.7z
+wget http://www.imagemagick.org/download/releases/ImageMagick-${VERSION}.7z
 p7zip -d ${NAME}-${VERSION}.7z
 cd ${NAME}-${VERSION}
 ./configure --prefix=${PREFIX}
