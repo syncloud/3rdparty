@@ -46,6 +46,6 @@ tar xzf ${ROOTFS_FILE} -C ${ROOTFS}
 cp -r * ${ROOTFS}/root/
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 mount --bind /dev/pts ${ROOTFS}/dev/pts
-chroot ${ROOTFS} root/build.sh ${ARCH}
+chroot ${ROOTFS} root/build.sh ${ARCH} $2
 
 cleanup
