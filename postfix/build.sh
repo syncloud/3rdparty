@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -19,7 +19,6 @@ BUILD_DIR=./build
 echo "building ${NAME}"
 
 printf "\ndeb-src http://httpredir.debian.org/debian jessie main contrib non-free" >> /etc/apt/sources.list
-cat /etc/apt/sources.list
 apt-get -y update
 apt-get -y install build-essential
 apt-get -y build-dep postfix
