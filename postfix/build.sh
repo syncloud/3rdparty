@@ -18,7 +18,7 @@ BUILD_DIR=./build
 
 echo "building ${NAME}"
 
-printf "/ndeb-src http://httpredir.debian.org/debian jessie main contrib non-free" >> /etc/apt/sources.list
+printf "\ndeb-src http://httpredir.debian.org/debian jessie main contrib non-free" >> /etc/apt/sources.list
 cat /etc/apt/sources.list
 apt-get -y update
 apt-get -y install build-essential
