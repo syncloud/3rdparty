@@ -18,6 +18,8 @@ BUILD_DIR=./build
 
 echo "building ${NAME}"
 
+printf "deb-src http://httpredir.debian.org/debian jessie main contrib non-free" >> /etc/apt/sources.list
+apt-get -y update
 apt-get -y install build-essential
 apt-get -y build-dep postfix
 
