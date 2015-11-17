@@ -18,7 +18,8 @@ BUILD_DIR=./build
 
 echo "building ${NAME}"
 
-apt-get build-dep postfix
+apt-get -y install build-essential
+apt-get -y build-dep postfix
 
 rm -rf build
 mkdir -p build
