@@ -33,6 +33,7 @@ cd ${NAME}-${VERSION}
 
 rm -rf ${BUILD_DIR}
 
+make makefiles CCARGS='-DDEF_CONFIG_DIR=\"/opt/app/email/postfix/etc/postfix\"'
 make
 make non-interactive-package install_root=${BUILD_DIR}/${NAME}
 
