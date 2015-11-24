@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=ImageMagick
-VERSION=6.9.2-4
+VERSION=6.9.2-6
 ROOT=${DIR}/build
 PREFIX=${ROOT}/${NAME}
 
