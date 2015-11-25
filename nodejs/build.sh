@@ -12,7 +12,7 @@ ARCH=$1
 
 echo "arch: $ARCH"
 
-if [[ ${ARCH}=="x86_64" ]]; then
+if [ ${ARCH} == "x86_64" ]; then
     NODE_ARCH=x64
 else
     NODE_ARCH=${ARCH}
