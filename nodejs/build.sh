@@ -17,6 +17,9 @@ if [[ ${ARCH}=="x86_64" ]]; then
 else
     NODE_ARCH=${ARCH}
 fi
+
+echo "node arch: ${NODE_ARCH}"
+
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=nodejs
