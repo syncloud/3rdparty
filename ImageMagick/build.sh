@@ -36,6 +36,12 @@ cd ${NAME}-${VERSION}
 make
 make install
 
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libfreetype.so* ${PREFIX}/lib
+
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpng12.so* ${PREFIX}/lib
+
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libjpeg.so* ${PREFIX}/lib
+
 cd ${DIR}
 
 rm -rf ${NAME}-${ARCH}.tar.gz
