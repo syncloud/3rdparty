@@ -30,4 +30,4 @@ rm -rf ${FULL_NAME}.tar.gz
 
 cd ${NAME}
 python setup.py bdist_wheel
-
+cp ${DIR}/build/${NAME}/dist/*.whl ${DIR}/
