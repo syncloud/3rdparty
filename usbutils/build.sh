@@ -7,8 +7,6 @@ export TMPDIR=/tmp
 export TMP=/tmp
 
 NAME="usbutils"
-VERSION="007-2"
-FULL_NAME="${NAME}-${VERSION}"
 
 if [[ -z "$1" ]]; then
     echo "usage $0 app_arch"
@@ -43,4 +41,4 @@ coin --to ${BUILD_DIR} deb http://http.us.debian.org/debian/pool/main/libu/libus
 
 echo "zipping"
 rm -rf ${NAME}*.tar.gz
-tar cpzf ${DIR}/${NAME}-${VERSION}-${ARCH}.tar.gz -C ${DIR}/build/ ${NAME}
+tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build/ ${NAME}
