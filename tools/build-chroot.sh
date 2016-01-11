@@ -1,5 +1,8 @@
 #!/bin/bash
 
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 1>&2
    exit 1
@@ -13,9 +16,9 @@ else
 fi
 
 HOME=/root
-ROOTFS=/tmp/rootfs
+ROOTFS=${DIR}/rootfs
 ROOTFS_FILENAME="rootfs.tar.gz"
-ROOTFS_FILE="/tmp/rootfs-${ARCH}.tar.gz"
+ROOTFS_FILE="${DIR}/rootfs-${ARCH}.tar.gz"
 
 if [ ! -z "$TEAMCITY_VERSION" ]; then
   echo "running under TeamCity, cleaning coin cache"
@@ -42,6 +45,12 @@ rm -rf ${ROOTFS}
 mkdir ${ROOTFS}
 
 tar xzf ${ROOTFS_FILE} -C ${ROOTFS}
+
+echo "installing dependencies"
+sudo apt-get -y install qemu-user-static
+
+echo "enabling arm binary support"
+cp $(which qemu-arm-static) ${ROOTFS}/usr/bin
 
 cp -r * ${ROOTFS}/root/
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
