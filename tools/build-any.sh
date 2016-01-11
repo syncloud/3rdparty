@@ -19,7 +19,7 @@ HOST_ARCH=$(arch)
 
 if [ "$ARCH" == "$HOST_ARCH" ]; then
   echo "same arch as host, running plain build"
-  ./build.sh
+  ./build.sh ${ARCH}
 else
   echo "running chrooted build"
   ${DIR}/build-chroot.sh ${ARCH}
