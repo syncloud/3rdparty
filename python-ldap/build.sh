@@ -11,13 +11,11 @@ FULL_NAME="${NAME}-${VERSION}"
 
 echo "building ${NAME}"
 
-apt-get -y install python
+apt-get -y install python-dev libldap2-dev libsasl2-dev libssl-dev gcc
 wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py
 python get-pip.py
 rm get-pip.py
 pip install wheel
-
-apt-get install -y python-dev libldap2-dev libsasl2-dev libssl-dev
 
 rm -rf build
 mkdir build
