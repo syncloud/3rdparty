@@ -16,7 +16,7 @@ else
 fi
 
 HOME=/root
-ROOTFS=${DIR}/rootfs
+ROOTFS=/tmp/rootfs
 ROOTFS_FILENAME="rootfs.tar.gz"
 ROOTFS_FILE="${DIR}/rootfs-${ARCH}.tar.gz"
 
