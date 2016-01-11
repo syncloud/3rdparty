@@ -57,4 +57,7 @@ chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 mount --bind /dev/pts ${ROOTFS}/dev/pts
 chroot ${ROOTFS} root/build.sh ${ARCH} $2
 
+cp ${ROOTFS}/root/*.tar.gz .
+cp ${ROOTFS}/root/*.whl .
+
 cleanup
