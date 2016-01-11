@@ -17,8 +17,7 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=ruby
 VERSION=2.1.5
-ROOT=/opt/app/platform
-PREFIX=${ROOT}/${NAME}
+PREFIX=${DIR}/build
 
 echo "building ${NAME}"
 
@@ -26,19 +25,17 @@ command curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
 
 #useradd -p ruby ruby
 
-rm -rf /tmp/rvm
+rm -rf ${PREFIX}
+mkdir ${PREFIX}
 
-curl -sSL https://get.rvm.io | bash -s stable --path /tmp/rvm
-source /tmp/rvm/scripts/rvm
+curl -sSL https://get.rvm.io | bash -s stable --path ${PREFIX}
+source ${PREFIX}/scripts/rvm
 rvm install ${VERSION} --movable
 rm -rf ${DIR}/${NAME}.tar.gz
 
-rm -rf ${DIR}/build
-mkdir ${DIR}/build
+cp -r ${PREFIX}/rubies/${NAME}-${VERSION} ${PREFIX}/ruby
 
-cp -r /tmp/rvm/rubies/${NAME}-${VERSION} ${DIR}/build/ruby
-
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libyaml* ${DIR}/build/ruby/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libyaml* ${PREFIX}/ruby/lib
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
-tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${PREFIX} ${NAME}
