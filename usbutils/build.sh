@@ -5,17 +5,17 @@ cd ${DIR}
 
 export TMPDIR=/tmp
 export TMP=/tmp
+
 NAME="usbutils"
 VERSION="007-2"
 FULL_NAME="${NAME}-${VERSION}"
 
-if [[ -z "$1" || -z "$2" ]]; then
-    echo "usage $0 app_arch app_version"
+if [[ -z "$1" ]]; then
+    echo "usage $0 app_arch"
     exit 1
 fi
 
 ARCH=$1
-VERSION=$2
 
 ARCH_DEB="unknown"
 if [ "${ARCH}" == 'x86_64' ]; then
