@@ -31,6 +31,10 @@ mkdir ${PREFIX}
 curl -sSL https://get.rvm.io | bash -s stable --path ${PREFIX}
 source ${PREFIX}/scripts/rvm
 rvm install ${VERSION} --movable
+
+rm /etc/rvmrc
+rm /etc/profile.d/rvm.sh
+
 rm -rf ${DIR}/${NAME}.tar.gz
 
 cp -r ${PREFIX}/rubies/${NAME}-${VERSION} ${PREFIX}/ruby
