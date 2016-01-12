@@ -23,14 +23,14 @@ apt-get -y install build-essential \
     libxml2-dev autoconf libjpeg-dev libpng12-dev libfreetype6-dev \
     libzip-dev zlib1g-dev libcurl4-gnutls-dev dpkg-dev \
     libpq-dev libreadline-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
-    p7zip libtool
+    libtool
 
 rm -rf build
 mkdir -p build
 cd build
 
-wget http://www.imagemagick.org/download/releases/ImageMagick-${VERSION}.7z
-p7zip -d ${NAME}-${VERSION}.7z
+wget http://www.imagemagick.org/download/releases/ImageMagick-${VERSION}.tar.xz
+tar xJf ${NAME}-${VERSION}.tar.xz
 cd ${NAME}-${VERSION}
 ./configure --prefix=${PREFIX}
 make
