@@ -59,7 +59,7 @@ rm configure
 #IMAGE_MAGICK_PATH=${DIR}/build/ImageMagick
 #export PKG_CONFIG_PATH=${IMAGE_MAGICK_PATH}/lib/pkgconfig
 
-./configure \
+CFLAGS="-D_FILE_OFFSET_BITS=64" ./configure \
     --enable-fpm \
     --with-pgsql \
     --with-pdo-pgsql \
