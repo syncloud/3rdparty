@@ -58,8 +58,11 @@ rm configure
 #sed -i -e 's~^\([[:space:]]*\)\(if test -f \$LDAP_LIBDIR/liblber\.a || test -f \$LDAP_LIBDIR/liblber\.\$SHLIB_SUFFIX_NAME; then\)$~\1if test -f \$LDAP_LIBDIR/x86_64-linux-gnu/liblber\.a || test -f \$LDAP_LIBDIR/x86_64-linux-gnu/liblber\.\$SHLIB_SUFFIX_NAME; then\n\1  LDAP_LIBDIR=$LDAP_LIBDIR/x86_64-linux-gnu\n\1fi\n\n\1\2~' configure;
 #IMAGE_MAGICK_PATH=${DIR}/build/ImageMagick
 #export PKG_CONFIG_PATH=${IMAGE_MAGICK_PATH}/lib/pkgconfig
+if [ "$ARCH" == "armv7l"  ]; then
+    OPTIONS="-D_FILE_OFFSET_BITS=64"
+fi
 
-CFLAGS="-D_FILE_OFFSET_BITS=64" ./configure \
+CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
     --with-pgsql \
     --with-pdo-pgsql \
