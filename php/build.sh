@@ -81,7 +81,7 @@ CFLAGS="$OPTIONS" ./configure \
     --with-readline \
     --enable-mbstring \
     --enable-apcu \
-    --enable-apcu-bc \
+    --with-apcu_bc \
     --with-libdir=lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
     --with-jpeg-dir \
     --with-png-dir \
