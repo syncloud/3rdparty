@@ -50,7 +50,7 @@ tar xzf apcu-${APCU_VERSION}.tgz -C ext/
 mv ext/apcu-* ext/apcu
 
 wget https://pecl.php.net/get/apcu_bc-${APCU_BC_VERSION}.tgz --progress dot:giga
-tar xzf apcu_bc-${APCU_BC-ERSION}.tgz -C ext/
+tar xzf apcu_bc-${APCU_BC_VERSION}.tgz -C ext/
 mv ext/apcu_bc-* ext/apcu_bc
 
 #wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
