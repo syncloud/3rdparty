@@ -13,9 +13,10 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php
-VERSION=5.6.13
+VERSION=7.0.2
 #VERSION=5.6.9
-APCU_VERSION=4.0.7
+APCU_VERSION=5.1.3
+APCU_BC_VERSION=1.0.2
 #IMAGICK_VERSION=3.1.2
 #IMAGICK_VERSION=3.3.0RC2
 IMAGICK_VERSION=3.2.0RC1
@@ -48,6 +49,10 @@ wget https://pecl.php.net/get/apcu-${APCU_VERSION}.tgz --progress dot:giga
 tar xzf apcu-${APCU_VERSION}.tgz -C ext/
 mv ext/apcu-* ext/apcu
 
+wget https://pecl.php.net/get/apcu_bc-${APCU_BC_VERSION}.tgz --progress dot:giga
+tar xzf apcu_bc-${APCU_BC_VERSION}.tgz -C ext/
+mv ext/apcu_bc-* ext/apcu_bc
+
 #wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
 #tar xzf imagick-${IMAGICK_VERSION}.tgz -C ext/
 #mv ext/imagick-* ext/imagick
@@ -76,6 +81,7 @@ CFLAGS="$OPTIONS" ./configure \
     --with-readline \
     --enable-mbstring \
     --enable-apcu \
+    --enable-apc \
     --with-libdir=lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
     --with-jpeg-dir \
     --with-png-dir \
@@ -118,6 +124,10 @@ echo "test references"
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/sbin/php-fpm
+
+#if ${PREFIX}/bin/php -v: then
+  #exit 1
+#fi
 
 cd ${DIR}
 
