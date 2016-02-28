@@ -23,7 +23,7 @@ rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
 
-wget http://www.rsyslog.com/files/download/rsyslog/{NAME}-${VERSION}.tar.gz \
+wget http://www.rsyslog.com/files/download/rsyslog/${NAME}-${VERSION}.tar.gz \
     --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
