@@ -12,7 +12,7 @@ ARCH=$1
 
 export TMPDIR=/tmp
 export TMP=/tmp
-NAME=mariadb
+NAME=dovecot
 VERSION=2.2.21
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
