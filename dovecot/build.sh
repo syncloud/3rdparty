@@ -28,6 +28,7 @@ wget http://www.dovecot.org/releases/2.2/${NAME}-${VERSION}.tar.gz \
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
+./configure --help
 ./configure --prefix=${PREFIX}
 make
 make install
