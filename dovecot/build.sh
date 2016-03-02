@@ -15,10 +15,13 @@ export TMP=/tmp
 NAME=dovecot
 VERSION=2.2.21
 BUILD=${DIR}/build
-PREFIX=${BUILD}/${NAME}
+BASE_DIR=/opt/app/mail
+PREFIX=${BASE_DIR}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev
 
+rm -rf ${PREFIX}
+mkdir -p ${PREFIX}
 rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
@@ -34,4 +37,4 @@ make
 make install
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
+tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BASE_DIR} ${NAME}
