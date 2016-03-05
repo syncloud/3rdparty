@@ -29,7 +29,7 @@ apt-get -y install build-essential \
     libxml2-dev autoconf libjpeg-dev libpng12-dev libfreetype6-dev \
     libzip2 libzip-dev zlib1g-dev libcurl4-gnutls-dev dpkg-dev \
     libpq-dev libreadline-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
-    p7zip libtool
+    p7zip libtool libmcrypt-dev
 #    libmagickwand-6.q16-dev
 
 rm -rf build
@@ -80,7 +80,9 @@ CFLAGS="$OPTIONS" ./configure \
     --with-jpeg-dir \
     --with-png-dir \
     --with-ldap \
-    --with-ldap-sasl
+    --with-ldap-sasl \
+    --with-openssl \
+    --with-mcrypt
 #    --with-imagick \
 
 make -j2
@@ -113,6 +115,8 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsa
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libwind*.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgnutls*.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhogweed*.so* ${PREFIX}/lib
+
+cp --remove-destination /usr/lib/libmcrypt.so* ${PREFIX}/lib
 
 echo "test references"
 
