@@ -83,7 +83,8 @@ CFLAGS="$OPTIONS" ./configure \
     --with-ldap-sasl \
     --with-openssl \
     --with-mcrypt \
-    --enable-intl
+    --enable-intl \
+    --enable-exif
 #    --with-imagick \
 
 make -j2
