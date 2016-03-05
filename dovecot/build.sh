@@ -1,4 +1,4 @@
-#!/bin/bash
+    #!/bin/bash
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -18,7 +18,7 @@ BUILD=${DIR}/build
 BASE_DIR=/opt/app/mail
 PREFIX=${BASE_DIR}/${NAME}
 
-apt-get -y install build-essential cmake libncurses5-dev
+apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev
 
 rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
@@ -32,7 +32,10 @@ tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
 ./configure --help
-./configure --prefix=${PREFIX}
+./configure --prefix=${PREFIX} \
+    --with-rawlog \
+    --with-ldap
+
 make
 make install
 
