@@ -20,7 +20,7 @@ echo "building ${NAME}"
 
 printf "\ndeb-src http://httpredir.debian.org/debian jessie main contrib non-free" >> /etc/apt/sources.list
 apt-get -y update
-apt-get -y install build-essential
+apt-get -y install build-essential libldap2-dev libsasl2-dev libssl-dev libldb-dev 
 apt-get -y build-dep postfix
 
 rm -rf build
@@ -35,7 +35,9 @@ rm -rf ${BUILD_DIR}
 
 make makefiles CCARGS='-DDEF_CONFIG_DIR=\"/opt/app/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
-	-DDEF_SERVER_SASL_TYPE=\"dovecot\"'
+	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/local/include -DHAS_LDAP' \ 
+  AUXLIBS_LDAP="-L/usr/local/lib -lldap -L/usr/local/lib -llber"
+
 make
 make non-interactive-package install_root=${BUILD_DIR}/${NAME}
 
