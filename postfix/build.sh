@@ -36,7 +36,7 @@ rm -rf ${BUILD_DIR}
 make makefiles CCARGS='-DDEF_CONFIG_DIR=\"/opt/app/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/local/include -DHAS_LDAP' \ 
-  AUXLIBS_LDAP="-L/usr/local/lib -lldap -L/usr/local/lib -llber"
+  AUXLIBS="-L/usr/local/lib -lldap -L/usr/local/lib -llber"
 
 make
 make non-interactive-package install_root=${BUILD_DIR}/${NAME}
