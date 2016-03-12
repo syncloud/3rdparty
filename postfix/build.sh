@@ -35,9 +35,13 @@ rm -rf ${BUILD_DIR}
 
 export CCARGS='-DDEF_CONFIG_DIR=\"/opt/app/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
-	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/include -DHAS_LDAP' 
+	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
+  -I/usr/include -DHAS_LDAP \
+  -DUSE_TLS'
 
-export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) -llber"
+export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
+  -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
+  -llber -lssl -lcrypto"
 
 make makefiles
 make
