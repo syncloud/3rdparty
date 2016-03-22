@@ -1,6 +1,4 @@
-http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-13.7.2.tar.gz
-
-    #!/bin/bash
+#!/bin/bash
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -14,13 +12,14 @@ ARCH=$1
 
 export TMPDIR=/tmp
 export TMP=/tmp
-NAME=dovecot
-VERSION=2.2.21
+NAME=asterisk
+VERSION=13.7.2
 BUILD=${DIR}/build
-BASE_DIR=/opt/app/mail
+BASE_DIR=/opt/app
 PREFIX=${BASE_DIR}/${NAME}
 
-apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev
+apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
+    uuid-dev libjansson-dev
 
 rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
@@ -28,16 +27,13 @@ rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
 
-wget http://www.dovecot.org/releases/2.2/${NAME}-${VERSION}.tar.gz \
+wget http://downloads.asterisk.org/pub/telephony/${NAME}/releases/${NAME}-${VERSION}.tar.gz \
     --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
 ./configure --help
-./configure --prefix=${PREFIX} \
-    --with-rawlog \
-    --with-ldap
-
+./configure --prefix=${PREFIX}
 make
 make install
 
