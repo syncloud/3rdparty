@@ -15,7 +15,7 @@ export TMP=/tmp
 NAME=asterisk
 VERSION=13.7.2
 BUILD=${DIR}/build
-BASE_DIR=/opt/app
+BASE_DIR=/opt/app/talk
 PREFIX=${BASE_DIR}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
