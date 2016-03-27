@@ -19,7 +19,7 @@ BASE_DIR=/opt/app/talk
 PREFIX=${BASE_DIR}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
-    uuid-dev libjansson-dev libxslt1-dev liburiparser1 libxml2 libsqlite3-0
+    uuid-dev libjansson-dev libxslt1-dev liburiparser1 libxml2 libsqlite3-0 libicu-dev
 
 rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
@@ -45,6 +45,7 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libuuid.s
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liburiparser.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libxml2.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsqlite3.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicu*.so* ${PREFIX}/lib
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BASE_DIR} ${NAME}
