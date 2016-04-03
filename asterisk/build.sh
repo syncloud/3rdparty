@@ -13,14 +13,14 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=asterisk
-VERSION=13.7.2
+VERSION=13.8.0
 BUILD=${DIR}/build
 BASE_DIR=/opt/app/talk
 PREFIX=${BASE_DIR}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
     uuid-dev libjansson-dev libxslt1-dev liburiparser1 libxml2 sqlite3 libsqlite3-dev libicu-dev libcurl3-gnutls \
-    libsrtp0-dev
+    libsrtp0-dev libspeex1 libspeex-dev libspeexdsp1 libspeexdsp-dev libgsm1-dev portaudio19-dev
 
 rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
@@ -33,8 +33,12 @@ wget http://downloads.asterisk.org/pub/telephony/${NAME}/releases/${NAME}-${VERS
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
+echo "building pjproject"
+./contrib/scripts/install_prereq install
+
+echo "building asterisk"
 ./configure --help
-./configure --prefix=${PREFIX}
+./configure --prefix=${PREFIX} --with-pjproject-bundled
 make
 make install
 
