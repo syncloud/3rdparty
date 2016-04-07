@@ -40,11 +40,12 @@ echo "building asterisk"
 ./configure --help
 ./configure --prefix=${PREFIX} --with-pjproject-bundled
 make
+make install
 
 echo "checking pjsip tools:"
 ls -la third-party/pjproject/source/pjsip-apps/bin/
-
-make install
+cp third-party/pjproject/source/pjsip-apps/bin/pjsua* ${PREFIX}/sbin/pjsua
+cp third-party/pjproject/source/pjsip-apps/bin/pjsystest* ${PREFIX}/sbin/pjsystest
 
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libjansson.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libxslt.so* ${PREFIX}/lib
