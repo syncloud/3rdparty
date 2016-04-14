@@ -29,6 +29,7 @@ apt-get -y install python usbutils
 wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py --progress dot:giga
 python get-pip.py
 rm get-pip.py
+pip install --upgrade coin
 
 BUILD_DIR=${DIR}/build/${NAME}
 rm -rf build
