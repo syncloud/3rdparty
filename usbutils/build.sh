@@ -25,7 +25,7 @@ fi
 
 echo "building ${NAME}"
 
-apt-get -y install python
+apt-get -y install python usbutils
 wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py --progress dot:giga
 python get-pip.py
 rm get-pip.py
