@@ -36,5 +36,7 @@ cd ../..
 mkdir -p install/${NAME}/bin
 cp build/${NAME}-${VERSION}/uwsgi install/${NAME}/bin/
 
+ldd install/${NAME}/bin/uwsgi
+
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C install ${NAME}
