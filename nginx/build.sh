@@ -34,7 +34,7 @@ tar xzf openssl-${OPENSSL_VERSION}.tar.gz
 
 ls -la openssl-${OPENSSL_VERSION}
 
-sed -i 's/install: all install_docs install_sw/install: all install_sw/g' openssl-${OPENSSL_VERSION}/Makefile.org
+sed -i 's/install: all install_docs install_sw/install: all install_sw/g' openssl-${OPENSSL_VERSION}/Makefile
 
 cd ${NAME}-${VERSION}
 ./configure --prefix=${PREFIX} --with-cc-opt="-static -static-libgcc" --with-ld-opt="-static" --with-http_ssl_module --with-http_gzip_static_module --with-http_spdy_module --with-openssl=../openssl-${OPENSSL_VERSION}
