@@ -32,6 +32,8 @@ tar xzf ${NAME}-${VERSION}.tar.gz
 wget http://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xzf openssl-${OPENSSL_VERSION}.tar.gz
 
+ls -la ../openssl-${OPENSSL_VERSION}
+
 sed -i 's/install: all install_docs install_sw/install: all install_sw/g' ../openssl-${OPENSSL_VERSION}/Makefile.org
 
 cd ${NAME}-${VERSION}
