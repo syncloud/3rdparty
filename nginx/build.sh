@@ -37,13 +37,21 @@ wget http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PCRE_VERSION}
 tar xzf pcre-${PCRE_VERSION}.tar.gz
 
 cd ${NAME}-${VERSION}
-./configure --prefix=${PREFIX} --with-cc-opt="-static -static-libgcc" --with-ld-opt="-static" --with-http_ssl_module --with-http_gzip_static_module --with-http_spdy_module --with-openssl=../openssl-${OPENSSL_VERSION} --with-pcre=../pcre-${PCRE_VERSION}
+./configure --prefix=${PREFIX} \
+    --with-cpu-opt=generic \
+    --with-cc-opt="-static -static-libgcc" \
+    --with-ld-opt="-static" \
+    --with-http_ssl_module \
+    --with-http_gzip_static_module \
+    --with-http_spdy_module \
+    --with-openssl=../openssl-${OPENSSL_VERSION} \
+    --with-pcre=../pcre-${PCRE_VERSION}
 
 sed -i "/CFLAGS/s/ \-O //g" objs/Makefile
 
 make -j1
 rm -rf ${PREFIX}
-make install_sw
+make install
 cd ../..
 
 ldd ${PREFIX}/sbin/nginx
