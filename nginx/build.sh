@@ -33,7 +33,7 @@ tar xzf ${NAME}-${VERSION}.tar.gz
 wget http://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xzf openssl-${OPENSSL_VERSION}.tar.gz
 
-wget http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PCRE_VERSION}
+wget http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PCRE_VERSION}.tar.gz
 tar xzf pcre-${PCRE_VERSION}.tar.gz
 
 cd ${NAME}-${VERSION}
