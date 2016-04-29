@@ -14,7 +14,7 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=nginx
 VERSION=1.8.0
-OPENSSL_VERSION=1.0.2g
+OPENSSL_VERSION=1.0.1e
 ROOT=/opt/app/platform
 PREFIX=${ROOT}/${NAME}
 
