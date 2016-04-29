@@ -36,7 +36,7 @@ cd ${NAME}-${VERSION}
 ./configure --prefix=${PREFIX} --with-cc-opt="-static -static-libgcc" --with-ld-opt="-static" --with-http_ssl_module --with-http_gzip_static_module --with-http_spdy_module --with-openssl=../openssl-${OPENSSL_VERSION}
 make -j1
 rm -rf ${PREFIX}
-make install
+make install_sw
 cd ../..
 
 ldd ${PREFIX}/sbin/nginx
