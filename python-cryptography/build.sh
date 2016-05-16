@@ -5,6 +5,8 @@ cd ${DIR}
 
 OPENSSL_VERSION=1.0.2h
 
+apt-get install libffi-dev
+
 rm -rf openssl-${OPENSSL_VERSION}
 curl -O https://openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xvf openssl-${OPENSSL_VERSION}.tar.gz
