@@ -18,6 +18,4 @@ cd openssl-${OPENSSL_VERSION}
 make && make install
 cd ..
 
-CFLAGS="-I${DIR}/openssl/include" LDFLAGS="-L${DIR}/openssl/lib" pip wheel --no-use-wheel cryptography
-
-cp ${DIR}/dist/*.whl ${DIR}/
+CFLAGS="-I${DIR}/openssl/include" LDFLAGS="-L${DIR}/openssl/lib" pip wheel  --no-binary :all: cryptography
