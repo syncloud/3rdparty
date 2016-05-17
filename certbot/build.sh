@@ -29,7 +29,8 @@ coin --to=${LIB_DIR} py ${PYPI_URL}/ae/cf/a7442138ad899a7587489641a8923f1e640caf
 coin --to=${LIB_DIR} py ${PYPI_URL}/99/b4/63d99ba8e189c47d906b43bae18af4396e336f2b1bfec86af31efe2d2cb8/requests-2.10.0-py2.py3-none-any.whl
 coin --to=${LIB_DIR} py ${PYPI_URL}/d0/b8/8f7689980caa66fc02671f5837dc761e4c7a47c6ca31b3e38b304cbc3e73/ConfigArgParse-0.10.0.tar.gz
 coin --to=${LIB_DIR} py ${PYPI_URL}/26/34/b4cf8018dbc51e8a0fae2c51a0dd2c1f34419caa9e3eb83646c73d1beb9d/python2-pythondialog-3.4.0.tar.gz
-coin --to=${LIB_DIR} py ${PYPI_URL}/64/61/079eb60459c44929e684fa7d9e2fdca403f67d64dd9dbac27296be2e0fab/configobj-5.0.6.tar.gz#md5=e472a3a1c2a67bb0ec9b5d54c13a47d6
+coin --to=${LIB_DIR} py ${PYPI_URL}/64/61/079eb60459c44929e684fa7d9e2fdca403f67d64dd9dbac27296be2e0fab/configobj-5.0.6.tar.gz
+coin --to=${LIB_DIR} py ${PYPI_URL}/85/1f/13fc06097e516f6259d62cea502b116451321c96e18a9d0fff9da3442e02/parsedatetime-2.1-py2-none-any.whl#md5=c8ec17ef06d4034b33869bdb48b0c004
 
 coin --to=${LIB_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cryptography-1.3.2-cp27-none-linux_${ARCH}.whl
 
