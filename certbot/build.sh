@@ -24,6 +24,7 @@ coin --to=${LIB_DIR} py ${PYPI_URL}/b0/fb/75ba188a2134ed0a92de37e2644448789d05b3
 coin --to=${LIB_DIR} py ${PYPI_URL}/c8/0a/b6723e1bc4c516cb687841499455a8505b44607ab535be01091c0f24f079/six-1.10.0-py2.py3-none-any.whl
 coin --to=${LIB_DIR} py ${PYPI_URL}/a6/4b/d2614fef376fcc5d0de1e86d1758c75ef79eda345ecfa07e0d16676706c3/enum34-1.1.5-py2.py3-none-any.whl
 coin --to=${LIB_DIR} py ${PYPI_URL}/b1/4e/54c8995d2de887919272c2b711cd430277ec33e0f7bb88cb564244c102b6/pyOpenSSL-16.0.0-py2.py3-none-any.whl
+coin --to=${LIB_DIR} py ${PYPI_URL}/9b/0a/decfa17e7707afca17d6e9595ff5c79c1c71c74063ad95576f897ed3a9f1/pyRFC3339-1.0-py2.py3-none-any.whl
 
 coin --to=${LIB_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cryptography-1.3.2-cp27-none-linux_${ARCH}.whl
 
