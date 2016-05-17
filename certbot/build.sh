@@ -27,6 +27,8 @@ coin --to=${LIB_DIR} py ${PYPI_URL}/b1/4e/54c8995d2de887919272c2b711cd430277ec33
 
 coin --to=${LIB_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cryptography-1.3.2-cp27-none-linux_${ARCH}.whl
 
+coin --to=${LIB_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cffi-1.6.0-cp27-none-linux_${ARCH}.whl
+
 rm -rf tmp
 mkdir tmp
 coin --to=tmp py ${PYPI_URL}/9d/81/2509ca3c6f59080123c1a8a97125eb48414022618cec0e64eb1313727bfe/zope.interface-4.1.3.tar.gz
