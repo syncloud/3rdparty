@@ -28,6 +28,7 @@ coin --to=${LIB_DIR} py ${PYPI_URL}/9b/0a/decfa17e7707afca17d6e9595ff5c79c1c71c7
 coin --to=${LIB_DIR} py ${PYPI_URL}/ae/cf/a7442138ad899a7587489641a8923f1e640cafc2d6ffe4e79e5d15cc5b3e/pytz-2016.4-py2.py3-none-any.whl
 coin --to=${LIB_DIR} py ${PYPI_URL}/99/b4/63d99ba8e189c47d906b43bae18af4396e336f2b1bfec86af31efe2d2cb8/requests-2.10.0-py2.py3-none-any.whl
 coin --to=${LIB_DIR} py ${PYPI_URL}/d0/b8/8f7689980caa66fc02671f5837dc761e4c7a47c6ca31b3e38b304cbc3e73/ConfigArgParse-0.10.0.tar.gz
+coin --to=${LIB_DIR} py ${PYPI_URL}/26/34/b4cf8018dbc51e8a0fae2c51a0dd2c1f34419caa9e3eb83646c73d1beb9d/python2-pythondialog-3.4.0.tar.gz
 
 coin --to=${LIB_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cryptography-1.3.2-cp27-none-linux_${ARCH}.whl
 
