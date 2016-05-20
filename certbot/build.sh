@@ -46,18 +46,17 @@ mkdir tmp
 coin --to=tmp py ${PYPI_URL}/4c/c4/3f77127c876f49af478e8ea4dc223cda17730bb273c0d1606a4114c64008/zope.component-4.2.2.tar.gz
 mv tmp/zope.component-4.2.2/src ${LIB_DIR}/zope.component-4.2.2
 
-rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} .
-
-rm -rf ${TEST_DIR}
-mkdir ${TEST_DIR}
 
 #TODO: coin fails to overwrite existing output
 rm -rf .coin.cache/*_python-*/output
 
-coin --to ${TEST_DIR} raw ${DOWNLOAD_URL}/thirdparty_python_${ARCH}/lastSuccessful/python-${ARCH}.tar.gz
-path_file=${TEST_DIR}/python/lib/python2.7/site-packages/path.pth
+coin --to ${BUILD_DIR} raw ${DOWNLOAD_URL}/thirdparty_python_${ARCH}/lastSuccessful/python-${ARCH}.tar.gz
+path_file=${BUILD_DIR}/python/lib/python2.7/site-packages/path.pth
 ls ${BUILD_DIR}/lib/  > ${path_file}
 sed -i "s#^#../../../../../build/lib/#g" ${path_file}
+
+
+rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
+tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} .
 
 ${DIR}/test.py

@@ -1,4 +1,4 @@
-#!test/python/bin/python
+#!build/python/bin/python
 
 from certbot import main
 from certbot.plugins import disco as plugins_disco
