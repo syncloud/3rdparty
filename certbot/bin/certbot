@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -e
+#!/bin/bash -e
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )
 
-${DIR}/python/bin/python ${DIR}/lib/certbot-*/certbot/cli.py "$@"
+${DIR}/python/bin/python ${DIR}/lib/certbot-*/certbot/main.py "$@"
