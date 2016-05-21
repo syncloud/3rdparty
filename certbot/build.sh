@@ -19,6 +19,8 @@ PYPI_URL=https://pypi.python.org/packages
 rm -rf ${BUILD_DIR}
 mkdir ${BUILD_DIR}
 
+cp -r ${DIR}/bin ${BUILD_DIR}
+
 coin --to=${LIB_DIR} py ${PYPI_URL}/b6/b2/789558734fb2ff426fb4c0e948e2cbae18af50bd54bab8c4cc012d9dce10/certbot-0.6.0-py2-none-any.whl
 coin --to=${LIB_DIR} py ${PYPI_URL}/b0/fb/75ba188a2134ed0a92de37e2644448789d05b3cdb262d0c1da284890a98f/acme-0.6.0-py2.py3-none-any.whl
 coin --to=${LIB_DIR} py ${PYPI_URL}/c8/0a/b6723e1bc4c516cb687841499455a8505b44607ab535be01091c0f24f079/six-1.10.0-py2.py3-none-any.whl
