@@ -26,7 +26,7 @@ rm -rf .coin.cache/*_python-*/output
 
 coin --to ${BUILD_DIR} raw ${DOWNLOAD_URL}/thirdparty_python_${ARCH}/lastSuccessful/python-${ARCH}.tar.gz
 
-${BUILD_DIR}/python/bin/pip install certbot,
+${BUILD_DIR}/python/bin/pip install certbot
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} .
