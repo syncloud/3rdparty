@@ -27,8 +27,12 @@ wget https://github.com/yyuu/pyenv/archive/master.zip
 unzip master.zip
 export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4"
 ./pyenv-master/plugins/python-build/bin/python-build ${VERSION} ${PREFIX}
+
 mv ${PREFIX}/bin/python ${PREFIX}/bin/python.bin
 cp ${DIR}/python ${PREFIX}/bin/
+
+mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
+cp ${DIR}/pip ${PREFIX}/bin/
 
 cd ${DIR}
 
