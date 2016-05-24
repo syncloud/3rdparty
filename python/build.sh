@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -xe
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -37,6 +37,8 @@ cp ${DIR}/pip ${PREFIX}/bin/
 find ${PREFIX}/bin -type f -exec sed -i "s#\#!${PREFIX}/##g" {} \;
 
 cd ${DIR}
+
+${PREFIX}/bin/python --version
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
