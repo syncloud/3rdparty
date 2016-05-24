@@ -34,7 +34,7 @@ cp ${DIR}/python ${PREFIX}/bin/
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 
-find ${PREFIX}/bin -type f -exec sed -i "s#${PREFIX}/##g" {} \;
+find ${PREFIX}/bin -type f -exec sed -i "s#\#!${PREFIX}/##g" {} \;
 
 cd ${DIR}
 
