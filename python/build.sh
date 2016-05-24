@@ -16,7 +16,7 @@ export TMPDIR=/tmp
 export TMP=/tmp
 
 NAME=python
-PREFIX=${NAME}
+PREFIX=${DIR}/build/${NAME}
 
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libssl-dev libbz2-dev
 
@@ -33,6 +33,8 @@ cp ${DIR}/python ${PREFIX}/bin/
 
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
+
+find ${PREFIX}/bin -type f -exec sed -i 's#${PREFIX}/##g' {} \;
 
 cd ${DIR}
 
