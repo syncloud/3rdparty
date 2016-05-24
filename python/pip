@@ -1,4 +1,4 @@
 #!/bin/bash
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )
 export LD_LIBRARY_PATH=${DIR}/lib
-${DIR}/bin/pip_runner $@
+${DIR}/bin/python.bin ${DIR}/bin/pip_runner "$@"
