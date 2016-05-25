@@ -16,6 +16,8 @@ TEST_DIR=${DIR}/test
 DOWNLOAD_URL=http://build.syncloud.org:8111/guestAuth/repository/download
 PYPI_URL=https://pypi.python.org/packages
 
+apt-get update
+apt-get install -y libffi-dev
 rm -rf ${BUILD_DIR}
 mkdir ${BUILD_DIR}
 
