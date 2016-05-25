@@ -18,6 +18,7 @@ export TMP=/tmp
 NAME=python
 PREFIX=${DIR}/build/${NAME}
 
+apt-get update
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libssl-dev libbz2-dev
 
 rm -rf build
