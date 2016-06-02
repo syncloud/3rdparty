@@ -19,16 +19,16 @@ PYPI_URL=https://pypi.python.org/packages
 apt-get update
 apt-get install -y libffi-dev
 rm -rf ${BUILD_DIR}
-mkdir ${BUILD_DIR}
+mkdir -p ${BUILD_DIR}/${NAME}
 
-cp -r ${DIR}/bin ${BUILD_DIR}
+cp -r ${DIR}/bin ${BUILD_DIR}/${NAME}
 
 #TODO: coin fails to overwrite existing output
 rm -rf .coin.cache/*_python-*/output
 
-coin --to ${BUILD_DIR} raw ${DOWNLOAD_URL}/thirdparty_python_${ARCH}/lastSuccessful/python-${ARCH}.tar.gz
+coin --to ${BUILD_DIR}/${NAME} raw ${DOWNLOAD_URL}/thirdparty_python_${ARCH}/lastSuccessful/python-${ARCH}.tar.gz
 
-${BUILD_DIR}/python/bin/pip install certbot
+${BUILD_DIR}/${NAME}/python/bin/pip install certbot
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} .
