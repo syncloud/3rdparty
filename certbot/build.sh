@@ -16,6 +16,7 @@ TEST_DIR=${DIR}/test
 DOWNLOAD_URL=http://build.syncloud.org:8111/guestAuth/repository/download
 PYPI_URL=https://pypi.python.org/packages
 PYTHON_SITE_PACKAGES_DIR=${BUILD_DIR}/${NAME}/python/lib/python2.7/site-packages
+ROOTFS=${BUILD_DIR}/rootfs
 
 if [[ $EUID -ne 0 ]]; then
    echo "non root, skipping apt dependencies"
@@ -43,5 +44,15 @@ rm -rf ${PYTHON_SITE_PACKAGES_DIR}/cryptography-1.3.2
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} .
+
+#coin --to=${ROOTFS} raw ${DOWNLOAD_URL}/debian_rootfs_${ARCH}/lastSuccessful/rootfs.tar.gz
+BASE_ROOTFS_ZIP=rootfs-${ARCH}.tar.gz
+if [ ! -f ${BASE_ROOTFS_ZIP} ]; then
+  wget http://build.syncloud.org:8111/guestAuth/repository/download/debian_rootfs_${ARCH}/lastSuccessful/rootfs.tar.gz\
+  -O ${BASE_ROOTFS_ZIP} --progress dot:giga
+else
+  echo "skipping rootfs"
+fi
+tar xzf ${BASE_ROOTFS_ZIP} -C ${ROOTFS}
 
 ${DIR}/test.py
