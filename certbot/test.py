@@ -8,7 +8,7 @@ DIR = dirname(__file__)
 BUILD_DIR = join(DIR, 'build')
 ROOTFS_DIR = join(BUILD_DIR, 'rootfs')
 
-shutil.copytree(join(BUILD_DIR, 'certbot'), ROOTFS_DIR)
+shutil.copytree(join(BUILD_DIR, 'certbot'), join(ROOTFS_DIR, 'certbot')
 
 check_call('chroot {0} certbot/bin/certbot --help all'.format(ROOTFS_DIR), shell=True)
 
