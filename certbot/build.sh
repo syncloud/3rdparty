@@ -53,6 +53,7 @@ if [ ! -f ${BASE_ROOTFS_ZIP} ]; then
 else
   echo "skipping rootfs"
 fi
+mkdir ${ROOTFS}
 tar xzf ${BASE_ROOTFS_ZIP} -C ${ROOTFS}
 
 ${DIR}/test.py
