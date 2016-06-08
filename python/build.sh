@@ -38,6 +38,8 @@ cp ${DIR}/pip ${PREFIX}/bin/
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto*.so* ${PREFIX}/lib
 
+ldd ${PREFIX}/lib/python2.7/lib-dynload/_ssl.so
+
 find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
 
 cd ${DIR}
