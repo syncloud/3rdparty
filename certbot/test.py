@@ -10,6 +10,8 @@ ROOTFS_DIR = join(BUILD_DIR, 'rootfs')
 
 shutil.copytree(join(BUILD_DIR, 'certbot'), join(ROOTFS_DIR, 'certbot'))
 
+check_call('chroot {0} ldd certbot/python/lib/python2.7/lib-dynload/_ssl.so'.format(ROOTFS_DIR), shell=True)
+
 check_call('chroot {0} certbot/bin/certbot --help all'.format(ROOTFS_DIR), shell=True)
 
 check_call('chroot {0} certbot/bin/certbot plugins --logs-dir=. --config-dir=.'.format(ROOTFS_DIR), shell=True)

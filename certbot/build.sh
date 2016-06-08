@@ -46,7 +46,8 @@ rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} .
 
 #coin --to=${ROOTFS} raw ${DOWNLOAD_URL}/debian_rootfs_${ARCH}/lastSuccessful/rootfs.tar.gz
-BASE_ROOTFS_ZIP=rootfs-${ARCH}.tar.gz
+
+BASE_ROOTFS_ZIP=${BUILD_DIR}/rootfs-${ARCH}.tar.gz
 if [ ! -f ${BASE_ROOTFS_ZIP} ]; then
   wget http://build.syncloud.org:8111/guestAuth/repository/download/debian_rootfs_${ARCH}/lastSuccessful/rootfs.tar.gz\
   -O ${BASE_ROOTFS_ZIP} --progress dot:giga
