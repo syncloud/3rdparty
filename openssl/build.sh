@@ -17,7 +17,7 @@ OPENSSL_VERSION=1.0.2h
 apt-get install libffi-dev
 
 rm -rf ${PREFIX}
-mkdir ${PREFIX}
+mkdir -p ${PREFIX}
 cd ${PREFIX}
 
 curl -O https://openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
