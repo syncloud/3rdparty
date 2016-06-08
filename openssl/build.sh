@@ -11,14 +11,15 @@ fi
 ARCH=$1
 
 NAME=openssl
-PREFIX=${DIR}/build/${NAME}
+BUILD_DIR=${DIR}/build
+PREFIX=${BUILD_DIR}/${NAME}
 OPENSSL_VERSION=1.0.2h
 
 apt-get install libffi-dev
 
 rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
-cd ${PREFIX}
+cd ${BUILD_DIR}
 
 curl -O https://openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xvf openssl-${OPENSSL_VERSION}.tar.gz
@@ -33,4 +34,4 @@ make install
 
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
-tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
