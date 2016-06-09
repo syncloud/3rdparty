@@ -17,6 +17,7 @@ DOWNLOAD_URL=http://build.syncloud.org:8111/guestAuth/repository/download
 PYPI_URL=https://pypi.python.org/packages
 PYTHON_SITE_PACKAGES_DIR=${BUILD_DIR}/${NAME}/python/lib/python2.7/site-packages
 ROOTFS=${BUILD_DIR}/rootfs
+PYTHON_CRYPTOGRAPHY_VERSION=1.4
 
 if [[ $EUID -ne 0 ]]; then
    echo "non root, skipping apt dependencies"
@@ -37,10 +38,10 @@ coin --to ${BUILD_DIR}/${NAME} raw ${DOWNLOAD_URL}/thirdparty_python_${ARCH}/las
 
 ${BUILD_DIR}/${NAME}/python/bin/pip install certbot
 
-coin --to=${PYTHON_SITE_PACKAGES_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cryptography-1.3.2-cp27-none-linux_${ARCH}.whl
+coin --to=${PYTHON_SITE_PACKAGES_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}-cp27-none-linux_${ARCH}.whl
 rm -rf ${PYTHON_SITE_PACKAGES_DIR}/cryptography
-mv ${PYTHON_SITE_PACKAGES_DIR}/cryptography-1.3.2/cryptography ${PYTHON_SITE_PACKAGES_DIR}/cryptography
-rm -rf ${PYTHON_SITE_PACKAGES_DIR}/cryptography-1.3.2
+mv ${PYTHON_SITE_PACKAGES_DIR}/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}/cryptography ${PYTHON_SITE_PACKAGES_DIR}/cryptography
+rm -rf ${PYTHON_SITE_PACKAGES_DIR}/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} .
