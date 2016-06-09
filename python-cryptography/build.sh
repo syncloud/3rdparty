@@ -3,19 +3,18 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+
+if [[ -z "$1" ]]; then
+    echo "usage $0 architecture"
+    exit 1
+fi
+
+ARCH=$1
+
 OPENSSL_VERSION=1.0.2h
 
 apt-get install libffi-dev
 
-rm -rf openssl-${OPENSSL_VERSION}
-curl -O https://openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
-tar xvf openssl-${OPENSSL_VERSION}.tar.gz
-cd openssl-${OPENSSL_VERSION}
+coin --to=lib raw http://build.syncloud.org:8111/guestAuth/repository/download/thirdparty_openssl_${ARCH}/lastSuccessful/openssl-${ARCH}.tar.gz
 
-./config -Wl,--version-script=openssl.ld -Wl,-Bsymbolic-functions -fPIC shared
-
-./config no-shared no-ssl2 -fPIC --prefix=${DIR}/openssl
-make && make install
-cd ..
-
-CFLAGS="-I${DIR}/openssl/include" LDFLAGS="-L${DIR}/openssl/lib" pip wheel  --no-binary :all: cryptography
+CFLAGS="-I${DIR}/lib/openssl/include" LDFLAGS="-L${DIR}/lib/openssl/lib" pip wheel  --no-binary :all: cryptography
