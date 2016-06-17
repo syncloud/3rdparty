@@ -38,10 +38,10 @@ coin --to ${BUILD_DIR}/${NAME} raw ${DOWNLOAD_URL}/thirdparty_python_${ARCH}/las
 
 ${BUILD_DIR}/${NAME}/python/bin/pip install certbot
 
-coin --to=${PYTHON_SITE_PACKAGES_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}-cp27-none-linux_${ARCH}.whl
-rm -rf ${PYTHON_SITE_PACKAGES_DIR}/cryptography
-mv ${PYTHON_SITE_PACKAGES_DIR}/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}/cryptography ${PYTHON_SITE_PACKAGES_DIR}/cryptography
-rm -rf ${PYTHON_SITE_PACKAGES_DIR}/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}
+#coin --to=${PYTHON_SITE_PACKAGES_DIR} py ${DOWNLOAD_URL}/thirdparty_python_cryptography_${ARCH}/lastSuccessful/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}-cp27-none-linux_${ARCH}.whl
+#rm -rf ${PYTHON_SITE_PACKAGES_DIR}/cryptography
+#mv ${PYTHON_SITE_PACKAGES_DIR}/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}/cryptography ${PYTHON_SITE_PACKAGES_DIR}/cryptography
+#rm -rf ${PYTHON_SITE_PACKAGES_DIR}/cryptography-${PYTHON_CRYPTOGRAPHY_VERSION}
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} .
