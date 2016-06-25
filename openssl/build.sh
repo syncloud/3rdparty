@@ -22,7 +22,8 @@ mkdir -p ${PREFIX}
 cd ${BUILD_DIR}
 
 curl -O https://openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
-tar xvf openssl-${OPENSSL_VERSION}.tar.gz
+rm -rf openssl-${OPENSSL_VERSION}
+tar xzf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
 
 ./config -Wl,--version-script=${DIR}/openssl.ld -Wl,-Bsymbolic-functions -fPIC shared
