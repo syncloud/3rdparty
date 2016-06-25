@@ -36,7 +36,18 @@ mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
+
+# ubuntu hack
+if [ -f /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ]; then
+  cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
+fi
+
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto*.so* ${PREFIX}/lib
+
+# ubuntu hack
+if [ -f /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto*.so* ]; then
+    cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto*.so* ${PREFIX}/lib
+fi
 
 ldd ${PREFIX}/lib/python2.7/lib-dynload/_ssl.so
 
