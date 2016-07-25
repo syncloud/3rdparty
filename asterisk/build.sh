@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=asterisk
-VERSION=13.9.0
+VERSION=13.10.0
 BUILD=${DIR}/build
 BASE_DIR=/opt/app/talk
 PREFIX=${BASE_DIR}/${NAME}
@@ -38,8 +38,10 @@ echo "building pjproject"
 
 echo "building asterisk"
 ./configure --help
-./configure --prefix=${PREFIX} --with-pjproject-bundled
-make
+./configure --prefix=${PREFIX} --with-pjproject-bundled --enable-dev-mode
+make menuselect.makeopts
+./menuselect/menuselect --enable TEST_FRAMEWORK menuselect.makeopts
+make -j2
 make install
 
 echo "checking pjsip tools:"
@@ -61,7 +63,7 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsq
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicu*.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcurl-gnutls.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcurl-gnutls.so* ${PREFIX}/lib
-cp --remove-destination /usr/lib/libsrtp.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsrtp.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgsm.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libspeex.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libspeexdsp.so* ${PREFIX}/lib
