@@ -34,6 +34,7 @@ tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
 echo "building pjproject"
+sed -i 's/aptitude install/apt-get install/g' ./contrib/scripts/install_prereq
 ./contrib/scripts/install_prereq install
 
 echo "building asterisk"
