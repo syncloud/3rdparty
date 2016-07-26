@@ -34,7 +34,7 @@ tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
 echo "building pjproject"
-sed -i 's/aptitude install/apt-get install/g' ./contrib/scripts/install_prereq
+sed -i 's/apt-get install aptitude/apt-get -y install aptitude/g' ./contrib/scripts/install_prereq
 sed -i 's/set -e/set -ex/g' ./contrib/scripts/install_prereq
 cat ./contrib/scripts/install_prereq
 ./contrib/scripts/install_prereq install
