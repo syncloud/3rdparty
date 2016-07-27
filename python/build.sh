@@ -52,7 +52,7 @@ fi
 ldd ${PREFIX}/lib/python2.7/lib-dynload/_ssl.so
 
 find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
-
+chmod +w ${PREFIX}/lib/libpython*
 cd ${DIR}
 
 ${PREFIX}/bin/python --version
