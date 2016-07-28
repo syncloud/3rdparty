@@ -33,19 +33,19 @@ wget http://downloads.asterisk.org/pub/telephony/${NAME}/releases/${NAME}-${VERS
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
-echo "building pjproject"
-echo "libvpb0  libvpb0/countrycode  1" | debconf-set-selections
+echo "installing dependencies"
+echo "libvpb0 libvpb0/countrycode string 1" | debconf-set-selections
 sed -i 's/apt-get install aptitude/apt-get -y install aptitude/g' ./contrib/scripts/install_prereq
-sed -i 's/set -e/set -ex/g' ./contrib/scripts/install_prereq
-cat ./contrib/scripts/install_prereq
+#sed -i 's/set -e/set -ex/g' ./contrib/scripts/install_prereq
+#cat ./contrib/scripts/install_prereq
 ./contrib/scripts/install_prereq install
 
 echo "building asterisk"
 ./configure --help
-./configure --prefix=${PREFIX} --with-pjproject-bundled --enable-dev-mode
+./configure --prefix=${PREFIX} --with-pjproject-bundled --enable-dev-mode NOISY_BUILD=yes
 make menuselect.makeopts
 ./menuselect/menuselect --enable TEST_FRAMEWORK menuselect.makeopts
-make -j2
+make NOISY_BUILD=yes
 make install
 
 echo "checking pjsip tools:"
