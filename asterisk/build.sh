@@ -33,6 +33,10 @@ wget http://downloads.asterisk.org/pub/telephony/${NAME}/releases/${NAME}-${VERS
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
+echo "apply opus patch (to be fixed in >13.10.0)"
+wget https://issues.asterisk.org/jira/secure/attachment/54160/0001-pjproject_bundled-Disable-opus.patch
+patch -p1 < 0001-pjproject_bundled-Disable-opus.patch
+
 echo "installing dependencies"
 echo "libvpb0 libvpb0/countrycode string 1" | debconf-set-selections
 sed -i 's/apt-get install aptitude/apt-get -y install aptitude/g' ./contrib/scripts/install_prereq
