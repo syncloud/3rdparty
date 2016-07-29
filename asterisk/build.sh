@@ -20,7 +20,7 @@ PREFIX=${BASE_DIR}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
     uuid-dev libjansson-dev libxslt1-dev liburiparser1 libxml2 sqlite3 libsqlite3-dev libicu-dev \
-    libsrtp0-dev libspeex1 libspeex-dev libspeexdsp1 libspeexdsp-dev libgsm1-dev autoconf debconf-utils
+    libsrtp0-dev libspeex1 libspeex-dev libspeexdsp1 libspeexdsp-dev libgsm1-dev autoconf debconf-utils libopus0
 
 rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
@@ -95,6 +95,7 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcr
 if [ -f /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto*.so* ]; then
     cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto*.so* ${PREFIX}/lib
 fi
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libopus*.so* ${PREFIX}/lib
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BASE_DIR} ${NAME}
