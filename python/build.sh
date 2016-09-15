@@ -55,6 +55,7 @@ find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
 chmod +w ${PREFIX}/lib/libpython*
 cd ${DIR}
 
+find ${PREFIX} \( -name "*.pyc" -o -name "*.pyo" \) -exec rm {} \;
 ${PREFIX}/bin/python --version
 
 rm -rf ${NAME}-${ARCH}.tar.gz
