@@ -17,6 +17,7 @@ VERSION=2.10.1
 
 sudo apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
 sudo apt-get -y install asciidoc xmlto docbook2x
+sudo apt-get -y install autoconf
 
 rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
