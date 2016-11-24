@@ -17,7 +17,7 @@ PREFIX=${PREFIX_APP}/git
 VERSION=2.10.1
 DPKG_ARCH=$(dpkg-architecture -q DEB_HOST_GNU_TYPE)
 
-sudo apt-get -y install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+sudo apt-get -y install libcurl4-openssl-dev libexpat1-dev gettext libz-dev libssl-dev
 sudo apt-get -y install asciidoc xmlto docbook2x
 sudo apt-get -y install autoconf
 
@@ -38,7 +38,7 @@ make configure
 make all doc info
 make install
 
-cp --remove-destination /usr/lib/${DPKG_ARCH}/libcurl-gnutls.so* ${PREFIX}/lib/${DPKG_ARCH}
+cp --remove-destination /usr/lib/${DPKG_ARCH}/libcurl.so* ${PREFIX}/lib/${DPKG_ARCH}
 
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
