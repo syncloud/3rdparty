@@ -10,3 +10,7 @@ cd src/github.com/snapcore/snapd
 go get -u github.com/kardianos/govendor
 govendor sync
 ./run-checks
+
+rm -rf build
+mkdir build
+go build -o build/snapd github.com/snapcore/snapd/cmd/snapd
