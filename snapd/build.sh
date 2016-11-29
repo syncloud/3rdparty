@@ -17,7 +17,7 @@ govendor sync
 
 cd ${DIR}
 rm -rf ${BUILD_DIR}
-mkdir ${BUILD_DIR}
+mkdir -p ${BUILD_DIR}
 go build -o ${BUILD_DIR}/snapd github.com/snapcore/snapd/cmd/snapd
 
 rm -rf ${NAME}-${ARCH}.tar.gz
