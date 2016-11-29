@@ -7,7 +7,7 @@ export GOPATH=${DIR}
 export PATH=${PATH}:${GOPATH}/bin
 NAME=snapd
 BUILD_DIR=${DIR}/build/${NAME}
-ARCH=$(DEB_HOST_GNU_CPU)
+ARCH=$(dpkg-architecture -q DEB_HOST_GNU_CPU)
 
 go get -d -v github.com/snapcore/snapd/...
 cd src/github.com/snapcore/snapd
