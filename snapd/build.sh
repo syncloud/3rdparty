@@ -5,7 +5,9 @@ cd ${DIR}
 
 export GOPATH=${DIR}
 export PATH=${PATH}:${GOPATH}/bin
-BUILD_DIR=${DIR}/build
+NAME=snapd
+BUILD_DIR=${DIR}/build/${NAME}
+ARCH=$(DEB_HOST_GNU_CPU)
 
 go get -d -v github.com/snapcore/snapd/...
 cd src/github.com/snapcore/snapd
@@ -17,3 +19,6 @@ cd ${DIR}
 rm -rf ${BUILD_DIR}
 mkdir ${BUILD_DIR}
 go build -o ${BUILD_DIR}/snapd github.com/snapcore/snapd/cmd/snapd
+
+rm -rf ${NAME}-${ARCH}.tar.gz
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
