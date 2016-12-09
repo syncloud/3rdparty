@@ -21,7 +21,7 @@ go get -d -v github.com/snapcore/snapd/...
 cd src/github.com/snapcore/snapd
 go get -u github.com/kardianos/govendor
 govendor sync
-#./run-checks
+./run-checks
 
 cd ${DIR}
 rm -rf ${BUILD_DIR}
