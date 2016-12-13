@@ -27,6 +27,7 @@ cd ${DIR}
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 go build -o ${BUILD_DIR}/snapd github.com/snapcore/snapd/cmd/snapd
+go build -o ${BUILD_DIR}/snap github.com/snapcore/snapd/cmd/snap
 
 rm -rf ${NAME}-${VERSION}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${VERSION}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
