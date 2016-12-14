@@ -26,6 +26,14 @@ govendor sync
 cd ${DIR}
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
+
+echo "snapd (${VERSION}) xenial; urgency=medium" > debian/changelog
+echo "" >> debian/changelog
+echo "  * New upstream release, LP: #1644625" >> debian/changelog
+echo " -- team city <support@syncloud.it>  $(date -R)" >> debian/changelog
+echo "" >> debian/changelog
+./mkversion.sh
+
 go build -o ${BUILD_DIR}/snapd github.com/snapcore/snapd/cmd/snapd
 go build -o ${BUILD_DIR}/snap github.com/snapcore/snapd/cmd/snap
 
