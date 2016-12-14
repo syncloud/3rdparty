@@ -36,6 +36,8 @@ echo "" >> debian/changelog
 
 go build -o ${BUILD_DIR}/snapd github.com/snapcore/snapd/cmd/snapd
 go build -o ${BUILD_DIR}/snap github.com/snapcore/snapd/cmd/snap
+go build -o ${BUILD_DIR}/snap-exec github.com/snapcore/snapd/cmd/snap-exec
+go build -o ${BUILD_DIR}/snapctl github.com/snapcore/snapd/cmd/snapctl
 
 rm -rf ${NAME}-${VERSION}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${VERSION}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
