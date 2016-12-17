@@ -35,10 +35,15 @@ cd ${DIR}
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 
-go build -o ${BUILD_DIR}/snapd github.com/snapcore/snapd/cmd/snapd
-go build -o ${BUILD_DIR}/snap github.com/snapcore/snapd/cmd/snap
-go build -o ${BUILD_DIR}/snap-exec github.com/snapcore/snapd/cmd/snap-exec
-go build -o ${BUILD_DIR}/snapctl github.com/snapcore/snapd/cmd/snapctl
+mkdir ${BUILD_DIR}/bin
+go build -o ${BUILD_DIR}/bin/snapd github.com/snapcore/snapd/cmd/snapd
+go build -o ${BUILD_DIR}/bin/snap github.com/snapcore/snapd/cmd/snap
+go build -o ${BUILD_DIR}/bin/snap-exec github.com/snapcore/snapd/cmd/snap-exec
+go build -o ${BUILD_DIR}/bin/snapctl github.com/snapcore/snapd/cmd/snapctl
+
+mkdir ${BUILD_DIR}/conf
+cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.service ${BUILD_DIR}/conf/
+cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.socket ${BUILD_DIR}/conf/
 
 rm -rf ${NAME}-${VERSION}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${VERSION}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
