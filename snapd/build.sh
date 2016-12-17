@@ -8,6 +8,7 @@ if [[ -z "$1" ]]; then
 fi
 
 VERSION=$1
+TESTS=$2
 
 cd ${DIR}
 
@@ -29,7 +30,9 @@ echo "" >> debian/changelog
 
 go get -u github.com/kardianos/govendor
 govendor sync
-./run-checks
+if [[ ${TESTS} != "skip-tests" ]]; then
+    ./run-checks
+fi
 
 cd ${DIR}
 rm -rf ${BUILD_DIR}
