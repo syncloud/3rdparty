@@ -48,5 +48,9 @@ mkdir ${BUILD_DIR}/conf
 cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.service ${BUILD_DIR}/conf/
 cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.socket ${BUILD_DIR}/conf/
 
+mkdir ${BUILD_DIR}/scripts
+cp ${DIR}/src/github.com/snapcore/snapd/tests/lib/prepare.sh ${BUILD_DIR}/scripts/
+cp ${DIR}/src/github.com/snapcore/snapd/tests/lib/apt.sh ${BUILD_DIR}/scripts/
+
 rm -rf ${NAME}-${VERSION}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${VERSION}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
