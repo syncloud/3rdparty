@@ -58,5 +58,7 @@ mkdir ${BUILD_DIR}/scripts
 cp ${DIR}/src/github.com/snapcore/snapd/tests/lib/prepare.sh ${BUILD_DIR}/scripts/
 cp ${DIR}/src/github.com/snapcore/snapd/tests/lib/apt.sh ${BUILD_DIR}/scripts/
 
+cd ${DIR}
+
 rm -rf ${NAME}-${VERSION}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${VERSION}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
