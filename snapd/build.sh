@@ -44,6 +44,12 @@ go build -o ${BUILD_DIR}/bin/snap github.com/snapcore/snapd/cmd/snap
 go build -o ${BUILD_DIR}/bin/snap-exec github.com/snapcore/snapd/cmd/snap-exec
 go build -o ${BUILD_DIR}/bin/snapctl github.com/snapcore/snapd/cmd/snapctl
 
+cd  ${DIR}/src/github.com/snapcore/snapd/cmd
+autoreconf -i -f
+./configure
+make
+cp snap-confine/snap-confine ${BUILD_DIR}/bin/snap-confine
+
 mkdir ${BUILD_DIR}/conf
 cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.service ${BUILD_DIR}/conf/
 cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.socket ${BUILD_DIR}/conf/

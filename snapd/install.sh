@@ -10,8 +10,8 @@ fi
 VERSION=$1
 
 tar xzvf snapd-${VERSION}-amd64.tar.gz
-systemctl stop snapd.service snapd.socket
-systemctl disable snapd.service snapd.socket
+systemctl stop snapd.service snapd.socket || true
+systemctl disable snapd.service snapd.socket || true
 
 rm -rf /var/lib/snapd
 mkdir /var/lib/snapd
@@ -20,6 +20,7 @@ rm -rf /usr/lib/snapd
 mkdir -p /usr/lib/snapd
 cp snapd/bin/snapd /usr/lib/snapd/snapd
 cp snapd/bin/snap-exec /usr/lib/snapd/snap-exec
+cp snapd/bin/snap-confine /usr/lib/snapd/snap-confine
 cp snapd/bin/snap /usr/bin/snap
 cp snapd/bin/snapctl /usr/bin/snapctl
 
