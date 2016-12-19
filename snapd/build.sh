@@ -46,7 +46,7 @@ go build -o ${BUILD_DIR}/bin/snapctl github.com/snapcore/snapd/cmd/snapctl
 
 cd  ${DIR}/src/github.com/snapcore/snapd/cmd
 autoreconf -i -f
-./configure
+./configure --disable-apparmor
 make
 cp snap-confine/snap-confine ${BUILD_DIR}/bin/snap-confine
 
