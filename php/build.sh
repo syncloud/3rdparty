@@ -85,7 +85,8 @@ CFLAGS="$OPTIONS" ./configure \
     --with-openssl \
     --with-mcrypt \
     --enable-intl \
-    --enable-exif
+    --enable-exif \
+    --enable-pcntl
 #    --with-imagick \
 
 make -j2
