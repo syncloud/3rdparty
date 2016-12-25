@@ -35,7 +35,7 @@ systemctl start snapd.service snapd.socket
 
 snap install hello-world
 
-TESTSLIB=${DIR}/snapd/scripts
-. ${DIR}/snapd/scripts/prepare.sh
+#TESTSLIB=${DIR}/snapd/scripts
+#. ${DIR}/snapd/scripts/prepare.sh
 update_core_snap_with_snap_exec_snapctl
 
