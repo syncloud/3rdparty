@@ -37,5 +37,5 @@ snap install hello-world
 
 #TESTSLIB=${DIR}/snapd/scripts
 #. ${DIR}/snapd/scripts/prepare.sh
-update_core_snap_with_snap_exec_snapctl
+#update_core_snap_with_snap_exec_snapctl
 
