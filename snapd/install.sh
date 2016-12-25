@@ -21,6 +21,7 @@ mkdir -p /usr/lib/snapd
 cp snapd/bin/snapd /usr/lib/snapd/snapd
 cp snapd/bin/snap-exec /usr/lib/snapd/snap-exec
 cp snapd/bin/snap-confine /usr/lib/snapd/snap-confine
+cp snapd/bin/snap-discard-ns /usr/lib/snapd/snap-discard-ns
 cp snapd/bin/snap /usr/bin/snap
 cp snapd/bin/snapctl /usr/bin/snapctl
 

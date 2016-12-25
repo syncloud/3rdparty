@@ -49,6 +49,7 @@ autoreconf -i -f
 ./configure --disable-apparmor
 make
 cp snap-confine/snap-confine ${BUILD_DIR}/bin/snap-confine
+cp snap-confine/snap-discard-ns ${BUILD_DIR}/bin/snap-discard-ns
 
 mkdir ${BUILD_DIR}/conf
 cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.service ${BUILD_DIR}/conf/
