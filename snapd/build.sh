@@ -51,6 +51,9 @@ make
 cp snap-confine/snap-confine ${BUILD_DIR}/bin/snap-confine
 cp snap-confine/snap-discard-ns ${BUILD_DIR}/bin/snap-discard-ns
 
+cp /usr/bin/mksquashfs ${BUILD_DIR}/bin
+cp /usr/bin/unsquashfs ${BUILD_DIR}/bin
+
 mkdir ${BUILD_DIR}/conf
 cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.service ${BUILD_DIR}/conf/
 cp ${DIR}/src/github.com/snapcore/snapd/debian/snapd.socket ${BUILD_DIR}/conf/
