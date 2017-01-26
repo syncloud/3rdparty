@@ -32,6 +32,9 @@ rm -rf ${PREFIX}
 make
 make install
 
+mv ${PREFIX}/bin/pg_ctl ${PREFIX}/bin/pg_ctl.bin
+cp ${DIR}/bin/* ${PREFIX}/bin
+ 
 cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
