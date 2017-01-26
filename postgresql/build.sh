@@ -33,6 +33,7 @@ make
 make install
 
 mv ${PREFIX}/bin/pg_ctl ${PREFIX}/bin/pg_ctl.bin
+mv ${PREFIX}/bin/psql ${PREFIX}/bin/psql.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
  
 cd ../..
