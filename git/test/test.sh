@@ -19,7 +19,7 @@ rm -rf ${ROOTFS}
 mkdir ${ROOTFS}
 tar xzf rootfs.tar.gz -C ${ROOTFS}
 
-tar xzvf ${NAME}-${ARCH}.tar.gz -C ${ROOTFS}
+tar xzvf ${DIR}/../${NAME}-${ARCH}.tar.gz -C ${ROOTFS}
 
 chroot ${ROOTFS}/${NAME}/git/bin/git config -l
 
