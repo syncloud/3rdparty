@@ -21,5 +21,5 @@ tar xzf rootfs.tar.gz -C ${ROOTFS}
 
 tar xzvf ${DIR}/../git-${ARCH}.tar.gz -C ${ROOTFS}
 
-chroot ${ROOTFS}/git/bin/git config -l
+chroot ${ROOTFS} /git/bin/git config -l
 
