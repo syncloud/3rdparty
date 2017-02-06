@@ -3,8 +3,9 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+DISTRO=$1
+ARCH=$2
 NAME=git
-ARCH=$(dpkg-architecture -q DEB_HOST_GNU_CPU)
 ROOTFS=${DIR}/.rootfs
 
 if [ ! -f "rootfs.tar.gz" ]; then
