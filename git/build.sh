@@ -16,10 +16,6 @@ PREFIX=${BUILD_DIR}/${NAME}
 VERSION=2.10.1
 DPKG_ARCH=$(dpkg-architecture -q DEB_HOST_GNU_TYPE)
 
-sudo apt-get -y install libcurl4-openssl-dev libexpat1-dev gettext libz-dev libssl-dev
-sudo apt-get -y install asciidoc xmlto docbook2x
-sudo apt-get -y install autoconf
-
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
