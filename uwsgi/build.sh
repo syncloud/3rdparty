@@ -15,7 +15,7 @@ export TMPDIR=/tmp
 export TMP=/tmp
 
 NAME=uwsgi
-VERSION=2.0.10
+VERSION=2.0.11
 
 echo "building ${NAME}"
 
