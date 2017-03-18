@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=openldap
-VERSION=2.4.40
+VERSION=2.4.44
 ROOT=/opt/app/platform
 PREFIX=${ROOT}/${NAME}
 
