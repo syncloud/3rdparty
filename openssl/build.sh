@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -21,7 +21,8 @@ rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
 cd ${BUILD_DIR}
 
-curl -O https://openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
+curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
+
 rm -rf openssl-${OPENSSL_VERSION}
 tar xzf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
