@@ -27,7 +27,7 @@ echo "building ${NAME}"
 
 apt-get --allow-unauthenticated update
 apt-get -y --allow-unauthenticated install build-essential \
-    libxml2-dev autoconf libjpeg-dev libpng16-dev libfreetype6-dev \
+    libxml2-dev autoconf libjpeg-dev libpng-dev libfreetype6-dev \
     libzip-dev zlib1g-dev libcurl4-openssl-dev dpkg-dev \
     libpq-dev libreadline-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
     p7zip libtool libmcrypt-dev libicu-dev
