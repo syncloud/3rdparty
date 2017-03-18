@@ -13,7 +13,7 @@ ARCH=$1
 NAME=openssl
 BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
-OPENSSL_VERSION=1.0.2h
+OPENSSL_VERSION=1.0.2k
 
 apt-get install libffi-dev
 
