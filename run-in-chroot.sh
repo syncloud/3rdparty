@@ -26,7 +26,7 @@ function cleanup {
 }
 
 
-cleanup
+cleanup || true
 
 echo "extracting rootfs"
 mkdir -p ${ROOTFS}
@@ -35,10 +35,10 @@ mkdir ${ROOTFS}/build
 
 if [ -f deps.sh ]; then
     cp deps.sh ${ROOTFS}/build/
-    chroot ${ROOTFS}/build/deps.sh
+    chroot ${ROOTFS} /build/deps.sh
 fi
 
 cp build.sh ${ROOTFS}/build/
-chroot ${ROOTFS}/build/build.sh
+chroot ${ROOTFS} /build/build.sh ${ARCH}
 
 cp ${ROOTFS}/build/*.tar.gz .
