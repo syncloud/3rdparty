@@ -17,6 +17,7 @@ function cleanup {
     lsof 2>&1 | grep rootfs
     
     rm -rf ${ROOTFS}
+    rm -rf tmp
 }
 
 cleanup || true
