@@ -22,7 +22,7 @@ function cleanup {
 cleanup || true
 
 mkdir tmp
-cp * tmp/ || true
+cp -r * tmp/ || true
 
 if [ ! -f rootfs-${ARCH}.tar.gz ]; then
   wget http://build.syncloud.org:8111/guestAuth/repository/download/debian_rootfs_syncloud_${ARCH}/lastSuccessful/rootfs.tar.gz\
