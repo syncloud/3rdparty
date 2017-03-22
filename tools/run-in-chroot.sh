@@ -26,7 +26,6 @@ function cleanup {
     rm -rf ${ROOTFS}
 }
 
-
 cleanup || true
 
 echo "extracting rootfs"
@@ -37,13 +36,12 @@ chroot ${ROOTFS} /bin/bash -c "mount -t devpts devpts /dev/pts"
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 
 mkdir ${ROOTFS}/build
+cp * ${ROOTFS}/build/
 
-if [ -f deps.sh ]; then
-    cp deps.sh ${ROOTFS}/build/
+if [ -f ${ROOTFS}/build/deps.sh ]; then
     chroot ${ROOTFS} /build/deps.sh
 fi
 
-cp build.sh ${ROOTFS}/build/
 chroot ${ROOTFS} /build/build.sh ${ARCH}
 
 cp ${ROOTFS}/build/*.tar.gz .
