@@ -32,6 +32,10 @@ cleanup || true
 echo "extracting rootfs"
 mkdir -p ${ROOTFS}
 tar xzf rootfs-${ARCH}.tar.gz -C ${ROOTFS}
+
+chroot ${ROOTFS} /bin/bash -c "mount -t devpts devpts /dev/pts"
+chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
+
 mkdir ${ROOTFS}/build
 
 if [ -f deps.sh ]; then
