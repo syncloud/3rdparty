@@ -19,7 +19,7 @@ NAME=python
 PREFIX=${DIR}/build/${NAME}
 
 apt-get update
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libssl-dev libbz2-dev
+apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libssl-dev libbz2-dev sqlite3
 
 rm -rf build
 mkdir build
