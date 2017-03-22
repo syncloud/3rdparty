@@ -40,7 +40,7 @@ chroot ${ROOTFS} /bin/bash -c "mount -t devpts devpts /dev/pts"
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 
 mkdir ${ROOTFS}/build
-cp tmp/* ${ROOTFS}/build/
+cp tmp/* ${ROOTFS}/build/ || true
 
 if [ -f ${ROOTFS}/build/deps.sh ]; then
     chroot ${ROOTFS} /build/deps.sh
