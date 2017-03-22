@@ -39,6 +39,10 @@ tar xzf rootfs-${ARCH}.tar.gz -C ${ROOTFS}
 chroot ${ROOTFS} /bin/bash -c "mount -t devpts devpts /dev/pts"
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 
+mkdir ${ROOTFS}/temp
+export TEMP=${ROOTFS}/temp
+export TMP=${ROOTFS}/temp
+
 mkdir ${ROOTFS}/build
 cp tmp/* ${ROOTFS}/build/ || true
 
