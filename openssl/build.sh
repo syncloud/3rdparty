@@ -15,7 +15,7 @@ BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
 OPENSSL_VERSION=1.0.2k
 
-apt-get install libffi-dev
+apt-get install build-essential libffi-dev
 
 rm -rf ${PREFIX}
 mkdir -p ${PREFIX}
