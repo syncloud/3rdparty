@@ -42,6 +42,7 @@ chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 mkdir ${ROOTFS}/temp
 export TEMP=${ROOTFS}/temp
 export TMP=${ROOTFS}/temp
+export TMPDIR=${ROOTFS}/temp
 
 mkdir ${ROOTFS}/build
 cp -r tmp/* ${ROOTFS}/build/ || true
