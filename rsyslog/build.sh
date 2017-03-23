@@ -17,7 +17,7 @@ VERSION=8.16.0
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-apt-get -y install build-essential cmake libncurses5-dev libestr-dev libjson-c-dev uuid-dev libgcrypt20-dev liblogging-stdlog-dev pkg-config
+apt-get -y install build-essential cmake libncurses5-dev libestr-dev libjson-c-dev uuid-dev libgcrypt20-dev liblogging-stdlog-dev pkg-config zlib1g-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
