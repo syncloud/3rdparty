@@ -44,7 +44,7 @@ export TEMP=${ROOTFS}/temp
 export TMP=${ROOTFS}/temp
 
 mkdir ${ROOTFS}/build
-cp tmp/* ${ROOTFS}/build/ || true
+cp -r tmp/* ${ROOTFS}/build/ || true
 
 if [ -f ${ROOTFS}/build/deps.sh ]; then
     chroot ${ROOTFS} /build/deps.sh
