@@ -53,4 +53,6 @@ fi
 
 chroot ${ROOTFS} /build/build.sh ${ARCH}
 
+rm -rf ${ROOTFS}
+
 cp ${ROOTFS}/build/*.tar.gz .
