@@ -40,9 +40,9 @@ chroot ${ROOTFS} /bin/bash -c "mount -t devpts devpts /dev/pts"
 chroot ${ROOTFS} /bin/bash -c "mount -t proc proc /proc"
 
 mkdir ${ROOTFS}/temp
-export TEMP=${ROOTFS}/temp
-export TMP=${ROOTFS}/temp
-export TMPDIR=${ROOTFS}/temp
+export TEMP=/temp
+export TMP=/temp
+export TMPDIR=/temp
 
 mkdir ${ROOTFS}/build
 cp -r tmp/* ${ROOTFS}/build/ || true
