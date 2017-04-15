@@ -29,7 +29,8 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget http://www.imagemagick.org/download/releases/ImageMagick-${VERSION}.tar.xz
+#wget http://www.imagemagick.org/download/releases/ImageMagick-${VERSION}.tar.xz
+wget http://mirror.checkdomain.de/imagemagick/releases/ImageMagick-${VERSION}.tar.xz
 tar xJf ${NAME}-${VERSION}.tar.xz
 cd ${NAME}-${VERSION}
 ./configure --prefix=${PREFIX}
