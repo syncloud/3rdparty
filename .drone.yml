@@ -1,0 +1,6 @@
+pipeline:
+  build:
+    image: buildpack-deps
+    commands:
+      - cd ImageMagick
+      - ../tools/run-in-chroot.sh armv7l
