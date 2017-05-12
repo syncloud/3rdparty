@@ -3,4 +3,4 @@ pipeline:
     image: buildpack-deps
     commands:
       - cd ImageMagick
-      - sudo ../tools/run-in-chroot.sh $(uname -m)
+      - ../tools/run-in-chroot.sh $(uname -m)
