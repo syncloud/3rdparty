@@ -4,4 +4,4 @@ pipeline:
     commands:
       - git status
       - cd ImageMagick
-      - build.sh $(uname -m)
+      - ./build.sh $(uname -m)
