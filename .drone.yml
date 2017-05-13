@@ -4,4 +4,5 @@ pipeline:
     commands:
       - git status
       - cd ImageMagick
-      - ./build.sh $(uname -m)
+      - echo $$secret_test
+      #- ./build.sh $(uname -m)
