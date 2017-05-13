@@ -5,4 +5,5 @@ pipeline:
       - git status
       - cd ImageMagick
       - echo $secret_test
+      - sleep 100
       #- ./build.sh $(uname -m)
