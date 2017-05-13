@@ -5,5 +5,5 @@ pipeline:
     commands:
       - git status
       - cd ImageMagick
-      - printenv
+      - echo $$SECRET_TEST
       #- ./build.sh $(uname -m)
