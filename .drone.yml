@@ -1,6 +1,7 @@
 pipeline:
   build:
     image: buildpack-deps
+    secrets: [secret_test]
     commands:
       - git status
       - cd ImageMagick
