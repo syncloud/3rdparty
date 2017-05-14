@@ -11,4 +11,4 @@ if [ -z "$1" ]; then
 fi
 
 echo $ARTIFACT_SSH_KEY > artifact_ssh.key
-scp $1 artifact@artifact.syncloud.org:/home/artifact/repo/3rdparty/$1
+scp -i artifact_ssh.key $1 artifact@artifact.syncloud.org:/home/artifact/repo/3rdparty/$1
