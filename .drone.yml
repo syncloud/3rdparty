@@ -5,5 +5,5 @@ pipeline:
     commands:
       - git status
       - cd ImageMagick
-      - echo $$SECRET_TEST
+      - ../tools/upload.sh build.sh
       #- ./build.sh $(uname -m)
