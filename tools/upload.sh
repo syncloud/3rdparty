@@ -1,0 +1,14 @@
+#!/bin/bash -xe
+
+if [ -z "$ARTIFACT_SSH_KEY" ]; then
+  echo "ARTIFACT_SSH_KEY must be set"
+  exit 1
+fi
+
+if [ -z "$1" ]; then
+  echo "usage $0 file"
+  exit 1
+fi
+
+echo $ARTIFACT_SSH_KEY > artifact_ssh.key
+scp $1 artifact@artifact.syncloud.org:/home/artifact/repo/3rdparty/$1
