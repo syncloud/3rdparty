@@ -11,5 +11,6 @@ if [ -z "$1" ]; then
 fi
 
 echo $ARTIFACT_SSH_KEY > artifact_ssh.key
+cat artifact_ssh.key
 chmod 600 artifact_ssh.key
 scp -oStrictHostKeyChecking=no -i artifact_ssh.key $1 artifact@artifact.syncloud.org:/home/artifact/repo/3rdparty/$1
