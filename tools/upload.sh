@@ -1,4 +1,4 @@
-#!/bin/bash -xe
+#!/bin/bash -e
 
 if [ -z "$ARTIFACT_SSH_KEY" ]; then
   echo "ARTIFACT_SSH_KEY must be set"
