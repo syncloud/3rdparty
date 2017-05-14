@@ -1,7 +1,7 @@
 pipeline:
   build:
     image: buildpack-deps
-    secrets: [secret_test]
+    secrets: [ARTIFACT_SSH_KEY]
     commands:
       - git status
       - cd ImageMagick
