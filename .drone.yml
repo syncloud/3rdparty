@@ -3,7 +3,6 @@ pipeline:
     image: buildpack-deps
     secrets: [ARTIFACT_SSH_KEY]
     commands:
-      - git status
       - cd ImageMagick
-      - ../tools/upload.sh build.sh
-      #- ./build.sh $(uname -m)
+      - ./build.sh $(uname -m)
+      - ../tools/upload.sh ImageMagick-$(uname -m).tar.gz 
