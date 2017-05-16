@@ -1,6 +1,5 @@
 pipeline:
   build:
-    #image: buildpack-deps
     image: ioft/armhf-ubuntu:trusty
     secrets: [ARTIFACT_SSH_KEY]
     commands:
