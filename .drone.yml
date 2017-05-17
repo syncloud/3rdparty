@@ -9,7 +9,7 @@ pipeline:
       - ../tools/upload.sh ImageMagick-$(uname -m).tar.gz
     volumes:
       - /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static
-  matrix:
-    IMAGE:
-      - armv7/armhf-debian:8
-      - debian:8
+matrix:
+  IMAGE:
+    - armv7/armhf-debian:8
+    - debian:8
