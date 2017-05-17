@@ -1,6 +1,5 @@
 pipeline:
   build:
-    #image: buildpack-deps
     image: ${IMAGE}
     secrets: [ARTIFACT_SSH_KEY]
     commands:
