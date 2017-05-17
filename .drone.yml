@@ -5,7 +5,7 @@ pipeline:
     secrets: [ARTIFACT_SSH_KEY]
     commands:
       - cd ImageMagick
-      #- ./build.sh $(uname -m)
-      #- ../tools/upload.sh ImageMagick-$(uname -m).tar.gz
+      - ./build.sh $(uname -m)
+      - ../tools/upload.sh ImageMagick-$(uname -m).tar.gz
     volumes:
       - /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static
