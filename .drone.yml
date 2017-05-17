@@ -3,12 +3,33 @@ pipeline:
     image: ${IMAGE}
     secrets: [ARTIFACT_SSH_KEY]
     commands:
-      - cd ImageMagick
-      - ./build.sh $(uname -m)
-      - ../tools/upload.sh ImageMagick-$(uname -m).tar.gz
+      - ./build.sh ${PROJECT}
     volumes:
       - /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static
 matrix:
   IMAGE:
     - armv7/armhf-debian:8
     - debian:8
+  PROJECT:
+    - ImageMagick
+    - PyYAML
+    - asterisk
+    - certbot
+    - dovecot
+    - git
+    - mariadb
+    - nginx
+    - nodejs
+    - openldap
+    - openssl
+    - php
+    - php7
+    - postfix
+    - postgresql
+    - python
+    - redis
+    - rsyslog
+    - ruby
+    - snapd
+    - tools
+    - uwsgi
