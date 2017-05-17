@@ -1,7 +1,7 @@
 pipeline:
   build:
     #image: buildpack-deps
-    image: ioft/armhf-ubuntu:trusty
+    image: armv7/armhf-debian:8
     secrets: [ARTIFACT_SSH_KEY]
     commands:
       - cd ImageMagick
