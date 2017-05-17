@@ -3,6 +3,9 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+apt-get update
+apt-get -y install git
+
 PROJECT=$1
 if git diff-tree --name-only HEAD^..HEAD | grep ${PROJECT}; then
     echo "${PROJECT}: building"
