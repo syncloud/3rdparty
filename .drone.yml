@@ -14,7 +14,7 @@ matrix:
     #- ImageMagick
     #- PyYAML
     #- asterisk
-    - dovecot
+    #- dovecot
     - git
     #- mariadb
     #- nginx
