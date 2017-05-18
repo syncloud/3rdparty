@@ -11,7 +11,8 @@ ARCH=$(uname -m)
 if git diff-tree --name-only HEAD^..HEAD | grep ${PROJECT}; then
     echo "${PROJECT}: building"
     ${DIR}/${PROJECT}/build.sh ${ARCH}
-    ${DIR}/tools/upload.sh ${PROJECT}/${PROJECT}-${ARCH}.tar.gz
+    cd ${PROJECT}
+    ${DIR}/tools/upload.sh ${PROJECT}-${ARCH}.tar.gz
 else
     echo "${PROJECT} skipping, no changes in last commit"
 fi
