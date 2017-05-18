@@ -11,22 +11,22 @@ matrix:
     - armv7/armhf-debian:8
     - debian:8
   PROJECT:
-    #- ImageMagick
+    - ImageMagick
     #- PyYAML
     #- asterisk
     #- dovecot
-    - git
-    #- mariadb
-    #- nginx
-    #- nodejs
-    #- openldap
-    #- openssl
-    #- php
-    #- php7
-    #- postfix
-    #- postgresql
-    #- python
-    #- redis
-    #- rsyslog
-    #- ruby
-    #- uwsgi
+    #- git
+    - mariadb
+    - nginx
+    - nodejs
+    - openldap
+    - openssl
+    - php
+    - php7
+    - postfix
+    - postgresql
+    - python
+    - redis
+    - rsyslog
+    - ruby
+    - uwsgi
