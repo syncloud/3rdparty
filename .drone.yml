@@ -13,10 +13,9 @@ matrix:
   PROJECT:
     #- ImageMagick
     #- PyYAML
-    - asterisk
-    #- certbot
-    #- dovecot
-    #- git
+    #- asterisk
+    - dovecot
+    - git
     #- mariadb
     #- nginx
     #- nodejs
@@ -30,5 +29,4 @@ matrix:
     #- redis
     #- rsyslog
     #- ruby
-    #- snapd
     #- uwsgi
