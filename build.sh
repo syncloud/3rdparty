@@ -7,11 +7,11 @@ apt-get -qq update
 apt-get -qqy install git openssh-client > /dev/null
 
 PROJECT=$1
+ARCH=$(uname -m)
 if git diff-tree --name-only HEAD^..HEAD | grep ${PROJECT}; then
     echo "${PROJECT}: building"
-    ${DIR}/${PROJECT}/build.sh $(uname -m)
-    ${DIR}/tools/upload.sh ImageMagick-$(uname -m).tar.gz
-
+    ${DIR}/${PROJECT}/build.sh ${ARCH}
+    ${DIR}/tools/upload.sh ${PROJECT}/${PROJECT}-${ARCH}.tar.gz
 else
     echo "${PROJECT} skipping, no changes in last commit"
 fi
