@@ -12,8 +12,8 @@ matrix:
     - debian:8
   PROJECT:
     #- ImageMagick
-    - PyYAML
-    #- asterisk
+    #- PyYAML
+    - asterisk
     #- certbot
     #- dovecot
     #- git
