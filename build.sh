@@ -4,7 +4,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
 apt-get -qq update
-apt-get -qqy install git openssh-client > /dev/null
+apt-get -qqy install git openssh-client wget > /dev/null
 
 PROJECT=$1
 ARCH=$(uname -m)
