@@ -4,7 +4,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
 apt-get -qq update
-apt-get -qqy install git openssh-client
+apt-get -qqy install git openssh-client > /dev/null
 
 PROJECT=$1
 if git diff-tree --name-only HEAD^..HEAD | grep ${PROJECT}; then
