@@ -27,6 +27,6 @@ matrix:
     - rsyslog
     - ruby
     - uwsgi
-   IMAGE:
+  IMAGE:
     - armv7/armhf-debian:8
     - debian:8
