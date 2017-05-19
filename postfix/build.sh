@@ -19,7 +19,7 @@ BUILD_DIR=./build
 echo "building ${NAME}"
 
 apt-get -y update
-apt-get -y install build-essential libldap2-dev libsasl2-dev libssl-dev libldb-dev libdb-dev build-dep postfix
+apt-get -y install build-essential libldap2-dev libsasl2-dev libssl-dev libldb-dev libdb-dev
 
 rm -rf build
 mkdir -p build

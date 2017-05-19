@@ -16,7 +16,7 @@ matrix:
     #- mariadb
     #- nginx
     #- nodejs
-    - openldap
+    #- openldap
     #- openssl
     #- php
     #- php7

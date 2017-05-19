@@ -9,7 +9,7 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-apt-get -y install dpkg-dev sudo
+apt-get -y install dpkg-dev
 
 ARCH=$1
 
