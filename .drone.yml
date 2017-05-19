@@ -7,26 +7,26 @@ pipeline:
     volumes:
       - /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static
 matrix:
-  IMAGE:
-    - armv7/armhf-debian:8
-    - debian:8
   PROJECT:
-    - ImageMagick
+    #- ImageMagick
     #- PyYAML
     #- asterisk
     #- dovecot
     #- git
-    - mariadb
-    - nginx
-    - nodejs
+    #- mariadb
+    #- nginx
+    #- nodejs
     - openldap
     - openssl
-    - php
+    #- php
     - php7
     - postfix
-    - postgresql
+    #- postgresql
     - python
-    - redis
+    #- redis
     - rsyslog
     - ruby
     - uwsgi
+   IMAGE:
+    - armv7/armhf-debian:8
+    - debian:8

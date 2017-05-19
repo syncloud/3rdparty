@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -9,7 +9,7 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-apt-get -y install dpkg-dev
+apt-get -y install dpkg-dev sudo
 
 ARCH=$1
 
@@ -21,7 +21,7 @@ PREFIX=${DIR}/build
 
 echo "building ${NAME}"
 
-command curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
+command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 
 #useradd -p ruby ruby
 
