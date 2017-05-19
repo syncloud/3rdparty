@@ -17,16 +17,16 @@ matrix:
     #- nginx
     #- nodejs
     - openldap
-    - openssl
+    #- openssl
     #- php
-    - php7
+    #- php7
     - postfix
     #- postgresql
-    - python
+    #- python
     #- redis
-    - rsyslog
-    - ruby
-    - uwsgi
+    #- rsyslog
+    #- ruby
+    #- uwsgi
   IMAGE:
     - armv7/armhf-debian:8
     - debian:8

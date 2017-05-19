@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -19,7 +19,7 @@ PREFIX=${BUILD_DIR}/${NAME}
 
 echo "building ${NAME}"
 
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libdb5.3-dev libsasl2-dev
+apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libdb5.3-dev libsasl2-dev groff
 
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}

@@ -17,7 +17,7 @@ VERSION=10.0.30
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-apt-get -y install build-essential cmake libncurses5-dev
+apt-get -y install build-essential cmake libncurses5-dev zlib1g-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}

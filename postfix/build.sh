@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -18,10 +18,8 @@ BUILD_DIR=./build
 
 echo "building ${NAME}"
 
-printf "\ndeb-src http://httpredir.debian.org/debian jessie main contrib non-free" >> /etc/apt/sources.list
 apt-get -y update
-apt-get -y install build-essential libldap2-dev libsasl2-dev libssl-dev libldb-dev 
-apt-get -y build-dep postfix
+apt-get -y install build-essential libldap2-dev libsasl2-dev libssl-dev libldb-dev libdb-dev build-dep postfix
 
 rm -rf build
 mkdir -p build
