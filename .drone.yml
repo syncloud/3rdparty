@@ -1,15 +1,21 @@
+platform: ${platform}
+
+clone:
+  git:
+    image: ${git}
+    depth: 50
+    
 pipeline:
   build:
-    image: ${IMAGE}
+    image: ${container}
     secrets: [ARTIFACT_SSH_KEY]
     commands:
       - ./build.sh ${PROJECT}
-    volumes:
-      - /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static
+
 matrix:
   PROJECT:
     #- ImageMagick
-    #- PyYAML
+    - PyYAML
     #- asterisk
     #- dovecot
     #- git
@@ -20,13 +26,17 @@ matrix:
     #- openssl
     #- php
     #- php7
-    - postfix
+    #- postfix
     #- postgresql
     #- python
     #- redis
     #- rsyslog
     #- ruby
     #- uwsgi
-  IMAGE:
-    - armv7/armhf-debian:8
-    - debian:8
+  include:
+    - platform: linux/arm
+      container: armv7/armhf-debian:8
+      git: syncloud/armhf-drone-git
+    - platform: linux/amd64
+      container: debian:8
+      git: plugins/git
