@@ -22,54 +22,54 @@ matrix:
 #      container: debian:8
 #      git: plugins/git
 #      project: ImageMagick
+#    - platform: linux/arm
+#      container: armv7/armhf-debian:8
+#      git: syncloud/armhf-drone-git
+#      project: PyYAML
+#    - platform: linux/amd64
+#      container: debian:8
+#      git: plugins/git
+#      project: PyYAML
+#    - platform: linux/arm
+#      container: armv7/armhf-debian:8
+#      git: syncloud/armhf-drone-git
+#      project: asterisk
+#    - platform: linux/amd64
+#      container: debian:8
+#      git: plugins/git
+#      project: asterisk
+#    - platform: linux/arm
+#      container: armv7/armhf-debian:8
+#      git: syncloud/armhf-drone-git
+#      project: dovecot
+#    - platform: linux/amd64
+#      container: debian:8
+#      git: plugins/git
+#      project: dovecot
+#    - platform: linux/arm
+#      container: armv7/armhf-debian:8
+#      git: syncloud/armhf-drone-git
+#      project: git
+#    - platform: linux/amd64
+#      container: debian:8
+#      git: plugins/git
+#      project: git
+#    - platform: linux/arm
+#      container: armv7/armhf-debian:8
+#      git: syncloud/armhf-drone-git
+#      project: mariadb
+#    - platform: linux/amd64
+#      container: debian:8
+#      git: plugins/git
+#      project: mariadb
     - platform: linux/arm
       container: armv7/armhf-debian:8
       git: syncloud/armhf-drone-git
-      project: PyYAML
+      project: nginx
     - platform: linux/amd64
       container: debian:8
       git: plugins/git
-      project: PyYAML
-#    - platform: linux/arm
-#      container: armv7/armhf-debian:8
-#      git: syncloud/armhf-drone-git
-#      project: asterisk
-#    - platform: linux/amd64
-#      container: debian:8
-#      git: plugins/git
-#      project: asterisk
-#    - platform: linux/arm
-#      container: armv7/armhf-debian:8
-#      git: syncloud/armhf-drone-git
-#      project: dovecot
-#    - platform: linux/amd64
-#      container: debian:8
-#      git: plugins/git
-#      project: dovecot
-#    - platform: linux/arm
-#      container: armv7/armhf-debian:8
-#      git: syncloud/armhf-drone-git
-#      project: git
-#    - platform: linux/amd64
-#      container: debian:8
-#      git: plugins/git
-#      project: git
-#    - platform: linux/arm
-#      container: armv7/armhf-debian:8
-#      git: syncloud/armhf-drone-git
-#      project: mariadb
-#    - platform: linux/amd64
-#      container: debian:8
-#      git: plugins/git
-#      project: mariadb
-#    - platform: linux/arm
-#      container: armv7/armhf-debian:8
-#      git: syncloud/armhf-drone-git
-#      project: nginx
-#    - platform: linux/amd64
-#      container: debian:8
-#      git: plugins/git
-#      project: nginx
+      project: nginx
 #    - platform: linux/arm
 #      container: armv7/armhf-debian:8
 #      git: syncloud/armhf-drone-git
