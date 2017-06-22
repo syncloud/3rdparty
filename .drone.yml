@@ -7,7 +7,7 @@ clone:
     
 pipeline:
   build:
-    image: syncloid/rootfs-${arch}
+    image: syncloud/rootfs-${arch}
     secrets: [ARTIFACT_SSH_KEY]
     commands:
       - ./build.sh ${project}
@@ -15,7 +15,7 @@ pipeline:
 matrix:
   include:
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: ImageMagick
     - platform: linux/amd64
@@ -23,7 +23,7 @@ matrix:
       git: plugins/git
       project: ImageMagick
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: PyYAML
     - platform: linux/amd64
@@ -31,7 +31,7 @@ matrix:
       git: plugins/git
       project: PyYAML
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: asterisk
     - platform: linux/amd64
@@ -39,7 +39,7 @@ matrix:
       git: plugins/git
       project: asterisk
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: dovecot
     - platform: linux/amd64
@@ -47,7 +47,7 @@ matrix:
       git: plugins/git
       project: dovecot
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: git
     - platform: linux/amd64
@@ -55,7 +55,7 @@ matrix:
       git: plugins/git
       project: git
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: mariadb
     - platform: linux/amd64
@@ -63,7 +63,7 @@ matrix:
       git: plugins/git
       project: mariadb
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: nginx
     - platform: linux/amd64
@@ -71,7 +71,7 @@ matrix:
       git: plugins/git
       project: nginx
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: nodejs
     - platform: linux/amd64
@@ -79,7 +79,7 @@ matrix:
       git: plugins/git
       project: nodejs
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: openldap
     - platform: linux/amd64
@@ -87,7 +87,7 @@ matrix:
       git: plugins/git
       project: openldap
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: openssl
     - platform: linux/amd64
@@ -95,7 +95,7 @@ matrix:
       git: plugins/git
       project: openssl
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: php
     - platform: linux/amd64
@@ -103,7 +103,7 @@ matrix:
       git: plugins/git
       project: php
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: php7
     - platform: linux/amd64
@@ -111,7 +111,7 @@ matrix:
       git: plugins/git
       project: php7
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: postfix
     - platform: linux/amd64
@@ -119,7 +119,7 @@ matrix:
       git: plugins/git
       project: postfix
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: postgresql
     - platform: linux/amd64
@@ -127,7 +127,7 @@ matrix:
       git: plugins/git
       project: postgresql
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: python
     - platform: linux/amd64
@@ -135,7 +135,7 @@ matrix:
       git: plugins/git
       project: python
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: redis
     - platform: linux/amd64
@@ -143,7 +143,7 @@ matrix:
       git: plugins/git
       project: redis
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: rsyslog
     - platform: linux/amd64
@@ -151,7 +151,7 @@ matrix:
       git: plugins/git
       project: rsyslog
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: ruby
     - platform: linux/amd64
@@ -159,7 +159,7 @@ matrix:
       git: plugins/git
       project: ruby
     - platform: linux/arm
-      arch: atmhf
+      arch: armhf
       git: syncloud/armhf-drone-git
       project: uwsgi
     - platform: linux/amd64
