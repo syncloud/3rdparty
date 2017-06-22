@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -xe
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -129,7 +129,7 @@ ldd ${PREFIX}/sbin/php-fpm
   #exit 1
 #fi
 
-cd ${DIR}
+cd ${DIR/..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}

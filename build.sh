@@ -17,4 +17,4 @@ fi
 
 echo "building"
 ./build.sh ${ARCH}
-${DIR}/tools/upload.sh ${PROJECT}-${ARCH}.tar.gz
+${DIR}/upload.sh ${PROJECT}-${ARCH}.tar.gz
