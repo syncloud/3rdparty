@@ -47,17 +47,17 @@ matrix:
 #      git: plugins/git
 #      project: dovecot
 #    - platform: linux/arm
-      arch: armhf
-      git: syncloud/armhf-drone-git
-      project: git
+#      arch: armhf
+#      git: syncloud/armhf-drone-git
+#      project: git
 #    - platform: linux/amd64
 #      arch: amd64
 #      git: plugins/git
 #      project: git
-    - platform: linux/arm
-      arch: armhf
-      git: syncloud/armhf-drone-git
-      project: mariadb
+#    - platform: linux/arm
+#      arch: armhf
+#      git: syncloud/armhf-drone-git
+#      project: mariadb
 #    - platform: linux/amd64
 #      arch: amd64
 #      git: plugins/git
@@ -102,14 +102,14 @@ matrix:
 #      arch: amd64
 #      git: plugins/git
 #      project: php
-    - platform: linux/arm
-      arch: armhf
-      git: syncloud/armhf-drone-git
-      project: php7
-    - platform: linux/amd64
-      arch: amd64
-      git: plugins/git
-      project: php7
+#    - platform: linux/arm
+#      arch: armhf
+#      git: syncloud/armhf-drone-git
+#      project: php7
+#    - platform: linux/amd64
+#      arch: amd64
+#      git: plugins/git
+#      project: php7
 #    - platform: linux/arm
 #      arch: armhf
 #      git: syncloud/armhf-drone-git
