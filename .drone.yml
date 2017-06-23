@@ -14,10 +14,10 @@ pipeline:
 
 matrix:
   include:
-    - platform: linux/arm
-      arch: armhf
-      git: syncloud/armhf-drone-git
-      project: ImageMagick
+#    - platform: linux/arm
+#      arch: armhf
+#      git: syncloud/armhf-drone-git
+#      project: ImageMagick
 #    - platform: linux/amd64
 #      arch: amd64
 #      git: plugins/git
@@ -30,10 +30,10 @@ matrix:
 #      arch: amd64
 #      git: plugins/git
 #      project: PyYAML
-    - platform: linux/arm
-      arch: armhf
-      git: syncloud/armhf-drone-git
-      project: asterisk
+#    - platform: linux/arm
+#      arch: armhf
+#      git: syncloud/armhf-drone-git
+#      project: asterisk
 #    - platform: linux/amd64
 #      arch: amd64
 #      git: plugins/git
@@ -58,10 +58,10 @@ matrix:
       arch: armhf
       git: syncloud/armhf-drone-git
       project: mariadb
-    - platform: linux/amd64
-      arch: amd64
-      git: plugins/git
-      project: mariadb
+#    - platform: linux/amd64
+#      arch: amd64
+#      git: plugins/git
+#      project: mariadb
 #    - platform: linux/arm
 #      arch: armhf
 #      git: syncloud/armhf-drone-git
@@ -94,10 +94,10 @@ matrix:
 #      arch: amd64
 #      git: plugins/git
 #      project: openssl
-    - platform: linux/arm
-      arch: armhf
-      git: syncloud/armhf-drone-git
-      project: php
+#    - platform: linux/arm
+#      arch: armhf
+#      git: syncloud/armhf-drone-git
+#      project: php
 #    - platform: linux/amd64
 #      arch: amd64
 #      git: plugins/git
@@ -118,10 +118,10 @@ matrix:
 #      arch: amd64
 #      git: plugins/git
 #      project: postfix
-    - platform: linux/arm
-      arch: armhf
-      git: syncloud/armhf-drone-git
-      project: postgresql
+#    - platform: linux/arm
+#      arch: armhf
+#      git: syncloud/armhf-drone-git
+#      project: postgresql
 #    - platform: linux/amd64
 #      arch: amd64
 #      git: plugins/git
@@ -150,10 +150,10 @@ matrix:
 #      arch: amd64
 #      git: plugins/git
 #      project: rsyslog
-    - platform: linux/arm
-      arch: armhf
-      git: syncloud/armhf-drone-git
-      project: ruby
+#    - platform: linux/arm
+#      arch: armhf
+#      git: syncloud/armhf-drone-git
+#      project: ruby
 #    - platform: linux/amd64
 #      arch: amd64
 #      git: plugins/git
