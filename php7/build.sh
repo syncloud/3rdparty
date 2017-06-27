@@ -41,9 +41,9 @@ cd build
 
 #tar xzf ImageMagick-${ARCH}.tar.gz
 
-wget http://php.net/get/${NAME}-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
+wget http://php.net/get/php-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
 tar xjf ${NAME}-${VERSION}.tar.bz2
-cd ${NAME}-${VERSION}
+cd php-${VERSION}
 
 wget https://pecl.php.net/get/apcu-${APCU_VERSION}.tgz --progress dot:giga
 tar xzf apcu-${APCU_VERSION}.tgz -C ext/
