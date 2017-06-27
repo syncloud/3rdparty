@@ -12,7 +12,7 @@ ARCH=$1
 
 export TMPDIR=/tmp
 export TMP=/tmp
-NAME=php
+NAME=php7
 VERSION=7.0.2
 #VERSION=5.6.9
 APCU_VERSION=5.1.3
