@@ -27,8 +27,8 @@ matrix:
 #   - nodejs
 #   - openldap
 #   - openssl
-#   - php
-   - php7
+   - php
+#   - php7
 #   - postfix
 #   - postgresql
 #   - python
