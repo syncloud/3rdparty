@@ -134,6 +134,8 @@ echo "test references"
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/sbin/php-fpm
 
+ls -la ${PREFIX}/lib
+
 cd ${DIR}
 
 rm -rf ${NAME}-${ARCH}.tar.gz
