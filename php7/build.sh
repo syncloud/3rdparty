@@ -131,7 +131,7 @@ ldd ${PREFIX}/sbin/php-fpm
   #exit 1
 #fi
 
-cd ${DIR}/..
+cd ${DIR}
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
