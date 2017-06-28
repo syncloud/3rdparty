@@ -131,6 +131,7 @@ ldd ${PREFIX}/sbin/php-fpm
   #exit 1
 #fi
 
+find ${DIR} -name "*.so"
 cd ${DIR}
 
 rm -rf ${NAME}-${ARCH}.tar.gz
