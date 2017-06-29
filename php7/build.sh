@@ -139,6 +139,8 @@ ldd ${PREFIX}/sbin/php-fpm
   #exit 1
 #fi
 
+find ${PREFIX}/lib/php/extensions -name "*.so" -exec mv {} ${PREFIX}/lib/php/extensions \;
+
 find ${DIR} -name "*.so"
 cd ${DIR}
 
