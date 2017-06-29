@@ -86,7 +86,12 @@ CFLAGS="$OPTIONS" ./configure \
     --with-jpeg-dir \
     --with-png-dir \
     --with-ldap \
-    --with-ldap-sasl
+    --with-ldap-sasl \
+    --with-openssl \
+    --with-mcrypt \
+    --enable-intl \
+    --enable-exif \
+    --enable-pcntl
 #    --with-imagick \
 
 make -j2
@@ -121,6 +126,7 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsa
 #cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libwind*.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgnutls*.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhogweed*.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
 
 echo "test references"
 
