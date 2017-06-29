@@ -30,7 +30,7 @@ apt-get -y install build-essential \
     libxml2-dev autoconf libjpeg-dev libpng12-dev libfreetype6-dev \
     libzip2 libzip-dev zlib1g-dev libcurl4-gnutls-dev dpkg-dev \
     libpq-dev libreadline-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev \
-    p7zip libtool
+    p7zip libtool libmcrypt-dev libicu-dev
 #    libmagickwand-6.q16-dev
 
 rm -rf build
