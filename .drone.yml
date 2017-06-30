@@ -28,11 +28,11 @@ matrix:
 #   - openldap
 #   - openssl
 #   - php
-   - php7
+#   - php7
 #   - postfix
 #   - postgresql
 #   - python
 #   - redis
 #   - rsyslog
-#   - ruby
+   - ruby
 #   - uwsgi
