@@ -16,7 +16,7 @@ pipeline:
     secrets: [ARTIFACT_SSH_KEY]
     commands:
       - cd ${project}
-      - ../upload.sh ${project}-$(dpkg --print-architecture).tar.gz
+      - ../upload.sh ${project}-$(uname -m).tar.gz
 
 matrix:
   arch:
