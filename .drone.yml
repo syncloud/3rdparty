@@ -8,9 +8,15 @@ clone:
 pipeline:
   build:
     image: syncloud/rootfs-${arch}
-    secrets: [ARTIFACT_SSH_KEY]
     commands:
       - ./build.sh ${project}
+      
+  upload:
+    image: syncloud/rootfs-${arch}
+    secrets: [ARTIFACT_SSH_KEY]
+    commands:
+      - cd ${project}
+      - ../upload.sh ${project}-$(dpkg --print-architecture).tar.gz
 
 matrix:
   arch:
