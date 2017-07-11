@@ -11,6 +11,7 @@ fi
 ARCH=$1
 
 VERSION=2.7.13
+OPENSSL_VERSION=1.0.1h
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -21,17 +22,17 @@ OPENSSL=${DIR}/build/openssl
 
 #apt-get update
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libbz2-dev libsqlite3-dev unzip
-apt-get remove libssl-dev
+
 rm -rf build
 mkdir build
 cd ${DIR}/build
 
-wget http://artifact.syncloud.org/3rdparty/openssl-${ARCH}.tar.gz
-tar xf openssl-${ARCH}.tar.gz
-
 # DANGEROUS to run outside of drone/docker
-cp --remove-destination -r ${OPENSSL}/lib/*.so* /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/
-cp --remove-destination -r ${OPENSSL}/include/openssl /usr/include/
+curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
+cd openssl-${OPENSSL_VERSION}
+./config -fPIC shared
+make
+make install
 
 wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
 tar xf Python-${VERSION}.tar.xz
