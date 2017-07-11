@@ -13,24 +13,20 @@ ARCH=$1
 VERSION=2.7.13
 OPENSSL_VERSION=1.0.1h
 
-export TMPDIR=/tmp
-export TMP=/tmp
-
 NAME=python
 PREFIX=${DIR}/build/${NAME}
 OPENSSL=${DIR}/build/openssl
 
-#apt-get update
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libbz2-dev libsqlite3-dev unzip
 
 rm -rf build
 mkdir build
 cd ${DIR}/build
 
-# DANGEROUS to run outside of drone/docker
 curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
+tar xf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
-./config -fPIC shared
+./config --prefix=${OPENSSL} --openssldir=${OPENSSL}/openssl -fPIC shared
 make
 make install
 
@@ -38,8 +34,14 @@ wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
 tar xf Python-${VERSION}.tar.xz
 cd Python-${VERSION}
 
-#CPPFLAGS=-I${OPENSSL}/include \
-#LDFLAGS=-L${OPENSSL}/lib \
+echo "SSL=${OPENSSL}" >> Modules/Setup.dist
+echo "_ssl _ssl.c \\" >> Modules/Setup.dist
+echo "       -DUSE_SSL -I\$(SSL)/include -I\$(SSL)/include/openssl \\" >> Modules/Setup.dist
+echo "       -L\$(SSL)/lib -lssl -lcrypto" >> Modules/Setup.dist
+
+export CPPFLAGS=-I${OPENSSL}/include
+export LDFLAGS=-L${OPENSSL}/lib
+export LD_LIBRARY_PATH=${OPENSSL}/lib
 ./configure --prefix=${PREFIX} --enable-shared --enable-unicode=ucs4
 make
 make install
@@ -51,10 +53,13 @@ ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 
-cp --remove-destination ${OPENSSL}/lib/libssl*.so* ${PREFIX}/lib
-cp --remove-destination ${OPENSSL}/lib/libcrypto*.so* ${PREFIX}/lib
+${PREFIX}/bin/python -c 'from urllib2 import urlopen; print(urlopen("https://google.com"))'
+${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 
-ldd ${PREFIX}/lib/python2.7/lib-dynload/_ssl.so
+cp -r ${OPENSSL}/lib/* ${PREFIX}/lib
+
+export LD_LIBRARY_PATH=${PREFIX}/lib
+ldd ${PREFIX}/lib/libpython2.7.so
 
 find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
 chmod +w ${PREFIX}/lib/libpython*
