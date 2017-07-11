@@ -21,15 +21,16 @@ apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre
 
 rm -rf build
 mkdir build
-cd ${DIR}/build
 
+cd ${DIR}/build
 curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
-./config --prefix=${OPENSSL} --openssldir=${OPENSSL}/openssl -fPIC shared
+./config --prefix=${OPENSSL} --openssldir=/usr/lib/ssl -fPIC shared
 make
 make install
 
+cd ${DIR}/build
 wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
 tar xf Python-${VERSION}.tar.xz
 cd Python-${VERSION}
@@ -53,13 +54,14 @@ ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 
+cp -r ${OPENSSL}/lib/* ${PREFIX}/lib
+
 ${PREFIX}/bin/python -c 'from urllib2 import urlopen; print(urlopen("https://google.com"))'
 ${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 
-cp -r ${OPENSSL}/lib/* ${PREFIX}/lib
-
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/lib/libpython2.7.so
+ldd ${PREFIX}/bin/python.bin
 
 find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
 chmod +w ${PREFIX}/lib/libpython*
