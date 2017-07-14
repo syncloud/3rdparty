@@ -17,16 +17,15 @@ export TMP=/tmp
 
 NAME=certbot
 
-apt-get -y install git
-
 rm -rf build
-mkdir build
+mkdir -p build/certbot
 cd build
 
-git clone https://github.com/certbot/certbot/tree/v${VERSION} certbot
-cd certbot
-export VENV_PATH=${DIR}/build/certbot/venv
-./certbot-auto
+wget https://github.com/certbot/certbot/archive/v${VERSION}.tar.gz
+tar xf v${VERSION}.tar.gz
+export VENV_PATH=${DIR}/build/certbot
+cd v${VERSION}
+./certbot-auto --non-interactive --verbose
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
