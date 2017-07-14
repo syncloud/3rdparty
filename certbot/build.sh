@@ -24,7 +24,7 @@ cd build
 wget https://github.com/certbot/certbot/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
 export VENV_PATH=${DIR}/build/certbot
-cd v${VERSION}
+cd certbot-${VERSION}
 ./certbot-auto --non-interactive --verbose
 
 rm -rf ${NAME}-${ARCH}.tar.gz
