@@ -27,5 +27,7 @@ export VENV_PATH=${DIR}/build/certbot
 cd certbot-${VERSION}
 ./certbot-auto --non-interactive --verbose --help plugins
 
+cd ${DIR}/..
+
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
