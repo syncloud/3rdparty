@@ -29,7 +29,7 @@ cd certbot-${VERSION}
 cp ${DIR}/certbot.sh ${PREFIX}/bin
 cd ${DIR}
 
-${PREFIX}/bin/certbot.sh --help
+${PREFIX}/bin/certbot.sh --logs-dir log --config-dir config --work-dir work --help
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
