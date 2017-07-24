@@ -62,6 +62,7 @@ ${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/lib/libpython2.7.so
 ldd ${PREFIX}/bin/python.bin
+ldd ${PREFIX}/lib/python2.7/lib-dynload/_ssl.so
 
 find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
 chmod +w ${PREFIX}/lib/libpython*
