@@ -73,3 +73,8 @@ ${PREFIX}/bin/python --version
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+
+# tests
+
+${PREFIX}/bin/pip install certbot
+${PREFIX}/bin/certbot help
