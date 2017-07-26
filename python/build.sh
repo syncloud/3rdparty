@@ -56,9 +56,6 @@ cp ${DIR}/pip ${PREFIX}/bin/
 
 cp -r ${OPENSSL}/lib/* ${PREFIX}/lib
 
-${PREFIX}/bin/python -c 'from urllib2 import urlopen; print(urlopen("https://google.com"))'
-${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
-
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/lib/libpython2.7.so
 ldd ${PREFIX}/bin/python.bin
@@ -75,6 +72,9 @@ rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
 
 # tests
+
+${PREFIX}/bin/python -c 'from urllib2 import urlopen; print(urlopen("https://google.com"))'
+${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 
 ${PREFIX}/bin/pip install certbot
 ${PREFIX}/bin/certbot help
