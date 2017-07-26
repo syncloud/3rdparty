@@ -26,7 +26,7 @@ cd ${DIR}/build
 curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
-./config --prefix=${OPENSSL} --openssldir=/usr/lib/ssl shared no-idea no-mdc2 no-rc5 no-zlib enable-tlsext no-ssl2 no-ssl3 enable-unit-test no-ssl3-method enable-rfc3779 enable-cms 
+./config --prefix=${OPENSSL} --openssldir=/usr/lib/ssl shared enable-tlsext enable-rfc3779 enable-cms 
 make
 make install
 
