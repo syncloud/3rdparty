@@ -17,7 +17,7 @@ NAME=python
 PREFIX=${DIR}/build/${NAME}
 OPENSSL=${DIR}/build/openssl
 
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libbz2-dev libsqlite3-dev unzip
+apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libbz2-dev libsqlite3-dev unzip libffi-dev
 
 rm -rf build
 mkdir build
@@ -26,7 +26,7 @@ cd ${DIR}/build
 curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
-./config --prefix=${OPENSSL} --openssldir=/usr/lib/ssl shared enable-tlsext enable-rfc3779 enable-cms 
+./config --prefix=${OPENSSL} --openssldir=/usr/lib/ssl shared
 make
 make install
 
