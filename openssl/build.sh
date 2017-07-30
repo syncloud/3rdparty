@@ -32,6 +32,11 @@ cd openssl-${OPENSSL_VERSION}
 make
 make install
 
+mv ${PREFIX}/bin/openssl ${PREFIX}/bin/openssl.bin
+cp ${DIR}/openssl ${PREFIX}/bin/openssl
+
+${PREFIX}/bin/openssl version -a
+
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
