@@ -32,12 +32,12 @@ matrix:
 #   - nginx
 #   - nodejs
 #   - openldap
-#   - openssl
+   - openssl
 #   - php
 #   - php7
 #   - postfix
 #   - postgresql
-   - python
+#   - python
 #   - redis
 #   - rsyslog
 #   - ruby
