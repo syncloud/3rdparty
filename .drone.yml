@@ -32,9 +32,9 @@ matrix:
 #   - nginx
 #   - nodejs
 #   - openldap
-   - openssl
+#   - openssl
 #   - php
-#   - php7
+   - php7
 #   - postfix
 #   - postgresql
 #   - python
