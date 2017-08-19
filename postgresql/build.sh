@@ -38,8 +38,8 @@ cp ${DIR}/bin/* ${PREFIX}/bin
 echo "original libs"
 ldd ${PREFIX}/bin/psql.bin
 
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libreadline.so* ${PREFIX}/lib
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhistory.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libreadline.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhistory.so* ${PREFIX}/lib
 
 echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
