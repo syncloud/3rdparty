@@ -3,9 +3,13 @@
 To add a component:
 
 1. Create a dir with a build.sh script.
-2. ON TeamCity create a two (armv7l, x86_64) configurations by extending corresponding templates.
+
+### Running local drone build
+
+Get drone cli binary: http://docs.drone.io/cli-installation/
+````
+sudo DOCKER_API_VERSION=1.24 arch=amd64 project=[project] /path/to/drone exec
 
 Result:
 
-- ARM build are automatically created by tools scripts.
 - Artifacts are automatically uploaded to 3rdparty.syncloud.org/[app]-[arch].tar.gz

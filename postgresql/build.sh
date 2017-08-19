@@ -14,8 +14,7 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=postgresql
 VERSION=9.4.2
-ROOT=/opt/app/owncloud
-PREFIX=${ROOT}/postgresql
+PREFIX=${DIR}/build/${NAME}
 
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev
 
@@ -35,8 +34,18 @@ make install
 mv ${PREFIX}/bin/pg_ctl ${PREFIX}/bin/pg_ctl.bin
 mv ${PREFIX}/bin/psql ${PREFIX}/bin/psql.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
- 
+
+echo "original libs"
+ldd ${PREFIX}/bin/psql.bin
+
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libreadline.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhistory.so* ${PREFIX}/lib
+
+echo "embedded libs"
+export LD_LIBRARY_PATH=${PREFIX}/lib
+ldd ${PREFIX}/bin/psql.bin
+
 cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
-tar czf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
+tar czf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}

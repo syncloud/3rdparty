@@ -34,9 +34,9 @@ matrix:
 #   - openldap
 #   - openssl
 #   - php
-   - php7
+#   - php7
 #   - postfix
-#   - postgresql
+   - postgresql
 #   - python
 #   - redis
 #   - rsyslog
