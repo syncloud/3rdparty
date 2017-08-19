@@ -35,8 +35,21 @@ mv ${PREFIX}/bin/git ${PREFIX}/bin/git.bin
 cp -r ${DIR}/bin/git ${PREFIX}/bin/git
 chmod +x ${PREFIX}/bin/git
 
-cp --remove-destination /usr/lib/${DPKG_ARCH}/libcurl.so* ${PREFIX}/lib/${DPKG_ARCH}
+echo "original libs"
+ldd ${PREFIX}/bin/git.bin
+
+cp --remove-destination /usr/lib/${DPKG_ARCH}/libcurl.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/${DPKG_ARCH}/libcrypto.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/${DPKG_ARCH}/libssl.so* ${PREFIX}/lib
+
+echo "embedded libs"
+export LD_LIBRARY_PATH=${PREFIX}/lib
+ldd ${PREFIX}/bin/git.bin
 
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
+
+# test
+
+${PREFIX}/bin/git config -l

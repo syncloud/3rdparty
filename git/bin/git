@@ -3,7 +3,7 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )
 
-#export LD_LIBRARY_PATH=${DIR}/lib
+export LD_LIBRARY_PATH=${DIR}/lib
 export GIT_EXEC_PATH=${DIR}/libexec/git-core
 export GIT_TEMPLATE_DIR=${DIR}/share/git-core/templates
 

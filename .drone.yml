@@ -27,7 +27,7 @@ matrix:
 #   - PyYAML
 #   - asterisk
 #   - dovecot
-#   - git
+   - git
 #   - mariadb
 #   - nginx
 #   - nodejs
@@ -36,7 +36,7 @@ matrix:
 #   - php
 #   - php7
 #   - postfix
-   - postgresql
+#   - postgresql
 #   - python
 #   - redis
 #   - rsyslog
