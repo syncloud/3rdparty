@@ -12,4 +12,4 @@ sudo DOCKER_API_VERSION=1.24 arch=amd64 project=[project] /path/to/drone exec
 
 Result:
 
-- Artifacts are automatically uploaded to 3rdparty.syncloud.org/[app]-[arch].tar.gz
+- Artifacts are automatically uploaded to artifact.syncloud.org/3rdparty/[app]-[arch].tar.gz

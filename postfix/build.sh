@@ -15,7 +15,7 @@ export TMP=/tmp
 NAME=postfix
 VERSION=2.11.7
 BUILD_DIR=./build
-
+PREFIX=${DIR}/build/${NAME}
 echo "building ${NAME}"
 
 apt-get -y update
@@ -43,7 +43,21 @@ export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
 
 make makefiles
 make
-make non-interactive-package install_root=${BUILD_DIR}/${NAME}
+make non-interactive-package install_root=${PREFIX}
+
+mv ${PREFIX}/usr/sbin/postfix ${PREFIX}/usr/sbin/postfix.bin
+cp ${DIR}/usr/sbin/* ${PREFIX}/usr/sbin
+
+echo "original libs"
+ldd ${PREFIX}/usr/sbin/postfix.bin
+
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libreadline.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhistory.so* ${PREFIX}/lib
+
+echo "embedded libs"
+export LD_LIBRARY_PATH=${PREFIX}/lib
+ldd ${PREFIX}/usr/sbin/postfix.bin
 
 cd ../..
 
