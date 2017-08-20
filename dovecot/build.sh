@@ -13,18 +13,15 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=dovecot
-VERSION=2.2.21
-BUILD=${DIR}/build
-BASE_DIR=/opt/app/mail
-PREFIX=${BASE_DIR}/${NAME}
+VERSION=2.2.27
+BUILD_DIR=./build
+PREFIX=${DIR}/build/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev
 
-rm -rf ${PREFIX}
-mkdir -p ${PREFIX}
-rm -rf ${BUILD}
-mkdir ${BUILD}
-cd ${BUILD}
+rm -rf ${BUILD_DIR}
+mkdir ${BUILD_DIR}
+cd ${BUILD_DIR}
 
 wget http://www.dovecot.org/releases/2.2/${NAME}-${VERSION}.tar.gz \
     --progress dot:giga
@@ -39,5 +36,19 @@ cd ${NAME}-${VERSION}
 make
 make install
 
-rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BASE_DIR} ${NAME}
+echo "original libs"
+ldd ${PREFIX}/sbin/dovecot
+mkdir ${PREFIX}/lib
+
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib
+
+echo "embedded libs"
+export LD_LIBRARY_PATH=${PREFIX}/lib
+ldd ${PREFIX}/sbin/dovecot
+
+cd ../..
+
+rm -rf ${NAME}-${ARCH}.tar.gz
+tar czf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
