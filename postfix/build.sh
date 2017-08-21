@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -72,7 +72,9 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libff
 
 
 echo "embedded libs"
+export LD_DEBUG=libs
 export LD_LIBRARY_PATH=${PREFIX}/lib
+export LD_PRELOAD=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix.bin
 
 cd ../..
