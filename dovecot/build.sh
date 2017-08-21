@@ -14,13 +14,14 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=dovecot
 VERSION=2.2.27
-BUILD_DIR=./build
-PREFIX=${DIR}/build/${NAME}
+#TODO: It is impossible to override paths at runtime
+BUILD_DIR=/opt/app/mail
+PREFIX=${BUILD_DIR}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev
 
 rm -rf ${BUILD_DIR}
-mkdir ${BUILD_DIR}
+mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
 wget http://www.dovecot.org/releases/2.2/${NAME}-${VERSION}.tar.gz \
@@ -42,6 +43,8 @@ ldd ${PREFIX}/sbin/dovecot
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib/dovecot
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/lib/dovecot
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib/dovecot
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib/dovecot
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib/dovecot
 
 echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
@@ -50,4 +53,4 @@ ldd ${PREFIX}/sbin/dovecot
 cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
-tar czf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+tar czf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
