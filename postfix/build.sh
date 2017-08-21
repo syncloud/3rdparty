@@ -77,7 +77,5 @@ export LD_LIBRARY_PATH=${PREFIX}/lib
 export LD_PRELOAD=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix.bin
 
-cd ../..
-
-rm -rf ${NAME}-${ARCH}.tar.gz
-tar czf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
+tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
