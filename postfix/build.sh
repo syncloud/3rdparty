@@ -14,16 +14,16 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=postfix
 VERSION=3.2.2
-BUILD_DIR=./build
-PREFIX=${DIR}/build/${NAME}
+BUILD_DIR=${DIR}/build
+PREFIX=${BUILD_DIR}/${NAME}
 echo "building ${NAME}"
 
 apt-get -y update
 apt-get -y install build-essential libldap2-dev libsasl2-dev libssl-dev libldb-dev libdb-dev
 
-rm -rf build
-mkdir -p build
-cd build
+rm -rf ${BUILD_DIR}
+mkdir -p ${BUILD_DIR}
+cd ${BUILD_DIR}
 
 wget ftp://ftp.reverse.net/pub/postfix/official/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xf ${NAME}-${VERSION}.tar.gz
@@ -78,4 +78,4 @@ export LD_PRELOAD=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix.bin
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}

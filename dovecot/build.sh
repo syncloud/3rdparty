@@ -51,4 +51,4 @@ export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/sbin/dovecot
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
