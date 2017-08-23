@@ -38,18 +38,21 @@ rm /etc/profile.d/rvm.sh
 rm -rf ${DIR}/${NAME}.tar.gz
 
 cp -r ${PREFIX}/rubies/${NAME}-${VERSION} ${PREFIX}/ruby
-
+mv ${PREFIX}/ruby/bin/ruby ${PREFIX}/ruby/bin/ruby.bin
+cp -r ${DIR}/bin  ${PREFIX}/ruby
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libyaml* ${PREFIX}/ruby/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/ruby/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/ruby/lib
 
 echo "original libs"
-ldd ${PREFIX}/ruby/bin/ruby
+ldd ${PREFIX}/ruby/bin/ruby.bin
 
 export LD_LIBRARY_PATH=${PREFIX}/ruby/lib
 
 echo "embedded libs"
-ldd ${PREFIX}/ruby/bin/ruby
+ldd ${PREFIX}/ruby/bin/ruby.bin
+
+${PREFIX}/ruby/bin/gem install bundler
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${PREFIX} ${NAME}
