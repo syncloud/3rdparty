@@ -40,7 +40,7 @@ rm -rf ${DIR}/${NAME}.tar.gz
 cp -r ${PREFIX}/rubies/${NAME}-${VERSION} ${PREFIX}/ruby
 
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libyaml* ${PREFIX}/ruby/lib
-#cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/ruby/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/ruby/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/ruby/lib
 
 echo "original libs"
