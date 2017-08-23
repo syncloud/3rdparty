@@ -40,12 +40,16 @@ rm -rf ${DIR}/${NAME}.tar.gz
 cp -r ${PREFIX}/rubies/${NAME}-${VERSION} ${PREFIX}/ruby
 
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libyaml* ${PREFIX}/ruby/lib
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/ruby/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/ruby/lib
+#cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/ruby/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/ruby/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/ruby/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/ruby/lib
 
+echo "original libs"
+ldd ${PREFIX}/ruby/bin/ruby
+
+export LD_LIBRARY_PATH=${PREFIX}/ruby/lib
+
+echo "embedded libs"
+ldd ${PREFIX}/ruby/bin/ruby
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar cpzf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${PREFIX} ${NAME}
