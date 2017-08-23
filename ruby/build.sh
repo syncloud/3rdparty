@@ -51,7 +51,8 @@ export LD_LIBRARY_PATH=${PREFIX}/ruby/lib
 
 echo "embedded libs"
 ldd ${PREFIX}/ruby/bin/ruby.bin
-
+export GEM_HOME=${DIR}/ruby
+export PATH=${DIR}/ruby/bin:$PATH
 ${PREFIX}/ruby/bin/gem install bundler
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
