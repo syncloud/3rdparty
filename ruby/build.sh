@@ -16,7 +16,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=ruby
-VERSION=2.3.3
+VERSION=2.4
 PREFIX=${DIR}/build
 
 echo "building ${NAME}"
