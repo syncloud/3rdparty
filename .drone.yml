@@ -35,11 +35,11 @@ matrix:
 #   - openssl
 #   - php
 #   - php7
-#   - postfix
+   - postfix
 #   - postgresql
 #   - python
 #   - redis
 #   - rsyslog
-   - ruby
+#   - ruby
 #   - uwsgi
 #   - certbot
