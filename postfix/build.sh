@@ -29,7 +29,7 @@ wget ftp://ftp.reverse.net/pub/postfix/official/${NAME}-${VERSION}.tar.gz --prog
 tar xf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 #TODO: It is impossible to override paths at runtime
-export CCARGS='-DDEF_CONFIG_DIR=\"/opt/app/mail/config/postfix\" \
+export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
   -I/usr/include -DHAS_LDAP \
