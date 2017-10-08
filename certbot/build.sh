@@ -10,7 +10,7 @@ fi
 
 ARCH=$1
 
-VERSION=0.16.0
+VERSION=0.19.0
 
 export TMPDIR=/tmp
 export TMP=/tmp
