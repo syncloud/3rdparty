@@ -26,7 +26,7 @@ matrix:
 #   - ImageMagick
 #   - PyYAML
 #   - asterisk
-#   - dovecot
+   - dovecot
 #   - git
 #   - mariadb
 #   - nginx
@@ -42,4 +42,4 @@ matrix:
 #   - rsyslog
 #   - ruby
 #   - uwsgi
-   - certbot
+#   - certbot

@@ -15,7 +15,7 @@ export TMP=/tmp
 NAME=dovecot
 VERSION=2.2.27
 #TODO: It is impossible to override paths at runtime
-BUILD_DIR=/opt/data/mail
+BUILD_DIR=/opt/app/mail
 PREFIX=${BUILD_DIR}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev
