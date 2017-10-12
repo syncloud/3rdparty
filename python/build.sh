@@ -50,10 +50,6 @@ make install
 mv ${PREFIX}/bin/python ${PREFIX}/bin/python.bin
 cp ${DIR}/python ${PREFIX}/bin/
 
-${PREFIX}/bin/python -m ensurepip --upgrade
-mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
-cp ${DIR}/pip ${PREFIX}/bin/
-
 cp -r ${OPENSSL}/lib/* ${PREFIX}/lib
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
@@ -68,6 +64,9 @@ cd ${DIR}
 find ${PREFIX} \( -name "*.pyc" -o -name "*.pyo" \) -exec rm {} \;
 ${PREFIX}/bin/python --version
 
+${PREFIX}/bin/python -m ensurepip --upgrade
+mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
+cp ${DIR}/pip ${PREFIX}/bin/
 ${PREFIX}/bin/pip install --upgrade setuptools pip
 
 rm -rf ${NAME}-${ARCH}.tar.gz
