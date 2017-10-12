@@ -68,6 +68,8 @@ cd ${DIR}
 find ${PREFIX} \( -name "*.pyc" -o -name "*.pyo" \) -exec rm {} \;
 ${PREFIX}/bin/python --version
 
+${PREFIX}/bin/pip install --upgrade setuptools pip
+
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
 
