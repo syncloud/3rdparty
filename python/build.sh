@@ -57,6 +57,15 @@ ldd ${PREFIX}/lib/libpython2.7.so
 ldd ${PREFIX}/bin/python.bin
 #ldd ${PREFIX}/lib/python2.7/lib-dynload/_ssl.so
 
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libutil.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib
+
+ldd ${PREFIX}/lib/libpython2.7.so
+ldd ${PREFIX}/bin/python.bin
+
 find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
 chmod +w ${PREFIX}/lib/libpython*
 cd ${DIR}
