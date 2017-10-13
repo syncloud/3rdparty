@@ -69,7 +69,7 @@ ldd ${PREFIX}/bin/python.bin
 ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
-${PREFIX}/bin/pip install --upgrade setuptools pip
+${PREFIX}/bin/pip install --upgrade setuptools
 cp ${DIR}/pip ${PREFIX}/bin/
 ${PREFIX}/bin/pip
 
