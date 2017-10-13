@@ -69,8 +69,8 @@ ldd ${PREFIX}/bin/python.bin
 ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
-${PREFIX}/bin/pip install --upgrade setuptools
-cp ${DIR}/pip ${PREFIX}/bin/
+#${PREFIX}/bin/pip install --upgrade setuptools pip
+#cp ${DIR}/pip ${PREFIX}/bin/
 ${PREFIX}/bin/pip
 
 find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
@@ -88,5 +88,6 @@ tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
 ${PREFIX}/bin/python -c 'from urllib2 import urlopen; print(urlopen("https://google.com"))'
 ${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 
+${PREFIX}/bin/pip install cryptography==2.0
 ${PREFIX}/bin/pip install certbot
 ${PREFIX}/bin/certbot help
