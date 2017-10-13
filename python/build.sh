@@ -66,19 +66,19 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* 
 ldd ${PREFIX}/lib/libpython2.7.so
 ldd ${PREFIX}/bin/python.bin
 
-find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
-chmod +w ${PREFIX}/lib/libpython*
-cd ${DIR}
-
-find ${PREFIX} \( -name "*.pyc" -o -name "*.pyo" \) -exec rm {} \;
-${PREFIX}/bin/python --version
-
 ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 ${PREFIX}/bin/pip install --upgrade setuptools pip
 cp ${DIR}/pip ${PREFIX}/bin/
 ${PREFIX}/bin/pip
+
+find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
+chmod +w ${PREFIX}/lib/libpython*
+cd ${DIR}
+
+find ${PREFIX} \( -name "*.pyc" -o -name "*.pyo" \) -exec rm {} \;
+${PREFIX}/bin/python --version
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
