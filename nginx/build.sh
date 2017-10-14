@@ -46,7 +46,8 @@ cd ${NAME}-${VERSION}
     --with-http_spdy_module \
     --with-openssl=../openssl-${OPENSSL_VERSION} \
     --with-pcre=../pcre-${PCRE_VERSION} \
-    --with-ipv6
+    --with-ipv6 \
+    --with-http_realip_module
 
 sed -i "/CFLAGS/s/ \-O //g" objs/Makefile
 

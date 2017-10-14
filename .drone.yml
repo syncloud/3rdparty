@@ -29,7 +29,7 @@ matrix:
 #   - dovecot
 #   - git
 #   - mariadb
-#   - nginx
+   - nginx
 #   - nodejs
 #   - openldap
 #   - openssl
@@ -37,7 +37,7 @@ matrix:
 #   - php7
 #   - postfix
 #   - postgresql
-   - python
+#   - python
 #   - redis
 #   - rsyslog
 #   - ruby
