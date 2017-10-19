@@ -7,12 +7,12 @@ clone:
     
 pipeline:
   build:
-    image: syncloud/rootfs-${arch}
+    image: syncloud/build-deps-${arch}
     commands:
       - ./build.sh ${project}
       
   upload:
-    image: syncloud/rootfs-${arch}
+    image: syncloud/build-deps-${arch}
     secrets: [ARTIFACT_SSH_KEY]
     commands:
       - cd ${project}
@@ -23,23 +23,21 @@ matrix:
     - arm
     - amd64
   project: 
-#   - ImageMagick
-#   - PyYAML
-#   - asterisk
-#   - dovecot
-#   - git
-#   - mariadb
+   - ImageMagick
+   - PyYAML
+   - asterisk
+   - dovecot
+   - git
    - nginx
-#   - nodejs
-#   - openldap
-#   - openssl
-#   - php
-#   - php7
-#   - postfix
-#   - postgresql
-#   - python
-#   - redis
-#   - rsyslog
-#   - ruby
-#   - uwsgi
-#   - certbot
+   - nodejs
+   - openldap
+   - openssl
+   - php
+   - php7
+   - postfix
+   - postgresql
+   - python
+   - redis
+   - rsyslog
+   - ruby
+   - uwsgi
