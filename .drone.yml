@@ -23,21 +23,21 @@ matrix:
     - arm
     - amd64
   project: 
-   - ImageMagick
-   - PyYAML
-   - asterisk
-   - dovecot
-   - git
-   - nginx
-   - nodejs
-   - openldap
-   - openssl
-   - php
+#   - ImageMagick
+#   - PyYAML
+#   - asterisk
+#   - dovecot
+#   - git
+#   - nginx
+#   - nodejs
+#   - openldap
+#   - openssl
+#   - php
    - php7
    - postfix
-   - postgresql
-   - python
-   - redis
-   - rsyslog
-   - ruby
-   - uwsgi
+#   - postgresql
+#   - python
+#   - redis
+#   - rsyslog
+#   - ruby
+#   - uwsgi
