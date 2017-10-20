@@ -35,7 +35,7 @@ mkdir ${PREFIX}/slapd.d
 mv ${PREFIX}/sbin/slapadd ${PREFIX}/sbin/slapadd.bin
 cp ${DIR}/slapadd ${PREFIX}/sbin/
 
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libuuid.so* => ${PREFIX}/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libuuid.so* ${PREFIX}/lib/
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdb-5.3.so ${PREFIX}/lib/
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicuuc.so* ${PREFIX}/lib/
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicudata.so* ${PREFIX}/lib/
