@@ -49,8 +49,8 @@ cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/li
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib/
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib/
 
-${PREFIX}/sbin/slapadd --help
-${PREFIX}/bin/ldapadd --help
+${PREFIX}/sbin/slapadd -VV
+${PREFIX}/bin/ldapadd -VV
 
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
