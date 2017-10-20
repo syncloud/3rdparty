@@ -32,7 +32,21 @@ cd ${NAME}-${VERSION}
 make -j2
 make install
 mkdir ${PREFIX}/slapd.d
+mv ${PREFIX}/sbin/slapadd ${PREFIX}/sbin/slapadd.bin
+cp ${DIR}/slapadd ${PREFIX}/sbin/
 
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libuuid.so* => ${PREFIX}/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdb-5.3.so ${PREFIX}/lib/
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicuuc.so* ${PREFIX}/lib/
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicudata.so* ${PREFIX}/lib/
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsasl2.so* ${PREFIX}/lib/
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* ${PREFIX}/lib/
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib/
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libresolv.so* ${PREFIX}/lib/
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so* ${PREFIX}/lib/
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib/
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib/
+        
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
