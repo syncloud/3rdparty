@@ -32,10 +32,8 @@ cd ${NAME}-${VERSION}
 make -j2
 make install
 mkdir ${PREFIX}/slapd.d
-mv ${PREFIX}/sbin/slapadd ${PREFIX}/sbin/slapadd.bin
-mv ${PREFIX}/bin/ldapadd ${PREFIX}/bin/ldapadd.bin
-cp ${DIR}/slapadd ${PREFIX}/sbin/
-cp ${DIR}/ldapadd ${PREFIX}/bin/
+cp ${DIR}/slapadd.sh ${PREFIX}/sbin/
+cp ${DIR}/ldapadd.sh ${PREFIX}/bin/
 
 cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libuuid.so* ${PREFIX}/lib/
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdb-5.3.so ${PREFIX}/lib/
@@ -49,8 +47,8 @@ cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/li
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib/
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib/
 
-${PREFIX}/sbin/slapadd -VV || true
-${PREFIX}/bin/ldapadd -VV || true
+${PREFIX}/sbin/slapadd.sh -h || true
+${PREFIX}/bin/ldapadd.sh -h || true
 
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
