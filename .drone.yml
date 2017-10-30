@@ -35,9 +35,9 @@ matrix:
 #   - php
 #   - php7
 #   - postfix
-   - postgresql
+#   - postgresql
 #   - python
 #   - redis
 #   - rsyslog
-#   - ruby
+   - ruby
 #   - uwsgi
