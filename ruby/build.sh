@@ -44,8 +44,8 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libya
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/ruby/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/ruby/lib
 
-echo "remove incompatible lib"
-rm -rf ${PREFIX}/ruby/lib/libdl.so"
+#echo "remove incompatible lib"
+#rm -rf ${PREFIX}/ruby/lib/libdl.so"
 
 echo "original libs"
 ldd ${PREFIX}/ruby/bin/ruby.bin
