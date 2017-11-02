@@ -70,7 +70,7 @@ ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 
-${PREFIX}/bin/pip install --upgrade pip
+${PREFIX}/bin/pip install --upgrade setuptools pip
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 
