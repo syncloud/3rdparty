@@ -69,8 +69,11 @@ ldd ${PREFIX}/bin/python.bin
 ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
-#${PREFIX}/bin/pip install --upgrade setuptools pip
-#cp ${DIR}/pip ${PREFIX}/bin/
+
+${PREFIX}/bin/pip install --upgrade pip
+mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
+cp ${DIR}/pip ${PREFIX}/bin/
+
 ${PREFIX}/bin/pip
 
 find ${PREFIX}/bin -type f -exec sed -i "s|#!${PREFIX}/|#!|g" {} \;
