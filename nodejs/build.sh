@@ -40,7 +40,7 @@ mv ${NODE_ARCHIVE} ${NAME}
 mv ${BUILD}/${NAME}/bin/npm ${BUILD}/${NAME}/bin/npm.js
 cp ${DIR}/bin/npm ${BUILD}/${NAME}/bin/npm
 
-${BUILD}/${NAME}/bin/npm
+${BUILD}/${NAME}/bin/npm help
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
