@@ -27,7 +27,6 @@ VERSION=8.9.0
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 NODE_ARCHIVE=node-v${VERSION}-linux-${NODE_ARCH}
-apt-get -y install build-essential libncurses5-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
@@ -38,14 +37,10 @@ wget https://nodejs.org/dist/v${VERSION}/${NODE_ARCHIVE}.tar.gz \
 tar xzf ${NAME}-${VERSION}.tar.gz
 mv ${NODE_ARCHIVE} ${NAME}
 
-#./configure --prefix=${PREFIX}
-#make
-#make install
+mv ${BUILD}/${NAME}/bin/npm ${BUILD}/${NAME}/bin/npm.js
+cp ${DIR}/bin/npm ${BUILD}/${NAME}/bin/npm
 
-mv ${BUILD_DIR}/${NAME}/bin/npm ${BUILD_DIR}/${NAME}/bin/npm.js
-cp ${DIR}/bin/npm ${BUILD_DIR}/${NAME}/bin/npm
-
-${BUILD_DIR}/${NAME}/bin/npm
+${BUILD}/${NAME}/bin/npm
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
