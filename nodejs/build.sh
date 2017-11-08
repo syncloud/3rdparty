@@ -42,5 +42,10 @@ mv ${NODE_ARCHIVE} ${NAME}
 #make
 #make install
 
+mv ${BUILD_DIR}/${NAME}/bin/npm ${BUILD_DIR}/${NAME}/bin/npm.js
+cp ${DIR}/bin/npm ${BUILD_DIR}/${NAME}/bin/npm
+
+${BUILD_DIR}/${NAME}/bin/npm
+
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
