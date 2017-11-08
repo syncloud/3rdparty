@@ -23,7 +23,7 @@ echo "node arch: ${NODE_ARCH}"
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=nodejs
-VERSION=8.9.0
+VERSION=4.8.4
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 NODE_ARCHIVE=node-v${VERSION}-linux-${NODE_ARCH}
