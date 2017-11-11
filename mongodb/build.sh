@@ -33,7 +33,8 @@ cat docs/building.md
 ls -la src
 
 #pip install -r buildscripts/requirements.txt
-pip2 install scons
+pip install scons
+mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
 scons --prefix=$PREFIX install
 
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
