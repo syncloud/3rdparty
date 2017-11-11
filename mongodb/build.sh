@@ -32,6 +32,10 @@ cat docs/building.md
 
 ls -la src
 
+echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list.d/unstable.list
+apt-get update
+apt-get install -t unstable gcc-5
+
 #pip install -r buildscripts/requirements.txt
 pip install scons==2.3.0
 mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
