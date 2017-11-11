@@ -35,6 +35,14 @@ ls -la src
 echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list.d/unstable.list
 apt-get update
 apt-get -y install -t unstable gcc-5
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10  
+update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 10
+update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30 
+update-alternatives --set cc /usr/bin/gcc 
+update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30 
+update-alternatives --set c++ /usr/bin/g++ 
+
+gcc --version
 
 #pip install -r buildscripts/requirements.txt
 pip install scons==2.3.0
