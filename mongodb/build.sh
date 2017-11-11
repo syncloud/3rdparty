@@ -34,7 +34,7 @@ ls -la src
 
 echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list.d/unstable.list
 apt-get update
-apt-get -y install -t unstable gcc-5
+apt-get -y install -t unstable gcc-5 g++-5
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10  
 update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 10
 update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30 
