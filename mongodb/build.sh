@@ -27,8 +27,8 @@ tar xzf ${ARCHIVE}
 cd ${NAME}-src-r${VERSION}
 ls -la
 cat README
-./configure --prefix=${PREFIX}
-make
-make install
+
+pip install -r buildscripts/requirements.txt
+scons mongod
 
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
