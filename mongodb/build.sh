@@ -29,6 +29,8 @@ cp /usr/bin/mongod bin/
 mkdir conf
 cp /etc/init/mongodb.conf conf/
 
+ldd bin/mongod
+
 #ARCHIVE=${NAME}-src-r${VERSION}.tar.gz
 #wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
 #tar xzf ${ARCHIVE}
@@ -54,5 +56,7 @@ cp /etc/init/mongodb.conf conf/
 #mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
 #python --version
 #scons --prefix=$PREFIX install
+
+cd $DIR
 
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
