@@ -33,7 +33,7 @@ cat docs/building.md
 ls -la src
 
 #pip install -r buildscripts/requirements.txt
-pip install scons
+pip install scons==2.3.0
 mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
 python --version
 scons --prefix=$PREFIX install
