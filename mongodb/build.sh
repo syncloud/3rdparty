@@ -22,7 +22,7 @@ cd $DIR/build
 
 ARCHIVE=${NAME}-src-r${VERSION}.tar.gz
 wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
-tar xzf ${ARCHIVE}
+tar xzvf ${ARCHIVE}
 
 cd ${NAME}-${VERSION}
 ./configure --prefix=${PREFIX}
