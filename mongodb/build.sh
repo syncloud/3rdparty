@@ -26,7 +26,11 @@ tar xzf ${ARCHIVE}
 
 cd ${NAME}-src-r${VERSION}
 ls -la
+
 cat README
+cat docs/building.md
+
+ls -la src
 
 pip install -r buildscripts/requirements.txt
 scons mongod
