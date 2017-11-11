@@ -14,7 +14,8 @@ NAME=mongodb
 #VERSION=3.4.10
 PREFIX=${DIR}/build/${NAME}
 
-apt-get -y imstall mongodb
+apt-get update
+apt-get -y install mongodb
 
 #echo "building ${NAME}"
 
