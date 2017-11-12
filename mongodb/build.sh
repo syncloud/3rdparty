@@ -24,12 +24,13 @@ mkdir -p $PREFIX
 cd $PREFIX
 
 mkdir bin
-cp /usr/bin/mongod bin/
+cp /usr/bin/mongod bin/mongod.bin
+cp $DIR/bin/* bin/
 
 mkdir conf
 cp /etc/init/mongodb.conf conf/
 
-ldd bin/mongod
+ldd bin/mongod.bin
 
 mkdir lib
 cp /usr/lib/libv8.so* lib/
@@ -55,7 +56,9 @@ cp /lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblzma.so* lib/
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
 
-ldd bin/mongod
+ldd bin/mongod.bin
+
+./bin/mongod --version
 
 #ARCHIVE=${NAME}-src-r${VERSION}.tar.gz
 #wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
