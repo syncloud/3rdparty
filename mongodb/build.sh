@@ -28,7 +28,7 @@ cp /usr/bin/mongod bin/mongod.bin
 cp $DIR/bin/* bin/
 
 mkdir conf
-cp /etc/init/mongodb.conf conf/
+cp /etc/mongodb.conf conf/
 
 ldd bin/mongod.bin
 
