@@ -31,6 +31,32 @@ cp /etc/init/mongodb.conf conf/
 
 ldd bin/mongod
 
+mkdir lib
+cp /usr/lib/libv8.so* lib/
+cp /usr/lib/libsnappy.so* lib/
+cp	 /lib/x86_64-linux-gnu/libpcre.so* lib/
+cp /usr/lib/x86_64-linux-gnu/libpcrecpp.so* lib/
+cp	 /usr/lib/x86_64-linux-gnu/libssl.so* lib/
+cp 	/usr/lib/x86_64-linux-gnu/libcrypto.so* lib/
+cp 	/usr/lib/x86_64-linux-gnu/libboost_thread.so* lib/
+cp 	/usr/lib/x86_64-linux-gnu/libboost_filesystem.so* lib/
+cp 	/usr/lib/x86_64-linux-gnu/libboost_program_options.so* lib/
+cp 	/usr/lib/x86_64-linux-gnu/libboost_system.so* lib/
+cp 	/lib/x86_64-linux-gnu/librt.so* lib/
+cp 	/usr/lib/libtcmalloc.so* lib/
+#	libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f548ba6d000)
+#	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f548b76b000)
+#	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f548b555000)
+#	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f548b1aa000)
+#	/lib64/ld-linux-x86-64.so.2 (0x0000563f87812000)
+#	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so
+cp /usr/lib/x86_64-linux-gnu/libunwind.so* lib/
+cp /lib/x86_64-linux-gnu/liblzma.so* lib/
+
+export LD_LIBRARY_PATH=${PREFIX}/lib
+
+ldd bin/mongod
+
 #ARCHIVE=${NAME}-src-r${VERSION}.tar.gz
 #wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
 #tar xzf ${ARCHIVE}
