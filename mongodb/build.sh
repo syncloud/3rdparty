@@ -35,24 +35,24 @@ ldd bin/mongod.bin
 mkdir lib
 cp /usr/lib/libv8.so* lib/
 cp /usr/lib/libsnappy.so* lib/
-cp	 /lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so* lib/
-cp /usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcrecpp.so* lib/
-cp	 /usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* lib/
-cp 	/usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* lib/
-cp 	/usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_thread.so* lib/
-cp 	/usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_filesystem.so* lib/
-cp 	/usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_program_options.so* lib/
-cp 	/usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_system.so* lib/
-cp 	/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so* lib/
+cp	 /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so* lib/
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcrecpp.so* lib/
+cp	 /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* lib/
+cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* lib/
+cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_thread.so* lib/
+cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_filesystem.so* lib/
+cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_program_options.so* lib/
+cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_system.so* lib/
+cp 	/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so* lib/
 cp 	/usr/lib/libtcmalloc.so* lib/
-#	libstdc++.so.6 => /usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so.6 (0x00007f548ba6d000)
-#	libm.so.6 => /lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.6 (0x00007f548b76b000)
-#	libgcc_s.so.1 => /lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so.1 (0x00007f548b555000)
-#	libc.so.6 => /lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so.6 (0x00007f548b1aa000)
+#	libstdc++.so.6 => /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so.6 (0x00007f548ba6d000)
+#	libm.so.6 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.6 (0x00007f548b76b000)
+#	libgcc_s.so.1 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so.1 (0x00007f548b555000)
+#	libc.so.6 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so.6 (0x00007f548b1aa000)
 #	/lib64/ld-linux-x86-64.so.2 (0x0000563f87812000)
-#	libdl.so.2 => /lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so
-cp /usr/lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunwind.so* lib/
-cp /lib/(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblzma.so* lib/
+#	libdl.so.2 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunwind.so* lib/
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblzma.so* lib/
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
 
