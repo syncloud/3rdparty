@@ -51,7 +51,7 @@ cp 	/usr/lib/libtcmalloc.so* lib/ || true
 #	libc.so.6 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so.6 (0x00007f548b1aa000)
 #	/lib64/ld-linux-x86-64.so.2 (0x0000563f87812000)
 #	libdl.so.2 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunwind.so* lib/
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunwind.so* lib/ || true
 cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblzma.so* lib/
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
