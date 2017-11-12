@@ -44,7 +44,7 @@ cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_filesystem.so* l
 cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_program_options.so* lib/
 cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_system.so* lib/
 cp 	/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so* lib/
-cp 	/usr/lib/libtcmalloc.so* lib/
+cp 	/usr/lib/libtcmalloc.so* lib/ || true
 #	libstdc++.so.6 => /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so.6 (0x00007f548ba6d000)
 #	libm.so.6 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.6 (0x00007f548b76b000)
 #	libgcc_s.so.1 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so.1 (0x00007f548b555000)
