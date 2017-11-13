@@ -56,6 +56,7 @@ ls -la src
 pip install scons==2.3.0
 mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
 #python --version
+cp $DIR/SConscript .
 scons --prefix=$PREFIX install
 
 ldd bin/mongod.bin
