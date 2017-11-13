@@ -58,6 +58,7 @@ mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-
 #python --version
 
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
+ls -la src/third_party
 cp $DIR/SConscript src/third_party/v8/
 scons --prefix=$PREFIX install
 
