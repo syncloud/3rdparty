@@ -59,7 +59,7 @@ mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-
 
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
 ls -la src/third_party
-cp $DIR/SConscript src/third_party/v8/
+cp $DIR/SConscript src/third_party/v8-3.25/
 scons --prefix=$PREFIX install
 
 ldd bin/mongod.bin

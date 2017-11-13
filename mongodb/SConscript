@@ -442,15 +442,6 @@ sources = get_sources(options)
 
 env = env.Clone()
 
-# NOTE: Suppress attempts to enable warnings in v8. Trying to individually suppress with -Wno-
-# results in a game of whack-a-mole between various versions of clang and gcc as they add new
-# warnings. We won't be changing the v8 sources, so the warnings aren't helpful.
-def removeIfPresent(lst, item):
-    try:
-        lst.remove(item)
-    except ValueError:
-        pass
-
 # remove -Iinclude and prepend -Isrc, to resolve namespace conflicts:
 #
 # mongo source needs to compile with include/v8.h, but v8 source
@@ -459,7 +450,7 @@ def removeIfPresent(lst, item):
 # in addition, v8 source needs to compile with src/parser.h, which
 # is being placed here earlier in the search path than windows sdk's
 # Include/parser.h (v8 doesn't even use any of those header files)
-removeIfPresent(env['CPPPATH'], '#/src/third_party/v8-3.25/include')
+env['CPPPATH'].remove('#/src/third_party/v8-3.25/include')
 env.Prepend(CPPPATH='#/src/third_party/v8-3.25/src')
 
 # add v8 ccflags and cppdefines to environment if they're not already
@@ -473,6 +464,14 @@ cppdefines = get_flags('CPPDEFINES', toolchain, options)
 cppdefines = filter(lambda f : f not in env['CPPDEFINES'], cppdefines)
 env.Append(CPPDEFINES=cppdefines)
 
+# NOTE: Suppress attempts to enable warnings in v8. Trying to individually suppress with -Wno-
+# results in a game of whack-a-mole between various versions of clang and gcc as they add new
+# warnings. We won't be changing the v8 sources, so the warnings aren't helpful.
+def removeIfPresent(lst, item):
+    try:
+        lst.remove(item)
+    except ValueError:
+        pass
 
 # NOTE: Along with the warning flags, remove any flags for LTO when building v8,
 # as LTO builds currently appear to generate bad code with clang.
