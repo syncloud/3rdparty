@@ -63,6 +63,7 @@ mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
 ls -la src/third_party
 cp $DIR/SConscript src/third_party/v8-3.25/
+rm -rf src/third_party/v8
 scons -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" core
 scons --prefix=$PREFIX install
 
