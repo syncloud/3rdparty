@@ -65,10 +65,13 @@ ls -la src/third_party
 cp $DIR/SConscript src/third_party/v8-3.25/
 
 scons -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" core
-#scons --prefix=$PREFIX install
-ls -la build/install/bin
-mkdir $PREFIX/bin
-cp build/install/bin/mongod $PREFIX/bin/mongod.bin
+scons --prefix=$PREFIX -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" install
+ls -la $PREFIX
+ls -la $PREFIX/bin
+ls -la $PREFIX/lib || true
+
+#mkdir $PREFIX/bin
+mv $PREFIX/bin/mongod $PREFIX/bin/mongod.bin
 
 ldd $PREFIX/bin/mongod.bin
 
@@ -85,12 +88,6 @@ cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_program_options.
 cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_system.so* $PREFIX/lib/
 cp 	/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so* $PREFIX/lib/
 cp 	/usr/lib/libtcmalloc.so* $DIR/lib/ || true
-#	libstdc++.so.6 => /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so.6 (0x00007f548ba6d000)
-#	libm.so.6 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.6 (0x00007f548b76b000)
-#	libgcc_s.so.1 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so.1 (0x00007f548b555000)
-#	libc.so.6 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so.6 (0x00007f548b1aa000)
-#	/lib64/ld-linux-x86-64.so.2 (0x0000563f87812000)
-#	libdl.so.2 => /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunwind.so* $PREFIX/lib/ || true
 cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblzma.so* $PREFIX/lib/
 
