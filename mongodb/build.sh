@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 NAME=mongodb
-VERSION=3.0.14
+VERSION=3.0.7
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf $PREFIX
@@ -60,7 +60,7 @@ mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
 ls -la src/third_party
 cp $DIR/SConscript src/third_party/v8-3.25/
-scons --prefix=$PREFIX -j 2 --ssl --wiredtiger=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" core install
+scons --prefix=$PREFIX -j 2 --wiredtiger=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" core install
 
 ldd bin/mongod.bin
 
