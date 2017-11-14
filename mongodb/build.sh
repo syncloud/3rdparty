@@ -18,15 +18,6 @@ rm -rf ${DIR}/build
 mkdir -p $PREFIX
 cd ${DIR}/build
 
-#echo "repackage distro version"
-#apt-get update
-#apt-get -y install mongodb
-#mkdir bin
-#cp /usr/bin/mongod bin/mongod.bin
-#cp $DIR/bin/* bin/
-#mkdir conf
-#cp /etc/mongodb.conf conf/
-
 echo "building ${NAME}"
 
 ARCHIVE=${NAME}-src-r${VERSION}.tar.gz
@@ -42,23 +33,8 @@ ls -la src
 #http://andyfelong.com/2015/12/mongodb-3-0-7-on-raspberry-pi-2/
 apt-get update
 apt-get -y install libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
-
-#echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list.d/unstable.list
-#apt-get update
-#apt-get -y install -t unstable gcc-5 g++-5
-#update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10  
-#update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 10
-#update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30 
-#update-alternatives --set cc /usr/bin/gcc 
-#update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30 
-#update-alternatives --set c++ /usr/bin/g++ 
-
-#gcc --version
-
-#pip install -r buildscripts/requirements.txt
-pip install scons==2.3.0
+pip install --egg scons==2.3.0
 mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
-#python --version
 
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
 ls -la src/third_party
@@ -70,31 +46,14 @@ ls -la $PREFIX
 ls -la $PREFIX/bin
 ls -la $PREFIX/lib || true
 
-#mkdir $PREFIX/bin
 mv $PREFIX/bin/mongod $PREFIX/bin/mongod.bin
-
 ldd $PREFIX/bin/mongod.bin
 
-mkdir $PREFIX/lib
-cp /usr/lib/libv8.so* $PREFIX/lib/
-cp /usr/lib/libsnappy.so* $PREFIX/lib/
-cp	 /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so* $PREFIX/lib/
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcrecpp.so* $PREFIX/lib/
-cp	 /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* $PREFIX/lib/
-cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* $PREFIX/lib/
-cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)p/libboost_thread.so* $PREFIX/lib/
-cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_filesystem.so* $PREFIX/lib/
-cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_program_options.so* $PREFIX/lib/
-cp 	/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libboost_system.so* $PREFIX/lib/
-cp 	/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so* $PREFIX/lib/
-cp 	/usr/lib/libtcmalloc.so* $DIR/lib/ || true
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunwind.so* $PREFIX/lib/ || true
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblzma.so* $PREFIX/lib/
+#mkdir $PREFIX/lib
+#export LD_LIBRARY_PATH=${PREFIX}/lib
+#ldd $PREFIX/bin/mongod.bin
 
-export LD_LIBRARY_PATH=${PREFIX}/lib
-
-ldd $PREFIX/bin/mongod.bin
-
+cp $DIR/bin/* $PREFIX/bin
 $PREFIX/bin/mongod --version
 
 cd $DIR
