@@ -41,7 +41,7 @@ ls -la src
 
 #http://andyfelong.com/2015/12/mongodb-3-0-7-on-raspberry-pi-2/
 apt-get update
-sapt-get -y install libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
+apt-get -y install libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
 
 #echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list.d/unstable.list
 #apt-get update
