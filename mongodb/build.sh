@@ -27,7 +27,6 @@ cd $PREFIX
 #mkdir conf
 #cp /etc/mongodb.conf conf/
 
-
 echo "building ${NAME}"
 
 ARCHIVE=${NAME}-src-r${VERSION}.tar.gz
@@ -39,6 +38,10 @@ ls -la
 cat README
 cat docs/building.md
 ls -la src
+
+#http://andyfelong.com/2015/12/mongodb-3-0-7-on-raspberry-pi-2/
+apt-get update
+sapt-get -y install libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
 
 #echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list.d/unstable.list
 #apt-get update
@@ -60,7 +63,8 @@ mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
 ls -la src/third_party
 cp $DIR/SConscript src/third_party/v8-3.25/
-scons --prefix=$PREFIX -j 2 --wiredtiger=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" core install
+scons -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" core
+scons --prefix=$PREFIX install
 
 ldd bin/mongod.bin
 
