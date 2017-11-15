@@ -41,4 +41,5 @@ matrix:
 #   - rsyslog
 #   - ruby
 #   - uwsgi
-   - mongodb
+#   - mongodb
+   - phantomjs
