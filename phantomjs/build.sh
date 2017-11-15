@@ -29,7 +29,9 @@ git checkout $VERSION
 git submodule init
 git submodule update
 
-python build.py
+ls -la
+
+./build.sh --confirm
 
 cp -r bin $PREFIX
 
