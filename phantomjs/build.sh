@@ -31,7 +31,7 @@ git submodule update
 
 ls -la
 
-./build.sh --confirm --qt-config="-no-pkg-config"
+./build.sh --confirm --qt-config "-no-pkg-config"
 
 cp -r bin $PREFIX
 
