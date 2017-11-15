@@ -19,7 +19,9 @@ mkdir -p $PREFIX
 cd ${DIR}/build
 
 apt-get update
-apt-get -y install apt-get install build-essential g++ flex bison gperf ruby perl \ libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \ libpng-dev libjpeg-dev python libx11-dev libxext-dev
+apt-get -y install build-essential g++ flex bison gperf ruby perl \
+    libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev \
+    libpng-dev libjpeg-dev python libx11-dev libxext-dev
 
 git clone git://github.com/ariya/phantomjs.git src
 cd src
