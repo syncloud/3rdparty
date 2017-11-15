@@ -31,7 +31,7 @@ git submodule update
 
 ls -la
 
-./build.sh --confirm
+./build.sh --confirm --release --qt-config="-no-pkg-config" --git-clean-qtbase --git-clean-qtwebkit
 
 cp -r bin $PREFIX
 
