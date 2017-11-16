@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 NAME=phantomjs
-VERSION=1.9
+VERSION=2.0
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
@@ -31,7 +31,7 @@ git submodule update
 
 ls -la
 
-./build.sh --confirm --qt-config "-no-pch"
+./build.sh --confirm
 
 cp -r bin $PREFIX
 
