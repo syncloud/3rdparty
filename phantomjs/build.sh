@@ -36,9 +36,13 @@ sed -i "s/PHANTOMJS_VERSION_PATCH.*/PHANTOMJS_VERSION_PATCH 20/g" src/consts.h
 grep PHANTOMJS_VERSION src/consts.h
 ls -la
 
-./build.sh --confirm
+#./build.sh --confirm
+wget http://artifact.syncloud.org/3rdparty/phantomjs-x86_64.tar.gz
+tar xf phantomjs-x86_64.tar.gz
+cd phantomjs
 
 cp -r bin $PREFIX
+ldd $PREFIX/bin/phantomjs
 
 cd $DIR
 
