@@ -41,9 +41,11 @@ wget http://artifact.syncloud.org/3rdparty/phantomjs-x86_64.tar.gz
 tar xf phantomjs-x86_64.tar.gz
 cd phantomjs
 
-cp -r bin $PREFIX
-ldd $PREFIX/bin/phantomjs
+cp -r $DIR/bin $PREFIX
+cp -r bin/phantomjs $PREFIX/phantomjs.bin
+ldd $PREFIX/bin/phantomjs.bin
 
+$PREFIX/bin/phantomjs --version
 cd $DIR
 
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
