@@ -55,7 +55,7 @@ cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpng12.so* $PREFIX/lib
 cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* $PREFIX/lib
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicui18n.so* $PREFIX/lib
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicuuc.so* $PREFIX/lib
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libexpat.so.1 
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libexpat.so.1 $PREFIX/lib
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd $PREFIX/bin/phantomjs.bin
