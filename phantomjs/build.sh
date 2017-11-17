@@ -42,7 +42,7 @@ tar xf phantomjs-$ARCH.tar.gz
 cd phantomjs
 
 cp -r $DIR/bin $PREFIX
-cp -r bin/phantomjs $PREFIX/phantomjs.bin
+cp -r bin/phantomjs $PREFIX/bin/phantomjs.bin
 ldd $PREFIX/bin/phantomjs.bin
 mkdir $PREFIX/lib
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicudata.so* $PREFIX/lib
