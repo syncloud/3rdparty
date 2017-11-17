@@ -33,13 +33,14 @@ grep PHANTOMJS_VERSION src/consts.h
 sed -i "s/PHANTOMJS_VERSION_MAJOR.*/PHANTOMJS_VERSION_MAJOR 1/g" src/consts.h
 sed -i "s/PHANTOMJS_VERSION_MINOR.*/PHANTOMJS_VERSION_MINOR 9/g" src/consts.h
 sed -i "s/PHANTOMJS_VERSION_PATCH.*/PHANTOMJS_VERSION_PATCH 20/g" src/consts.h
+sed -i "s/PHANTOMJS_VERSION_STRING.*/PHANTOMJS_VERSION_STRING 1.9.20" src/consts.h
 grep PHANTOMJS_VERSION src/consts.h
 ls -la
 
-#./build.sh --confirm
-wget http://artifact.syncloud.org/3rdparty/phantomjs-$ARCH.tar.gz
-tar xf phantomjs-$ARCH.tar.gz
-cd phantomjs
+./build.sh --confirm
+#wget http://artifact.syncloud.org/3rdparty/phantomjs-$ARCH.tar.gz
+#tar xf phantomjs-$ARCH.tar.gz
+#cd phantomjs
 
 cp -r $DIR/bin $PREFIX
 cp -r bin/phantomjs $PREFIX/bin/phantomjs.bin
