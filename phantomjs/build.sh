@@ -37,12 +37,27 @@ grep PHANTOMJS_VERSION src/consts.h
 ls -la
 
 #./build.sh --confirm
-wget http://artifact.syncloud.org/3rdparty/phantomjs-x86_64.tar.gz
-tar xf phantomjs-x86_64.tar.gz
+wget http://artifact.syncloud.org/3rdparty/phantomjs-$ARCH.tar.gz
+tar xf phantomjs-$ARCH.tar.gz
 cd phantomjs
 
 cp -r $DIR/bin $PREFIX
 cp -r bin/phantomjs $PREFIX/phantomjs.bin
+ldd $PREFIX/bin/phantomjs.bin
+mkdir $PREFIX/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicudata.so* $PREFIX/lib
+cp	 /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* $PREFIX/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* $PREFIX/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libfontconfig.so* $PREFIX/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libfreetype.so* $PREFIX/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libjpeg.so* $PREFIX/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpng12.so* $PREFIX/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* $PREFIX/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicui18n.so* $PREFIX/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libicuuc.so* $PREFIX/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libexpat.so.1 
+
+export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd $PREFIX/bin/phantomjs.bin
 
 $PREFIX/bin/phantomjs --version
