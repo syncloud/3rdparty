@@ -29,12 +29,6 @@ git checkout $VERSION
 git submodule init
 git submodule update
 
-grep PHANTOMJS_VERSION src/consts.h
-sed -i "s/PHANTOMJS_VERSION_MAJOR.*/PHANTOMJS_VERSION_MAJOR 1/g" src/consts.h
-sed -i "s/PHANTOMJS_VERSION_MINOR.*/PHANTOMJS_VERSION_MINOR 9/g" src/consts.h
-sed -i "s/PHANTOMJS_VERSION_PATCH.*/PHANTOMJS_VERSION_PATCH 20/g" src/consts.h
-sed -i "s/PHANTOMJS_VERSION_STRING.*/PHANTOMJS_VERSION_STRING \"1.9.20\"/g" src/consts.h
-grep PHANTOMJS_VERSION src/consts.h
 ls -la
 
 ./build.sh --confirm
