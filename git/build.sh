@@ -27,7 +27,7 @@ make configure
 ./configure --prefix=${PREFIX}
 
 make all doc info
-make install
+make install install-doc install-html
 
 mv ${PREFIX}/bin/git ${PREFIX}/bin/git.bin
 cp -r ${DIR}/bin/git ${PREFIX}/bin/git
