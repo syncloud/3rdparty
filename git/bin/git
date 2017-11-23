@@ -7,4 +7,4 @@ export LD_LIBRARY_PATH=${DIR}/lib
 export GIT_EXEC_PATH=${DIR}/libexec/git-core
 export GIT_TEMPLATE_DIR=${DIR}/share/git-core/templates
 
-${DIR}/bin/git.bin $@
+exec ${DIR}/bin/git.bin "$@"
