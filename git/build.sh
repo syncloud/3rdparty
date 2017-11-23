@@ -19,7 +19,7 @@ DPKG_ARCH=$(dpkg-architecture -q DEB_HOST_GNU_TYPE)
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
-https://www.kernel.org/pub/software/scm/git/git-${VERSION}.tar.gz --progress dot:giga
+wget https://www.kernel.org/pub/software/scm/git/git-${VERSION}.tar.gz --progress dot:giga
 tar xf git-${VERSION}.tar.gz
 cd git-${VERSION}
 
