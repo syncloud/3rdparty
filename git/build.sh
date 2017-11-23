@@ -19,10 +19,8 @@ DPKG_ARCH=$(dpkg-architecture -q DEB_HOST_GNU_TYPE)
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
-
-wget https://github.com/git/git/archive/v${VERSION}.tar.gz -O v${VERSION}.tar.gz
-rm -rf git-${VERSION}
-tar xzf v${VERSION}.tar.gz
+https://www.kernel.org/pub/software/scm/git/git-${VERSION}.tar.gz --progress dot:giga
+tar xf git-${VERSION}.tar.gz
 cd git-${VERSION}
 
 make configure
@@ -53,3 +51,9 @@ tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
 # test
 
 ${PREFIX}/bin/git config -l
+mkdir test
+cd test
+${PREFIX}/bin/git init
+touch test
+${PREFIX}/bin/git add test
+${PREFIX}/bin/git commit -m "test" --author "test <test@test.com>"

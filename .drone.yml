@@ -27,7 +27,7 @@ matrix:
 #   - PyYAML
 #   - asterisk
 #   - dovecot
-#   - git
+   - git
 #   - nginx
 #   - nodejs
 #   - openldap
@@ -42,4 +42,4 @@ matrix:
 #   - ruby
 #   - uwsgi
 #   - mongodb
-   - phantomjs
+#   - phantomjs
