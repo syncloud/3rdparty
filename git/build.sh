@@ -13,7 +13,7 @@ ARCH=$1
 NAME=git
 BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
-VERSION=2.10.1
+VERSION=2.15.0
 DPKG_ARCH=$(dpkg-architecture -q DEB_HOST_GNU_TYPE)
 
 rm -rf ${BUILD_DIR}
