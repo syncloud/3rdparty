@@ -27,14 +27,14 @@ matrix:
 #   - PyYAML
 #   - asterisk
 #   - dovecot
-   - git
+#   - git
 #   - nginx
 #   - nodejs
 #   - openldap
 #   - openssl
 #   - php
 #   - php7
-#   - postfix
+   - postfix
 #   - postgresql
 #   - python
 #   - redis
