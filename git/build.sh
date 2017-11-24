@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -51,6 +51,8 @@ tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
 # test
 
 ${PREFIX}/bin/git config -l
+${PREFIX}/bin/git config --global user.email "you@example.com"
+${PREFIX}/bin/git config --global user.name "Your Name"
 mkdir test
 cd test
 ${PREFIX}/bin/git init
