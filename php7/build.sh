@@ -14,7 +14,6 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php7
 VERSION=7.1.8
-#VERSION=5.6.9
 APCU_VERSION=5.1.3
 APCU_BC_VERSION=1.0.2
 #IMAGICK_VERSION=3.1.2
@@ -70,6 +69,8 @@ CFLAGS="$OPTIONS" ./configure \
     --prefix ${PREFIX} \
     --with-config-file-path=${ROOT}/config \
     --with-gd \
+    --enable-gd-native-ttf \
+    --with-freetype-dir=/usr/include/freetype2 \
     --enable-zip \
     --with-zlib \
     --with-curl \
