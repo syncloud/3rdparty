@@ -26,14 +26,14 @@ matrix:
 #   - ImageMagick
 #   - PyYAML
 #   - asterisk
-#   - dovecot
+   - dovecot
 #   - git
 #   - nginx
 #   - nodejs
 #   - openldap
 #   - openssl
 #   - php
-   - php7
+#   - php7
 #   - postfix
 #   - postgresql
 #   - python
