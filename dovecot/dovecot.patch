@@ -1,0 +1,15 @@
+--- src/doveadm/doveadm.c	2018-04-02 20:39:50.457601939 +0000
++++ src/doveadm/doveadm.c.new	2018-04-02 21:28:11.000782936 +0000
+@@ -185,7 +185,11 @@
+ {
+ 	env_put(t_strconcat(MASTER_CONFIG_FILE_ENV"=",
+ 		master_service_get_config_path(master_service), NULL));
+-	argv[0] = BINDIR"/doveconf";
++        if (getenv("DOVECOT_BINDIR") != NULL) {
++            argv[0] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf");
++	} else {
++            argv[0] = BINDIR"/doveconf";
++        }
+ 	(void)execv(argv[0], argv);
+ 	i_fatal("execv(%s) failed: %m", argv[0]);
+ }
