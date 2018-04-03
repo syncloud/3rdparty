@@ -29,7 +29,8 @@ wget http://www.dovecot.org/releases/2.2/${NAME}-${VERSION}.tar.gz \
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
-patch -p0 < ${DIR}/dovecot.patch
+patch -p0 < ${DIR}/dovecot.1.patch
+patch -p0 < ${DIR}/dovecot.2.patch
 
 ./configure --help
 ./configure --prefix=${PREFIX} \
