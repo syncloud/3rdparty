@@ -6,7 +6,7 @@
  		master_service_get_config_path(master_service), NULL));
 -	argv[0] = BINDIR"/doveconf";
 +        if (getenv("DOVECOT_BINDIR") != NULL) {
-+            argv[0] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf");
++            argv[0] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf", NULL);
 +	} else {
 +            argv[0] = BINDIR"/doveconf";
 +        }

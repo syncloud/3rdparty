@@ -6,7 +6,7 @@
  		args = t_new(const char *, 5);
 -		args[0] = DOVECOT_CONFIG_BIN_PATH;
 +		if (getenv("DOVECOT_BINDIR") != NULL) {
-+			argv[0] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf");
++			argv[0] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf", NULL);
 +		} else {
 +			args[0] = DOVECOT_CONFIG_BIN_PATH;
 +		}

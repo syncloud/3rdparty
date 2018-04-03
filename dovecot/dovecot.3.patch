@@ -6,7 +6,7 @@
  	conf_argv = t_new(const char *, argv_max_count);
 -	conf_argv[i++] = DOVECOT_CONFIG_BIN_PATH;
 +	if (getenv("DOVECOT_BINDIR") != NULL) {
-+		conf_argv[i++] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf");
++		conf_argv[i++] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf", NULL);
 +	} else {
 +		conf_argv[i++] = DOVECOT_CONFIG_BIN_PATH;
 +	}
