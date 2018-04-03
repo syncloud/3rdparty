@@ -7,7 +7,7 @@
 -	conf_argv[i++] = DOVECOT_CONFIG_BIN_PATH;
 +	if (getenv("DOVECOT_BINDIR") != NULL) {
 +		conf_argv[i++] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf");
-++	} else {
++	} else {
 +		conf_argv[i++] = DOVECOT_CONFIG_BIN_PATH;
 +	}
  	if (input->service != NULL) {
