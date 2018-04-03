@@ -1,0 +1,15 @@
+--- src/lib-master/master-service-settings.c	2018-04-02 20:39:50.587596009 +0000
++++ src/lib-master/master-service-settings.c.new	2018-04-03 08:15:58.670300597 +0000
+@@ -188,7 +188,11 @@
+ 	i = 0;
+ 	argv_max_count = 11 + (service->argc + 1) + 1;
+ 	conf_argv = t_new(const char *, argv_max_count);
+-	conf_argv[i++] = DOVECOT_CONFIG_BIN_PATH;
++	if (getenv("DOVECOT_BINDIR") != NULL) {
++		conf_argv[i++] = t_strconcat(getenv("DOVECOT_BINDIR"), "/doveconf");
+++	} else {
++		conf_argv[i++] = DOVECOT_CONFIG_BIN_PATH;
++	}
+ 	if (input->service != NULL) {
+ 		conf_argv[i++] = "-f";
+ 		conf_argv[i++] = t_strconcat("service=", input->service, NULL);

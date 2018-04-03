@@ -31,6 +31,7 @@ cd ${NAME}-${VERSION}
 
 patch -p0 < ${DIR}/dovecot.1.patch
 patch -p0 < ${DIR}/dovecot.2.patch
+patch -p0 < ${DIR}/dovecot.3.patch
 
 ./configure --help
 ./configure --prefix=${PREFIX} \
