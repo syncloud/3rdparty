@@ -36,7 +36,8 @@ patch -p0 < ${DIR}/dovecot.3.patch
 ./configure --help
 ./configure --prefix=${PREFIX} \
     --with-rawlog \
-    --with-ldap
+    --with-ldap \
+    --disable-rpath
 
 make
 make install
