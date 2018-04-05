@@ -51,5 +51,5 @@ echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/sbin/dovecot
 
-rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
+rm -rf ${DIR}/${NAME}_snap-${ARCH}.tar.gz
+tar czf ${DIR}/${NAME}_snap-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
