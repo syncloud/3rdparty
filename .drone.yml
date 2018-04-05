@@ -26,7 +26,8 @@ matrix:
 #   - ImageMagick
 #   - PyYAML
 #   - asterisk
-   - dovecot
+#   - dovecot
+   - dovecot_snap
 #   - git
 #   - nginx
 #   - nodejs
