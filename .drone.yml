@@ -27,9 +27,9 @@ matrix:
 #   - PyYAML
 #   - asterisk
 #   - dovecot
-   - dovecot_snap
+#   - dovecot_snap
 #   - git
-#   - nginx
+   - nginx
 #   - nodejs
 #   - openldap
 #   - openssl
