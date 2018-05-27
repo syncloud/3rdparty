@@ -43,7 +43,6 @@ cd ${NAME}-${VERSION}
     --with-ld-opt="-static" \
     --with-http_ssl_module \
     --with-http_gzip_static_module \
-    --with-http_spdy_module \
     --with-openssl=../openssl-${OPENSSL_VERSION} \
     --with-pcre=../pcre-${PCRE_VERSION} \
     --with-ipv6 \
