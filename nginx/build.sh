@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=nginx
-VERSION=1.8.0
+VERSION=1.13.12
 OPENSSL_VERSION=1.0.2g
 PCRE_VERSION=8.40
 ROOT=/nonexistent/path
@@ -33,7 +33,7 @@ tar xzf ${NAME}-${VERSION}.tar.gz
 wget http://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xzf openssl-${OPENSSL_VERSION}.tar.gz
 
-wget http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PCRE_VERSION}.tar.gz
+wget https://ftp.pcre.org/pub/pcre/pcre-${PCRE_VERSION}.tar.gz
 tar xzf pcre-${PCRE_VERSION}.tar.gz
 
 cd ${NAME}-${VERSION}
