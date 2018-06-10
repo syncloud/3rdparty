@@ -23,13 +23,13 @@ matrix:
     - arm
     - amd64
   project: 
-#   - ImageMagick
+   - ImageMagick
 #   - PyYAML
 #   - asterisk
 #   - dovecot
 #   - dovecot_snap
 #   - git
-   - nginx
+#   - nginx
 #   - nodejs
 #   - openldap
 #   - openssl
