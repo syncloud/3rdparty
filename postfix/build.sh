@@ -24,11 +24,12 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 
 cd ${BUILD_DIR}
+SASL_DIR=${BUILD_DIR}/sasl
 wget ftp://ftp.cyrusimap.org/cyrus-sasl/cyrus-sasl-2.1.26.tar.gz
 tar xf cyrus-sasl-2.1.26.tar.gz
 cd cyrus-sasl-2.1.26
 ./configure --help
-./configure --prefix=${BUILD_DIR}/sasl --enable-login --enable-ntlm
+./configure --prefix=${SASL_DIR} --enable-login --enable-ntlm
 make
 make install
 
@@ -40,17 +41,19 @@ cd ${NAME}-${VERSION}
 export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/include \
-	-DUSE_CYRUS_SASL -I'${BUILD_DIR}'/sasl/include/sasl \
+	-DUSE_CYRUS_SASL -I'${SASL_DIR}'/include/sasl \
     -DHAS_LDAP \
     -DUSE_TLS'
 
 export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
   -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
-  -L${BUILD_DIR}/sasl/lib \
+  -L${SASL_DIR}/lib \
   -llber -lssl -lcrypto -lsasl2"
 
 make makefiles
 make
+export LD_LIBRARY_PATH=${PREFIX}/lib:${SASL_DIR}/lib
+
 make non-interactive-package install_root=${PREFIX}
 
 mv ${PREFIX}/usr/sbin/postfix ${PREFIX}/usr/sbin/postfix.bin
@@ -68,7 +71,7 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libnsl.so
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libresolv.so* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsasl2.so* ${PREFIX}/lib
+#cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsasl2.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgnutls-deb0.so* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so.0 ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* ${PREFIX}/lib
@@ -86,6 +89,7 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.s
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so.* ${PREFIX}/lib
+cp ${SASL_DIR}/lib/* ${PREFIX}/lib
 
 echo "embedded libs"
 #export LD_DEBUG=libs
