@@ -23,7 +23,7 @@ matrix:
     - arm
     - amd64
   project: 
-   - ImageMagick
+#   - ImageMagick
 #   - PyYAML
 #   - asterisk
 #   - dovecot
@@ -35,7 +35,7 @@ matrix:
 #   - openssl
 #   - php
 #   - php7
-#   - postfix
+   - postfix
 #   - postgresql
 #   - python
 #   - redis

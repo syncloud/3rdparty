@@ -29,12 +29,13 @@ cd ${NAME}-${VERSION}
 export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
+	-DUSE_CYRUS_SASL \
   -I/usr/include -DHAS_LDAP \
   -DUSE_TLS'
 
 export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
   -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
-  -llber -lssl -lcrypto"
+  -llber -lssl -lcrypto -lsasl2"
 
 make makefiles
 make
@@ -79,6 +80,8 @@ export LD_DEBUG=libs
 export LD_LIBRARY_PATH=${PREFIX}/lib
 export LD_PRELOAD=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix.bin
+
+${PREFIX}/usr/sbin/postconf -a
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
