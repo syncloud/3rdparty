@@ -28,10 +28,10 @@ cd ${NAME}-${VERSION}
 #TODO: It is impossible to override paths at runtime
 export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
-	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
-	-DUSE_CYRUS_SASL \
-  -I/usr/include -DHAS_LDAP \
-  -DUSE_TLS'
+	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/include \
+	-DUSE_CYRUS_SASL -I/usr/include/sasl \
+ -DHAS_LDAP \
+ -DUSE_TLS'
 
 export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
   -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
