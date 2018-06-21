@@ -27,6 +27,7 @@ cd ${BUILD_DIR}
 wget ftp://ftp.cyrusimap.org/cyrus-sasl/cyrus-sasl-2.1.26.tar.gz
 tar xf cyrus-sasl-2.1.26.tar.gz
 cd cyrus-sasl-2.1.26
+./configure --help
 ./configure --prefix=${BUILD_DIR}/sasl --enable-login --enable-ntlm
 make
 make install
@@ -39,7 +40,7 @@ cd ${NAME}-${VERSION}
 export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/include \
-	-DUSE_CYRUS_SASL -I'${BUILD_DIR}'/sasl/usr/include \
+	-DUSE_CYRUS_SASL -I'${BUILD_DIR}'/sasl/include/sasl \
  -DHAS_LDAP \
  -DUSE_TLS'
 
