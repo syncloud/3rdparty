@@ -24,9 +24,9 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 
 cd ${BUILD_DIR}
-wget ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.25.tar.gz
-tar xf cyrus-sasl-2.1.25.tar.gz
-cd cyrus-sasl-2.1.25
+wget ftp://ftp.cyrusimap.org/cyrus-sasl/cyrus-sasl-2.1.26.tar.gz
+tar xf cyrus-sasl-2.1.26.tar.gz
+cd cyrus-sasl-2.1.26
 ./configure --prefix=${BUILD_DIR}/sasl --enable-login --enable-ntlm
 make
 make install
