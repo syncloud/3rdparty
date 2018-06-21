@@ -18,7 +18,7 @@ BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
 echo "building ${NAME}"
 
-apt remove libsasl2-dev libsasl2
+apt remove -y libsasl2-dev libsasl2
 
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
