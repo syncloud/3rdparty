@@ -18,10 +18,20 @@ BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
 echo "building ${NAME}"
 
+apt remove libsasl2-dev libsasl2
+
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
-cd ${BUILD_DIR}
 
+cd ${BUILD_DIR}
+wget ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-sasl-2.1.25.tar.gz
+tar xf cyrus-sasl-2.1.25.tar.gz
+cd cyrus-sasl-2.1.25
+./configure --prefix=${BUILD_DIR}/sasl --enable-login --enable-ntlm
+make
+make install
+
+cd ${BUILD_DIR}
 wget ftp://ftp.reverse.net/pub/postfix/official/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
@@ -29,12 +39,13 @@ cd ${NAME}-${VERSION}
 export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/include \
-	-DUSE_CYRUS_SASL -I/usr/include/sasl \
+	-DUSE_CYRUS_SASL -I'${BUILD_DIR}'/sasl/usr/include \
  -DHAS_LDAP \
  -DUSE_TLS'
 
 export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
   -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
+  -L${BUILD_DIR}/sasl/lib
   -llber -lssl -lcrypto -lsasl2"
 
 make makefiles
@@ -76,7 +87,7 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.*
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so.* ${PREFIX}/lib
 
 echo "embedded libs"
-export LD_DEBUG=libs
+#export LD_DEBUG=libs
 export LD_LIBRARY_PATH=${PREFIX}/lib
 export LD_PRELOAD=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix.bin
