@@ -41,12 +41,12 @@ export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/include \
 	-DUSE_CYRUS_SASL -I'${BUILD_DIR}'/sasl/include/sasl \
- -DHAS_LDAP \
- -DUSE_TLS'
+    -DHAS_LDAP \
+    -DUSE_TLS'
 
 export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
   -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
-  -L${BUILD_DIR}/sasl/lib
+  -L${BUILD_DIR}/sasl/lib \
   -llber -lssl -lcrypto -lsasl2"
 
 make makefiles
