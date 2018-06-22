@@ -43,11 +43,10 @@ make makefiles
 make
 make non-interactive-package install_root=${PREFIX}
 
-mv ${PREFIX}/usr/sbin/postfix ${PREFIX}/usr/sbin/postfix.bin
-cp ${DIR}/usr/sbin/* ${PREFIX}/usr/sbin
+cp ${DIR}/usr/sbin/postfix.sh ${PREFIX}/usr/sbin/
 
 echo "original libs"
-ldd ${PREFIX}/usr/sbin/postfix.bin
+ldd ${PREFIX}/usr/sbin/postfix
 mkdir ${PREFIX}/lib
 cp  /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
 cp  /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libldap*.so* ${PREFIX}/lib
@@ -83,7 +82,7 @@ echo "embedded libs"
 #export LD_PRELOAD=${PREFIX}/lib
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
-ldd ${PREFIX}/usr/sbin/postfix.bin
+ldd ${PREFIX}/usr/sbin/postfix
 
 ${PREFIX}/usr/sbin/postconf -a
 
