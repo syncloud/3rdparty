@@ -85,7 +85,7 @@ ldd ${PREFIX}/usr/sbin/postfix.bin
 
 ${PREFIX}/usr/sbin/postconf -a
 
-find ${PREFIX}/usr/sbin/postfix
+find ${PREFIX}
 ${PREFIX}/usr/sbin/postfix -c ${PREFIX}/etc -v
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
