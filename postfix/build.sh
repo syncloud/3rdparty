@@ -22,11 +22,13 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
+#TODO: we may not need this anymore, check snap mail tests (it does not use /opt/...)
+CONFIG_DIR=/opt/data/mail/config/postfix
+
 wget ftp://ftp.reverse.net/pub/postfix/official/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-#TODO: It is impossible to override paths at runtime
-export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
+export CCARGS='-DDEF_CONFIG_DIR=\"'${CONFIG_DIR}'\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/include \
 	-DUSE_CYRUS_SASL -I/usr/include/sasl \
@@ -86,7 +88,7 @@ ldd ${PREFIX}/usr/sbin/postfix.bin
 ${PREFIX}/usr/sbin/postconf -a
 
 find ${PREFIX}
-${PREFIX}/usr/sbin/postfix -c ${PREFIX}/etc -v
+${PREFIX}/usr/sbin/postfix -c ${PREFIX}${CONFIG_DIR} -v
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
