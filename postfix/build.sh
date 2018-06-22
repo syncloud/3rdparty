@@ -78,8 +78,9 @@ cp  /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so.* ${PREFIX}/lib
 
 echo "embedded libs"
 #export LD_DEBUG=libs
+#export LD_PRELOAD=${PREFIX}/lib
+
 export LD_LIBRARY_PATH=${PREFIX}/lib
-export LD_PRELOAD=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix.bin
 
 ${PREFIX}/usr/sbin/postconf -a
