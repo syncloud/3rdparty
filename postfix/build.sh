@@ -88,7 +88,8 @@ ldd ${PREFIX}/usr/sbin/postfix.bin
 ${PREFIX}/usr/sbin/postconf -a
 
 find ${PREFIX}
-${PREFIX}/usr/sbin/postfix -c ${PREFIX}${CONFIG_DIR} -v
+
+${PREFIX}/usr/sbin/postfix -c ${PREFIX}${CONFIG_DIR} -v || true
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
