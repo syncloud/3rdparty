@@ -84,7 +84,7 @@ export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix.bin
 
 ${PREFIX}/usr/sbin/postconf -a
-${PREFIX}/usr/sbin/postfix --help
+${PREFIX}/usr/sbin/postfix -c ${PREFIX}/etc/postfix -v
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
