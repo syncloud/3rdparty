@@ -31,13 +31,14 @@ cd ${NAME}-${VERSION}
 export CCARGS='-DDEF_CONFIG_DIR=\"'${CONFIG_DIR}'\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" -I/usr/include \
-	-DUSE_CYRUS_SASL -I/usr/include/sasl \
  -DHAS_LDAP \
  -DUSE_TLS'
+# 	-DUSE_CYRUS_SASL -I/usr/include/sasl \
 
 export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
   -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
-  -llber -lssl -lcrypto -lsasl2"
+  -llber -lssl -lcrypto"
+#  -lsasl2
 
 make makefiles
 make
