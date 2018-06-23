@@ -85,6 +85,7 @@ export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix
 
 ${PREFIX}/usr/sbin/postconf -a
+${PREFIX}/usr/sbin/postconf -A
 
 find ${PREFIX}
 
