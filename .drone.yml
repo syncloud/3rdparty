@@ -26,8 +26,8 @@ matrix:
 #   - ImageMagick
 #   - PyYAML
 #   - asterisk
-   - dovecot
-   - dovecot_snap
+#   - dovecot
+#   - dovecot_snap
 #   - git
 #   - nginx
 #   - nodejs
@@ -35,7 +35,7 @@ matrix:
 #   - openssl
 #   - php
 #   - php7
-#   - postfix
+   - postfix
 #   - postgresql
 #   - python
 #   - redis
