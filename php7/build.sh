@@ -99,8 +99,7 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-intl \
     --enable-exif \
     --enable-pcntl \
-    --enable-ftp \
-    --with-linsmbclient
+    --enable-ftp
 #    --with-imagick \
 
 make -j2
@@ -166,6 +165,31 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgm
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcrypt.so* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgpg-error.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libfreetype.so* ${PREFIX}/lib
+
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsmbclient.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsamba-util.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsmbconf.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libndr.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libndr-standard.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libbsd.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtalloc.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgensec.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtevent-util.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libndr-nbt.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsamba-hostconfig.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsamba-credentials.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdcerpc-binding.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtdb.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcap.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libldb.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libwbclient.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsamdb.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libntdb.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libattr.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libndr-krb5pac.so* ${PREFIX}/lib
+
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/samba/*.so* ${PREFIX}/lib
+
 cp --remove-destination /usr/lib/libmcrypt.so* ${PREFIX}/lib
 
 echo "test references"
