@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php7
-VERSION=7.1.8
+VERSION=7.1.21
 APCU_VERSION=5.1.3
 APCU_BC_VERSION=1.0.2
 #IMAGICK_VERSION=3.1.2
@@ -96,7 +96,7 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-exif \
     --enable-pcntl \
     --enable-ftp \
-    --with-smbclient
+    --enable-smbclient
 #    --with-imagick \
 
 make -j2
