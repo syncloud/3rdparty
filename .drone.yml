@@ -34,8 +34,8 @@ matrix:
 #   - openldap
 #   - openssl
 #   - php
-#   - php7
-   - postfix
+   - php7
+#   - postfix
 #   - postgresql
 #   - python
 #   - redis
