@@ -100,7 +100,7 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-exif \
     --enable-pcntl \
     --enable-ftp \
-    --with-smbclient
+    --with-linsmbclient
 #    --with-imagick \
 
 make -j2
