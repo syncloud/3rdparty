@@ -10,7 +10,7 @@ fi
 
 ARCH=$1
 
-apt install -y libsmbclient
+apt install -y libsmbclient-dev
 
 export TMPDIR=/tmp
 export TMP=/tmp
