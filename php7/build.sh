@@ -71,6 +71,8 @@ fi
 
 ./configure --help
 
+export CPPFLAGS=-I/usr/include/samba-4.0
+
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
     --with-pgsql \
