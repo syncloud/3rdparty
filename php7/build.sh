@@ -10,6 +10,8 @@ fi
 
 ARCH=$1
 
+apt install -y libsmbclient
+
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php7
