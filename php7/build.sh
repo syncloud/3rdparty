@@ -67,6 +67,8 @@ if [ "$ARCH" == "armv7l"  ]; then
     OPTIONS="-D_FILE_OFFSET_BITS=64"
 fi
 
+./configure --help
+
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
     --with-pgsql \
@@ -167,13 +169,12 @@ echo "test references"
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/sbin/php-fpm
 
-#if ${PREFIX}/bin/php -v: then
-  #exit 1
-#fi
-
 find ${PREFIX}/lib/php/extensions -name "*.so" -exec mv {} ${PREFIX}/lib/php/extensions \;
 
 find ${DIR} -name "*.so"
+
+${PREFIX}/bin/php -i
+
 cd ${DIR}
 
 rm -rf ${NAME}-${ARCH}.tar.gz
