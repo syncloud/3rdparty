@@ -20,6 +20,8 @@ APCU_BC_VERSION=1.0.2
 #IMAGICK_VERSION=3.3.0RC2
 IMAGICK_VERSION=3.2.0RC1
 IMAGEMAGICK_VERSION=6.9.2-1
+SMBCLIENT_VERSION=0.9.0
+
 ROOT=${DIR}/build/install
 PREFIX=${ROOT}/${NAME}
 
@@ -46,6 +48,10 @@ mv ext/apcu-* ext/apcu
 wget https://pecl.php.net/get/apcu_bc-${APCU_BC_VERSION}.tgz --progress dot:giga
 tar xzf apcu_bc-${APCU_BC_VERSION}.tgz -C ext/
 mv ext/apcu_bc-* ext/apcu_bc
+
+wget https://pecl.php.net/get/smbclient-${SMBCLIENT_VERSION}.tgz --progress dot:giga
+tar xf smbclient-${SMBCLIENT_VERSION}.tgz -C ext/
+mv ext/smbclient-* ext/smbclient
 
 #wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
 #tar xzf imagick-${IMAGICK_VERSION}.tgz -C ext/
@@ -87,7 +93,8 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-intl \
     --enable-exif \
     --enable-pcntl \
-    --enable-ftp
+    --enable-ftp \
+    --with-smbclient
 #    --with-imagick \
 
 make -j2
