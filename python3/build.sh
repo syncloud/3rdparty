@@ -86,7 +86,7 @@ tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
 
 # tests
 
-${PREFIX}/bin/python -c 'urllib.request; print(urllib.request.urlopen("https://google.com"))'
+${PREFIX}/bin/python -c 'import urllib.request; print(urllib.request.urlopen("https://google.com"))'
 ${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 
 #${PREFIX}/bin/pip install cryptography==2.0
