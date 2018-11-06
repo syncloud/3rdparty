@@ -10,10 +10,10 @@ fi
 
 ARCH=$1
 
-VERSION=2.7.10
+VERSION=3.7.1
 OPENSSL_VERSION=1.0.2g
 
-NAME=python
+NAME=python3
 PREFIX=${DIR}/build/${NAME}
 OPENSSL=${DIR}/build/openssl
 
@@ -53,9 +53,9 @@ cp ${DIR}/python ${PREFIX}/bin/
 cp -r ${OPENSSL}/lib/* ${PREFIX}/lib
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
-ldd ${PREFIX}/lib/libpython2.7.so
+ldd ${PREFIX}/lib/libpython3.7.so
 ldd ${PREFIX}/bin/python.bin
-#ldd ${PREFIX}/lib/python2.7/lib-dynload/_ssl.so
+#ldd ${PREFIX}/lib/python3.7/lib-dynload/_ssl.so
 
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so* ${PREFIX}/lib
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib
@@ -63,7 +63,7 @@ ldd ${PREFIX}/bin/python.bin
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so* ${PREFIX}/lib
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib
 
-ldd ${PREFIX}/lib/libpython2.7.so
+ldd ${PREFIX}/lib/libpython3.7.so
 ldd ${PREFIX}/bin/python.bin
 
 ${PREFIX}/bin/python -m ensurepip --upgrade
