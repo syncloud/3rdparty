@@ -47,14 +47,13 @@ export LD_LIBRARY_PATH=${OPENSSL}/lib
 make
 make install
 
-mv ${PREFIX}/bin/python ${PREFIX}/bin/python.bin
 cp ${DIR}/python ${PREFIX}/bin/
 
 cp -r ${OPENSSL}/lib/* ${PREFIX}/lib
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
-ldd ${PREFIX}/lib/libpython3.7.so
-ldd ${PREFIX}/bin/python.bin
+ldd ${PREFIX}/lib/libpython3.so
+ldd ${PREFIX}/bin/python3
 #ldd ${PREFIX}/lib/python3.7/lib-dynload/_ssl.so
 
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so* ${PREFIX}/lib
@@ -63,8 +62,8 @@ ldd ${PREFIX}/bin/python.bin
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so* ${PREFIX}/lib
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib
 
-ldd ${PREFIX}/lib/libpython3.7.so
-ldd ${PREFIX}/bin/python.bin
+ldd ${PREFIX}/lib/libpython3.so
+ldd ${PREFIX}/bin/python3
 
 ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
