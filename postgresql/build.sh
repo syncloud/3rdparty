@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=postgresql
-VERSION=9.4.2
+VERSION=9.6.11
 PREFIX=${DIR}/build/${NAME}
 
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev
