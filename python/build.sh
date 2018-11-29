@@ -92,5 +92,5 @@ ${PREFIX}/bin/python -c 'from urllib2 import urlopen; print(urlopen("https://goo
 ${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 
 #${PREFIX}/bin/pip install cryptography==2.0
-${PREFIX}/bin/pip install certbot
-${PREFIX}/bin/certbot help
+#${PREFIX}/bin/pip install certbot
+#${PREFIX}/bin/certbot help
