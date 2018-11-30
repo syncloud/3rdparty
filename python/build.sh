@@ -25,7 +25,7 @@ cd ${DIR}/build
 curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
-./config --prefix=${PREFIX} --openssldir=/usr/lib/ssl shared
+./config --prefix=${PREFIX} --openssldir=/usr/lib/ssl no-shared no-ssl2 no-ssl3 -fPIC
 make
 make install
 
