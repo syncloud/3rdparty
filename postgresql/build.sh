@@ -28,7 +28,7 @@ cd ${NAME}-${VERSION}
 rm -rf ${PREFIX}
 
 ./configure --prefix ${PREFIX}
-make
+make world
 make install
 
 mv ${PREFIX}/bin/pg_ctl ${PREFIX}/bin/pg_ctl.bin
