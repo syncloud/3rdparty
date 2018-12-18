@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=mariadb
-VERSION=10.0.30
+VERSION=10.3.11
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 

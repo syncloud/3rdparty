@@ -36,7 +36,7 @@ matrix:
 #   - php
 #   - php7
 #   - postfix
-    - postgresql
+#   - postgresql
 #   - python
 #   - python3
 #   - redis
@@ -45,3 +45,4 @@ matrix:
 #   - uwsgi
 #   - mongodb
 #   - phantomjs
+   - mariadb
