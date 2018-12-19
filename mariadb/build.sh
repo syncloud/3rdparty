@@ -31,6 +31,7 @@ cd ${NAME}-${VERSION}
 cmake . -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make
 make install
+rm -rf ${PREFIX}/mysql-test
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
