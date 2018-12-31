@@ -34,7 +34,7 @@ matrix:
 #   - openldap
 #   - openssl
 #   - php
-#   - php7
+    - php7
 #   - postfix
 #   - postgresql
 #   - python
@@ -45,4 +45,4 @@ matrix:
 #   - uwsgi
 #   - mongodb
 #   - phantomjs
-   - mariadb
+#   - mariadb

@@ -75,6 +75,7 @@ export CPPFLAGS=-I/usr/include/samba-4.0
 
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
+    --with-mysqli \
     --with-pgsql \
     --with-pdo-pgsql \
     --enable-opcache \
