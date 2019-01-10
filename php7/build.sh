@@ -101,8 +101,8 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-intl \
     --enable-exif \
     --enable-pcntl \
-    --enable-ftp
-#    --with-imagick \
+    --enable-ftp \
+    --with-imagick
 
 make -j2
 rm -rf ${PREFIX}
