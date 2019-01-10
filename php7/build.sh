@@ -195,6 +195,8 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/samba
 
 cp --remove-destination /usr/lib/libmcrypt.so* ${PREFIX}/lib
 
+${PREFIX}/bin/pecl install imagick
+
 echo "test references"
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
@@ -205,9 +207,6 @@ find ${PREFIX}/lib/php/extensions -name "*.so*" -exec mv {} ${PREFIX}/lib/php/ex
 find ${DIR} -name "*.so"
 
 ${PREFIX}/bin/php -i
-
-ls -la ${PREFIX}/bin
-${PREFIX}/bin/pecl install imagick
 
 cd ${DIR}
 
