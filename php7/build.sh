@@ -10,6 +10,7 @@ fi
 
 ARCH=$1
 
+apt update
 apt install -y libsmbclient-dev libmagickwand-dev imagemagick
 
 export TMPDIR=/tmp
