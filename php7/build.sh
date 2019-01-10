@@ -102,7 +102,7 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-exif \
     --enable-pcntl \
     --enable-ftp \
-    --with-imagick
+    -–with-magickwand
 
 make -j2
 rm -rf ${PREFIX}
