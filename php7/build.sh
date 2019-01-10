@@ -10,7 +10,7 @@ fi
 
 ARCH=$1
 
-apt install -y libsmbclient-dev
+apt install -y libsmbclient-dev libmagickwand-dev imagemagick
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -204,6 +204,9 @@ find ${PREFIX}/lib/php/extensions -name "*.so*" -exec mv {} ${PREFIX}/lib/php/ex
 find ${DIR} -name "*.so"
 
 ${PREFIX}/bin/php -i
+
+ls -la ${PREFIX}/bin
+${PREFIX}/bin/pecl install imagick
 
 cd ${DIR}
 
