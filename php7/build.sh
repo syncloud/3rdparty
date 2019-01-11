@@ -21,7 +21,7 @@ APCU_VERSION=5.1.3
 APCU_BC_VERSION=1.0.2
 #IMAGICK_VERSION=3.1.2
 #IMAGICK_VERSION=3.3.0RC2
-IMAGICK_VERSION=3.2.0RC1
+IMAGICK_VERSION=3.4.3
 IMAGEMAGICK_VERSION=6.9.2-1
 SMBCLIENT_VERSION=0.9.0
 
@@ -56,9 +56,9 @@ wget https://pecl.php.net/get/smbclient-${SMBCLIENT_VERSION}.tgz --progress dot:
 tar xf smbclient-${SMBCLIENT_VERSION}.tgz -C ext/
 mv ext/smbclient-* ext/smbclient
 
-#wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
-#tar xzf imagick-${IMAGICK_VERSION}.tgz -C ext/
-#mv ext/imagick-* ext/imagick
+wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
+tar xzf imagick-${IMAGICK_VERSION}.tgz -C ext/
+mv ext/imagick-* ext/imagick
 
 rm configure
 ./buildconf --force
@@ -102,7 +102,7 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-exif \
     --enable-pcntl \
     --enable-ftp \
-    -–with-magickwand
+    -–with-imagick
 
 make -j2
 rm -rf ${PREFIX}
