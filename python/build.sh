@@ -86,5 +86,5 @@ tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
 ${PREFIX}/bin/python -c 'from urllib2 import urlopen; print(urlopen("https://google.com"))'
 ${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 
-${PREFIX}/bin/pip install py.test==2.8.0
+${PREFIX}/bin/pip install pytest==2.8.0
 ${PREFIX}/bin/py.test.sh --help
