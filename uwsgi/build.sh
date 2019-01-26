@@ -34,11 +34,22 @@ sed -i 's/json = auto/json = false/g' buildconf/base.ini
 python uwsgiconfig.py --build
 
 cd ../..
+PREFIX=install/${NAME}
 
-mkdir -p install/${NAME}/bin
-cp build/${NAME}-${VERSION}/uwsgi install/${NAME}/bin/
+mkdir -p ${PREFIX}/bin
+cp uwsgi.sh ${PREFIX}/bin
+cp build/${NAME}-${VERSION}/uwsgi ${PREFIX}/bin
+mkdir -p ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libuuid.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib 
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/lib 
 
-ldd install/${NAME}/bin/uwsgi
+ldd ${PREFIX}/bin/uwsgi
+
+export LD_LIBRARY_PATH=${PREFIX}/lib
+ldd ${PREFIX}/bin/uwsgi
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C install ${NAME}
