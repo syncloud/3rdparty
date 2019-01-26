@@ -37,12 +37,12 @@ matrix:
 #   - php7
 #   - postfix
 #   - postgresql
-   - python
+#   - python
 #   - python3
 #   - redis
 #   - rsyslog
 #   - ruby
-#   - uwsgi
+   - uwsgi
 #   - mongodb
 #   - phantomjs
 #   - mariadb
