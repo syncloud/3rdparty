@@ -31,6 +31,7 @@ cd ${NAME}-${VERSION}
 cmake . -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make
 make install
+ldd ${PREFIX}/maribin/mysqld
 rm -rf ${PREFIX}/mysql-test
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
