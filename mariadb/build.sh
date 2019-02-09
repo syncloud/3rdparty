@@ -31,7 +31,17 @@ cd ${NAME}-${VERSION}
 cmake . -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make
 make install
-ldd ${PREFIX}/maribin/mysqld
+
+export LD_LIBRARY_PATH=${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblz4.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libbz2.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib
+
+ldd ${PREFIX}/bin/mysqld
+
+cp ${DIR}/mariadb.sh ${PREFIX}/bin
 rm -rf ${PREFIX}/mysql-test
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
