@@ -42,7 +42,7 @@ matrix:
 #   - redis
 #   - rsyslog
 #   - ruby
-   - uwsgi
+#   - uwsgi
 #   - mongodb
 #   - phantomjs
-#   - mariadb
+   - mariadb
