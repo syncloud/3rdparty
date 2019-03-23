@@ -35,7 +35,7 @@ apt-get update
 apt-get -y install libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
 #pip install scons==2.3.0
 #mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
-pip2 install -r etc/pip/compile-requirements.txt 
+pip2 install -r buildscripts/requirements.txt 
 
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
 #ls -la src/third_party
