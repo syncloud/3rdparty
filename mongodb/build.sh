@@ -33,7 +33,7 @@ ls -la src
 #http://andyfelong.com/2015/12/mongodb-3-0-7-on-raspberry-pi-2/
 apt-get update
 apt-get -y install libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
-pip install --egg scons==2.3.0
+pip install scons==2.3.0
 mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
 
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
