@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 NAME=mongodb
-VERSION=4.0.6
+VERSION=3.2.22
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
