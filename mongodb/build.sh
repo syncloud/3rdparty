@@ -39,10 +39,18 @@ mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-
 
 #https://gist.github.com/kitsook/f0f53bc7acc468b6e94c
 ls -la src/third_party
-cp $DIR/SConscript src/third_party/v8-3.25/
-scons -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" core
-scons --prefix=$PREFIX -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" install
+
+cd src/third_party/mozjs-38/
+./get_sources.sh
+./gen-config.sh #arm linux
+cd ../../../
+
+#cp $DIR/SConscript src/third_party/v8-3.25/
+#scons -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" core
+#scons --prefix=$PREFIX -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" install
 #python2 buildscripts/scons.py all
+
+scons mongo mongod --wiredtiger=off --mmapv1=on
 
 ls -la $PREFIX
 ls -la $PREFIX/bin
