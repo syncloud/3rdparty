@@ -9,6 +9,10 @@ if [[ -z "$1" ]]; then
 fi
 
 ARCH=$1
+MONGO_ARCH=arm
+if [[ ${ARCH} == "amd64" ]]; then
+    MONGO_ARCH=x86_64
+fi
 
 NAME=mongodb
 VERSION=3.2.22
@@ -42,7 +46,7 @@ ls -la src/third_party
 
 cd src/third_party/mozjs-38/
 ./get_sources.sh
-./gen-config.sh #arm linux
+./gen-config.sh ${MONGO_ARCH} linux
 cd ../../../
 
 #cp $DIR/SConscript src/third_party/v8-3.25/
@@ -50,22 +54,23 @@ cd ../../../
 #scons --prefix=$PREFIX -j 2 --wiredtiger=off --c++11=off --js-engine=v8-3.25 --disable-warnings-as-errors CXXFLAGS="-std=gnu++11" install
 #python2 buildscripts/scons.py all
 
-scons mongo mongod --wiredtiger=off --mmapv1=on
+scons -j 2 --wiredtiger=off --mmapv1=on mongod
+scons --prefix=${PREFIX} -j 2 --wiredtiger=off --mmapv1=on install
 
-ls -la $PREFIX
-ls -la $PREFIX/bin
-ls -la $PREFIX/lib || true
+ls -la ${PREFIX}
+ls -la ${PREFIX}/bin
+ls -la ${PREFIX}/lib || true
 
-mv $PREFIX/bin/mongod $PREFIX/bin/mongod.bin
-ldd $PREFIX/bin/mongod.bin
+mv ${PREFIX}/bin/mongod ${PREFIX}/bin/mongod.bin
+ldd ${PREFIX}/bin/mongod.bin
 
 #mkdir $PREFIX/lib
 #export LD_LIBRARY_PATH=${PREFIX}/lib
 #ldd $PREFIX/bin/mongod.bin
 
-cp $DIR/bin/* $PREFIX/bin
-$PREFIX/bin/mongod --version
+cp ${DIR}/bin/* ${PREFIX}/bin
+${PREFIX}/bin/mongod --version
 
-cd $DIR
+cd ${DIR}
 
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
