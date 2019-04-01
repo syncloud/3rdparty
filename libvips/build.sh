@@ -48,8 +48,8 @@ cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libffi.so* ${BUILD_DIR}/li
 cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so* ${BUILD_DIR}/lib
 
 export LD_LIBRARY_PATH=${BUILD_DIR}/lib
-ldd ${PREFIX}/lib/lobvips.so
-ldd ${PREFIX}/lib/lobvips-cpp.so
+ldd ${PREFIX}/lib/libvips.so
+ldd ${PREFIX}/lib/libvips-cpp.so
 cd ${DIR}
 
 tar cpzf ${NAME}-${VERSIO}-${LIB_ARCH}.tar.gz -C ${DIR}/build/${NAME} .
