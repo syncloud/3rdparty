@@ -14,7 +14,7 @@ if [[ ${ARCH} == "amd64" ]]; then
     LIB_ARCH=linux-x64
 fi
 
-NAME=libvps
+NAME=libvips
 VERSION=8.7.4
 PREFIX=${DIR}/build/${NAME}
 
@@ -37,4 +37,4 @@ ls -la ${PREFIX}/lib
 
 cd ${DIR}
 
-tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+tar cpzf ${NAME}-${VERSIO}-${LIB_ARCH}.tar.gz -C ${DIR}/build/${NAME} .
