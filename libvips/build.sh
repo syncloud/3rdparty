@@ -35,6 +35,21 @@ ls -la ${PREFIX}
 ls -la ${PREFIX}/bin
 ls -la ${PREFIX}/lib
 
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* ${BUILD_DIR}/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpng12.so* ${BUILD_DIR}/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libjpeg.so* ${BUILD_DIR}/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgmodule-2.0.so* ${BUILD_DIR}/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgobject-2.0.so* ${BUILD_DIR}/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libglib-2.0.so* ${BUILD_DIR}/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libexpat.so* ${BUILD_DIR}/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so* ${BUILD_DIR}/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so* ${BUILD_DIR}/lib
+cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libffi.so* ${BUILD_DIR}/lib
+cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so* ${BUILD_DIR}/lib
+
+export LD_LIBRARY_PATH=${BUILD_DIR}/lib
+ldd ${PREFIX}/lib/lobvips.so
+ldd ${PREFIX}/lib/lobvips-cpp.so
 cd ${DIR}
 
 tar cpzf ${NAME}-${VERSIO}-${LIB_ARCH}.tar.gz -C ${DIR}/build/${NAME} .
