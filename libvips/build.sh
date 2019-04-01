@@ -52,4 +52,4 @@ ldd ${PREFIX}/lib/libvips.so
 ldd ${PREFIX}/lib/libvips-cpp.so
 cd ${DIR}
 
-tar cpzf ${NAME}-${VERSIO}-${LIB_ARCH}.tar.gz -C ${DIR}/build/${NAME} .
+tar cpzf ${NAME}-${VERSION}-${LIB_ARCH}.tar.gz -C ${DIR}/build/${NAME} .
