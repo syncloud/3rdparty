@@ -37,4 +37,4 @@ ls -la ${PREFIX}/lib
 
 cd ${DIR}
 
-tar cpzf ${NAME}-${LIB_ARCH}.tar.gz -C ${DIR}/build ${NAME}
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
