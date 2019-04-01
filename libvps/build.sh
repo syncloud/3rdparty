@@ -14,7 +14,7 @@ if [[ ${ARCH} == "amd64" ]]; then
     LIB_ARCH=linux-x64
 fi
 
-NAME=lobvps
+NAME=libvps
 VERSION=8.7.4
 PREFIX=${DIR}/build/${NAME}
 
