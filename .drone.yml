@@ -46,4 +46,4 @@ matrix:
 #   - mongodb
 #   - phantomjs
 #   - mariadb
-   - libvps
+   - libvips
