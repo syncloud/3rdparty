@@ -24,7 +24,7 @@ cd ${DIR}/build
 
 echo "building ${NAME}"
 apt update
-apt install -y jq
+apt install -y jq intltool
 
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
