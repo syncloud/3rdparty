@@ -32,6 +32,7 @@ cd sharp-libvips-${VERSION}/build
 export VERSION_VIPS=${VERSION}
 export PLATFORM=${LIB_ARCH}
 mkdir /packaging
+sed -i 's/VERSION_HARFBUZZ=.*/VERSION_HARFBUZZ=2.4.0/g' ./lin.sh
 ./lin.sh 
 ls -la /packaging
 tar tvf /packaging/libvips-*.tar.gz
