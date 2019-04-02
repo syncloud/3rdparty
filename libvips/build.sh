@@ -23,6 +23,8 @@ mkdir -p $PREFIX
 cd ${DIR}/build
 
 echo "building ${NAME}"
+apt update
+apt install -y jq
 
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
