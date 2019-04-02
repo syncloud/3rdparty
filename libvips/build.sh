@@ -25,7 +25,7 @@ cd ${DIR}/build
 echo "building ${NAME}"
 
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
-tar xf sharp-libvips-${VERSION}.tar.gz
+tar xf v${VERSION}.tar.gz
 cd sharp-libvips-${VERSION}/build
 export VERSION_VIPS=${VERSION}
 export PLATFORM=${LIB_ARCH}
