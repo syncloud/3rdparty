@@ -25,7 +25,7 @@ cd ${DIR}/build
 echo "building ${NAME}"
 apt update
 apt install -y jq intltool cmake nasm gtk-doc-tools texinfo gperf advancecomp libglib2.0-dev gobject-introspection
-
+curl https://sh.rustup.rs -sSf | sh -s -- -y
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
 cd sharp-libvips-${VERSION}
