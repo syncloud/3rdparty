@@ -24,7 +24,7 @@ cd ${DIR}/build
 
 echo "building ${NAME}"
 apt update
-apt install -y jq intltool cmake
+apt install -y jq intltool cmake nasm gtk-doc-tools texinfo gperf advancecomp libglib2.0-dev gobject-introspection
 
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
