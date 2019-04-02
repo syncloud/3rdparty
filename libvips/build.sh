@@ -28,7 +28,9 @@ apt install -y jq intltool cmake
 
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
-cd sharp-libvips-${VERSION}/build
+cd sharp-libvips-${VERSION}
+cp linux-x64/Toolchain.cmake /root
+cd build
 export VERSION_VIPS=${VERSION}
 export PLATFORM=${LIB_ARCH}
 mkdir /packaging
