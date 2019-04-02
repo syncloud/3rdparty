@@ -24,45 +24,15 @@ cd ${DIR}/build
 
 echo "building ${NAME}"
 
-wget https://github.com/libvips/libvips/releases/download/v${VERSION}/vips-${VERSION}.tar.gz
-tar xf vips-${VERSION}.tar.gz
-cd vips-${VERSION}
-./configure --prefix=${PREFIX}
-make
-make install
+wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
+tar xf sharp-libvips-${VERSION}.tar.gz
+cd sharp-libvips-${VERSION}/build
+export VERSION_VIPS=${VERSION}
+export PLATFORM=${LIB_ARCH}
+mkdir /packaging
+./lin.sh 
+ls -la /packaging
+tar tvf /packaging/libvips-*.tar.gz
 
-ls -la ${PREFIX}
-ls -la ${PREFIX}/bin
-ls -la ${PREFIX}/lib
-
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* ${BUILD_DIR}/lib
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpng12.so* ${BUILD_DIR}/lib
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libjpeg.so* ${BUILD_DIR}/lib
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgmodule-2.0.so* ${BUILD_DIR}/lib
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgobject-2.0.so* ${BUILD_DIR}/lib
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libglib-2.0.so* ${BUILD_DIR}/lib
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libexpat.so* ${BUILD_DIR}/lib
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so* ${BUILD_DIR}/lib
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so* ${BUILD_DIR}/lib
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libffi.so* ${BUILD_DIR}/lib
-cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so* ${BUILD_DIR}/lib
-
-cp -r /usr/include/gio-unix-2.0 ${BUILD_DIR}/include
-cp -r /usr/include/glib-2.0 ${BUILD_DIR}/include
-cp -r /usr/include/cairo ${BUILD_DIR}/include
-cp -r /usr/include/expat*.h ${BUILD_DIR}/include
-cp -r /usr/include/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/expat*.h ${BUILD_DIR}/include
-cp -r /usr/include/fontconfig ${BUILD_DIR}/include
-cp -r /usr/include/freetype2 ${BUILD_DIR}/include
-cp -r /usr/include/fribidi ${BUILD_DIR}/include
-cp -r /usr/include/gdk-pixbuf-2.0 ${BUILD_DIR}/include
-cp -r /usr/include/gif_lib.h ${BUILD_DIR}/include
-cp -r /usr/include/harfbuzz ${BUILD_DIR}/include
-
-
-export LD_LIBRARY_PATH=${BUILD_DIR}/lib
-ldd ${PREFIX}/lib/libvips.so
-ldd ${PREFIX}/lib/libvips-cpp.so
 cd ${DIR}
-
-tar cpzf ${NAME}-${VERSION}-${LIB_ARCH}.tar.gz -C ${DIR}/build/${NAME} .
+cp /packaging/libvips-*.tar.gz .
