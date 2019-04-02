@@ -18,16 +18,15 @@ fi
 
 NAME=libvips
 VERSION=8.7.4
-PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
-mkdir -p $PREFIX
 cd ${DIR}/build
 
 echo "building ${NAME}"
 apt update
 apt install -y jq intltool cmake nasm gtk-doc-tools texinfo gperf advancecomp libglib2.0-dev gobject-introspection
 curl https://sh.rustup.rs -sSf | sh -s -- -y
+export PATH=/root/.cargo/bin:$PATH
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
 cd sharp-libvips-${VERSION}
