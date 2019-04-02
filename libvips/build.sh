@@ -10,7 +10,7 @@ fi
 
 ARCH=$1
 LIB_ARCH=linux-armv6
-if [[ ${ARCH} == "amd64" ]]; then
+if [[ ${ARCH} == "x86_64" ]]; then
     LIB_ARCH=linux-x64
 fi
 
