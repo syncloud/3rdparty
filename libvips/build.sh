@@ -20,6 +20,7 @@ NAME=libvips
 VERSION=8.7.4
 
 rm -rf ${DIR}/build
+mkdir -p ${DIR}/build
 cd ${DIR}/build
 
 echo "building ${NAME}"
