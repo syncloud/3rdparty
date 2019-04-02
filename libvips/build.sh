@@ -47,6 +47,19 @@ cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so* ${BUILD_DIR}/lib
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libffi.so* ${BUILD_DIR}/lib
 cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so* ${BUILD_DIR}/lib
 
+cp -r /usr/include/gio-unix-2.0 ${BUILD_DIR}/include
+cp -r /usr/include/glib-2.0 ${BUILD_DIR}/include
+cp -r /usr/include/cairo ${BUILD_DIR}/include
+cp -r /usr/include/expat*.h ${BUILD_DIR}/include
+cp -r /usr/include/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/expat*.h ${BUILD_DIR}/include
+cp -r /usr/include/fontconfig ${BUILD_DIR}/include
+cp -r /usr/include/freetype2 ${BUILD_DIR}/include
+cp -r /usr/include/fribidi ${BUILD_DIR}/include
+cp -r /usr/include/gdk-pixbuf-2.0 ${BUILD_DIR}/include
+cp -r /usr/include/gif_lib.h ${BUILD_DIR}/include
+cp -r /usr/include/harfbuzz ${BUILD_DIR}/include
+
+
 export LD_LIBRARY_PATH=${BUILD_DIR}/lib
 ldd ${PREFIX}/lib/libvips.so
 ldd ${PREFIX}/lib/libvips-cpp.so
