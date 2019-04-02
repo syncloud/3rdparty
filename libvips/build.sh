@@ -10,8 +10,10 @@ fi
 
 ARCH=$1
 LIB_ARCH=linux-armv6
+TOOLCHAIN_ARCH=linux-armv7
 if [[ ${ARCH} == "x86_64" ]]; then
     LIB_ARCH=linux-x64
+    TOOLCHAIN_ARCH=linux-x64
 fi
 
 NAME=libvips
@@ -29,7 +31,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
 cd sharp-libvips-${VERSION}
-cp linux-x64/Toolchain.cmake /root
+cp ${TOOLCHAIN_ARCH}/Toolchain.cmake /root
 cd build
 export VERSION_VIPS=${VERSION}
 export PLATFORM=${LIB_ARCH}
