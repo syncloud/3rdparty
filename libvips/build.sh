@@ -36,7 +36,7 @@ cd build
 export VERSION_VIPS=${VERSION}
 export PLATFORM=${LIB_ARCH}
 mkdir /packaging
-sed -i 's/VERSION_HARFBUZZ=.*/VERSION_HARFBUZZ=2.4.0/g' ./lin.sh
+sed -i 's/ALL_AT_VERSION_LATEST=false/ALL_AT_VERSION_LATEST=true/g' ./lin.sh
 ./lin.sh 
 ls -la /packaging
 tar tvf /packaging/libvips-*.tar.gz
