@@ -31,7 +31,7 @@ export PATH=/root/.cargo/bin:$PATH
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
 cd sharp-libvips-${VERSION}
-cp ${TOOLCHAIN_ARCH}/Toolchain.cmake /root
+#cp ${TOOLCHAIN_ARCH}/Toolchain.cmake /root
 cd build
 export VERSION_VIPS=${VERSION}
 export PLATFORM=${LIB_ARCH}
