@@ -17,7 +17,7 @@ if [[ ${ARCH} == "x86_64" ]]; then
 fi
 
 NAME=libvips
-VERSION=8.7.4
+VERSION=8.7.0
 
 rm -rf ${DIR}/build
 mkdir -p ${DIR}/build
