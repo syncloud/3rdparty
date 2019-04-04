@@ -17,7 +17,7 @@ if [[ ${ARCH} == "x86_64" ]]; then
 fi
 
 NAME=libvips
-VERSION=8.7.4
+VERSION=8.7.0
 
 rm -rf ${DIR}/build
 mkdir -p ${DIR}/build
@@ -31,12 +31,13 @@ export PATH=/root/.cargo/bin:$PATH
 wget https://github.com/lovell/sharp-libvips/archive/v${VERSION}.tar.gz
 tar xf v${VERSION}.tar.gz
 cd sharp-libvips-${VERSION}
-cp ${TOOLCHAIN_ARCH}/Toolchain.cmake /root
+#cp ${TOOLCHAIN_ARCH}/Toolchain.cmake /root
 cd build
 export VERSION_VIPS=${VERSION}
 export PLATFORM=${LIB_ARCH}
 mkdir /packaging
 sed -i 's/ALL_AT_VERSION_LATEST=false/ALL_AT_VERSION_LATEST=true/g' ./lin.sh
+sed -i 's/jcupitt/libvips/g' ./lin.sh
 ./lin.sh 
 ls -la /packaging
 tar tvf /packaging/libvips-*.tar.gz
