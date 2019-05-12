@@ -31,7 +31,7 @@ matrix:
 #   - git
 #   - nginx
 #   - nodejs
-#   - openldap
+   - openldap
 #   - openssl
 #   - php
 #   - php7
@@ -46,4 +46,4 @@ matrix:
 #   - mongodb
 #   - phantomjs
 #   - mariadb
-   - libvips
+#   - libvips
