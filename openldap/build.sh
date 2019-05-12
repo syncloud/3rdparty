@@ -28,7 +28,8 @@ cd ${BUILD_DIR}
 wget http://www.openldap.org/software/download/OpenLDAP/openldap-release/${NAME}-${VERSION}.tgz --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tgz
 cd ${NAME}-${VERSION}
-./configure --prefix=${PREFIX}
+./configure --help
+./configure --prefix=${PREFIX} --enable-overlays
 make -j2
 make install
 mkdir ${PREFIX}/slapd.d
