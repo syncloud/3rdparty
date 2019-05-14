@@ -33,6 +33,7 @@ cd ${NAME}-${VERSION}
 make -j2
 make install
 mkdir ${PREFIX}/slapd.d
+find ${PREFIX} --name "*ppolicy*"
 cp ${DIR}/slapadd.sh ${PREFIX}/sbin/
 cp ${DIR}/ldapadd.sh ${PREFIX}/bin/
 
