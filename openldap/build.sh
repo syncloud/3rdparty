@@ -29,7 +29,7 @@ wget http://www.openldap.org/software/download/OpenLDAP/openldap-release/${NAME}
 tar xzf ${NAME}-${VERSION}.tgz
 cd ${NAME}-${VERSION}
 ./configure --help
-./configure --prefix=${PREFIX} --enable-overlays --enable-ppolicy yes
+./configure --prefix=${PREFIX} --enable-overlays --enable-ppolicy=yes
 make -j2
 make install
 mkdir ${PREFIX}/slapd.d
