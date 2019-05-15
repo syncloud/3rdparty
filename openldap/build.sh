@@ -60,8 +60,8 @@ sed -i "s#@LIB_DIR@#${PREFIX}/lib/openldap#g" ${DIR}/slapd.test.init.ldif
 sed -i "s#@DB_DIR@#${BUILD_DIR}/data#g" ${DIR}/slapd.test.init.ldif
 ${PREFIX}/sbin/slapadd.sh -F ${BUILD_DIR}/slapd.d -b "cn=config" -l ${DIR}/slapd.test.init.ldif
 
-SOCKET=${BUILD_DIR}/ldap.socket
-${PREFIX}/libexec/slapd -h "ldapi://${SOCKET//\//%2F}" -F ${BUILD_DIR}/slapd.d
+#SOCKET=${BUILD_DIR}/ldap.socket
+#${PREFIX}/libexec/slapd -h "ldapi://${SOCKET//\//%2F}" -F ${BUILD_DIR}/slapd.d
 
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz

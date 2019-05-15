@@ -43,6 +43,7 @@ include: file://@ETC_DIR@/schema/core.ldif
 include: file://@ETC_DIR@/schema/cosine.ldif
 include: file://@ETC_DIR@/schema/nis.ldif
 include: file://@ETC_DIR@/schema/inetorgperson.ldif
+include: file://@ETC_DIR@/schema/ppolicy.ldif
 
 # Load module
 dn: cn=module{0},cn=config
@@ -51,6 +52,7 @@ cn: module{0}
 # Where the dynamically loaded modules are stored
 olcModulePath: @LIB_DIR@
 olcModuleLoad: back_mdb
+olcModuleLoad: ppilicy
 
 # The database definition.
 dn: olcDatabase=mdb,cn=config
@@ -63,12 +65,12 @@ olcDbCheckpoint: 512 30
 # Save the time that the entry gets modified, for database #1
 olcLastMod: TRUE
 # The base of your directory in database #1
-olcSuffix: dn=test
+olcSuffix: dc=test
 # Where the database file are physically stored for database #1
 olcDbDirectory: @DB_DIR@
 # olcRootDN directive for specifying a superuser on the database. This
 # is needed for syncrepl.
-olcRootDN: cn=admin,dn=test
+olcRootDN: cn=admin,dc=test
 olcRootPW: test
 # Indexing options for database #1
 olcDbIndex: objectClass eq
@@ -92,4 +94,13 @@ olcAccess: to attrs=shadowLastChange
 # everyone else can read everything.
 olcAccess: to *
   by * read
+
+dn: olcOverlay=ppolicy,olcDatabase=mdb,cn=config
+objectClass: olcOverlayConfig
+objectClass: olcPPolicyConfig
+olcOverlay: ppolicy
+olcPPolicyDefault: cn=passwordDefault,ou=Policies,dc=syncloud,dc=org
+olcPPolicyHashCleartext: FALSE
+olcPPolicyUseLockout: FALSE
+olcPPolicyForwardUpdates: FALSE
 
