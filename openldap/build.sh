@@ -29,7 +29,7 @@ wget http://www.openldap.org/software/download/OpenLDAP/openldap-release/${NAME}
 tar xzf ${NAME}-${VERSION}.tgz
 cd ${NAME}-${VERSION}
 ./configure --help
-./configure --prefix=${PREFIX} --enable-overlays --enable-ppolicy=yes
+./configure --prefix=${PREFIX} --enable-modules --enable-overlays=mod
 make -j2
 make install
 mkdir ${PREFIX}/slapd.d
@@ -49,8 +49,15 @@ cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/li
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib/
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib/
 
-${PREFIX}/sbin/slapadd.sh -h || true
-${PREFIX}/bin/ldapadd.sh -h || true
+${PREFIX}/sbin/slapadd.sh || true
+${PREFIX}/bin/ldapadd.sh || true
+
+export LD_LIBRARY_PATH=${PREFIX}/lib
+mkdir ${BUILD_DIR}/slapd.d
+${PREFIX}/sbin/slapadd.sh -F ${BUILD_DIR}/slapd.d -b "cn=config" -l ${DIR}/slapd.test.init.ldif
+
+SOCKET=${BUILD_DIR}/ldap.socket
+${PREFIX}/libexec/slapd -h "ldapi://${SOCKET//\//%2F}" -F ${BUILD_DIR}/slapd.d
 
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
