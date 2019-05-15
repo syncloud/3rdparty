@@ -54,8 +54,8 @@ ${PREFIX}/bin/ldapadd.sh --help || true
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
 mkdir ${BUILD_DIR}/slapd.d
-sed -i 's#@ETC_DIR@#${PREFIX}/etc#g' ${DIR}/slapd.test.init.ldif
-sed -i 's#@LIB_DIR@#${PREFIX}/lib/openldap#g' ${DIR}/slapd.test.init.ldif
+sed -i "s#@ETC_DIR@#${PREFIX}/etc#g" ${DIR}/slapd.test.init.ldif
+sed -i "s#@LIB_DIR@#${PREFIX}/lib/openldap#g" ${DIR}/slapd.test.init.ldif
 ${PREFIX}/sbin/slapadd.sh -F ${BUILD_DIR}/slapd.d -b "cn=config" -l ${DIR}/slapd.test.init.ldif
 
 SOCKET=${BUILD_DIR}/ldap.socket
