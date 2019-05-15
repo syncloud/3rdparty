@@ -49,11 +49,13 @@ cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/li
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib/
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib/
 
-${PREFIX}/sbin/slapadd.sh || true
-${PREFIX}/bin/ldapadd.sh || true
+${PREFIX}/sbin/slapadd.sh --help || true
+${PREFIX}/bin/ldapadd.sh --help || true
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
 mkdir ${BUILD_DIR}/slapd.d
+sed -i 's#@ETC_DIR@#${PREFIX}/etc#g' ${DIR}/slapd.test.init.ldif
+sed -i 's#@LIB_DIR@#${PREFIX}/lib/openldap#g' ${DIR}/slapd.test.init.ldif
 ${PREFIX}/sbin/slapadd.sh -F ${BUILD_DIR}/slapd.d -b "cn=config" -l ${DIR}/slapd.test.init.ldif
 
 SOCKET=${BUILD_DIR}/ldap.socket
