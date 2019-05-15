@@ -70,7 +70,7 @@ olcLastMod: TRUE
 # The base of your directory in database #1
 olcSuffix: dn=test
 # Where the database file are physically stored for database #1
-olcDbDirectory: /var/lib/ldap
+olcDbDirectory: @DB_DIR@
 # olcRootDN directive for specifying a superuser on the database. This
 # is needed for syncrepl.
 olcRootDN: cn=admin,dn=test
