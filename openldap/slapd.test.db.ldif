@@ -1,0 +1,17 @@
+dn: dc=test
+objectClass: dcObject
+objectClass: organizationalUnit
+ou: test
+
+dn: ou=Policies,dc=test
+ou: Policies
+objectClass: organizationalUnit
+
+dn: cn=passwordDefault,ou=Policies,dc=test
+objectClass: pwdPolicy
+objectClass: person
+objectClass: top
+cn: passwordDefault
+sn: passwordDefault
+pwdAttribute: userPassword
+pwdAllowUserChange: TRUE
