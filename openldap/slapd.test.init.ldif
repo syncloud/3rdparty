@@ -95,7 +95,7 @@ olcAccess: to attrs=shadowLastChange
 olcAccess: to *
   by * read
 
-dn: olcOverlay=ppolicy,olcDatabase=mdb,cn=config
+dn: olcOverlay=ppolicy,olcDatabase={1}mdb,cn=config
 objectClass: olcOverlayConfig
 objectClass: olcPPolicyConfig
 olcOverlay: ppolicy
