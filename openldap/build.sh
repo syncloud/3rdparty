@@ -55,9 +55,9 @@ ${PREFIX}/bin/ldapadd.sh --help || true
 export LD_LIBRARY_PATH=${PREFIX}/lib
 mkdir ${BUILD_DIR}/slapd.d
 mkdir ${BUILD_DIR}/data
-sed -i "s#@ETC_DIR@#${PREFIX}/etc/openldap#g" ${DIR}/slapd.test.init.ldif
-sed -i "s#@LIB_DIR@#${PREFIX}/libexec/openldap#g" ${DIR}/slapd.test.init.ldif
-sed -i "s#@DB_DIR@#${BUILD_DIR}/data#g" ${DIR}/slapd.test.init.ldif
+sed -i "s#@ETC_DIR@#${PREFIX}/etc/openldap#g" ${DIR}/slapd.test.config.ldif
+sed -i "s#@LIB_DIR@#${PREFIX}/libexec/openldap#g" ${DIR}/slapd.test.config.ldif
+sed -i "s#@DB_DIR@#${BUILD_DIR}/data#g" ${DIR}/slapd.test.config.ldif
 ${PREFIX}/sbin/slapadd -v -F ${BUILD_DIR}/slapd.d -n 0 -l ${DIR}/slapd.test.config.ldif
 ${PREFIX}/sbin/slapadd -v -F ${BUILD_DIR}/slapd.d -n 0 -l ${DIR}/slapd.test.db.ldif
 
