@@ -22,9 +22,9 @@ rm -rf build
 mkdir -p build
 cd build
 
-wget https://ftp.postgresql.org/pub/source/v${VERSION}/${NAME}-${VERSION}.tar.bz2 --progress dot:giga
-tar xjf ${NAME}-${VERSION}.tar.bz2
-cd ${NAME}-${VERSION}
+wget https://ftp.postgresql.org/pub/source/v${VERSION}/postgresql-${VERSION}.tar.bz2 --progress dot:giga
+tar xjf postgresql-${VERSION}.tar.bz2
+cd postgresql-${VERSION}
 rm -rf ${PREFIX}
 
 ./configure --prefix ${PREFIX}
