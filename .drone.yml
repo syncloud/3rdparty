@@ -1,50 +1,47 @@
-platform: linux/${arch}
+---
+kind: pipeline
+name: php7-arm
 
-clone:
-  git:
-    image: syncloud/drone-git-${arch}
-    depth: 50
-    
-pipeline:
-  build:
-    image: syncloud/build-deps-${arch}
-    commands:
-      - ./build.sh ${project}
-      
-  upload:
-    image: syncloud/build-deps-${arch}
-    secrets: [ARTIFACT_SSH_KEY]
-    commands:
-      - cd ${project}
-      - ../upload.sh ${project}-*.tar.gz
+platform:
+  os: linux
+  arch: arm
 
-matrix:
-  arch:
-    - arm
-    - amd64
-  project: 
-#   - ImageMagick
-#   - PyYAML
-#   - asterisk
-#   - dovecot
-#   - dovecot_snap
-#   - git
-#   - nginx
-#   - nodejs
-#   - openldap
-#   - openssl
-#   - php
-#   - php7
-#   - postfix
-#   - postgresql
-   - postgresql-9.5
-#   - python
-#   - python3
-#   - redis
-#   - rsyslog
-#   - ruby
-#   - uwsgi
-#   - mongodb
-#   - phantomjs
-#   - mariadb
-#   - libvips
+steps:
+- name: build
+  image: syncloud/build-deps-arm
+  commands:
+  - ./build.sh php7
+
+- name: upload
+  image: syncloud/build-deps-arm
+  commands:
+  - cd php7
+  - "../upload.sh php7-*.tar.gz"
+  environment:
+    ARTIFACT_SSH_KEY:
+      from_secret: ARTIFACT_SSH_KEY
+
+---
+kind: pipeline
+name: php7-amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  image: syncloud/build-deps-amd64
+  commands:
+  - ./build.sh php7
+
+- name: upload
+  image: syncloud/build-deps-amd64
+  commands:
+  - cd php7
+  - "../upload.sh php7-*.tar.gz"
+  environment:
+    ARTIFACT_SSH_KEY:
+      from_secret: ARTIFACT_SSH_KEY
+
+...
