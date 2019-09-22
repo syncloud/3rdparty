@@ -45,7 +45,7 @@ local build(name, arch) = {
 #   - openldap
 #   - openssl
 #   - php
- "php7"
+#    "php7",
 #   - postfix
 #   - postgresql
 #   - postgresql-9.5
@@ -59,5 +59,6 @@ local build(name, arch) = {
 #   - phantomjs
 #   - mariadb
 #   - libvips
+"sqlite",
     ]
 ]

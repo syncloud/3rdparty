@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: php7-arm
+name: sqlite-arm
 
 platform:
   os: linux
@@ -10,20 +10,20 @@ steps:
 - name: build
   image: syncloud/build-deps-arm
   commands:
-  - ./build.sh php7
+  - ./build.sh sqlite
 
 - name: upload
   image: syncloud/build-deps-arm
   commands:
-  - cd php7
-  - "../upload.sh php7-*.tar.gz"
+  - cd sqlite
+  - "../upload.sh sqlite-*.tar.gz"
   environment:
     ARTIFACT_SSH_KEY:
       from_secret: ARTIFACT_SSH_KEY
 
 ---
 kind: pipeline
-name: php7-amd64
+name: sqlite-amd64
 
 platform:
   os: linux
@@ -33,13 +33,13 @@ steps:
 - name: build
   image: syncloud/build-deps-amd64
   commands:
-  - ./build.sh php7
+  - ./build.sh sqlite
 
 - name: upload
   image: syncloud/build-deps-amd64
   commands:
-  - cd php7
-  - "../upload.sh php7-*.tar.gz"
+  - cd sqlite
+  - "../upload.sh sqlite-*.tar.gz"
   environment:
     ARTIFACT_SSH_KEY:
       from_secret: ARTIFACT_SSH_KEY
