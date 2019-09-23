@@ -24,7 +24,7 @@ cd ${BUILD}
 wget https://github.com/isc-projects/bind9/archive/${VERSION}.tar.gz
 tar xzf ${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-./configure --prefix=${PREFIX}
+./configure --prefix=${PREFIX} --without-python
 make
 make install
 
