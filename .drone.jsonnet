@@ -60,5 +60,6 @@ local build(name, arch) = {
 #   - mariadb
 #   - libvips
 "sqlite",
+"bind9",
     ]
 ]
