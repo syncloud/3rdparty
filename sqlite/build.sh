@@ -24,7 +24,7 @@ wget https://www.sqlite.org/2019/sqlite-autoconf-${VERSION}.tar.gz --progress do
 tar xzf sqlite-autoconf-${VERSION}.tar.gz
 cd sqlite-autoconf-${VERSION}
 
-./configure --prefix=${PREFIX}
+./configure --prefix=${PREFIX} --without-python
 make
 make install
 

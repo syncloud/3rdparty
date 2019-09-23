@@ -59,7 +59,7 @@ local build(name, arch) = {
 #   - phantomjs
 #   - mariadb
 #   - libvips
-"sqlite",
+#"sqlite",
 "bind9",
     ]
 ]

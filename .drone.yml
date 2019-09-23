@@ -1,28 +1,5 @@
 ---
 kind: pipeline
-name: sqlite-arm
-
-platform:
-  os: linux
-  arch: arm
-
-steps:
-- name: build
-  image: syncloud/build-deps-arm
-  commands:
-  - ./build.sh sqlite
-
-- name: upload
-  image: syncloud/build-deps-arm
-  commands:
-  - cd sqlite
-  - "../upload.sh sqlite-*.tar.gz"
-  environment:
-    ARTIFACT_SSH_KEY:
-      from_secret: ARTIFACT_SSH_KEY
-
----
-kind: pipeline
 name: bind9-arm
 
 platform:
@@ -40,29 +17,6 @@ steps:
   commands:
   - cd bind9
   - "../upload.sh bind9-*.tar.gz"
-  environment:
-    ARTIFACT_SSH_KEY:
-      from_secret: ARTIFACT_SSH_KEY
-
----
-kind: pipeline
-name: sqlite-amd64
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: build
-  image: syncloud/build-deps-amd64
-  commands:
-  - ./build.sh sqlite
-
-- name: upload
-  image: syncloud/build-deps-amd64
-  commands:
-  - cd sqlite
-  - "../upload.sh sqlite-*.tar.gz"
   environment:
     ARTIFACT_SSH_KEY:
       from_secret: ARTIFACT_SSH_KEY
