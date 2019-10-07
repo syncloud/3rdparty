@@ -48,7 +48,7 @@ local build(name, arch) = {
 #    "php7",
 #   - postfix
 #   - postgresql
-#   - postgresql-9.5
+"postgresql-10",
 #   - python
 #   - python3
 #   - redis
@@ -60,6 +60,6 @@ local build(name, arch) = {
 #   - mariadb
 #   - libvips
 #"sqlite",
-"bind9",
+#"bind9",
     ]
 ]

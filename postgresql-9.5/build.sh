@@ -12,8 +12,8 @@ ARCH=$1
 
 export TMPDIR=/tmp
 export TMP=/tmp
-NAME=postgresql-9.5
-VERSION=9.5.18
+NAME=postgresql-10
+VERSION=10.1p
 PREFIX=${DIR}/build/${NAME}
 
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev
