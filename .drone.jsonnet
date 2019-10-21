@@ -47,8 +47,8 @@ local build(name, arch) = {
 #   - php
 #    "php7",
 #   - postfix
-#   - postgresql
-"postgresql-10",
+"postgresql"
+#"postgresql-10",
 #   - python
 #   - python3
 #   - redis

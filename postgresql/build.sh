@@ -33,6 +33,7 @@ make install
 
 mv ${PREFIX}/bin/pg_ctl ${PREFIX}/bin/pg_ctl.bin
 mv ${PREFIX}/bin/psql ${PREFIX}/bin/psql.bin
+mv ${PREFIX}/bin/pg_dumpall ${PREFIX}/bin/pg_dumpall.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 
 echo "original libs"

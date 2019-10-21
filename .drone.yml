@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: postgresql-10-arm
+name: postgresql-arm
 
 platform:
   os: linux
@@ -10,20 +10,20 @@ steps:
 - name: build
   image: syncloud/build-deps-arm
   commands:
-  - ./build.sh postgresql-10
+  - ./build.sh postgresql
 
 - name: upload
   image: syncloud/build-deps-arm
   commands:
-  - cd postgresql-10
-  - "../upload.sh postgresql-10-*.tar.gz"
+  - cd postgresql
+  - "../upload.sh postgresql-*.tar.gz"
   environment:
     ARTIFACT_SSH_KEY:
       from_secret: ARTIFACT_SSH_KEY
 
 ---
 kind: pipeline
-name: postgresql-10-amd64
+name: postgresql-amd64
 
 platform:
   os: linux
@@ -33,13 +33,13 @@ steps:
 - name: build
   image: syncloud/build-deps-amd64
   commands:
-  - ./build.sh postgresql-10
+  - ./build.sh postgresql
 
 - name: upload
   image: syncloud/build-deps-amd64
   commands:
-  - cd postgresql-10
-  - "../upload.sh postgresql-10-*.tar.gz"
+  - cd postgresql
+  - "../upload.sh postgresql-*.tar.gz"
   environment:
     ARTIFACT_SSH_KEY:
       from_secret: ARTIFACT_SSH_KEY
