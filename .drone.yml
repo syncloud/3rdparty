@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: postgresql-arm
+name: php7-arm
 
 platform:
   os: linux
@@ -10,20 +10,20 @@ steps:
 - name: build
   image: syncloud/build-deps-arm
   commands:
-  - ./build.sh postgresql
+  - ./build.sh php7
 
 - name: upload
   image: syncloud/build-deps-arm
   commands:
-  - cd postgresql
-  - "../upload.sh postgresql-*.tar.gz"
+  - cd php7
+  - "../upload.sh php7-*.tar.gz"
   environment:
     ARTIFACT_SSH_KEY:
       from_secret: ARTIFACT_SSH_KEY
 
 ---
 kind: pipeline
-name: postgresql-amd64
+name: php7-amd64
 
 platform:
   os: linux
@@ -33,13 +33,13 @@ steps:
 - name: build
   image: syncloud/build-deps-amd64
   commands:
-  - ./build.sh postgresql
+  - ./build.sh php7
 
 - name: upload
   image: syncloud/build-deps-amd64
   commands:
-  - cd postgresql
-  - "../upload.sh postgresql-*.tar.gz"
+  - cd php7
+  - "../upload.sh php7-*.tar.gz"
   environment:
     ARTIFACT_SSH_KEY:
       from_secret: ARTIFACT_SSH_KEY

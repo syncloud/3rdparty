@@ -39,15 +39,14 @@ local build(name, arch) = {
 #   - asterisk
 #   - dovecot
 #   - dovecot_snap
-#   - git
-#   - nginx
+#"nginx",
 #   - nodejs
 #   - openldap
 #   - openssl
 #   - php
-#    "php7",
+"php7",
 #   - postfix
-"postgresql"
+#"postgresql"
 #"postgresql-10",
 #   - python
 #   - python3
