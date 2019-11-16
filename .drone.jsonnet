@@ -1,31 +1,39 @@
 local build(name, arch) = {
     platform: {
         os: "linux",
-	arch: arch
+        	arch: arch
     },
     kind: "pipeline",
     name: name + "-" + arch,
     steps: [
         {
-	    name: "build",
+	          name: "build",
             image: "syncloud/build-deps-" + arch,
-	    commands: [
+	          commands: [
                 "./build.sh " + name
-	    ]
-	},
-	{
-	    name: "upload",
-            image: "syncloud/build-deps-" + arch,
-	    environment: {
-                ARTIFACT_SSH_KEY: {
-		    from_secret: "ARTIFACT_SSH_KEY"
-		}
-	    },
-            commands: [
-                "cd " + name,
-                "../upload.sh " + name + "-*.tar.gz"
-	    ]
-	}
+	          ]
+	      },
+      	{
+            name: "artifact",
+            image: "appleboy/drone-scp",
+            settings: {
+                host: {
+                    from_secret: "artifact_host"
+                },
+                username: "artifact",
+                password: {
+                    from_secret: "artifact_password"
+                },
+                timeout: "2m",
+                command_timeout: "2m",
+                target: "/home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-" + arch,
+                source: name + "/*.tar.gz",
+		             strip_components: 1
+            },
+            when: {
+              status: [ "failure", "success" ]
+            }
+        }
     ]
 };
 
@@ -39,12 +47,13 @@ local build(name, arch) = {
 #   - asterisk
 #   - dovecot
 #   - dovecot_snap
-#"nginx",
+#   - git
+#   - nginx
 #   - nodejs
 #   - openldap
 #   - openssl
 #   - php
-"php7",
+#    "php7",
 #   - postfix
 #"postgresql"
 #"postgresql-10",
@@ -60,5 +69,6 @@ local build(name, arch) = {
 #   - libvips
 #"sqlite",
 #"bind9",
+"openvpn",
     ]
 ]
