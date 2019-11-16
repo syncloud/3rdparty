@@ -17,7 +17,7 @@ VERSION=2.4.8
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-apt-get -y install liblzo2-dev
+apt-get -y install liblzo2-dev libpam-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
