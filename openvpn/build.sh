@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -17,7 +17,7 @@ VERSION=2.4.8
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-#apt-get -y install build-essential cmake libncurses5-dev zlib1g-dev
+apt-get -y install liblzo2-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
