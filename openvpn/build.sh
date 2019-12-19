@@ -26,7 +26,7 @@ cd ${BUILD}
 wget https://swupdate.openvpn.org/community/releases/openvpn-${VERSION}.tar.gz  --progress dot:giga -O ${NAME}-${VERSION}.tar.gz
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-./configure --prefix=${PREFIX}
+./configure --prefix=${PREFIX} --enable-systemd
 make
 make install
 
@@ -36,6 +36,8 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcr
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
 
 ldd ${PREFIX}/sbin/openvpn
+
+${PREFIX}/sbin/openvpn --version
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}-${VERSION}.tar.gz -C ${BUILD} ${NAME}
