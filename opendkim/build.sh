@@ -33,6 +33,8 @@ make
 make install
 
 ls -la ${PREFIX}
+ls -la ${PREFIX}/lib
+ls -la ${PREFIX}/sbin
 
 #export LD_LIBRARY_PATH=${PREFIX}/lib
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblzo2.so* ${PREFIX}/lib
