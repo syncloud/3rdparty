@@ -15,7 +15,7 @@ export TMP=/tmp
 NAME=dovecot
 VERSION=2.2.27
 #TODO: It is impossible to override paths at runtime
-BUILD_DIR=/opt/app/mail
+BUILD_DIR=/snap/mail/current
 PREFIX=${BUILD_DIR}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev
@@ -28,10 +28,6 @@ wget http://www.dovecot.org/releases/2.2/${NAME}-${VERSION}.tar.gz \
     --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-
-patch -p0 < ${DIR}/dovecot.1.patch
-patch -p0 < ${DIR}/dovecot.2.patch
-patch -p0 < ${DIR}/dovecot.3.patch
 
 ./configure --help
 ./configure --prefix=${PREFIX} \
@@ -55,5 +51,5 @@ echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/sbin/dovecot
 
-rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
+rm -rf ${DIR}/${NAME}_snap-${ARCH}.tar.gz
+tar czf ${DIR}/${NAME}_snap-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
