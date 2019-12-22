@@ -36,12 +36,12 @@ ls -la ${PREFIX}
 ls -la ${PREFIX}/lib
 ls -la ${PREFIX}/sbin
 
-#export LD_LIBRARY_PATH=${PREFIX}/lib
+export LD_LIBRARY_PATH=${PREFIX}/lib
 #cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblzo2.so* ${PREFIX}/lib
 #cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt*.so* ${PREFIX}/lib
 #cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
 
-#ldd ${PREFIX}/sbin/opendkim
+ldd ${PREFIX}/sbin/opendkim
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}-${VERSION}.tar.gz -C ${BUILD} ${NAME}
