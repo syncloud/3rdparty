@@ -17,7 +17,7 @@ VERSION=2.10.3
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-apt-get -y install libbsd
+apt-get -y install libbsd-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
