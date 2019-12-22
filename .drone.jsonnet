@@ -69,6 +69,7 @@ local build(name, arch) = {
 #   - libvips
 #"sqlite",
 #"bind9",
-"openvpn",
+#"openvpn",
+"opendkim",
     ]
 ]
