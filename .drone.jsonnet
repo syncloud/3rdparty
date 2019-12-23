@@ -69,6 +69,6 @@ local build(name, arch) = {
 #"sqlite",
 #"bind9",
 #"openvpn",
-"opendkim",
+#"opendkim",
     ]
 ]
