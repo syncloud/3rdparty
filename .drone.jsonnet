@@ -45,7 +45,7 @@ local build(name, arch) = {
 #   - ImageMagick
 #   - PyYAML
 #   - asterisk
-#   - dovecot
+"dovecot",
 #   - git
 #   - nginx
 #   - nodejs
@@ -69,6 +69,6 @@ local build(name, arch) = {
 #"sqlite",
 #"bind9",
 #"openvpn",
-#"opendkim",
+"opendkim",
     ]
 ]

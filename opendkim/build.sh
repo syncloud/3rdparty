@@ -44,7 +44,8 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libss
 
 ldd ${PREFIX}/sbin/opendkim
 
-${PREFIX}/sbin/opendkim --help
+${PREFIX}/sbin/opendkim --help || true
+${PREFIX}/sbin/opendkim-genkey --help || true
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}-${VERSION}.tar.gz -C ${BUILD} ${NAME}
