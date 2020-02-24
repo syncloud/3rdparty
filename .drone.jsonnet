@@ -42,30 +42,30 @@ local build(name, arch) = {
     "arm",
     "amd64"
     ] for project in [ 
-#   - ImageMagick
-#   - PyYAML
-#   - asterisk
+#"ImageMagick",
+#"PyYAML",
+#"asterisk",
 #"dovecot",
-#   - git
-#   - nginx
-#   - nodejs
-#   - openldap
-#   - openssl
-#   - php
-#    "php7",
-#   - postfix
+#"git",
+#"nginx",
+#"nodejs",
+#"openldap",
+#"openssl",
+#"php",
+#"php7",
+#"postfix",
 #"postgresql"
 #"postgresql-10",
-"python",
-#   - python3
-#   - redis
-#   - rsyslog
-#   - ruby
-#   - uwsgi
-#   - mongodb
-#   - phantomjs
-#   - mariadb
-#   - libvips
+#"python",
+#"python3",
+#"redis",
+#"rsyslog",
+#"ruby",
+#"uwsgi",
+"mongodb",
+#"phantomjs",
+#"mariadb",
+#"libvips",
 #"sqlite",
 #"bind9",
 #"openvpn",
