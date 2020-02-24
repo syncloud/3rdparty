@@ -45,7 +45,7 @@ local build(name, arch) = {
 #   - ImageMagick
 #   - PyYAML
 #   - asterisk
-"dovecot",
+#"dovecot",
 #   - git
 #   - nginx
 #   - nodejs
@@ -56,7 +56,7 @@ local build(name, arch) = {
 #   - postfix
 #"postgresql"
 #"postgresql-10",
-#   - python
+"python",
 #   - python3
 #   - redis
 #   - rsyslog

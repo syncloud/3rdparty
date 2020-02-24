@@ -12,6 +12,7 @@ ARCH=$1
 
 VERSION=2.7.10
 OPENSSL_VERSION=1.0.2g
+SQLITE_VERSION=autoconf-3310100
 
 NAME=python
 PREFIX=${DIR}/build/${NAME}
@@ -26,6 +27,15 @@ curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
 ./config --prefix=${PREFIX} --openssldir=/usr/lib/ssl no-shared no-ssl2 no-ssl3 -fPIC
+make
+make install
+
+cd ${DIR}/build
+rm -rf /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsqlite3.so*
+wget https://www.sqlite.org/2018/sqlite-${SQLITE_VERSION}.tar.gz
+tar -zxvf sqlite-${SQLITE_VERSION}.tar.gz
+cd sqlite-${SQLITE_VERSION}
+./configure --prefix=${PREFIX}
 make
 make install
 
@@ -87,6 +97,7 @@ tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
 
 ${PREFIX}/bin/python -c 'from urllib2 import urlopen; print(urlopen("https://google.com"))'
 ${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
+${PREFIX}/bin/python -c 'import sqlite3'
 
 ${PREFIX}/bin/pip install pytest==2.8.0
 ${PREFIX}/bin/py.test.sh --help
