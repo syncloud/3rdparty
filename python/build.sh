@@ -75,7 +75,7 @@ ${PREFIX}/bin/python -m ensurepip --upgrade
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 
-${PREFIX}/bin/pip install --upgrade setuptools pip
+${PREFIX}/bin/pip install --upgrade setuptools==44.0.0 pip==20.0.2
 mv ${PREFIX}/bin/pip ${PREFIX}/bin/pip_runner
 cp ${DIR}/pip ${PREFIX}/bin/
 
