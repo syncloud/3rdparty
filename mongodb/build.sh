@@ -15,7 +15,7 @@ if [[ ${ARCH} == "amd64" ]]; then
 fi
 
 NAME=mongodb
-VERSION=3.2.22
+VERSION=3.4.24
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
