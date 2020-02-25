@@ -14,8 +14,8 @@ if [[ ${ARCH} == "amd64" ]]; then
     MONGO_ARCH=x86_64
 fi
 
-NAME=mongodb
-VERSION=3.2.22
+NAME=mongodb-3.4
+VERSION=3.4.24
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
