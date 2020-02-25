@@ -41,7 +41,7 @@ mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-
 
 ls -la src/third_party
 
-cd src/third_party/mozjs-38/
+cd src/third_party/mozjs-45/
 ./get_sources.sh
 ./gen-config.sh ${MONGO_ARCH} linux
 cd ../../../
