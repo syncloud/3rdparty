@@ -47,7 +47,7 @@ local build(name, arch) = {
 #"asterisk",
 #"dovecot",
 #"git",
-"nginx",
+#"nginx",
 #"nodejs",
 #"openldap",
 #"openssl",
@@ -63,7 +63,7 @@ local build(name, arch) = {
 #"ruby",
 #"uwsgi",
 #"mongodb",
-#"mongodb-3.4"
+"mongodb-3.4"
 #"phantomjs",
 #"mariadb",
 #"libvips",
