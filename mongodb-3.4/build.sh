@@ -24,7 +24,7 @@ cd ${DIR}/build
 
 echo "building ${NAME}"
 
-ARCHIVE=${NAME}-src-r${VERSION}.tar.gz
+ARCHIVE=mongo-src-r${VERSION}.tar.gz
 wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
 
 tar xzf ${ARCHIVE}
