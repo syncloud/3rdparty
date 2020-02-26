@@ -24,11 +24,11 @@ cd ${DIR}/build
 
 echo "building ${NAME}"
 
-ARCHIVE=mongo-src-r${VERSION}.tar.gz
+ARCHIVE=mongodb-src-r${VERSION}.tar.gz
 wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
 
 tar xzf ${ARCHIVE}
-cd ${NAME}-src-r${VERSION}
+cd mongodb-src-r${VERSION}
 ls -la
 cat README
 cat docs/building.md
