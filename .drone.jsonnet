@@ -52,7 +52,7 @@ local build(name, arch) = {
 #"openldap",
 #"openssl",
 #"php",
-#"php7",
+"php7",
 #"postfix",
 #"postgresql"
 #"postgresql-10",
@@ -63,7 +63,7 @@ local build(name, arch) = {
 #"ruby",
 #"uwsgi",
 #"mongodb",
-"mongodb-3.4"
+#"mongodb-3.4"
 #"phantomjs",
 #"mariadb",
 #"libvips",
