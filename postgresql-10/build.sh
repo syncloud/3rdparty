@@ -41,7 +41,7 @@ ldd ${PREFIX}/bin/psql.bin
 
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libreadline.so* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhistory.so* ${PREFIX}/lib
-#cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtinfo.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtinfo.so* ${PREFIX}/lib
 
 echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
@@ -51,4 +51,5 @@ cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar czf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+
 
