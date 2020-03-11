@@ -52,10 +52,10 @@ local build(name, arch) = {
 #"openldap",
 #"openssl",
 #"php",
-"php7",
+#"php7",
 #"postfix",
 #"postgresql"
-#"postgresql-10",
+"postgresql-10",
 #"python",
 #"python3",
 #"redis",
