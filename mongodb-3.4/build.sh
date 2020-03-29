@@ -47,7 +47,7 @@ chmod +x *.sh
 ./gen-config.sh ${MONGO_ARCH} linux
 cd ../../../
 
-scons -j 2 --wiredtiger=off --mmapv1=on mongod
+scons --disable-warnings-as-errors -j 2 --wiredtiger=off --mmapv1=on mongod
 scons --prefix=${PREFIX} -j 2 --wiredtiger=off --mmapv1=on install
 
 ls -la ${PREFIX}
