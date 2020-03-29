@@ -1,4 +1,4 @@
-local build(name, arch) = {
+local build(name, arch, image) = {
     platform: {
         os: "linux",
         	arch: arch
@@ -8,7 +8,7 @@ local build(name, arch) = {
     steps: [
         {
 	          name: "build",
-            image: "syncloud/build-deps-" + arch,
+            image: "syncloud/" + image + "-" + arch,
 	          commands: [
                 "./build.sh " + name
 	          ]
@@ -38,10 +38,10 @@ local build(name, arch) = {
 };
 
 [ 
-    build(project, arch) for arch in [ 
+    build(item.project, arch, item.image) for arch in [ 
     "arm",
     "amd64"
-    ] for project in [ 
+    ] for item in [ 
 #"ImageMagick",
 #"PyYAML",
 #"asterisk",
@@ -55,7 +55,7 @@ local build(name, arch) = {
 #"php7",
 #"postfix",
 #"postgresql"
-"postgresql-10",
+#"postgresql-10",
 #"python",
 #"python3",
 #"redis",
@@ -63,7 +63,7 @@ local build(name, arch) = {
 #"ruby",
 #"uwsgi",
 #"mongodb",
-#"mongodb-3.4"
+{project: "mongodb-3.4", image: "build-deps-buster"},
 #"phantomjs",
 #"mariadb",
 #"libvips",
