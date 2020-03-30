@@ -9,11 +9,9 @@ if [[ -z "$1" ]]; then
 fi
 
 ARCH=$1
-MONGO_ARCH=arm
+MONGO_ARCH=armv7l
 if [[ ${ARCH} == "amd64" ]]; then
     MONGO_ARCH=x86_64
-else
-    MONGO_ARCH=armhf
 fi
 
 NAME=mongodb-3.4
@@ -49,8 +47,8 @@ chmod +x *.sh
 ./gen-config.sh ${MONGO_ARCH} linux
 cd ../../../
 
-scons --disable-warnings-as-errors -j 2 --wiredtiger=off --mmapv1=on mongod
-scons --disable-warnings-as-errors --prefix=${PREFIX} -j 2 --wiredtiger=off --mmapv1=on install
+scons --disable-warnings-as-errors -j 2 --wiredtiger=off --mmapv1=on --js-engine=mozjs mongod
+scons --disable-warnings-as-errors --prefix=${PREFIX} -j 2 --wiredtiger=off --mmapv1=on --js-engine=mozjs install
 
 ls -la ${PREFIX}
 ls -la ${PREFIX}/bin
