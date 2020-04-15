@@ -37,7 +37,8 @@ cd ${BUILD_DIR}
 wget https://de.postfix.org/ftpmirror/official/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-export CCARGS='-DUSE_SASL_AUTH \
+export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
+	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
   -I'${PREFIX}'/include -I/usr/include -DHAS_LDAP \
   -DUSE_TLS \
