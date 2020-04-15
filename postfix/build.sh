@@ -37,11 +37,11 @@ cd ${BUILD_DIR}
 wget https://de.postfix.org/ftpmirror/official/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-export CCARGS="-DUSE_SASL_AUTH \
+export CCARGS='-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
-  -I${PREFIX}/include -I/usr/include -DHAS_LDAP \
+  -I'${PREFIX}'/include -I/usr/include -DHAS_LDAP \
   -DUSE_TLS \
- 	-DUSE_CYRUS_SASL -I/usr/include/sasl"
+ 	-DUSE_CYRUS_SASL -I/usr/include/sasl'
 
 export AUXLIBS="-L${PREFIX}/lib \
   -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
