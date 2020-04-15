@@ -20,18 +20,30 @@ echo "building ${NAME}"
 
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
-cd ${BUILD_DIR}
 
+cd ${BUILD_DIR}
+curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
+tar xf openssl-${OPENSSL_VERSION}.tar.gz
+cd openssl-${OPENSSL_VERSION}
+./config --prefix=${PREFIX} --openssldir=/usr/lib/ssl no-shared no-ssl2 no-ssl3 -fPIC
+make
+make install
+
+ls -la ${PREFIX}/lib
+ls -la ${PREFIX}/include
+
+cd ${BUILD_DIR}
 wget https://de.postfix.org/ftpmirror/official/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-export CCARGS='-DUSE_SASL_AUTH \
+export CCARGS="-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
-  -I/usr/include -DHAS_LDAP \
+  -I${PREFIX}/include -I/usr/include -DHAS_LDAP \
   -DUSE_TLS \
- 	-DUSE_CYRUS_SASL -I/usr/include/sasl'
+ 	-DUSE_CYRUS_SASL -I/usr/include/sasl"
 
-export AUXLIBS="-L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
+export AUXLIBS="-L${PREFIX}/lib \
+  -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
   -lldap -L/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
   -llber -lssl -lcrypto -lsasl2"
 
@@ -47,7 +59,7 @@ cp ${DIR}/usr/sbin/* ${PREFIX}/usr/sbin
 echo "original libs"
 ldd ${PREFIX}/usr/sbin/postfix.bin
 mkdir ${PREFIX}/lib
-cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
+#cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libldap*.so* ${PREFIX}/lib
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblber*.so* ${PREFIX}/lib
 cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib
