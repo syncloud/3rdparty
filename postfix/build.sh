@@ -25,9 +25,7 @@ cd ${BUILD_DIR}
 wget ftp://ftp.reverse.net/pub/postfix/official/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-#TODO: It is impossible to override paths at runtime
-export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
-	-DUSE_SASL_AUTH \
+export CCARGS='-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
   -I/usr/include -DHAS_LDAP \
   -DUSE_TLS \
@@ -42,6 +40,8 @@ make
 make non-interactive-package install_root=${PREFIX}
 
 mv ${PREFIX}/usr/sbin/postfix ${PREFIX}/usr/sbin/postfix.bin
+mv ${PREFIX}/usr/sbin/postconf ${PREFIX}/usr/sbin/postconf.bin
+mv ${PREFIX}/usr/sbin/postlog ${PREFIX}/usr/sbin/postlog.bin
 cp ${DIR}/usr/sbin/* ${PREFIX}/usr/sbin
 
 echo "original libs"
@@ -81,6 +81,8 @@ echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
 #export LD_PRELOAD=${PREFIX}/lib
 ldd ${PREFIX}/usr/sbin/postfix.bin
+ldd ${PREFIX}/usr/sbin/postconf.bin
+ldd ${PREFIX}/usr/sbin/postlog.bin
 
 ${PREFIX}/usr/sbin/postconf -a
 ${PREFIX}/usr/sbin/postconf -A

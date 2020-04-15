@@ -53,7 +53,7 @@ local build(name, arch, image) = {
 #"openssl",
 #"php",
 #"php7",
-#"postfix",
+{project: "postfix", image: "build-deps"},
 #"postgresql"
 #"postgresql-10",
 #"python",
@@ -63,7 +63,7 @@ local build(name, arch, image) = {
 #"ruby",
 #"uwsgi",
 #"mongodb",
-{project: "mongodb-3.4", image: "build-deps-buster"},
+# {project: "mongodb-3.4", image: "build-deps-buster"},
 #"phantomjs",
 #"mariadb",
 #"libvips",
