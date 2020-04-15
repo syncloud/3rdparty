@@ -14,6 +14,7 @@ export TMPDIR=/tmp
 export TMP=/tmp
 NAME=postfix
 VERSION=3.4.10
+OPENSSL_VERSION=1.0.2g
 BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
 echo "building ${NAME}"
