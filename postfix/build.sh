@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=postfix
-VERSION=3.2.13
+VERSION=3.3.8
 BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
 echo "building ${NAME}"
