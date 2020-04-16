@@ -45,7 +45,7 @@ local build(name, arch, image) = {
 #"ImageMagick",
 #"PyYAML",
 #"asterisk",
-#"dovecot",
+{project: "dovecot", image: "build-deps"},
 #"git",
 #"nginx",
 #"nodejs",
@@ -53,7 +53,7 @@ local build(name, arch, image) = {
 #"openssl",
 #"php",
 #"php7",
-{project: "postfix", image: "build-deps"},
+#{project: "postfix", image: "build-deps"},
 #"postgresql"
 #"postgresql-10",
 #"python",
