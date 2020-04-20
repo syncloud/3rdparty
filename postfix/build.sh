@@ -16,7 +16,7 @@ NAME=postfix
 VERSION=3.4.10
 OPENSSL_VERSION=1.0.2g
 BUILD_DIR=${DIR}/build
-PREFIX=${BUILD_DIR}/${NAME}
+PREFIX=/snap/mail/current/postfix
 echo "building ${NAME}"
 
 rm -rf ${BUILD_DIR}
@@ -37,7 +37,7 @@ cd ${BUILD_DIR}
 wget https://de.postfix.org/ftpmirror/official/${NAME}-${VERSION}.tar.gz --progress dot:giga
 tar xf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-export CCARGS='-DDEF_CONFIG_DIR=\"/opt/data/mail/config/postfix\" \
+export CCARGS='-DDEF_CONFIG_DIR=\"/config/postfix\" \
 	-DUSE_SASL_AUTH \
 	-DDEF_SERVER_SASL_TYPE=\"dovecot\" \
   -I'${PREFIX}'/include -I/usr/include -DHAS_LDAP \
