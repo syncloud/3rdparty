@@ -15,8 +15,8 @@ export TMP=/tmp
 NAME=postfix
 VERSION=3.4.10
 OPENSSL_VERSION=1.0.2g
-BUILD_DIR=${DIR}/build
-PREFIX=/snap/mail/current/postfix
+BUILD_DIR=/snap/mail/current
+PREFIX=${BUILD_DIR}/${NAME}
 echo "building ${NAME}"
 
 rm -rf ${BUILD_DIR}
