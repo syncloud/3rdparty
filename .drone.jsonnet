@@ -54,7 +54,6 @@ local build(name, arch, image) = {
         #{project: "openssl", image: "build-deps"},
         #{project: "php", image: "build-deps"},
         #{project: "php7", image: "build-deps"},
-        #{project: "postfix", image: "build-deps"},
         {project: "postgresql", image: "build-deps"},
         #{project: "postgresql-10", image: "build-deps"},
         #{project: "python", image: "build-deps"},
