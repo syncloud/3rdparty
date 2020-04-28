@@ -9,7 +9,7 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-apt-get -y install dpkg-dev
+apt-get -y install dpkg-dev gnupg2
 
 ARCH=$1
 
@@ -21,7 +21,8 @@ PREFIX=${DIR}/build
 
 echo "building ${NAME}"
 
-command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+command curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
+command curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
 
 #useradd -p ruby ruby
 
