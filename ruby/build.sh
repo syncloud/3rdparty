@@ -9,6 +9,7 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
+apt-get update
 apt-get -y install dpkg-dev gnupg2
 
 ARCH=$1
