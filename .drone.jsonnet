@@ -60,7 +60,6 @@ local build(name, arch, image) = {
         #{project: "python3", image: "build-deps"},
         #{project: "redis", image: "build-deps"},
         #{project: "rsyslog", image: "build-deps"},
-        {project: "ruby", image: "build-deps"},
         #{project: "uwsgi", image: "build-deps"},
         #{project: "mongodb", image: "build-deps"},
         #{project: "mongodb-3.4", image: "build-deps-buster"},
