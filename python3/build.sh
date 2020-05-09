@@ -15,7 +15,6 @@ OPENSSL_VERSION=1.0.2g
 
 NAME=python3
 PREFIX=${DIR}/build/${NAME}
-OPENSSL=${DIR}/build/openssl
 
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libbz2-dev libsqlite3-dev unzip libffi-dev
 
@@ -26,7 +25,7 @@ cd ${DIR}/build
 curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
-./config --prefix=${OPENSSL} --openssldir=/usr/lib/ssl shared
+./config --prefix=${PREFIX} --openssldir=/usr/lib/ssl no-shared no-ssl2 no-ssl3 -fPIC
 make
 make install
 
@@ -35,23 +34,20 @@ wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
 tar xf Python-${VERSION}.tar.xz
 cd Python-${VERSION}
 
-echo "SSL=${OPENSSL}" >> Modules/Setup.dist
+echo "SSL=${PREFIX}" >> Modules/Setup.dist
 echo "_ssl _ssl.c \\" >> Modules/Setup.dist
 echo "       -DUSE_SSL -I\$(SSL)/include -I\$(SSL)/include/openssl \\" >> Modules/Setup.dist
 echo "       -L\$(SSL)/lib -lssl -lcrypto" >> Modules/Setup.dist
 
-export CPPFLAGS=-I${OPENSSL}/include
-export LDFLAGS=-L${OPENSSL}/lib
-export LD_LIBRARY_PATH=${OPENSSL}/lib
+export CPPFLAGS=-I${PREFIX}/include
+export LDFLAGS=-L${PREFIX}/lib
+export LD_LIBRARY_PATH=${PREFIX}/lib
 ./configure --prefix=${PREFIX} --enable-shared --enable-unicode=ucs4
 make
 make install
 
 cp ${DIR}/python ${PREFIX}/bin/
 
-cp -r ${OPENSSL}/lib/* ${PREFIX}/lib
-
-export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/lib/libpython3.so
 ldd ${PREFIX}/bin/python3
 #ldd ${PREFIX}/lib/python3.7/lib-dynload/_ssl.so
