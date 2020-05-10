@@ -61,6 +61,8 @@ ldd ${PREFIX}/bin/python3
 ldd ${PREFIX}/lib/libpython3.so
 ldd ${PREFIX}/bin/python3
 
+cp ${DIR}/py.test.sh ${PREFIX}/bin/
+
 ${PREFIX}/bin/python -m ensurepip --upgrade
 cp ${DIR}/pip ${PREFIX}/bin/
 
@@ -88,3 +90,5 @@ ${PREFIX}/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 #${PREFIX}/bin/pip install cryptography==2.0
 ${PREFIX}/bin/pip install certbot
 ${PREFIX}/bin/certbot help
+${PREFIX}/bin/pip install pytest
+${PREFIX}/bin/py.test.sh --help
