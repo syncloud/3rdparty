@@ -30,6 +30,15 @@ make
 make install
 
 cd ${DIR}/build
+rm -rf /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsqlite3.so*
+wget https://www.sqlite.org/2020/sqlite-${SQLITE_VERSION}.tar.gz
+tar -zxvf sqlite-${SQLITE_VERSION}.tar.gz
+cd sqlite-${SQLITE_VERSION}
+./configure --prefix=${PREFIX}
+make
+make install
+
+cd ${DIR}/build
 wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
 tar xf Python-${VERSION}.tar.xz
 cd Python-${VERSION}
