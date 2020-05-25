@@ -23,7 +23,7 @@ rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
 
-wget https://downloads.mariadb.org/f/${NAME}-${VERSION}/source/${NAME}-${VERSION}.tar.gz/from/http%3A/mirrors.coreix.net/mariadb?serve \
+wget https://downloads.mariadb.org/f/${NAME}-${VERSION}/source/${NAME}-${VERSION}.tar.gz \
     --progress dot:giga -O ${NAME}-${VERSION}.tar.gz
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
