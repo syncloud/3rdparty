@@ -29,7 +29,7 @@ tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 
 cmake . -DCMAKE_INSTALL_PREFIX=${PREFIX}
-make
+make -j4
 make install
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
