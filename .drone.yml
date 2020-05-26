@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: build
-  image: syncloud/build-deps-buster-arm
+  image: syncloud/build-deps-arm
   commands:
   - ./build.sh mariadb
 
@@ -40,7 +40,7 @@ platform:
 
 steps:
 - name: build
-  image: syncloud/build-deps-buster-amd64
+  image: syncloud/build-deps-amd64
   commands:
   - ./build.sh mariadb
 
