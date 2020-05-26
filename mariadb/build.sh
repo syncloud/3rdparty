@@ -19,6 +19,9 @@ PREFIX=${BUILD}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev zlib1g-dev
 
+cat /etc/apt/sources.list
+strings /lib/x86_64-linux-gnu/libc.so.* | grep GLIBC
+
 rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
