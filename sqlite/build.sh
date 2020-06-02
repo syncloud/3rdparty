@@ -28,6 +28,10 @@ cd sqlite-autoconf-${VERSION}
 make
 make install
 
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libreadline*.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtinfo.so* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* ${PREFIX}/lib
+
 ldd ${PREFIX}/bin/sqlite3
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
