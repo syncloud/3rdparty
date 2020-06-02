@@ -28,5 +28,7 @@ cd sqlite-autoconf-${VERSION}
 make
 make install
 
+ldd ${PREFIX}/bin/sqlite3
+
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
