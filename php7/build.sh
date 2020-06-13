@@ -16,12 +16,12 @@ apt install -y libsmbclient-dev libmagickwand-dev imagemagick
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php7
-VERSION=7.2.24
-APCU_VERSION=5.1.3
-APCU_BC_VERSION=1.0.2
+VERSION=7.4.7
+APCU_VERSION=5.1.18
+APCU_BC_VERSION=1.0.5
 #IMAGICK_VERSION=3.1.2
 #IMAGICK_VERSION=3.3.0RC2
-IMAGICK_VERSION=3.4.3
+IMAGICK_VERSION=3.4.4
 IMAGEMAGICK_VERSION=6.9.2-1
 SMBCLIENT_VERSION=0.9.0
 
@@ -102,7 +102,9 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-exif \
     --enable-pcntl \
     --enable-ftp \
-    --with-imagick
+    --with-imagick \
+    --enable-bcmath \
+    --with-gmp
 
 make -j2
 rm -rf ${PREFIX}
