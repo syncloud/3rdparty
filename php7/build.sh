@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 apt update
-apt install -y libsmbclient-dev libmagickwand-dev imagemagick
+apt install -y libsmbclient-dev libmagickwand-dev imagemagick libonig-dev
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -259,7 +259,8 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/samba
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/samba/libauth-sam-reply.so.* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libXau.so.* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libXdmcp.so.* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so.* ${PREFIX}/lib 
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libonig.so ${PREFIX}/lib
 
 echo "test references"
 
