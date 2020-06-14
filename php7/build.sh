@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 apt update
-apt install -y libsmbclient-dev libmagickwand-dev imagemagick libonig-dev
+apt install -y cmake libsmbclient-dev libmagickwand-dev imagemagick libonig-dev
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -39,8 +39,8 @@ cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
 tar xf libzip-1.7.1.tar.gz
 cd libzip-1.7.1
-./configure --prefix=${PREFIX}
-make
+cmake . -dCMAKE_INSTALL_PREFIX=${PREFIX}
+make -j4
 make install
 
 cd ${BUILD_DIR}
