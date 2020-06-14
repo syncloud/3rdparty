@@ -105,8 +105,6 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-gd \
     --with-freetype \
     --with-jpeg \
-    --with-webp \
-    --with-xpm \
     --with-ldap \
     --with-ldap-sasl \
     --with-openssl \
