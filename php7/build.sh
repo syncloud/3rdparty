@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 apt update
-apt install -y cmake libsmbclient-dev libmagickwand-dev imagemagick libonig-dev
+apt install -y libsmbclient-dev libmagickwand-dev imagemagick libonig-dev
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -35,6 +35,14 @@ ln -s  /usr/include/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/curl  /usr/include
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 mkdir -p ${PREFIX}
+
+cd ${BUILD_DIR}
+wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3.tar.gz
+tar xf cmake-3.17.3.tar.gz
+cd cmake-3.17.3
+./bootstrap
+make
+make install
 
 cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
