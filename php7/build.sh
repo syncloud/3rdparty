@@ -40,7 +40,7 @@ cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
 tar xf libzip-1.7.1.tar.gz
 cd libzip-1.7.1
-cmake . -dCMAKE_INSTALL_PREFIX=${PREFIX}
+cmake . -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make -j4
 make install
 
