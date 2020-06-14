@@ -95,9 +95,6 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-opcache \
     --prefix ${PREFIX} \
     --with-config-file-path=${BUILD_DIR}/config \
-    --with-gd \
-    --enable-gd-native-ttf \
-    --with-freetype-dir=/usr/include/freetype2 \
     --with-zip \
     --with-zlib \
     --with-curl \
@@ -105,12 +102,14 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-mbstring \
     --enable-apcu \
     --with-libdir=lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
-    --with-jpeg-dir \
-    --with-png-dir \
+    --enable-gd \
+    --with-freetype \
+    --with-jpeg \
+    --with-webp \
+    --with-xpm \
     --with-ldap \
     --with-ldap-sasl \
     --with-openssl \
-    --with-mcrypt \
     --enable-intl \
     --enable-exif \
     --enable-pcntl \
