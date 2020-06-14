@@ -25,21 +25,25 @@ IMAGICK_VERSION=3.4.4
 IMAGEMAGICK_VERSION=6.9.2-1
 SMBCLIENT_VERSION=1.0.0
 
-ROOT=${DIR}/build/install
-PREFIX=${ROOT}/${NAME}
+BUILD_DIR=${DIR}/build
+PREFIX=${BUILD_DIR}/${NAME}
 
 echo "building ${NAME}"
 
 ln -s  /usr/include/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/curl  /usr/include/curl
 
-rm -rf build
-mkdir -p build
-cd build
+rm -rf ${BUILD_DIR}
+mkdir -p ${BUILD_DIR}
 
-#wget -O ImageMagick-${ARCH}.tar.gz http://build.syncloud.org:8111/guestAuth/repository/download/thirdparty_ImageMagick_${ARCH}/lastSuccessful/ImageMagick-${ARCH}.tar.gz --progress dot:giga
+cd ${BUILD_DIR}
+wget https://libzip.org/download/libzip-1.7.1.tar.gz
+tar xf libzip-1.7.1.tar.gz
+cd libzip
+./configure --prefix=${PREFIX}
+make
+make install
 
-#tar xzf ImageMagick-${ARCH}.tar.gz
-
+cd ${BUILD_DIR}
 wget http://php.net/get/php-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
 tar xjf ${NAME}-${VERSION}.tar.bz2
 cd php-${VERSION}
@@ -81,11 +85,12 @@ CFLAGS="$OPTIONS" ./configure \
     --with-pdo-pgsql \
     --enable-opcache \
     --prefix ${PREFIX} \
-    --with-config-file-path=${ROOT}/config \
+    --with-config-file-path=${BUILD_DIR}/config \
     --with-gd \
     --enable-gd-native-ttf \
     --with-freetype-dir=/usr/include/freetype2 \
-    --enable-zip \
+    --with-zip \
+    --with-zip-dir=${PREFIX} \
     --with-zlib \
     --with-curl \
     --with-readline \
@@ -276,4 +281,4 @@ ${PREFIX}/bin/php -i
 cd ${DIR}
 
 rm -rf ${NAME}-${ARCH}.tar.gz
-tar cpzf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
