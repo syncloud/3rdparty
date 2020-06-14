@@ -41,14 +41,14 @@ wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3.tar
 tar xf cmake-3.17.3.tar.gz
 cd cmake-3.17.3
 ./bootstrap
-make
+make -j4
 make install
 
 cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
 tar xf libzip-1.7.1.tar.gz
 cd libzip-1.7.1
-cmake . -DCMAKE_INSTALL_PREFIX=${PREFIX}
+cmake .
 make -j4
 make install
 
@@ -99,7 +99,6 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-gd-native-ttf \
     --with-freetype-dir=/usr/include/freetype2 \
     --with-zip \
-    --with-zip-dir=${PREFIX} \
     --with-zlib \
     --with-curl \
     --with-readline \
@@ -275,6 +274,7 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libXa
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libXdmcp.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so.* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libonig.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libzip.so.* ${PREFIX}/lib
 
 echo "test references"
 
