@@ -34,6 +34,7 @@ ln -s  /usr/include/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/curl  /usr/include
 
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
+mkdir -p ${PREFIX}
 
 cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
