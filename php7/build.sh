@@ -38,7 +38,7 @@ mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
 tar xf libzip-1.7.1.tar.gz
-cd libzip
+cd libzip-1.7.1
 ./configure --prefix=${PREFIX}
 make
 make install
@@ -111,7 +111,7 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-bcmath \
     --with-gmp
 
-make -j2
+make -j3
 rm -rf ${PREFIX}
 make install
 
