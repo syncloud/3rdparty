@@ -95,16 +95,18 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-opcache \
     --prefix ${PREFIX} \
     --with-config-file-path=${BUILD_DIR}/config \
-    --with-zip \
+    --with-gd `#PHP 7.4 --enable-gd` \
+    --enable-gd-native-ttf `#PHP 7.4 removed` \
+    --with-freetype-dir=/usr/include/freetype2 `#PHP 7.4 --with-freetype` \
+    --enable-zip `#PHP 7.4 --with-zip` \
     --with-zlib \
     --with-curl \
     --with-readline \
     --enable-mbstring \
     --enable-apcu \
     --with-libdir=lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE) \
-    --enable-gd \
-    --with-freetype \
-    --with-jpeg \
+    --with-jpeg-dir `#PHP 7.4 --with-jpeg` \
+    --with-png-dir `#PHP 7.4 removed` \
     --with-ldap \
     --with-ldap-sasl \
     --with-openssl \
