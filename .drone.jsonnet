@@ -53,7 +53,7 @@ local build(name, arch, image) = {
         #{project: "openldap", image: "build-deps"},
         #{project: "openssl", image: "build-deps"},
         #{project: "php", image: "build-deps"},
-        {project: "php7", image: "build-deps"},
+        #{project: "php7", image: "build-deps"},
         #{project: "postgresql", image: "build-deps"},
         #{project: "postgresql-10", image: "build-deps"},
         #{project: "python", image: "build-deps"},
@@ -69,5 +69,6 @@ local build(name, arch, image) = {
         #{project: "bind9", image: "build-deps"},
         #{project: "openvpn", image: "build-deps"},
         #{project: "opendkim", image: "build-deps"},
+        {project: "gptfdisk", image: "build-deps"},
     ]
 ]
