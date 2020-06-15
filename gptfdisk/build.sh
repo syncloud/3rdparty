@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -17,7 +17,7 @@ VERSION=1.0.4
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-apt-get -y install build-essential libpopt-dev libncurses-dev
+apt-get -y install build-essential libpopt-dev libncursesw5-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
@@ -28,7 +28,7 @@ tar xf gptfdisk-${VERSION}.tar.gz
 cd gptfdisk-${VERSION}
 make
 mkdir ${PREFIX}
-mkdir ${PREFIX}/gptfdisk/bin
+mkdir ${PREFIX}/bin
 cp gdisk ${PREFIX}/bin
 cp sgdisk ${PREFIX}/bin
 mkdir ${PREFIX}/lib
