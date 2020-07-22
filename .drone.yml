@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: gptfdisk-arm
+name: nginx-arm
 
 platform:
   os: linux
@@ -10,7 +10,7 @@ steps:
 - name: build
   image: syncloud/build-deps-arm
   commands:
-  - ./build.sh gptfdisk
+  - ./build.sh nginx
 
 - name: artifact
   image: appleboy/drone-scp
@@ -20,7 +20,7 @@ steps:
       from_secret: artifact_host
     key:
       from_secret: artifact_key
-    source: gptfdisk/*.tar.gz
+    source: nginx/*.tar.gz
     strip_components: 1
     target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-arm
     timeout: 2m
@@ -32,7 +32,7 @@ steps:
 
 ---
 kind: pipeline
-name: gptfdisk-amd64
+name: nginx-amd64
 
 platform:
   os: linux
@@ -42,7 +42,7 @@ steps:
 - name: build
   image: syncloud/build-deps-amd64
   commands:
-  - ./build.sh gptfdisk
+  - ./build.sh nginx
 
 - name: artifact
   image: appleboy/drone-scp
@@ -52,7 +52,7 @@ steps:
       from_secret: artifact_host
     key:
       from_secret: artifact_key
-    source: gptfdisk/*.tar.gz
+    source: nginx/*.tar.gz
     strip_components: 1
     target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-amd64
     timeout: 2m

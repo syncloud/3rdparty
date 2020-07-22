@@ -48,7 +48,7 @@ local build(name, arch, image) = {
         #{project: "asterisk", image: "build-deps"},
         #{project: "dovecot", image: "build-deps"},
         #{project: "git", image: "build-deps"},
-        #{project: "nginx", image: "build-deps"},
+        {project: "nginx", image: "build-deps"},
         #{project: "nodejs", image: "build-deps"},
         #{project: "openldap", image: "build-deps"},
         #{project: "openssl", image: "build-deps"},
@@ -69,6 +69,6 @@ local build(name, arch, image) = {
         #{project: "bind9", image: "build-deps"},
         #{project: "openvpn", image: "build-deps"},
         #{project: "opendkim", image: "build-deps"},
-        {project: "gptfdisk", image: "build-deps"},
+        #{project: "gptfdisk", image: "build-deps"},
     ]
 ]
