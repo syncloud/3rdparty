@@ -16,7 +16,7 @@ apt install -y libsmbclient-dev libmagickwand-dev imagemagick libonig-dev
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php7
-VERSION=7.3.19
+VERSION=7.4.12
 APCU_VERSION=5.1.18
 APCU_BC_VERSION=1.0.5
 #IMAGICK_VERSION=3.1.2
