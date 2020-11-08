@@ -57,7 +57,7 @@ local build(name, arch, image) = {
         #{project: "postgresql", image: "build-deps"},
         #{project: "postgresql-10", image: "build-deps"},
         #{project: "python", image: "build-deps"},
-        {project: "python3", image: "build-deps"},
+        #{project: "python3", image: "build-deps"},
         #{project: "redis", image: "build-deps"},
         #{project: "rsyslog", image: "build-deps"},
         #{project: "mongodb", image: "build-deps"},

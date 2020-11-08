@@ -27,8 +27,7 @@ rm -rf openssl-${OPENSSL_VERSION}
 tar xzf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
 
-./config -Wl,--version-script=${DIR}/openssl.ld -Wl,-Bsymbolic-functions -fPIC shared --prefix=${PREFIX}
-
+./config --prefix=${PREFIX} --openssldir=/usr/lib/ssl no-shared no-ssl2 no-ssl3 -fPIC
 make
 make install
 
