@@ -62,7 +62,7 @@ local build(name, arch, image) = {
         #{project: "rsyslog", image: "build-deps"},
         #{project: "mongodb", image: "build-deps"},
         #{project: "mongodb-3.4", image: "build-deps-buster"},
-        {project: "mongodb-4", image: "build-deps"},
+        {project: "mongodb-4", image: "build-deps-buster"},
         #{project: "phantomjs", image: "build-deps"},
         #{project: "mariadb", image: "build-deps"},
         #{project: "libvips", image: "build-deps"},
