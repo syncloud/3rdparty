@@ -39,20 +39,7 @@ apt-get install -y python-pip python-dev libssl-dev
 pip install -r buildscripts/requirements.txt
 python buildscripts/scons.py --disable-warnings-as-errors -j 2 mongod
 python buildscripts/scons.py --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
-
-#pip install scons==2.3.0
-#mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
-
-#ls -la src/third_party
-
-#cd src/third_party/mozjs-45/
-#chmod +x *.sh
-#./get-sources.sh
-#./gen-config.sh ${MONGO_ARCH} linux
-#cd ../../../
-
-#scons --disable-warnings-as-errors -j 2 --wiredtiger=off --mmapv1=on --js-engine=mozjs mongod
-#scons --disable-warnings-as-errors --prefix=${PREFIX} -j 2 --wiredtiger=off --mmapv1=on --js-engine=mozjs install
+strip ${PREFIX}/mongo*
 
 ls -la ${PREFIX}
 ls -la ${PREFIX}/bin
