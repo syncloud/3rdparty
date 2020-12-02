@@ -37,7 +37,7 @@ ls -la src
 apt-get update
 apt-get install -y python-pip python-dev libssl-dev
 pip install -r buildscripts/requirements.txt
-python buildscripts/scons.py --disable-warnings-as-errors -j 2 mongod
+python buildscripts/scons.py --disable-warnings-as-errors -j 2 mongod > build.log
 python buildscripts/scons.py --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
 strip ${PREFIX}/bin/mongo*
 
