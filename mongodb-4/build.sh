@@ -16,14 +16,22 @@ fi
 
 NAME=mongodb-4
 VERSION=4.0.21
+GCC_VERSTION=5.5.0
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
 mkdir -p $PREFIX
 cd ${DIR}/build
 
-echo "building ${NAME}"
+wget ftp://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSTION}/gcc-${GCC_VERSTION}.tar.gz --progress dot:giga
+tar xf gcc-${GCC_VERSTION}.tar.gz
+cd gcc-${GCC_VERSTION}
+./configure --prefix=/usr
+make
+make install-strip
 
+echo "building ${NAME}"
+cd ${DIR}/build
 ARCHIVE=mongodb-src-r${VERSION}.tar.gz
 wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
 
