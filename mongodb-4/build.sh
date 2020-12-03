@@ -16,7 +16,7 @@ fi
 
 NAME=mongodb-4
 VERSION=4.0.21
-GCC_VERSTION=6.3.0
+GCC_VERSTION=5.5.0
 MPFR_VERSTION=2.4.2
 MPC_VERSION=1.0.1
 PREFIX=${DIR}/build/${NAME}
@@ -28,17 +28,11 @@ cd ${DIR}/build
 wget ftp://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSTION}/gcc-${GCC_VERSTION}.tar.bz2 --progress dot:giga
 tar xf gcc-${GCC_VERSTION}.tar.bz2
 cd gcc-${GCC_VERSTION}
-
-wget https://www.mpfr.org/mpfr-${MPFR_VERSTION}/mpfr-${MPFR_VERSTION}.tar.xz --progress dot:giga
-tar xf mpfr-${MPFR_VERSTION}.tar.xz
-mv mpfr-${MPFR_VERSTION} mpfr
-
-wget https://ftp.gnu.org/gnu/mpc/mpc-${MPC_VERSION}.tar.gz --progress dot:giga
-tar xf mpc-${MPC_VERSION}.tar.gz
-mv mpc-${MPC_VERSION} mpc
-mkdir obj
-cd obj
-../configure --prefix=/usr --disable-multilib
+./contrib/download_prerequisites
+cd ..
+mkdir objdir
+cd objdir
+$PWD/../configure --prefix=/usr
 make
 make install-strip
 
