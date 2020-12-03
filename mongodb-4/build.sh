@@ -25,8 +25,8 @@ rm -rf ${DIR}/build
 mkdir -p $PREFIX
 
 cd ${DIR}/build
-wget ftp://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSTION}/gcc-${GCC_VERSTION}.tar.xz --progress dot:giga
-tar xf gcc-${GCC_VERSTION}.tar.xz
+wget ftp://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSTION}/gcc-${GCC_VERSTION}.tar.bz2 --progress dot:giga
+tar xf gcc-${GCC_VERSTION}.tar.bz2
 cd gcc-${GCC_VERSTION}
 
 wget https://www.mpfr.org/mpfr-${MPFR_VERSTION}/mpfr-${MPFR_VERSTION}.tar.xz --progress dot:giga
