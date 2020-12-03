@@ -36,8 +36,9 @@ mv mpfr-${MPFR_VERSTION} mpfr
 wget https://ftp.gnu.org/gnu/mpc/mpc-${MPC_VERSION}.tar.gz --progress dot:giga
 tar xf mpc-${MPC_VERSION}.tar.gz
 mv mpc-${MPC_VERSION} mpc
-
-./configure --prefix=/usr --disable-multilib
+mkdir obj
+cd obj
+../configure --prefix=/usr --disable-multilib
 make
 make install-strip
 
