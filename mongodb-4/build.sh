@@ -37,7 +37,7 @@ wget https://ftp.gnu.org/gnu/mpc/mpc-${MPC_VERSION}.tar.gz --progress dot:giga
 tar xf mpc-${MPC_VERSION}.tar.gz
 mv mpc-${MPC_VERSION} mpc
 
-./configure --prefix=/usr
+./configure --prefix=/usr --disable-multilib
 make
 make install-strip
 
