@@ -32,7 +32,7 @@ cd gcc-${GCC_VERSTION}
 cd ..
 mkdir objdir
 cd objdir
-$PWD/../configure --prefix=/usr
+$PWD/../gcc-${GCC_VERSTION}/configure --prefix=/usr
 make
 make install-strip
 
