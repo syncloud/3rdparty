@@ -25,8 +25,8 @@ rm -rf ${DIR}/build
 mkdir -p $PREFIX
 
 cd ${DIR}/build
-wget ftp://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSTION}/gcc-${GCC_VERSTION}.tar.bz2 --progress dot:giga
-tar xf gcc-${GCC_VERSTION}.tar.bz2
+wget ftp://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSTION}/gcc-${GCC_VERSTION}.tar.xz --progress dot:giga
+tar xf gcc-${GCC_VERSTION}.tar.xz
 cd gcc-${GCC_VERSTION}
 ./contrib/download_prerequisites
 cd ..
