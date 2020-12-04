@@ -22,14 +22,14 @@ rm -rf ${DIR}/build
 mkdir -p $PREFIX
 
 cd ${DIR}/build
-wget ftp://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSTION}/gcc-${GCC_VERSTION}.tar.xz --progress dot:giga
-tar xf gcc-${GCC_VERSTION}.tar.xz
-cd gcc-${GCC_VERSTION}
+wget ftp://ftp.gnu.org/gnu/gcc/gcc-${VERSTION}/gcc-${VERSTION}.tar.xz --progress dot:giga
+tar xf gcc-${VERSTION}.tar.xz
+cd gcc-${VERSTION}
 ./contrib/download_prerequisites
 cd ..
 mkdir objdir
 cd objdir
-$DIR/build/gcc-${GCC_VERSTION}/configure --prefix=$PREFIX --disable-multilib
+$DIR/build/gcc-${VERSTION}/configure --prefix=$PREFIX --disable-multilib
 make -j 2 > build.log
 make install-strip
 
