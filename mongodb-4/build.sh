@@ -33,7 +33,7 @@ cd ..
 mkdir objdir
 cd objdir
 $PWD/../gcc-${GCC_VERSTION}/configure --prefix=/usr --disable-multilib
-make
+make -j 2 > build.log
 make install-strip
 
 echo "building ${NAME}"
