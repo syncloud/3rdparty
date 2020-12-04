@@ -1,16 +1,16 @@
 ---
 kind: pipeline
-name: mongodb-4-amd64
+name: gcc-5-arm
 
 platform:
   os: linux
-  arch: amd64
+  arch: arm
 
 steps:
 - name: build
-  image: syncloud/build-deps-amd64
+  image: syncloud/build-deps-arm
   commands:
-  - ./build.sh mongodb-4
+  - ./build.sh gcc-5
 
 - name: artifact
   image: appleboy/drone-scp
@@ -20,7 +20,39 @@ steps:
       from_secret: artifact_host
     key:
       from_secret: artifact_key
-    source: mongodb-4/*.tar.gz
+    source: gcc-5/*.tar.gz
+    strip_components: 1
+    target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-arm
+    timeout: 2m
+    username: artifact
+  when:
+    status:
+    - failure
+    - success
+
+---
+kind: pipeline
+name: gcc-5-amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  image: syncloud/build-deps-amd64
+  commands:
+  - ./build.sh gcc-5
+
+- name: artifact
+  image: appleboy/drone-scp
+  settings:
+    command_timeout: 2m
+    host:
+      from_secret: artifact_host
+    key:
+      from_secret: artifact_key
+    source: gcc-5/*.tar.gz
     strip_components: 1
     target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-amd64
     timeout: 2m
