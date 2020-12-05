@@ -27,10 +27,15 @@ wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/
 tar xf gcc-$GCC_VERSION-${ARCH}.tar.gz
 export PATH=$DIR/build/gcc-$GCC_VERSION/bin:$PATH
 
+wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/python-${ARCH}.tar.gz
+tar xf python-${ARCH}.tar.gz
+export PATH=$DIR/build/python/bin:$PATH
+
 echo "building ${NAME}"
 apt update
 apt remove -y gcc cpp
 gcc --version
+python --version
 
 cd ${DIR}/build
 ARCHIVE=mongodb-src-r${VERSION}.tar.gz
@@ -43,7 +48,6 @@ cat README
 cat docs/building.md
 ls -la src
 
-apt install -y python-pip python-dev libssl-dev
 pip install -r buildscripts/requirements.txt
 python buildscripts/scons.py --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
 python buildscripts/scons.py --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
