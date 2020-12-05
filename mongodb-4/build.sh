@@ -16,25 +16,16 @@ fi
 
 NAME=mongodb-4
 VERSION=4.0.21
-GCC_VERSTION=5.5.0
-MPFR_VERSTION=2.4.2
-MPC_VERSION=1.0.1
+GCC_VERSTION=5
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
 mkdir -p $PREFIX
 
 cd ${DIR}/build
-wget ftp://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSTION}/gcc-${GCC_VERSTION}.tar.xz --progress dot:giga
-tar xf gcc-${GCC_VERSTION}.tar.xz
-cd gcc-${GCC_VERSTION}
-./contrib/download_prerequisites
-cd ..
-mkdir objdir
-cd objdir
-$PWD/../gcc-${GCC_VERSTION}/configure --prefix=/usr --disable-multilib
-make -j 2 > build.log
-make install-strip
+wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/gcc-$GCC_VERSION--${ARCH}.tar.gz
+tar xf gcc-$GCC_VERSION-${ARCH}.tar.gz
+export PATH=$DIR/build/gcc-$GCC_VERSION/bin:$PATH
 
 echo "building ${NAME}"
 cd ${DIR}/build

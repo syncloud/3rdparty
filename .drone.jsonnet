@@ -59,7 +59,7 @@ local build(name, arch, image) = {
         #{project: "rsyslog", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "mongodb", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "mongodb-3.4", image: "build-deps-buster", archs: ["arm", "amd64"]},
-        #{project: "mongodb-4", image: "build-deps", archs: ["amd64"]},
+        {project: "mongodb-4", image: "build-deps", archs: ["amd64"]},
         #{project: "phantomjs", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "mariadb", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "libvips", image: "build-deps", archs: ["arm", "amd64"]},
@@ -68,7 +68,7 @@ local build(name, arch, image) = {
         #{project: "openvpn", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "opendkim", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "gptfdisk", image: "build-deps", archs: ["arm", "amd64"]},
-        {project: "gcc-5", image: "build-deps", archs: ["arm", "amd64"]},
+        #{project: "gcc-5", image: "build-deps", archs: ["arm", "amd64"]},
     ]
     for arch in item.archs
 ]
