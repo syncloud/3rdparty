@@ -16,7 +16,7 @@ fi
 
 NAME=mongodb-4
 VERSION=4.0.21
-GCC_VERSTION=5
+GCC_VERSION=5
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
