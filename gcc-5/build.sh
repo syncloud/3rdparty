@@ -11,12 +11,14 @@ fi
 PACKAGE_ARCH=$1
 OPTS=""
 if [[ ${PACKAGE_ARCH} == "arm" ]]; then
-    OPTS="--with-arch=armv6 --with-fpu=vfp --with-float=hard --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf"
+    #OPTS="--with-arch=armv6 --with-fpu=vfp --with-float=hard --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf"
 fi
 
 NAME=gcc-5
 VERSTION=5.5.0
 PREFIX=${DIR}/build/${NAME}
+apt update
+apt install -y libc6 libc6-dev
 
 rm -rf ${DIR}/build
 mkdir -p $PREFIX
