@@ -23,7 +23,7 @@ rm -rf ${DIR}/build
 mkdir -p $PREFIX
 
 cd ${DIR}/build
-wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/gcc-$GCC_VERSION--${ARCH}.tar.gz
+wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/gcc-$GCC_VERSION-${ARCH}.tar.gz
 tar xf gcc-$GCC_VERSION-${ARCH}.tar.gz
 export PATH=$DIR/build/gcc-$GCC_VERSION/bin:$PATH
 
