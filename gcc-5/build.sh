@@ -11,7 +11,7 @@ fi
 PACKAGE_ARCH=$1
 OPTS=""
 if [[ ${PACKAGE_ARCH} == "arm" ]]; then
-    OPTS=""
+    OPTS="--with-arch=armv6 --with-fpu=vfp --with-float=hard --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf"
 fi
 
 NAME=gcc-5
