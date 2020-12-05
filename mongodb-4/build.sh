@@ -29,7 +29,7 @@ export PATH=$DIR/build/gcc-$GCC_VERSION/bin:$PATH
 
 echo "building ${NAME}"
 apt update
-apt remove gcc
+apt remove -y gcc cpp
 gcc --version
 
 cd ${DIR}/build
