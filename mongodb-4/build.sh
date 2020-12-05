@@ -28,6 +28,10 @@ tar xf gcc-$GCC_VERSION-${ARCH}.tar.gz
 export PATH=$DIR/build/gcc-$GCC_VERSION/bin:$PATH
 
 echo "building ${NAME}"
+apt update
+apt remove gcc
+gcc --version
+
 cd ${DIR}/build
 ARCHIVE=mongodb-src-r${VERSION}.tar.gz
 wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
@@ -39,8 +43,6 @@ cat README
 cat docs/building.md
 ls -la src
 
-aptupdate
-apt remove gcc
 apt install -y python-pip python-dev libssl-dev
 pip install -r buildscripts/requirements.txt
 python buildscripts/scons.py --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
