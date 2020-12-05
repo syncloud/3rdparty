@@ -10,9 +10,9 @@ fi
 
 PACKAGE_ARCH=$1
 OPTS=""
-if [[ ${PACKAGE_ARCH} == "arm" ]]; then
+#if [[ ${PACKAGE_ARCH} == "arm" ]]; then
     #OPTS="--with-arch=armv6 --with-fpu=vfp --with-float=hard --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf"
-fi
+#fi
 
 NAME=gcc-5
 VERSTION=5.5.0
