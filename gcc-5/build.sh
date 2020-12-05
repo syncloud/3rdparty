@@ -8,10 +8,10 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-ARCH=$1
-MONGO_ARCH=armv7l
-if [[ ${ARCH} == "amd64" ]]; then
-    MONGO_ARCH=x86_64
+PACKAGE_ARCH=$1
+OPTS=""
+if [[ ${PACKAGE_ARCH} == "arm" ]]; then
+    OPTS=""
 fi
 
 NAME=gcc-5
@@ -29,12 +29,12 @@ cd gcc-${VERSTION}
 cd ..
 mkdir objdir
 cd objdir
-$DIR/build/gcc-${VERSTION}/configure --prefix=$PREFIX --disable-multilib
-make -j 2 > build.log
+$DIR/build/gcc-${VERSTION}/configure --prefix=$PREFIX --disable-multilib  --enable-languages=c,c++ $OPTS
+make -j 4 > build.log
 make install-strip
 
 $PREFIX/bin/gcc --version
 
 cd ${DIR}
 
-tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+tar cpzf ${NAME}-${PACKAGE_ARCH}.tar.gz -C ${DIR}/build ${NAME}
