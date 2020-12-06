@@ -54,7 +54,7 @@ ls -la src
 
 pip install -r buildscripts/requirements.txt
 python buildscripts/scons.py CC=$CC CXX=$CXX --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
-python buildscripts/scons.py --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
+python buildscripts/scons.py CC=$CC CXX=$CXX --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
 strip ${PREFIX}/bin/mongo*
 
 ls -la ${PREFIX}
