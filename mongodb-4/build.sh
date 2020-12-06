@@ -30,10 +30,10 @@ wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/
 tar xf gcc-$GCC_VERSION-${ARCH}.tar.gz
 export CC=$DIR/build/gcc-$GCC_VERSION/bin/gcc
 export CXX=$DIR/build/gcc-$GCC_VERSION/bin/g++
-export PATH=$DIR/build/gcc-$GCC_VERSION/bin:$PATHj
+export PATH=$DIR/build/gcc-$GCC_VERSION/bin:$PATH
 gcc --version
 $CC --version
-$CXX -version
+$CXX --version
 
 wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/python-${ARCH}.tar.gz
 tar xf python-${ARCH}.tar.gz
