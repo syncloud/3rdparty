@@ -65,43 +65,39 @@ mkdir -p ${PREFIX}/lib
 mv ${PREFIX}/bin/mongod ${PREFIX}/bin/mongod.bin
 ldd ${PREFIX}/bin/mongod.bin
 
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so* ${PREFIX}/lib
-
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcurl.so* ${PREFIX}/lib
-#cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libresolv.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so* ${PREFIX}/lib
-#cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so* ${PREFIX}/lib
-#cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libnghttp2.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libidn2.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librtmp.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssh2.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpsl.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgssapi_krb5.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libkrb5.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libk5crypto.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcom_err.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libldap_r-2.4.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblber-2.4.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunistring.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgnutls.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhogweed.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libnettle.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgmp.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcrypt.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libkrb5support.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libkeyutils.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsasl2.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libp11-kit.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtasn1.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgpg-error.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libffi.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libcurl.so.* ${PREFIX}/lib
+#cp --remove-destination /lib/x86_64-linux-gnu/libresolv.so.* ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/librt.so.* ${PREFIX}/lib
+#cp --remove-destination /lib/x86_64-linux-gnu/libdl.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libstdc++.so.* ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/libm.so.* ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/libgcc_s.so.* ${PREFIX}/lib
+#cp --remove-destination /lib/x86_64-linux-gnu/libpthread.so.* ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/libc.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libidn.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/librtmp.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libssh2.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libssl.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libcrypto.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libkrb5.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libk5crypto.so.* ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/libcom_err.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/liblber-2.4.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libldap_r-2.4.so.* ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/libz.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libgnutls-deb0.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libhogweed.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libnettle.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libgmp.so.* ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/libgcrypt.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libkrb5support.so.* ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/libkeyutils.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libsasl2.so.*  ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libp11-kit.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libtasn1.so.*  ${PREFIX}/lib
+cp --remove-destination /lib/x86_64-linux-gnu/libgpg-error.so.*  ${PREFIX}/lib
+cp --remove-destination /usr/lib/x86_64-linux-gnu/libffi.so.* ${PREFIX}/lib
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/bin/mongod.bin
