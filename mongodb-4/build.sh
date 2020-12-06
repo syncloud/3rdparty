@@ -70,7 +70,7 @@ cp --remove-destination /usr/lib/x86_64-linux-gnu/libcurl.so.* ${PREFIX}/lib
 #cp --remove-destination /lib/x86_64-linux-gnu/libresolv.so.* ${PREFIX}/lib
 cp --remove-destination /lib/x86_64-linux-gnu/librt.so.* ${PREFIX}/lib
 #cp --remove-destination /lib/x86_64-linux-gnu/libdl.so.* ${PREFIX}/lib
-cp --remove-destination /usr/lib/x86_64-linux-gnu/libstdc++.so.* ${PREFIX}/lib
+cp --remove-destination $GCC/lib*/libstdc++.so.* ${PREFIX}/lib
 cp --remove-destination /lib/x86_64-linux-gnu/libm.so.* ${PREFIX}/lib
 cp --remove-destination $GCC/lib*/libgcc_s.so.* ${PREFIX}/lib
 #cp --remove-destination /lib/x86_64-linux-gnu/libpthread.so.* ${PREFIX}/lib
