@@ -25,8 +25,9 @@ mkdir -p $PREFIX
 apt update
 apt remove -y gcc cpp
 
-/lib/x86_64-linux-gnu/ld-2.31.so /bin/true
-/lib/x86_64-linux-gnu/ld-2.31.so /bin/ls /usr
+LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
+$LD /bin/true
+$LD /bin/ls /usr
 
 cd ${DIR}/build
 wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/gcc-$GCC_VERSION-${ARCH}.tar.gz
@@ -73,7 +74,7 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libresolv
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so.* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/ld-2.31.so ${PREFIX}/lib/ld.so
+cp --remove-destination $LD ${PREFIX}/lib/ld.so
 
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcurl.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so.* ${PREFIX}/lib
@@ -111,7 +112,7 @@ ldd ${PREFIX}/bin/mongod.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 ${PREFIX}/bin/mongod --version
 
-/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/ld-2.31.so ${PREFIX}/bin/mongod.bin --version
+$LD ${PREFIX}/bin/mongod.bin --version
 ${PREFIX}/lib/ld.so ${PREFIX}/bin/mongod.bin --version
 
 cd ${DIR}
