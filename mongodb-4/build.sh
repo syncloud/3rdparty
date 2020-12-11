@@ -108,7 +108,7 @@ ldd ${PREFIX}/bin/mongod.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 ${PREFIX}/bin/mongod --version
 
-${PREFIX}/lib/ld-linux.so.2 --library-path ${PREFIX}/lib ${PREFIX}/bin/mongod.bin --version
+${PREFIX}/lib/ld-linux.so.2 ${PREFIX}/bin/mongod.bin --version
 
 cd ${DIR}
 
