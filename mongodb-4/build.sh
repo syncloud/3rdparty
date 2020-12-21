@@ -113,7 +113,8 @@ cp ${DIR}/bin/* ${PREFIX}/bin
 ${PREFIX}/bin/mongod --version
 
 $LD ${PREFIX}/bin/mongod.bin --version
-${PREFIX}/lib/ld.so ${PREFIX}/bin/mongod.bin --version
+${PREFIX}/lib/ld.so --verify ${PREFIX}/bin/mongod.bin
+${PREFIX}/lib/ld.so --list ${PREFIX}/bin/mongod.bin --version
 
 cd ${DIR}
 
