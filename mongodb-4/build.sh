@@ -112,6 +112,7 @@ ldd ${PREFIX}/bin/mongod.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 ${PREFIX}/bin/mongod --version
 
+LD_DEBUG=files,libs
 $LD ${PREFIX}/bin/mongod.bin --version || true
 ${PREFIX}/lib/ld.so --verify ${PREFIX}/bin/mongod.bin || true
 ${PREFIX}/lib/ld.so --list ${PREFIX}/bin/mongod.bin --version || true
