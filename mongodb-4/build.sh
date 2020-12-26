@@ -9,36 +9,36 @@ if [[ -z "$1" ]]; then
 fi
 
 ARCH=$1
-MONGO_ARCH=armv7l
-if [[ ${ARCH} == "amd64" ]]; then
-    MONGO_ARCH=x86_64
-fi
+#MONGO_ARCH=armv7l
+#if [[ ${ARCH} == "amd64" ]]; then
+#    MONGO_ARCH=x86_64
+#fi
 
 NAME=mongodb-4
 VERSION=4.0.21
-GCC_VERSION=5
+#GCC_VERSION=5
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
 mkdir -p $PREFIX
 
-apt update
-apt remove -y gcc cpp
+#apt update
+#apt remove -y gcc cpp
 
 LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
 $LD /bin/true
 $LD /bin/ls /usr
 
-cd ${DIR}/build
-wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/gcc-$GCC_VERSION-${ARCH}.tar.gz
-tar xf gcc-$GCC_VERSION-${ARCH}.tar.gz
-export GCC=$DIR/build/gcc-$GCC_VERSION
-export CC=$GCC/bin/gcc
-export CXX=$GCC/bin/g++
-export PATH=$GCC/bin:$PATH
-gcc --version
-$CC --version
-$CXX --version
+#cd ${DIR}/build
+#wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/gcc-$GCC_VERSION-${ARCH}.tar.gz
+#tar xf gcc-$GCC_VERSION-${ARCH}.tar.gz
+#export GCC=$DIR/build/gcc-$GCC_VERSION
+#export CC=$GCC/bin/gcc
+#export CXX=$GCC/bin/g++
+#export PATH=$GCC/bin:$PATH
+#gcc --version
+#$CC --version
+#$CXX --version
 
 wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/python-${ARCH}.tar.gz
 tar xf python-${ARCH}.tar.gz
@@ -58,8 +58,8 @@ cat docs/building.md
 ls -la src
 
 pip install -r buildscripts/requirements.txt
-python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" CC=$CC CXX=$CXX --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
-python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" CC=$CC CXX=$CXX --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
+python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
+python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
 strip ${PREFIX}/bin/mongo*
 
 ls -la ${PREFIX}
@@ -75,11 +75,10 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so.
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so.* ${PREFIX}/lib
 cp --remove-destination $LD ${PREFIX}/lib/ld.so
-
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcurl.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so.* ${PREFIX}/lib
-cp --remove-destination $GCC/lib*/libstdc++.so.* ${PREFIX}/lib
-cp --remove-destination $GCC/lib*/libgcc_s.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so.* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libidn.so.* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librtmp.so.* ${PREFIX}/lib
