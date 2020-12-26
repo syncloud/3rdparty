@@ -25,9 +25,9 @@ mkdir -p $PREFIX
 #apt update
 #apt remove -y gcc cpp
 
-LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
-$LD /bin/true
-$LD /bin/ls /usr
+#LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
+#$LD /bin/true
+#$LD /bin/ls /usr
 
 #cd ${DIR}/build
 #wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/gcc-$GCC_VERSION-${ARCH}.tar.gz
@@ -111,9 +111,13 @@ ldd ${PREFIX}/bin/mongod.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 ${PREFIX}/bin/mongod --version
 
+LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
+$LD /bin/true
+$LD /bin/ls /usr
+
 LD_DEBUG=files,libs $LD ${PREFIX}/bin/mongod.bin --version || true
-LD_DEBUG=files,libs ${PREFIX}/lib/ld.so --verify ${PREFIX}/bin/mongod.bin || true
-LD_DEBUG=files,libs ${PREFIX}/lib/ld.so --list ${PREFIX}/bin/mongod.bin || true
+LD_DEBUG=files,libs $LD --verify ${PREFIX}/bin/mongod.bin || true
+LD_DEBUG=files,libs $LD --list ${PREFIX}/bin/mongod.bin || true
 
 cd ${DIR}
 
