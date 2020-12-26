@@ -58,8 +58,8 @@ cat docs/building.md
 ls -la src
 
 pip install -r buildscripts/requirements.txt
-python buildscripts/scons.py CC=$CC CXX=$CXX --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
-python buildscripts/scons.py CC=$CC CXX=$CXX --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
+python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" CC=$CC CXX=$CXX --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
+python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" CC=$CC CXX=$CXX --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
 strip ${PREFIX}/bin/mongo*
 
 ls -la ${PREFIX}
@@ -114,7 +114,7 @@ ${PREFIX}/bin/mongod --version
 
 LD_DEBUG=files,libs $LD ${PREFIX}/bin/mongod.bin --version || true
 LD_DEBUG=files,libs ${PREFIX}/lib/ld.so --verify ${PREFIX}/bin/mongod.bin || true
-LD_DEBUG=files,libs ${PREFIX}/lib/ld.so --list ${PREFIX}/bin/mongod.bin --version || true
+LD_DEBUG=files,libs ${PREFIX}/lib/ld.so --list ${PREFIX}/bin/mongod.bin || true
 
 cd ${DIR}
 
