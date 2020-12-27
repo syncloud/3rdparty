@@ -22,8 +22,24 @@ PREFIX=${DIR}/build/${NAME}
 rm -rf ${DIR}/build
 mkdir -p $PREFIX
 
-#apt update
+apt update
 #apt remove -y gcc cpp
+apt -y install \
+  libboost-filesystem-dev \
+  libboost-program-options-dev \
+  libboost-system-dev \
+  libboost-thread-dev \
+  build-essential \
+  gcc \
+  python \
+  scons \
+  git \
+  glibc-source \
+  libssl-dev \
+  python-pip \
+  libffi-dev \
+  python-dev \
+  libcurl4-openssl-dev
 
 #LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
 #$LD /bin/true
@@ -58,6 +74,8 @@ cat docs/building.md
 ls -la src
 
 pip install -r buildscripts/requirements.txt
+pip install regex
+
 python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
 python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
 strip ${PREFIX}/bin/mongo*
