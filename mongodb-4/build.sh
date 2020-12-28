@@ -9,21 +9,14 @@ if [[ -z "$1" ]]; then
 fi
 
 ARCH=$1
-#MONGO_ARCH=armv7l
-#if [[ ${ARCH} == "amd64" ]]; then
-#    MONGO_ARCH=x86_64
-#fi
-
 NAME=mongodb-4
 VERSION=4.0.21
-#GCC_VERSION=5
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
 mkdir -p $PREFIX
 
 apt update
-#apt remove -y gcc cpp
 apt -y install \
   libboost-filesystem-dev \
   libboost-program-options-dev \
@@ -40,21 +33,6 @@ apt -y install \
   libffi-dev \
   python-dev \
   libcurl4-openssl-dev
-
-#LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
-#$LD /bin/true
-#$LD /bin/ls /usr
-
-#cd ${DIR}/build
-#wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/gcc-$GCC_VERSION-${ARCH}.tar.gz
-#tar xf gcc-$GCC_VERSION-${ARCH}.tar.gz
-#export GCC=$DIR/build/gcc-$GCC_VERSION
-#export CC=$GCC/bin/gcc
-#export CXX=$GCC/bin/g++
-#export PATH=$GCC/bin:$PATH
-#gcc --version
-#$CC --version
-#$CXX --version
 
 wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/python-${ARCH}.tar.gz
 tar xf python-${ARCH}.tar.gz
@@ -85,8 +63,7 @@ ls -la ${PREFIX}/bin
 ls -la ${PREFIX}/lib || true
 mkdir -p ${PREFIX}/lib
 
-mv ${PREFIX}/bin/mongod ${PREFIX}/bin/mongod.bin
-ldd ${PREFIX}/bin/mongod.bin
+ldd ${PREFIX}/bin/mongod
 
 LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libresolv.so.* ${PREFIX}/lib
@@ -125,17 +102,17 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgpg-er
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libffi.so.* ${PREFIX}/lib
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
-ldd ${PREFIX}/bin/mongod.bin
+ldd ${PREFIX}/bin/mongod
 
 cp ${DIR}/bin/* ${PREFIX}/bin
-${PREFIX}/bin/mongod --version
+${PREFIX}/bin/mongod.sh --version
 
 $LD /bin/true
 $LD /bin/ls /usr
 
-LD_DEBUG=files,libs $LD ${PREFIX}/bin/mongod.bin --version || true
-LD_DEBUG=files,libs $LD --verify ${PREFIX}/bin/mongod.bin || true
-LD_DEBUG=files,libs $LD --list ${PREFIX}/bin/mongod.bin || true
+LD_DEBUG=files,libs $LD ${PREFIX}/bin/mongod --version || true
+LD_DEBUG=files,libs $LD --verify ${PREFIX}/bin/mongod || true
+LD_DEBUG=files,libs $LD --list ${PREFIX}/bin/mongod || true
 
 cd ${DIR}
 
