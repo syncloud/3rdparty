@@ -88,6 +88,7 @@ mkdir -p ${PREFIX}/lib
 mv ${PREFIX}/bin/mongod ${PREFIX}/bin/mongod.bin
 ldd ${PREFIX}/bin/mongod.bin
 
+LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libresolv.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.* ${PREFIX}/lib
@@ -129,7 +130,6 @@ ldd ${PREFIX}/bin/mongod.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 ${PREFIX}/bin/mongod --version
 
-LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
 $LD /bin/true
 $LD /bin/ls /usr
 
