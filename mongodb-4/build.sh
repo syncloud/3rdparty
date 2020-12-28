@@ -76,8 +76,8 @@ ls -la src
 pip install -r buildscripts/requirements.txt
 pip install regex
 
-python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
-python buildscripts/scons.py --link-model=static LINKFLAGS="-Wl,-static" --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
+python buildscripts/scons.py --link-model=static --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
+python buildscripts/scons.py --link-model=static --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
 strip ${PREFIX}/bin/mongo*
 
 ls -la ${PREFIX}
