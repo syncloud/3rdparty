@@ -105,18 +105,21 @@ cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libidn2.s
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpsl.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunistring.so.* ${PREFIX}/lib
 
+ldd ${PREFIX}/bin/mongo
+
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/bin/mongod
+ldd ${PREFIX}/bin/mongo
 
 cp ${DIR}/bin/* ${PREFIX}/bin
 ${PREFIX}/bin/mongod.sh --version
+${PREFIX}/bin/mongo.sh --version
 
 $LD /bin/true
 $LD /bin/ls /usr
 
 LD_DEBUG=files,libs $LD ${PREFIX}/bin/mongod --version || true
-LD_DEBUG=files,libs $LD --verify ${PREFIX}/bin/mongod || true
-LD_DEBUG=files,libs $LD --list ${PREFIX}/bin/mongod || true
+LD_DEBUG=files,libs $LD ${PREFIX}/bin/mongo --version || true
 
 cd ${DIR}
 
