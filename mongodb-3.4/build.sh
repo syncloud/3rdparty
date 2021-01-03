@@ -9,21 +9,38 @@ if [[ -z "$1" ]]; then
 fi
 
 ARCH=$1
-MONGO_ARCH=armv7l
-if [[ ${ARCH} == "amd64" ]]; then
-    MONGO_ARCH=x86_64
-fi
-
 NAME=mongodb-3.4
 VERSION=3.4.24
 PREFIX=${DIR}/build/${NAME}
 
 rm -rf ${DIR}/build
 mkdir -p $PREFIX
-cd ${DIR}/build
+
+apt update
+apt -y install \
+  libboost-filesystem-dev \
+  libboost-program-options-dev \
+  libboost-system-dev \
+  libboost-thread-dev \
+  build-essential \
+  gcc \
+  python \
+  scons \
+  git \
+  glibc-source \
+  libssl-dev \
+  python-pip \
+  libffi-dev \
+  python-dev \
+  libcurl4-openssl-dev
+
+wget --progress=dot:giga https://github.com/syncloud/3rdparty/releases/download/1/python-${ARCH}.tar.gz
+tar xf python-${ARCH}.tar.gz
+export PATH=$DIR/build/python/bin:$PATH
+python --version
 
 echo "building ${NAME}"
-
+cd ${DIR}/build
 ARCHIVE=mongodb-src-r${VERSION}.tar.gz
 wget https://fastdl.mongodb.org/src/${ARCHIVE} --progress dot:giga
 
@@ -34,37 +51,75 @@ cat README
 cat docs/building.md
 ls -la src
 
-#apt-get update
-#apt-get -y install libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev
-pip install scons==2.3.0
-mv /usr/local/lib/python2.7/dist-packages/scons-* /usr/local/lib/python2.7/site-packages/ | true
+pip install -r buildscripts/requirements.txt
+pip install regex
 
-ls -la src/third_party
-
-cd src/third_party/mozjs-45/
-chmod +x *.sh
-./get-sources.sh
-./gen-config.sh ${MONGO_ARCH} linux
-cd ../../../
-
-scons --disable-warnings-as-errors -j 2 --wiredtiger=off --mmapv1=on --js-engine=mozjs mongod
-scons --disable-warnings-as-errors --prefix=${PREFIX} -j 2 --wiredtiger=off --mmapv1=on --js-engine=mozjs install
+python buildscripts/scons.py --link-model=static --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
+python buildscripts/scons.py --link-model=static --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
+strip ${PREFIX}/bin/mongo*
 
 ls -la ${PREFIX}
 ls -la ${PREFIX}/bin
 ls -la ${PREFIX}/lib || true
 mkdir -p ${PREFIX}/lib
 
-mv ${PREFIX}/bin/mongod ${PREFIX}/bin/mongod.bin
-ldd ${PREFIX}/bin/mongod.bin
+ldd ${PREFIX}/bin/mongod
 
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so* ${PREFIX}/lib
+LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libresolv.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so.* ${PREFIX}/lib
+cp --remove-destination $LD ${PREFIX}/lib/ld.so
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcurl.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librt.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libidn.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/librtmp.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssh2.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgssapi_krb5.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libkrb5.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libk5crypto.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcom_err.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblber-2.4.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libldap_r-2.4.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgnutls.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhogweed.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libnettle.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgmp.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcrypt.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libkrb5support.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libkeyutils.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libsasl2.so.*  ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libp11-kit.so.* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtasn1.so.*  ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgpg-error.so.*  ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libffi.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libnghttp2.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libidn2.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpsl.so.* ${PREFIX}/lib
+cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libunistring.so.* ${PREFIX}/lib
+
+ldd ${PREFIX}/bin/mongo
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
-ldd ${PREFIX}/bin/mongod.bin
+ldd ${PREFIX}/bin/mongod
+ldd ${PREFIX}/bin/mongo
 
 cp ${DIR}/bin/* ${PREFIX}/bin
-${PREFIX}/bin/mongod --version
+${PREFIX}/bin/mongod.sh --version
+${PREFIX}/bin/mongo.sh --version
+
+$LD /bin/true
+$LD /bin/ls /usr
+
+LD_DEBUG=files,libs $LD ${PREFIX}/bin/mongod --version || true
+LD_DEBUG=files,libs $LD ${PREFIX}/bin/mongo --version || true
 
 cd ${DIR}
 

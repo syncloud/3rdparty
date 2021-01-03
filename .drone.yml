@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: mongodb-3.6-amd64
+name: mongodb-3.4-amd64
 
 platform:
   os: linux
@@ -10,7 +10,7 @@ steps:
 - name: build
   image: syncloud/build-deps-buster-amd64
   commands:
-  - ./build.sh mongodb-3.6
+  - ./build.sh mongodb-3.4
 
 - name: artifact
   image: appleboy/drone-scp
@@ -20,7 +20,7 @@ steps:
       from_secret: artifact_host
     key:
       from_secret: artifact_key
-    source: mongodb-3.6/*.tar.gz
+    source: mongodb-3.4/*.tar.gz
     strip_components: 1
     target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-amd64
     timeout: 2m
