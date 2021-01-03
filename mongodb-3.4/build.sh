@@ -50,12 +50,10 @@ ls -la
 cat README
 cat docs/building.md
 ls -la src
+pip install scons==2.3.0
 
-pip install -r buildscripts/requirements.txt
-pip install regex
-
-python buildscripts/scons.py --link-model=static --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
-python buildscripts/scons.py --link-model=static --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
+scons --disable-warnings-as-errors -j 2 mongod > build.log || tail -1000 build.log
+scons --disable-warnings-as-errors --prefix=${PREFIX} -j 2 install
 strip ${PREFIX}/bin/mongo*
 
 ls -la ${PREFIX}
