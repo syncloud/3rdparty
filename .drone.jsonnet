@@ -41,7 +41,7 @@ local build(name, arch, image, native) = {
     build(item.project, arch, item.image, item.native)
     for item in [
         #{project: "asterisk", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
-        {project: "bind9", image: "gcc:10", archs: ["arm", "amd64"], native: true},
+        {project: "bind9", image: "alpine:3.1", archs: ["arm", "amd64"], native: true},
         #{project: "dovecot", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
         #{project: "gcc-5", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
         #{project: "git", image: "syncloud/build-deps", archs: ["arm", "amd64"]},

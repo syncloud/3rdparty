@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: build
-  image: gcc:10
+  image: alpine:3.1
   commands:
   - ./build.sh bind9
 
@@ -40,7 +40,7 @@ platform:
 
 steps:
 - name: build
-  image: gcc:10
+  image: alpine:3.1
   commands:
   - ./build.sh bind9
 
