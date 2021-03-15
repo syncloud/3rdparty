@@ -32,5 +32,29 @@ cd bind-${VERSION}
 make
 make install
 ldd ${PREFIX}/bin/dig
+
+cp ${PREFIX}/lib/ ${PREFIX}/lib/ld.so
+
+cp /usr/lib/*/libssl.so* ${PREFIX}/lib
+cp /usr/lib/*/libcrypto.so* ${PREFIX}/lib
+cp /usr/lib/*/libxml2.so* ${PREFIX}/lib
+cp /usr/lib/*/libuv.so* ${PREFIX}/lib
+cp /lib/*/librt.so* ${PREFIX}/lib
+cp /lib/*/libpthread.so* ${PREFIX}/lib
+cp /lib/*/libnsl.so* ${PREFIX}/lib
+cp /lib/*/libdl.so* ${PREFIX}/lib
+cp /lib/*/libc.so* ${PREFIX}/lib
+cp /usr/lib/*/libicui18n.so* ${PREFIX}/lib
+cp /usr/lib/*/libicuuc.so* ${PREFIX}/lib
+cp /usr/lib/*/libicudata.so* ${PREFIX}/lib
+cp /lib/*/libz.so* ${PREFIX}/lib
+cp /lib/*/liblzma.so* ${PREFIX}/lib
+cp /lib/*/libm.so* ${PREFIX}/lib
+cp /usr/lib/*/libstdc++.so* ${PREFIX}/lib
+cp /lib/*/libgcc_s.so* ${PREFIX}/lib
+
+cp ${DIR}/dig.sh ${PREFIX}/bin/
+${PREFIX}/bin/dig.sh -v
+
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
