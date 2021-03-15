@@ -21,7 +21,7 @@ rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
 
-apk add -U alpine-sdk
+apk add -U alpine-sdk libuv
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.xz
 tar xf bind-${VERSION}.tar.xz
 cd bind-${VERSION}
