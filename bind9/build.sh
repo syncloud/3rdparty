@@ -21,6 +21,8 @@ rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
 
+apt-get -y install libxml2-dev
+
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
 tar xzf bind-${VERSION}.tar.gz
 cd bind-${VERSION}
