@@ -1,25 +1,10 @@
-#!/bin/bash -e
-
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd ${DIR}
-
-if [[ -z "$1" ]]; then
-    echo "usage $0 architecture"
-    exit 1
-fi
+#!/bin/sh
 
 ARCH=$1
-
-export TMPDIR=/tmp
-export TMP=/tmp
 NAME=bind9
 VERSION=9.16.0
-BUILD=${DIR}/build
+BUILD=build
 PREFIX=${BUILD}/${NAME}
-
-rm -rf ${BUILD}
-mkdir ${BUILD}
-cd ${BUILD}
 
 apk add -U alpine-sdk
 
@@ -31,5 +16,5 @@ export CFLAGS="-static"
 make
 make install
 ldd ${PREFIX}/bin/dig
-rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
+cd ..
+tar czf ${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
