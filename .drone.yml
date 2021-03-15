@@ -8,8 +8,9 @@ platform:
 
 steps:
 - name: build
-  image: alpine:3.1
+  image: alpine:3.12
   commands:
+  - "ls -la "
   - ./build.sh bind9
 
 - name: artifact
@@ -40,8 +41,9 @@ platform:
 
 steps:
 - name: build
-  image: alpine:3.1
+  image: alpine:3.12
   commands:
+  - "ls -la "
   - ./build.sh bind9
 
 - name: artifact
