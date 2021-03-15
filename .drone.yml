@@ -8,9 +8,8 @@ platform:
 
 steps:
 - name: build
-  image: alpine:3.12
+  image: debian:buster-slim
   commands:
-  - apk add --no-cache bash || true
   - ./build.sh bind9
 
 - name: artifact
@@ -41,9 +40,8 @@ platform:
 
 steps:
 - name: build
-  image: alpine:3.12
+  image: debian:buster-slim
   commands:
-  - apk add --no-cache bash || true
   - ./build.sh bind9
 
 - name: artifact
