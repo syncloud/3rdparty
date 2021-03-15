@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=bind9
-VERSION=9.10.2
+VERSION=9.11.5
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
