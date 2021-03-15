@@ -10,7 +10,7 @@ steps:
 - name: build
   image: alpine:3.12
   commands:
-  - "ls -la "
+  - apk add --no-cache bash || true
   - ./build.sh bind9
 
 - name: artifact
@@ -43,7 +43,7 @@ steps:
 - name: build
   image: alpine:3.12
   commands:
-  - "ls -la "
+  - apk add --no-cache bash || true
   - ./build.sh bind9
 
 - name: artifact

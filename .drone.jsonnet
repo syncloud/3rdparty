@@ -10,7 +10,7 @@ local build(name, arch, image, native) = {
 	        name: "build",
             image: if native then image else image + "-" + arch,
 	        commands: [
-              "ls -la ",
+              "apk add --no-cache bash || true",
               "./build.sh " + name
 	        ]
 	      },
