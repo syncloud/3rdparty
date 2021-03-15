@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=bind9
-VERSION=9.16.0
+VERSION=9.10.2
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
@@ -21,12 +21,12 @@ rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
 
-apk add -U alpine-sdk libuv
+apk add -U alpine-sdk
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.xz
 tar xf bind-${VERSION}.tar.xz
 cd bind-${VERSION}
 export CFLAGS="-static"
-./configure --prefix=${PREFIX} --without-python
+./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
 make
 make install
 ldd ${PREFIX}/bin/dig
