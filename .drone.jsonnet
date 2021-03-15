@@ -41,8 +41,8 @@ local build(name, arch, image) = {
     build(item.project, arch, item.image)
     for item in [
         #{project: "asterisk", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "bind9", image: "build-deps", archs: ["arm", "amd64"]},
-        {project: "dovecot", image: "build-deps", archs: ["arm", "amd64"]},
+        {project: "bind9", image: "build-deps", archs: ["arm", "amd64"]},
+        #{project: "dovecot", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "gcc-5", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "git", image: "build-deps", archs: ["arm", "amd64"]},
         #{project: "gptfdisk", image: "build-deps", archs: ["arm", "amd64"]},
