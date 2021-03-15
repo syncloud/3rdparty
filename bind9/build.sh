@@ -22,7 +22,7 @@ mkdir ${BUILD}
 cd ${BUILD}
 
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
-tar xzf ${VERSION}.tar.gz
+tar xzf bind-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 export CFLAGS="-static"
 ./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
