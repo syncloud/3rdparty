@@ -28,7 +28,7 @@ wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.xz
 tar xf bind-${VERSION}.tar.xz
 cd bind-${VERSION}
 export CFLAGS="-static"
-./configure --prefix=${PREFIX} --without-python
+./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
 make
 make install
 ldd ${PREFIX}/bin/dig
