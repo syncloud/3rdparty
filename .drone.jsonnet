@@ -1,17 +1,17 @@
-local build(name, arch, image) = {
+local build(name, arch, image, native) = {
     platform: {
         os: "linux",
-        	arch: arch
+       	arch: arch
     },
     kind: "pipeline",
     name: name + "-" + arch,
     steps: [
         {
-	          name: "build",
-            image: "syncloud/" + image + "-" + arch,
-	          commands: [
-                "./build.sh " + name
-	          ]
+	        name: "build",
+            image: if native then image else image + "-" + arch,
+	        commands: [
+              "./build.sh " + name
+	        ]
 	      },
       	{
             name: "artifact",
@@ -38,38 +38,38 @@ local build(name, arch, image) = {
 };
 
 [ 
-    build(item.project, arch, item.image)
+    build(item.project, arch, item.image, item.native)
     for item in [
-        #{project: "asterisk", image: "build-deps", archs: ["arm", "amd64"]},
-        {project: "bind9", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "dovecot", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "gcc-5", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "git", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "gptfdisk", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "ImageMagick", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "libvips", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "mariadb", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "mongodb", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "mongodb-3.4", image: "build-deps-buster", archs: ["amd64"]},
-        #{project: "mongodb-3.6", image: "build-deps-buster", archs: ["amd64"]},
-        #{project: "mongodb-4", image: "build-deps-buster", archs: ["amd64"]},
-        #{project: "nginx", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "nodejs", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "opendkim", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "openldap", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "openvpn", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "openssl", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "phantomjs", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "php", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "php7", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "postgresql", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "postgresql-10", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "PyYAML", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "python", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "python3", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "redis", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "rsyslog", image: "build-deps", archs: ["arm", "amd64"]},
-        #{project: "sqlite", image: "build-deps", archs: ["arm", "amd64"]},
+        #{project: "asterisk", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        {project: "bind9", image: "gcc:10", archs: ["arm", "amd64"], native: true},
+        #{project: "dovecot", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "gcc-5", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "git", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "gptfdisk", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "ImageMagick", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "libvips", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "mariadb", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "mongodb", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "mongodb-3.4", image: "syncloud/build-deps-buster", archs: ["amd64"]},
+        #{project: "mongodb-3.6", image: "syncloud/build-deps-buster", archs: ["amd64"]},
+        #{project: "mongodb-4", image: "syncloud/build-deps-buster", archs: ["amd64"]},
+        #{project: "nginx", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "nodejs", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "opendkim", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "openldap", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "openvpn", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "openssl", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "phantomjs", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "php", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "php7", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "postgresql", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "postgresql-10", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "PyYAML", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "python", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "python3", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "redis", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "rsyslog", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
+        #{project: "sqlite", image: "syncloud/build-deps", archs: ["arm", "amd64"]},
     ]
     for arch in item.archs
 ]
