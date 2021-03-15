@@ -25,8 +25,7 @@ apk add -U alpine-sdk
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
 tar xf bind-${VERSION}.tar.gz
 cd bind-${VERSION}
-export CFLAGS="-static"
-./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
+CFLAGS="-static" ./configure --prefix=${PREFIX} --without-openssl --disable-symtable
 make
 make install
 ldd ${PREFIX}/bin/dig
