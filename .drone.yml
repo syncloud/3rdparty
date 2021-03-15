@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: build
-  image: debian:buster-slim
+  image: debian:buster-backports
   commands:
   - ./build.sh bind9
 
@@ -40,7 +40,7 @@ platform:
 
 steps:
 - name: build
-  image: debian:buster-slim
+  image: debian:buster-backports
   commands:
   - ./build.sh bind9
 
