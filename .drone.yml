@@ -8,9 +8,9 @@ platform:
 
 steps:
 - name: build
-  image: alpine:3.1
+  image: alpine:3.12
   commands:
-  - apk add bash || true
+  - apk add --no-cache bash || true
   - ./build.sh bind9
 
 - name: artifact
@@ -41,9 +41,9 @@ platform:
 
 steps:
 - name: build
-  image: alpine:3.1
+  image: alpine:3.12
   commands:
-  - apk add bash || true
+  - apk add --no-cache bash || true
   - ./build.sh bind9
 
 - name: artifact

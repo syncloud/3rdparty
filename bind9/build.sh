@@ -21,7 +21,7 @@ rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
 
-apk add -U alpine-sdk
+apk add -U alpine-sdk linux-headers
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
 tar xf bind-${VERSION}.tar.gz
 cd bind-${VERSION}
