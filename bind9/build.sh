@@ -24,7 +24,7 @@ cd ${BUILD}
 apt-get -y install libxml2-dev
 
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.xz
-tar xzf bind-${VERSION}.tar.xz
+tar xf bind-${VERSION}.tar.xz
 cd bind-${VERSION}
 export CFLAGS="-static"
 ./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
