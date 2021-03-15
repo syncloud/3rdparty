@@ -22,7 +22,7 @@ mkdir ${BUILD}
 cd ${BUILD}
 
 apt-get update
-apt-get -y install libxml2-dev libuv1-dev
+apt-get -y install libxml2-dev libuv1-dev libssl-dev
 
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.xz
 tar xf bind-${VERSION}.tar.xz
