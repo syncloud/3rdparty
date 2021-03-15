@@ -33,7 +33,7 @@ make
 make install
 ldd ${PREFIX}/bin/dig
 
-cp $(readlink -f /lib*/ld-linux-*.so*) ${DIR}/lib/ld.so
+cp $(readlink -f /lib*/ld-linux-*.so*) ${PREFIX}/lib/ld.so
 
 cp /usr/lib/*/libssl.so* ${PREFIX}/lib
 cp /usr/lib/*/libcrypto.so* ${PREFIX}/lib
