@@ -13,7 +13,7 @@ ARCH=$1
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=bind9
-VERSION=9.11.5
+VERSION=9.16.0
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
@@ -27,7 +27,7 @@ wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
 tar xzf bind-${VERSION}.tar.gz
 cd bind-${VERSION}
 export CFLAGS="-static"
-./configure --prefix=${PREFIX} --libdir=/usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)  --without-python --without-openssl --disable-symtable
+./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
 make
 make install
 ldd ${PREFIX}/bin/dig
