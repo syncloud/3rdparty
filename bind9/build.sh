@@ -21,7 +21,7 @@ rm -rf ${BUILD}
 mkdir ${BUILD}
 cd ${BUILD}
 
-wget https://github.com/isc-projects/bind9/archive/${VERSION}.tar.gz
+wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
 tar xzf ${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
 export CFLAGS="-static"
