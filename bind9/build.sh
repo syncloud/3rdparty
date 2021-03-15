@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -24,9 +24,10 @@ cd ${BUILD}
 wget https://github.com/isc-projects/bind9/archive/${VERSION}.tar.gz
 tar xzf ${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-./configure --prefix=${PREFIX} --without-python
+export CFLAGS="-static"
+./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
 make
 make install
-
+ldd ${PREFIX}/bin/dig
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
