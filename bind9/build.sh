@@ -22,8 +22,8 @@ mkdir ${BUILD}
 cd ${BUILD}
 
 apk add -U alpine-sdk
-wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.xz
-tar xf bind-${VERSION}.tar.xz
+wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.gz
+tar xf bind-${VERSION}.tar.gz
 cd bind-${VERSION}
 export CFLAGS="-static"
 ./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
