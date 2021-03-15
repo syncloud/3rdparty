@@ -27,7 +27,7 @@ apt-get -y install libxml2-dev libuv1-dev wget xz-utils build-essential pkg-conf
 wget ftp://ftp.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.xz
 tar xf bind-${VERSION}.tar.xz
 cd bind-${VERSION}
-export CFLAGS="-static"
+#export CFLAGS="-static"
 ./configure --prefix=${PREFIX} --without-python --without-openssl --disable-symtable
 make
 make install
