@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: bind9-arm
+name: python3-arm
 
 platform:
   os: linux
@@ -8,9 +8,9 @@ platform:
 
 steps:
 - name: build
-  image: debian:buster-backports
+  image: syncloud/build-deps-arm
   commands:
-  - ./build.sh bind9
+  - ./build.sh python3
 
 - name: artifact
   image: appleboy/drone-scp
@@ -20,7 +20,7 @@ steps:
       from_secret: artifact_host
     key:
       from_secret: artifact_key
-    source: bind9/*.tar.gz
+    source: python3/*.tar.gz
     strip_components: 1
     target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-arm
     timeout: 2m
@@ -32,7 +32,7 @@ steps:
 
 ---
 kind: pipeline
-name: bind9-amd64
+name: python3-amd64
 
 platform:
   os: linux
@@ -40,9 +40,9 @@ platform:
 
 steps:
 - name: build
-  image: debian:buster-backports
+  image: syncloud/build-deps-amd64
   commands:
-  - ./build.sh bind9
+  - ./build.sh python3
 
 - name: artifact
   image: appleboy/drone-scp
@@ -52,7 +52,7 @@ steps:
       from_secret: artifact_host
     key:
       from_secret: artifact_key
-    source: bind9/*.tar.gz
+    source: python3/*.tar.gz
     strip_components: 1
     target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-amd64
     timeout: 2m
