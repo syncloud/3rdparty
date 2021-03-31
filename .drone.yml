@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: python3-arm
+name: php8-arm
 
 platform:
   os: linux
@@ -10,7 +10,7 @@ steps:
 - name: build
   image: syncloud/build-deps-arm
   commands:
-  - ./build.sh python3
+  - ./build.sh php8
 
 - name: artifact
   image: appleboy/drone-scp
@@ -20,7 +20,7 @@ steps:
       from_secret: artifact_host
     key:
       from_secret: artifact_key
-    source: python3/*.tar.gz
+    source: php8/*.tar.gz
     strip_components: 1
     target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-arm
     timeout: 2m
@@ -32,7 +32,7 @@ steps:
 
 ---
 kind: pipeline
-name: python3-amd64
+name: php8-amd64
 
 platform:
   os: linux
@@ -42,7 +42,7 @@ steps:
 - name: build
   image: syncloud/build-deps-amd64
   commands:
-  - ./build.sh python3
+  - ./build.sh php8
 
 - name: artifact
   image: appleboy/drone-scp
@@ -52,7 +52,7 @@ steps:
       from_secret: artifact_host
     key:
       from_secret: artifact_key
-    source: python3/*.tar.gz
+    source: php8/*.tar.gz
     strip_components: 1
     target: /home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-amd64
     timeout: 2m
