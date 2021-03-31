@@ -38,7 +38,7 @@ mkdir -p ${PREFIX}
 wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/${IMAGE_MAGICK_VERSION}.tar.gz
 tar xf ${IMAGE_MAGICK_VERSION}.tar.gz
 cd ImageMagick-${IMAGE_MAGICK_VERSION}
-configure --prefix=${PREFIX}
+./configure --prefix=${PREFIX}
 make -j4
 make install
 
