@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 apt update
-apt install -y libsmbclient-dev libmagickwand-dev imagemagick libonig-dev
+apt install -y libsmbclient-dev libmagickwand-dev libonig-dev cmake
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -19,9 +19,9 @@ NAME=php8
 VERSION=8.0.3
 APCU_VERSION=5.1.20
 APCU_BC_VERSION=1.0.5
-#IMAGICK_VERSION=3.1.2
-#IMAGICK_VERSION=3.3.0RC2
-IMAGICK_VERSION=3.4.4
+IMAGE_MAGICK_VERSION=7.0.11-4
+#IMAGICK_VERSION=3.4.4
+IMAGICK_VERSION=master
 SMBCLIENT_VERSION=1.0.0
 
 BUILD_DIR=${DIR}/build
@@ -35,11 +35,10 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 mkdir -p ${PREFIX}
 
-cd ${BUILD_DIR}
-wget https://github.com/Kitware/CMake/releases/download/v3.17.3/cmake-3.17.3.tar.gz
-tar xf cmake-3.17.3.tar.gz
-cd cmake-3.17.3
-./bootstrap
+wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/${IMAGE_MAGICK_VERSION}.tar.gz
+tar xf ${IMAGE_MAGICK_VERSION}.tar.gz
+cd ImageMagick-${IMAGE_MAGICK_VERSION}
+configure --prefix=${PREFIX}
 make -j4
 make install
 
@@ -47,7 +46,7 @@ cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
 tar xf libzip-1.7.1.tar.gz
 cd libzip-1.7.1
-cmake .
+CMAKE_INSTALL_PREFIX=${PREFIX} cmake .
 make -j4
 make install
 
@@ -68,8 +67,9 @@ wget https://pecl.php.net/get/smbclient-${SMBCLIENT_VERSION}.tgz --progress dot:
 tar xf smbclient-${SMBCLIENT_VERSION}.tgz -C ext/
 mv ext/smbclient-* ext/smbclient
 
-wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
-tar xzf imagick-${IMAGICK_VERSION}.tgz -C ext/
+wgeg --progress dot:giga https://github.com/Imagick/imagick/archive/refs/heads/${IMAGICK_VERSION}.tar.gz -O imagick.tar.gz
+#wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
+tar xzf imagick.tar.gz -C ext/
 mv ext/imagick-* ext/imagick
 
 rm configure
@@ -270,7 +270,6 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libXa
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libXdmcp.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so.* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libonig.so.* ${PREFIX}/lib
-cp --remove-destination /usr/local/lib/libzip.so.* ${PREFIX}/lib
 
 echo "test references"
 
