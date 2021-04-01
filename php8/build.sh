@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 apt update
-apt install -y libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev python3
+apt install -y libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev python-dev
 
 export TMPDIR=/tmp
 export TMP=/tmp
