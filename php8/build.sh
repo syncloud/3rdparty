@@ -35,7 +35,7 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 mkdir -p ${PREFIX}
 
-wget https://download.samba.org/pub/samba/samba-4.14.2.tar.gz -O samba.tar.gz progress dot:giga
+wget https://download.samba.org/pub/samba/samba-4.14.2.tar.gz -O samba.tar.gz --progress dot:giga
 tar xf samba.tar.gz
 cd samba-*
 ./configure --prefix=${PREFIX}
