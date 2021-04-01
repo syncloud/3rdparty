@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 apt update
-apt install -y libsmbclient-dev libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev
+apt install -y libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev
 
 export TMPDIR=/tmp
 export TMP=/tmp
@@ -34,6 +34,13 @@ ln -s  /usr/include/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/curl  /usr/include
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 mkdir -p ${PREFIX}
+
+wget https://download.samba.org/pub/samba/samba-4.14.2.tar.gz -O samba.tar.gz progress dot:giga
+tar xf samba.tar.gz
+cd samba-*
+./configure --prefix=${PREFIX}
+make -j4
+make install
 
 wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/${IMAGE_MAGICK_VERSION}.tar.gz
 tar xf ${IMAGE_MAGICK_VERSION}.tar.gz
