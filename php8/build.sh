@@ -67,7 +67,7 @@ wget https://pecl.php.net/get/smbclient-${SMBCLIENT_VERSION}.tgz --progress dot:
 tar xf smbclient-${SMBCLIENT_VERSION}.tgz -C ext/
 mv ext/smbclient-* ext/smbclient
 
-wgeg --progress dot:giga https://github.com/Imagick/imagick/archive/refs/heads/${IMAGICK_VERSION}.tar.gz -O imagick.tar.gz
+wget --progress dot:giga https://github.com/Imagick/imagick/archive/refs/heads/${IMAGICK_VERSION}.tar.gz -O imagick.tar.gz
 #wget https://pecl.php.net/get/imagick-${IMAGICK_VERSION}.tgz --progress dot:giga
 tar xzf imagick.tar.gz -C ext/
 mv ext/imagick-* ext/imagick
