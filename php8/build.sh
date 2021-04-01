@@ -11,7 +11,7 @@ fi
 ARCH=$1
 
 apt update
-apt install -y libsmbclient-dev libmagickwand-dev libonig-dev cmake
+apt install -y libsmbclient-dev libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev
 
 export TMPDIR=/tmp
 export TMP=/tmp
