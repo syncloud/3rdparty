@@ -42,7 +42,7 @@ chmod +x bootstrap.sh
 wget https://download.samba.org/pub/samba/samba-4.14.2.tar.gz -O samba.tar.gz --progress dot:giga
 tar xf samba.tar.gz
 cd samba-*
-./configure --prefix=${PREFIX} --disable-python --without-ad-dc 
+./configure --prefix=${PREFIX} --disable-python --without-ad-dc --bundled-libraries=ALL 
 make -j4
 make install
 
