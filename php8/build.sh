@@ -95,7 +95,7 @@ fi
 
 ./configure --help
 
-export CPPFLAGS=-I/usr/include/samba-4.0
+export CPPFLAGS=-I${PREFIX}/include
 
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
