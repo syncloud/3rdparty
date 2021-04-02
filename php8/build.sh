@@ -13,7 +13,6 @@ ARCH=$1
 apt update
 apt install -y libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev
 
-
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=php8
@@ -36,6 +35,7 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 mkdir -p ${PREFIX}
 
+cd ${BUILD_DIR}
 wget 'https://git.samba.org/?p=samba.git;a=blob_plain;f=bootstrap/generated-dists/debian10/bootstrap.sh;hb=v4-14-test' -O bootstrap.sh
 chmod +x bootstrap.sh
 ./bootstrap.sh
@@ -46,6 +46,7 @@ cd samba-*
 make -j4
 make install
 
+cd ${BUILD_DIR}
 wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/${IMAGE_MAGICK_VERSION}.tar.gz
 tar xf ${IMAGE_MAGICK_VERSION}.tar.gz
 cd ImageMagick-${IMAGE_MAGICK_VERSION}
