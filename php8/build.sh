@@ -94,7 +94,7 @@ if [ "$ARCH" == "armv7l"  ]; then
 fi
 
 ./configure --help
-
+export LD_LIBRARY_PATH=${PREFIX}/lib
 export CPPFLAGS=-I${PREFIX}/include
 export LDFLAGS="-L${PREFIX}/lib"
 
