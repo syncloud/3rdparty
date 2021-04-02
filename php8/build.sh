@@ -96,6 +96,7 @@ fi
 ./configure --help
 
 export CPPFLAGS=-I${PREFIX}/include
+export LDFLAGS="-L${PREFIX}/lib"
 
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
