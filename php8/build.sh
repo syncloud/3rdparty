@@ -11,9 +11,7 @@ fi
 ARCH=$1
 
 apt update
-apt install -y libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev python3-dev liblmdb-dev \
-  libgpgme-dev libparse-yapp-perl libjansson-dev libarchive-dev libacl1-dev libpam0g-dev libdbus-1-dev python3-markdown \
-  python3-dnspython
+apt install -y libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev
 
 
 export TMPDIR=/tmp
@@ -38,7 +36,7 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 mkdir -p ${PREFIX}
 
-wget https://git.samba.org/?p=samba.git;a=blob_plain;f=bootstrap/generated-dists/debian10/bootstrap.sh;hb=v4-14-test -O bootstrap.sh
+wget 'https://git.samba.org/?p=samba.git;a=blob_plain;f=bootstrap/generated-dists/debian10/bootstrap.sh;hb=v4-14-test' -O bootstrap.sh
 chmod +x bootstrap.sh
 ./bootstrap.sh
 wget https://download.samba.org/pub/samba/samba-4.14.2.tar.gz -O samba.tar.gz --progress dot:giga
