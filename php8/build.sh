@@ -38,6 +38,9 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 mkdir -p ${PREFIX}
 
+wget https://git.samba.org/?p=samba.git;a=blob_plain;f=bootstrap/generated-dists/debian10/bootstrap.sh;hb=v4-14-test -O bootstrap.sh
+chmod +x bootstrap.sh
+./bootstrap.sh
 wget https://download.samba.org/pub/samba/samba-4.14.2.tar.gz -O samba.tar.gz --progress dot:giga
 tar xf samba.tar.gz
 cd samba-*
