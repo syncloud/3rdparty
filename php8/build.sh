@@ -129,7 +129,6 @@ CFLAGS="$OPTIONS" ./configure \
     --with-gmp
 
 make -j3
-rm -rf ${PREFIX}
 make install
 
 cd ${PREFIX}/bin
@@ -239,7 +238,6 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libon
 
 echo "test references"
 
-export LD_LIBRARY_PATH=${PREFIX}/lib:${PREFIX}/lib/samba
 ldd ${PREFIX}/sbin/php-fpm
 
 find ${PREFIX}/lib/php/extensions -name "*.so*" -exec mv {} ${PREFIX}/lib/php/extensions \;
