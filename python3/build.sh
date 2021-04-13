@@ -23,10 +23,18 @@ rm -rf build
 mkdir build
 
 cd ${DIR}/build
+wget https://github.com/libffi/libffi/releases/download/v3.3/libffi-3.3.tar.gz
+tar xf libffi-3.3.tar.gz
+cd libffi-3.3
+./configure --prefix=${PREFIX}
+make -j4
+make install
+
+cd ${DIR}/build
 curl -O https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
 tar xf openssl-${OPENSSL_VERSION}.tar.gz
 cd openssl-${OPENSSL_VERSION}
-./config --prefix=${PREFIX} --openssldir=/usr/lib/ssl no-shared no-ssl2 no-ssl3 -fPIC
+./config --prefix=${PREFIX} --openssldir=/usr/lib/ssl no-ssl2 no-ssl3 -fPIC
 make
 make install
 
