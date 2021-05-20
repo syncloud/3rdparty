@@ -61,7 +61,7 @@ local build(name, arch, image, native) = {
         #{project: "openssl", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "phantomjs", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "php", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
-        {project: "php7", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
+        {project: "php7", image: "gcc:10", arcs: ["arm", "amd64"], native: true},
         #{project: "php8", image: "gcc:10", archs: ["arm", "amd64"], native: true},
         #{project: "postgresql", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "postgresql-10", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
