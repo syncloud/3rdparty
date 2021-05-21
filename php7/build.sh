@@ -21,6 +21,7 @@ APCU_VERSION=5.1.20
 APCU_BC_VERSION=1.0.5
 IMAGE_MAGICK_VERSION=7.0.11-4
 IMAGICK_VERSION=master
+SAMBA_VERSION=4.14.4
 SMBCLIENT_VERSION=1.0.6
 
 BUILD_DIR=${DIR}/build
@@ -38,7 +39,7 @@ cd ${BUILD_DIR}
 wget 'https://git.samba.org/?p=samba.git;a=blob_plain;f=bootstrap/generated-dists/debian10/bootstrap.sh;hb=v4-14-test' -O bootstrap.sh
 chmod +x bootstrap.sh
 ./bootstrap.sh
-wget https://download.samba.org/pub/samba/samba-4.14.2.tar.gz -O samba.tar.gz --progress dot:giga
+wget https://download.samba.org/pub/samba/samba-${SAMBA_VERSION}.tar.gz -O samba.tar.gz --progress dot:giga
 tar xf samba.tar.gz
 cd samba-*
 ./configure --prefix=${PREFIX} --disable-python --without-ad-dc --bundled-libraries=ALL
