@@ -52,7 +52,6 @@ cd ImageMagick-${IMAGE_MAGICK_VERSION}
 make -j4
 make install
 
-apt remove -y libzip-dev
 cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
 tar xf libzip-1.7.1.tar.gz
@@ -100,8 +99,12 @@ fi
 #export CPPFLAGS=-I${PREFIX}/include
 #export LDFLAGS="-L${PREFIX}/lib"
 export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
+export LIBZIP_CFLAGS=-I${PREFIX}/include
+export LIBZIP_LIBS="-L${PREFIX}/lib -lzip"
 
 pkg-config --modversion libzip
+pkg-config --cflags libzip
+pkg-config --libs libzip
 
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
