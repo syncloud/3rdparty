@@ -58,7 +58,7 @@ tar xf libzip-1.7.1.tar.gz
 cd libzip-1.7.1
 mkdir build
 cd build
-cmake  -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
+cmake .. -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make -j4
 make install
 
@@ -99,6 +99,8 @@ export LD_LIBRARY_PATH=${PREFIX}/lib
 export CPPFLAGS=-I${PREFIX}/include
 export LDFLAGS="-L${PREFIX}/lib"
 export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
+
+pkg-config --modversion libzip
 
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
