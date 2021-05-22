@@ -36,12 +36,10 @@ mkdir -p ${BUILD_DIR}
 mkdir -p ${PREFIX}
 
 cd ${BUILD_DIR}
-wget 'https://git.samba.org/?p=samba.git;a=blob_plain;f=bootstrap/generated-dists/debian10/bootstrap.sh;hb=v4-14-test' -O bootstrap.sh
-chmod +x bootstrap.sh
-./bootstrap.sh
 wget https://download.samba.org/pub/samba/samba-${SAMBA_VERSION}.tar.gz -O samba.tar.gz --progress dot:giga
 tar xf samba.tar.gz
 cd samba-*
+./bootstrap/generated-dists/debian10/bootstrap.sh
 ./configure --prefix=${PREFIX} --disable-python --without-ad-dc --bundled-libraries=ALL
 make -j4
 make install
@@ -63,8 +61,6 @@ cd build
 cmake  -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
 make -j4
 make install
-
-ls -la ${PREFIX}
 
 cd ${BUILD_DIR}
 wget http://php.net/get/php-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
@@ -102,7 +98,7 @@ fi
 export LD_LIBRARY_PATH=${PREFIX}/lib
 export CPPFLAGS=-I${PREFIX}/include
 export LDFLAGS="-L${PREFIX}/lib"
-export PKG_CONFIG_PATH=${PREFIX}/pkgconfig
+export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
 
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
