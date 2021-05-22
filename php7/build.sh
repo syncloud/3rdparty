@@ -64,6 +64,8 @@ cmake  -DCMAKE_INSTALL_PREFIX=${PREFIX} ..
 make -j4
 make install
 
+ls -la ${PREFIX}
+
 cd ${BUILD_DIR}
 wget http://php.net/get/php-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
 tar xjf ${NAME}-${VERSION}.tar.bz2
@@ -100,6 +102,7 @@ fi
 export LD_LIBRARY_PATH=${PREFIX}/lib
 export CPPFLAGS=-I${PREFIX}/include
 export LDFLAGS="-L${PREFIX}/lib"
+export PKG_CONFIG_PATH=${PREFIX}/pkgconfig
 
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
