@@ -52,6 +52,7 @@ cd ImageMagick-${IMAGE_MAGICK_VERSION}
 make -j4
 make install
 
+apt remove -y libzip-dev
 cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
 tar xf libzip-1.7.1.tar.gz
@@ -95,9 +96,9 @@ if [ "$ARCH" == "armv7l"  ]; then
 fi
 
 ./configure --help
-export LD_LIBRARY_PATH=${PREFIX}/lib
-export CPPFLAGS=-I${PREFIX}/include
-export LDFLAGS="-L${PREFIX}/lib"
+#export LD_LIBRARY_PATH=${PREFIX}/lib
+#export CPPFLAGS=-I${PREFIX}/include
+#export LDFLAGS="-L${PREFIX}/lib"
 export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
 
 pkg-config --modversion libzip
