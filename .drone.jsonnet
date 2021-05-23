@@ -10,14 +10,14 @@ local build(name, arch, image, native) = {
 	        name: "build",
             image: if native then image else image + "-" + arch,
 	        commands: [
-              "./build.sh " + name
+              "./" + name + "/build.sh"
 	        ]
 	      },
         {
 	        name: "test",
             image: "syncloud/platform-" + arch,
 	        commands: [
-              "./test.sh"
+              "./" + name + "/test.sh"
 	        ]
 	      },
       	{
