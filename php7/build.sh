@@ -25,9 +25,7 @@ SAMBA_VERSION=4.14.4
 SMBCLIENT_VERSION=1.0.6
 
 BUILD_DIR=${DIR}/build
-PREFIX=${BUILD_DIR}/${NAME}
-
-echo "building ${NAME}"
+PREFIX=${BUILD_DIR}/php
 
 ln -s  /usr/include/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/curl  /usr/include/curl
 
@@ -95,7 +93,7 @@ if [ "$ARCH" == "armv7l"  ]; then
 fi
 
 ./configure --help
-#export LD_LIBRARY_PATH=${PREFIX}/lib
+export LD_LIBRARY_PATH=${PREFIX}/lib
 #export CPPFLAGS=-I${PREFIX}/include
 #export LDFLAGS="-L${PREFIX}/lib"
 export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
@@ -243,15 +241,7 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libXd
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so.* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libonig.so.* ${PREFIX}/lib
 
-echo "test references"
-
-ldd ${PREFIX}/sbin/php-fpm
-
 find ${PREFIX}/lib/php/extensions -name "*.so*" -exec mv {} ${PREFIX}/lib/php/extensions \;
-
-find ${DIR} -name "*.so"
-
-${PREFIX}/bin/php -i
 
 cd ${DIR}
 

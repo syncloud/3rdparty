@@ -13,6 +13,13 @@ local build(name, arch, image, native) = {
               "./build.sh " + name
 	        ]
 	      },
+        {
+	        name: "build",
+            image: "syncloud/platform-" + arch,
+	        commands: [
+              "./test.sh"
+	        ]
+	      },
       	{
             name: "artifact",
             image: "appleboy/drone-scp",
