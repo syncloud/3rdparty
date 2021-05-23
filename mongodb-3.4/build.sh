@@ -63,7 +63,7 @@ mkdir -p ${PREFIX}/lib
 
 ldd ${PREFIX}/bin/mongod
 
-LD=$(readlink -f /lib64/ld-linux-x86-64.so.2)
+LD=$(readlink -f /lib*/ld-linux-*)
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libresolv.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so.* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libm.so.* ${PREFIX}/lib

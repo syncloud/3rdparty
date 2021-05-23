@@ -6,5 +6,4 @@ cd ${DIR}
 PHP=${DIR}/build/php
 export LD_LIBRARY_PATH=${PHP}/lib:${PHP}/lib/private
 ldd ${PHP}/sbin/php-fpm
-find ${DIR} -name "*.so"
-${PHP}/bin/php -i
+${PHP}/lib/ld.so ${PHP}/bin/php -i
