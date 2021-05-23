@@ -246,4 +246,4 @@ find ${PREFIX}/lib/php/extensions -name "*.so*" -exec mv {} ${PREFIX}/lib/php/ex
 cd ${DIR}
 
 rm -rf ${NAME}-${ARCH}.tar.gz
-tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} php
