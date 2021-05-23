@@ -14,7 +14,7 @@ local build(name, arch, image, native) = {
 	        ]
 	      },
         {
-	        name: "build",
+	        name: "test",
             image: "syncloud/platform-" + arch,
 	        commands: [
               "./test.sh"
