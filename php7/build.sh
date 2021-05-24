@@ -14,7 +14,7 @@ NAME=php7
 VERSION=7.4.12
 APCU_VERSION=5.1.20
 APCU_BC_VERSION=1.0.5
-IMAGE_MAGICK_VERSION=7.0.11-4
+IMAGE_MAGICK_VERSION=7.0.11-13
 IMAGICK_VERSION=master
 SAMBA_VERSION=4.14.4
 SMBCLIENT_VERSION=1.0.6
@@ -72,10 +72,6 @@ wget https://pecl.php.net/get/smbclient-${SMBCLIENT_VERSION}.tgz --progress dot:
 tar xf smbclient-${SMBCLIENT_VERSION}.tgz -C ext/
 mv ext/smbclient-* ext/smbclient
 
-wget --progress dot:giga https://github.com/Imagick/imagick/archive/refs/heads/${IMAGICK_VERSION}.tar.gz -O imagick.tar.gz
-tar xzf imagick.tar.gz -C ext/
-mv ext/imagick-* ext/imagick
-
 rm configure
 ./buildconf --force
 
@@ -120,7 +116,6 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-exif \
     --enable-pcntl \
     --enable-ftp \
-    --with-imagick \
     --enable-bcmath \
     --with-gmp
 
@@ -244,6 +239,14 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libja
 find ${PREFIX}/lib/php/extensions -name "*.so*" -exec mv {} ${PREFIX}/lib/php/extensions \;
 
 ldd ${PREFIX}/sbin/php-fpm
+
+wget --progress dot:giga https://github.com/Imagick/imagick/archive/refs/heads/${IMAGICK_VERSION}.tar.gz -O imagick.tar.gz
+tar xzf imagick.tar.gz
+cd imagick-*
+${PREFIX}/bin/phpize
+./configure --prefix=${PREFIX}
+make
+make install
 
 cd ${DIR}
 
