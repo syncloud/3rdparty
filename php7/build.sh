@@ -243,7 +243,8 @@ ldd ${PREFIX}/sbin/php-fpm
 wget --progress dot:giga https://github.com/Imagick/imagick/archive/refs/heads/${IMAGICK_VERSION}.tar.gz -O imagick.tar.gz
 tar xzf imagick.tar.gz
 cd imagick-*
-${PREFIX}/bin/phpize
+export PATH=$PATH:${PREFIX}/bin
+phpize
 ./configure --prefix=${PREFIX}
 make
 make install
