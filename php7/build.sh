@@ -15,7 +15,7 @@ VERSION=7.4.12
 APCU_VERSION=5.1.20
 APCU_BC_VERSION=1.0.5
 IMAGE_MAGICK_VERSION=7.0.11-13
-IMAGICK_VERSION=132a11f
+IMAGICK_VERSION=master
 SAMBA_VERSION=4.14.4
 SMBCLIENT_VERSION=1.0.6
 
@@ -33,7 +33,10 @@ wget https://download.samba.org/pub/samba/samba-${SAMBA_VERSION}.tar.gz -O samba
 tar xf samba.tar.gz
 cd samba-*
 ./bootstrap/generated-dists/debian10/bootstrap.sh
-./configure --prefix=${PREFIX} --disable-python --without-ad-dc --bundled-libraries=ALL
+./configure --prefix=${PREFIX} \
+ --disable-python --without-ad-dc --bundled-libraries=ALL \
+ --disable-cups --enable-swat=no --with-winbind=no \
+
 make -j4
 make install
 
