@@ -6,7 +6,7 @@ cd ${DIR}
 ARCH=$(uname -m)
 
 apt update
-apt install -y libmagickwand-dev libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev
+apt install -y libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev
 
 export TMPDIR=/tmp
 export TMP=/tmp
