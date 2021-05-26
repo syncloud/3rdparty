@@ -33,10 +33,10 @@ cd ${BUILD_DIR}
 wget https://download.samba.org/pub/samba/samba-${SAMBA_VERSION}.tar.gz -O samba.tar.gz --progress dot:giga
 tar xf samba.tar.gz
 cd samba-*
-sed -i '/update/d'./bootstrap/generated-dists/debian10/bootstrap.sh
-sed -i '/autoremove/d'./bootstrap/generated-dists/debian10/bootstrap.sh
-sed -i '/autoclean/d'./bootstrap/generated-dists/debian10/bootstrap.sh
-sed -i '/clean/d'./bootstrap/generated-dists/debian10/bootstrap.sh
+sed -i '/update/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
+sed -i '/autoremove/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
+sed -i '/autoclean/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
+sed -i '/clean/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
 ./bootstrap/generated-dists/debian10/bootstrap.sh
 ./configure --prefix=${PREFIX} \
  --disable-python --without-ad-dc --bundled-libraries=ALL
