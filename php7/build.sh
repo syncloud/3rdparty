@@ -58,6 +58,13 @@ cmake .. -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make -j4
 make install
 
+wget https://download.savannah.gnu.org/releases/freetype/freetype-2.10.1.tar.gz
+tar xf freetype-2.10.1.tar.gz
+cd freetype-2.10.1
+./configure --prefix=${PREFIX} --enable-freetype-config
+make
+make install
+
 cd ${BUILD_DIR}
 wget http://php.net/get/php-${VERSION}.tar.bz2/from/this/mirror -O ${NAME}-${VERSION}.tar.bz2 --progress dot:giga
 tar xjf ${NAME}-${VERSION}.tar.bz2
