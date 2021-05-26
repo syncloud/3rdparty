@@ -22,6 +22,11 @@ SMBCLIENT_VERSION=1.0.6
 
 BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/php
+export PATH=$PATH:${PREFIX}/bin
+export LD_LIBRARY_PATH=${PREFIX}/lib
+#export CPPFLAGS=-I${PREFIX}/include
+#export LDFLAGS="-L${PREFIX}/lib"
+export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
 
 ln -s  /usr/include/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/curl  /usr/include/curl
 
@@ -89,16 +94,15 @@ if [ "$ARCH" == "armv7l"  ]; then
 fi
 
 ./configure --help
-export LD_LIBRARY_PATH=${PREFIX}/lib
-#export CPPFLAGS=-I${PREFIX}/include
-#export LDFLAGS="-L${PREFIX}/lib"
-export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
 export LIBZIP_CFLAGS=-I${PREFIX}/include
 export LIBZIP_LIBS="-L${PREFIX}/lib -lzip"
 
 pkg-config --modversion libzip
 pkg-config --cflags libzip
 pkg-config --libs libzip
+pkg-config --modversion MagickWand
+pkg-config --cflags MagickWand
+pkg-config --libs MagickWand
 
 CFLAGS="$OPTIONS" ./configure \
     --enable-fpm \
