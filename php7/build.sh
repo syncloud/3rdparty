@@ -6,7 +6,7 @@ cd ${DIR}
 ARCH=$(uname -m)
 
 apt update
-apt install -y libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev
+apt install -y libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev libfreetype6-dev
 apt remove -y libmagickcore*
 
 export TMPDIR=/tmp
@@ -33,14 +33,12 @@ cd ${BUILD_DIR}
 wget https://download.samba.org/pub/samba/samba-${SAMBA_VERSION}.tar.gz -O samba.tar.gz --progress dot:giga
 tar xf samba.tar.gz
 cd samba-*
-sed -i '/update/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
-sed -i '/autoremove/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
-sed -i '/autoclean/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
-sed -i '/clean/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
+#sed -i '/update/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
+#sed -i '/autoremove/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
+#sed -i '/autoclean/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
+#sed -i '/clean/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
 ./bootstrap/generated-dists/debian10/bootstrap.sh
-./configure --prefix=${PREFIX} \
- --disable-python --without-ad-dc --bundled-libraries=ALL
-
+./configure --prefix=${PREFIX} --disable-python --without-ad-dc --bundled-libraries=ALL
 make -j4
 make install
 
