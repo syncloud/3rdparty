@@ -7,6 +7,7 @@ ARCH=$(uname -m)
 
 apt update
 apt install -y libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev
+apt remove -y libmagickcore*
 
 export TMPDIR=/tmp
 export TMP=/tmp
