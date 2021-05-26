@@ -34,8 +34,7 @@ tar xf samba.tar.gz
 cd samba-*
 ./bootstrap/generated-dists/debian10/bootstrap.sh
 ./configure --prefix=${PREFIX} \
- --disable-python --without-ad-dc --bundled-libraries=ALL \
- --disable-cups --enable-swat=no --with-winbind=no \
+ --disable-python --without-ad-dc --bundled-libraries=ALL
 
 make -j4
 make install
