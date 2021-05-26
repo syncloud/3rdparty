@@ -33,6 +33,10 @@ cd ${BUILD_DIR}
 wget https://download.samba.org/pub/samba/samba-${SAMBA_VERSION}.tar.gz -O samba.tar.gz --progress dot:giga
 tar xf samba.tar.gz
 cd samba-*
+sed -i '/update/d'./bootstrap/generated-dists/debian10/bootstrap.sh
+sed -i '/autoremove/d'./bootstrap/generated-dists/debian10/bootstrap.sh
+sed -i '/autoclean/d'./bootstrap/generated-dists/debian10/bootstrap.sh
+sed -i '/clean/d'./bootstrap/generated-dists/debian10/bootstrap.sh
 ./bootstrap/generated-dists/debian10/bootstrap.sh
 ./configure --prefix=${PREFIX} \
  --disable-python --without-ad-dc --bundled-libraries=ALL
@@ -56,13 +60,6 @@ mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=${PREFIX}
 make -j4
-make install
-
-wget https://download.savannah.gnu.org/releases/freetype/freetype-2.10.1.tar.gz
-tar xf freetype-2.10.1.tar.gz
-cd freetype-2.10.1
-./configure --prefix=${PREFIX} --enable-freetype-config
-make
 make install
 
 cd ${BUILD_DIR}
