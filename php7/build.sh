@@ -6,7 +6,7 @@ cd ${DIR}
 ARCH=$(uname -m)
 
 apt update
-apt install -y libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev libfreetype6-dev  liblqr-1-0-dev
+apt install -y libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev libfreetype6-dev liblqr-1-0-dev libfftw3-dev
 apt remove -y libmagickcore*
 
 export TMPDIR=/tmp
