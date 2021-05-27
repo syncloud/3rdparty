@@ -55,7 +55,8 @@ cd ImageMagick-${IMAGE_MAGICK_VERSION}
 make -j4
 make install
 
-ls -la ${PREFIX}
+ls -la ${PREFIX}/include
+ls -la ${PREFIX}/lib
 
 cd ${BUILD_DIR}
 wget https://libzip.org/download/libzip-1.7.1.tar.gz
