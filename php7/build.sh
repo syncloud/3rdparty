@@ -6,7 +6,7 @@ cd ${DIR}
 ARCH=$(uname -m)
 
 apt update
-apt install -y libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev libfreetype6-dev liblqr-1-0-dev libfftw3-dev
+apt install -y libonig-dev cmake libldb-dev libldap2-dev libsasl2-dev libfreetype6-dev liblqr-1-0-dev libfftw3-dev libjbig-dev
 apt remove -y libmagickcore*
 
 export TMPDIR=/tmp
@@ -255,6 +255,7 @@ cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgl
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libuuid.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblz4.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libjansson.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libjbig.so* ${PREFIX}/lib
 
 find ${PREFIX}/lib/php/extensions -name "*.so*" -exec mv {} ${PREFIX}/lib/php/extensions \;
 
