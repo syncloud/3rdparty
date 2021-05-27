@@ -129,7 +129,7 @@ CFLAGS="$OPTIONS" ./configure \
     --enable-exif \
     --enable-pcntl \
     --enable-ftp \
-    --with-imagick \
+    --with-imagick=${PREFIX} \
     --enable-bcmath \
     --with-gmp
 
