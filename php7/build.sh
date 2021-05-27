@@ -44,7 +44,7 @@ cd samba-*
 #sed -i '/clean/d' ./bootstrap/generated-dists/debian10/bootstrap.sh
 ./bootstrap/generated-dists/debian10/bootstrap.sh
 ./configure --prefix=${PREFIX} --disable-python --without-ad-dc --bundled-libraries=ALL
-make -j4
+make -j2
 make install
 
 cd ${BUILD_DIR}
