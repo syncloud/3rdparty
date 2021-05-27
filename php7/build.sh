@@ -93,7 +93,7 @@ rm configure
 ./buildconf --force
 
 if [ "$ARCH" == "armv7l"  ]; then
-    OPTIONS="-D_FILE_OFFSET_BITS=64"
+    CFLAGS="-D_FILE_OFFSET_BITS=64"
 fi
 
 ./configure --help
@@ -107,7 +107,10 @@ pkg-config --modversion MagickWand
 pkg-config --cflags MagickWand
 pkg-config --libs MagickWand
 
-CFLAGS="$OPTIONS" ./configure \
+export CFLAGS="$CFLAGS $(pkg-config --cflags MagickWand)"
+export LIBS="$LIBS $(pkg-config --libs MagickWand)"
+
+./configure \
     --enable-fpm \
     --with-mysqli \
     --with-pgsql \
