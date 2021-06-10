@@ -20,6 +20,13 @@ local build(name, arch, image, native) = {
               "./" + name + "/test.sh"
 	        ]
 	      },
+         {
+	        name: "test-jessie",
+            image: "syncloud/platform-jessie-" + arch,
+	        commands: [
+              "./" + name + "/test.sh"
+	        ]
+	      },
       	{
             name: "artifact",
             image: "appleboy/drone-scp",
@@ -68,7 +75,7 @@ local build(name, arch, image, native) = {
         #{project: "openssl", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "phantomjs", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "php", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
-        {project: "php7", image: "gcc:10", archs: ["arm", "amd64"], native: true},
+        {project: "php7", image: "debian:jessie", archs: ["arm", "amd64"], native: true},
         #{project: "php8", image: "gcc:10", archs: ["arm", "amd64"], native: true},
         #{project: "postgresql", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "postgresql-10", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
