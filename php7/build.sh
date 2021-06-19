@@ -8,7 +8,8 @@ docker rm php | true
 docker rmi php:syncloud | true
 docker pull php:7.4-cli
 docker build -t php:syncloud .
-docker create --name=php php:syncloud php -i
+docker run php:syncloud php -i
+docker create --name=php php:syncloud
 mkdir -p build/php
 cd build/php
 docker export php -o php.tar
