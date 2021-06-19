@@ -11,7 +11,17 @@ local build(name, arch, image, native) = {
             image: if native then image else image + "-" + arch,
 	        commands: [
               "./" + name + "/build.sh"
-	        ]
+	        ],
+	        volumes: [
+                {
+                    name: "docker",
+                    path: "/usr/bin/docker"
+                },
+                {
+                    name: "docker.sock",
+                    path: "/var/run/docker.sock"
+                }
+            ]
 	      },
         {
 	        name: "test",
@@ -46,6 +56,26 @@ local build(name, arch, image, native) = {
             },
             when: {
               status: [ "failure", "success" ]
+            }
+        }
+    ],
+    volumes: [
+        {
+            name: "dbus",
+            host: {
+                path: "/var/run/dbus"
+            }
+        },
+        {
+            name: "docker",
+            host: {
+                path: "/usr/bin/docker"
+            }
+        },
+        {
+            name: "docker.sock",
+            host: {
+                path: "/var/run/docker.sock"
             }
         }
     ]
