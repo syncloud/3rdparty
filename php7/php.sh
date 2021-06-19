@@ -1,3 +1,3 @@
 #!/bin/bash -xe
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )
-${DIR}/lib/ld-* --library-path ${DIR}/lib:${DIR}/usr/lib ${DIR}/usr/local/bin/php "$@"
+${DIR}/lib/*-linux*/ld-* --library-path ${DIR}/lib/*-linux*:${DIR}/usr/lib/*-linux* ${DIR}/usr/local/bin/php "$@"

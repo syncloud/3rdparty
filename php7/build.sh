@@ -13,6 +13,8 @@ mkdir -p build/php
 cd build/php
 docker export php -o php.tar
 tar xf php.tar
+rm -rf php.tar
 cp ${DIR}/php.sh bin
+./bin/php.sh -v
 cd ..
 tar czvf ${NAME}-${ARCH}.tar.gz php
