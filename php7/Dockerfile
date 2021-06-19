@@ -17,5 +17,9 @@ RUN apt-get update && apt-get install -y \
 		libtiff5-dev \
 		libwebp-dev \
         libgmp-dev \
+        libmagickwand-dev --no-install-recommends \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick \
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
-	&& docker-php-ext-install -j2 gd
+	&& docker-php-ext-install -j2 gd \
+    && rm -rf /var/lib/apt/lists/*
