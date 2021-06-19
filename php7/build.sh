@@ -16,6 +16,7 @@ docker export php -o php.tar
 tar xf php.tar
 rm -rf php.tar
 cp ${DIR}/php.sh bin
+cp usr/local/lib/php/extensions/*/*.so usr/local/lib/php/extensions
 ./bin/php.sh -v
 cd ..
 tar czvf php7-${ARCH}.tar.gz php

@@ -2,4 +2,4 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )
 LIBS=$(echo ${DIR}/lib/*-linux-gnu*)
 LIBS=$LIBS:$(echo ${DIR}/usr/lib/*-linux-gnu*)
-${DIR}/lib/*-linux*/ld-*.so --library-path $LIBS ${DIR}/usr/local/bin/php "$@"
+${DIR}/lib/*-linux*/ld-*.so --library-path $LIBS PHP_INI_SCAN_DIR=${DIR}/usr/local/etc/php/conf.d ${DIR}/usr/local/bin/php "$@"
