@@ -17,7 +17,8 @@ docker export php -o php.tar
 tar xf php.tar
 rm -rf php.tar
 cd ${BUILD_DIR}/lib
-ln -s */ImageMagick-6.9.10 ImageMagick-6.9.10
+TARGET=$(echo */ImageMagick-6.9.10)
+ln -s $TARGET ImageMagick-6.9.10
 ls -la ImageMagick*
 cp ${DIR}/php.sh ${DIR}/build/bin
 ./bin/php.sh -v
