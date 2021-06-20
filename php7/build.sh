@@ -23,7 +23,7 @@ IMAGE_MAGIC_NAME=$(echo ImageMagick-*)
 cd ${BUILD_DIR}/lib
 ln -s $LIB_ARCH/$IMAGE_MAGIC_NAME $IMAGE_MAGIC_NAME
 ls -la ImageMagick*
-cp ${DIR}/php.sh ${DIR}/build/bin
-${DIR}/build/bin/php.sh -v
+cp ${DIR}/php.sh ${BUILD_DIR}/bin
+${BUILD_DIR}/bin/php.sh -v
 cd ${DIR}/build
 tar czvf php7-${ARCH}.tar.gz php
