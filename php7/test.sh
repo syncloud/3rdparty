@@ -7,6 +7,7 @@ find $DIR/build/php -name "*.so"
 
 echo "extension_dir=\"$(echo $DIR/build/php/usr/local/lib/php/extensions/*)\"" > php.ini
 cat php.ini 
+ls -la ./build/php/lib/ImageMagick-*/modules-*/coders
 
 ./build/php/bin/php.sh -c php.ini -i
 ./build/php/bin/php.sh -c php.ini -i | grep -i svg
