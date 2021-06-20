@@ -16,7 +16,7 @@ cd ${BUILD_DIR}
 docker export php -o php.tar
 tar xf php.tar
 rm -rf php.tar
-cd ${BUILD_DIR}/lib
+cd ${BUILD_DIR}/usr/lib
 LIB_ARCH=$(echo *-linux*)
 cd $LIB_ARCH
 IMAGE_MAGIC_NAME=$(echo ImageMagick-*)
