@@ -18,7 +18,7 @@ tar xf php.tar
 rm -rf php.tar
 cd ${BUILD_DIR}/lib
 LIB_ARCH=$(echo *-linux*)
-cd LIB_ARCH
+cd $LIB_ARCH
 IMAGE_MAGIC_NAME=$(echo ImageMagick-*)
 cd ${BUILD_DIR}/lib
 ln -s $LIB_ARCH/$IMAGE_MAGIC_NAME $IMAGE_MAGIC_NAME
