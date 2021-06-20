@@ -20,7 +20,7 @@ cd ${BUILD_DIR}/usr/lib
 LIB_ARCH=$(echo *-linux*)
 cd $LIB_ARCH
 IMAGE_MAGIC_NAME=$(echo ImageMagick-*)
-cd ${BUILD_DIR}/lib
+cd ${BUILD_DIR}/usr/lib
 ln -s $LIB_ARCH/$IMAGE_MAGIC_NAME $IMAGE_MAGIC_NAME
 ls -la ImageMagick*
 cp ${DIR}/php.sh ${BUILD_DIR}/bin
