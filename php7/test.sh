@@ -3,7 +3,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-echo $DIR/build/php/usr/local/lib/php/extensions/*
+find $DIR/build/php -name "*magick*.so"
 
 echo "extension_dir=\"$(echo $DIR/build/php/usr/local/lib/php/extensions/*)\"" > php.ini
 cat php.ini 
