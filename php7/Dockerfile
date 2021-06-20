@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
     && pecl install smbclient \
     && docker-php-ext-enable imagick \
     && docker-php-ext-enable smbclient \
+    && docker-php-ext-enable pdo pdo_pgsql \
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
 	&& docker-php-ext-install -j2 gd \
     && rm -rf /var/lib/apt/lists/*
