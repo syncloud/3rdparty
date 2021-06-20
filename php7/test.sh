@@ -3,7 +3,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-echo "extension_dir=\"$DIR/build/pho/usr/local/lib/php/extensions/*\"" > php.ini
+echo "extension_dir=\"$(echo $DIR/build/pho/usr/local/lib/php/extensions/*)\"" > php.ini
 cat php.ini 
 
 ./build/php/bin/php.sh -c php.ini -i
