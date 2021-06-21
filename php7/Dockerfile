@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y \
         libmagickwand-dev --no-install-recommends \
     && pecl install imagick \
     && pecl install smbclient \
+    && docker-php-ext-install ldap \
     && docker-php-ext-install zip \
     && docker-php-ext-enable imagick \
     && docker-php-ext-enable smbclient \
