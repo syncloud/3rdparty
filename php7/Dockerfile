@@ -16,11 +16,11 @@ RUN apt-get update && apt-get install -y \
 		libjbig-dev \
 		libtiff5-dev \
 		libwebp-dev \
+		zip \
         libgmp-dev \
         libmagickwand-dev --no-install-recommends \
     && pecl install imagick \
     && pecl install smbclient \
-    && docker-php-ext-configure zip --with-libzip \
     && docker-php-ext-install zip \
     && docker-php-ext-enable imagick \
     && docker-php-ext-enable smbclient \
