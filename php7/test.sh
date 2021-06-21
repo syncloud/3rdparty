@@ -17,6 +17,7 @@ ls -la ./build/php/usr/lib/ImageMagick-*/modules-*/coders
 ./build/php/bin/php.sh -c php.ini -i | grep -i mysql
 ./build/php/bin/php.sh -c php.ini -i | grep -i postgresql
 ./build/php/bin/php.sh -c php.ini -i | grep -i ldap
+./build/php/bin/php.sh -c php.ini -i | grep -i zip
 ./build/php/bin/php.sh -c php.ini -r "echo gethostbyname('apps.nextcloud.com');"
 ./build/php/bin/php.sh -c php.ini -r "echo gethostbyname('apps.nextcloud.com');" | grep -v apps.nextcloud.com
 
