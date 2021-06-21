@@ -19,3 +19,6 @@ ls -la ./build/php/usr/lib/ImageMagick-*/modules-*/coders
 ./build/php/bin/php.sh -c php.ini -i | grep -i ldap
 ./build/php/bin/php.sh -c php.ini -r "echo gethostbyname('apps.nextcloud.com');"
 ./build/php/bin/php.sh -c php.ini -r "echo gethostbyname('apps.nextcloud.com');" | grep -v apps.nextcloud.com
+
+./build/php/bin/php-fpm.sh -c php.ini -i
+./build/php/bin/php-fpm.sh -c php.ini -i | grep -i svg
