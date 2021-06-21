@@ -25,7 +25,11 @@ ln -s $LIB_ARCH/$IMAGE_MAGIC_NAME $IMAGE_MAGIC_NAME
 ls -la ImageMagick*
 cp ${DIR}/php.sh ${BUILD_DIR}/bin
 cp ${DIR}/php-fpm.sh ${BUILD_DIR}/bin
+mkdir -p ${BUILD_DIR}/lib/php/extensions
+mv ${BUILD_DIR}/usr/local/lib/php/extensions/*/*.so ${BUILD_DIR}/lib/php/extensions
+
 ${BUILD_DIR}/bin/php.sh -v
 ${BUILD_DIR}/bin/php-fpm.sh -v
 cd ${DIR}/build
 tar czf $DIR/php7-${ARCH}.tar.gz php
+
