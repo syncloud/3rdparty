@@ -26,4 +26,4 @@ ls -la ImageMagick*
 cp ${DIR}/php.sh ${BUILD_DIR}/bin
 ${BUILD_DIR}/bin/php.sh -v
 cd ${DIR}/build
-tar czf php7-${ARCH}.tar.gz php
+tar czf $DIR/php7-${ARCH}.tar.gz php
