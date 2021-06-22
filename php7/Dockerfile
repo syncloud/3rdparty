@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
 		wget \
 		unzip \
         libgmp-dev \
+        libonig-dev \
         libmagickwand-dev --no-install-recommends
 
 RUN mkdir -p /usr/src/php/ext/memcached
