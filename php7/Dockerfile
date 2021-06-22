@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 		libtiff5-dev \
 		libwebp-dev \
 		libmemcached-dev \
-                libmcrypt-dev \
+        libmcrypt-dev \
 		zip \
 		wget \
 		unzip \
@@ -29,23 +29,25 @@ WORKDIR /usr/src/php/ext/memcached
 RUN wget https://github.com/php-memcached-dev/php-memcached/archive/v3.1.3.zip; unzip /usr/src/php/ext/memcached/v3.1.3.zip
 RUN mv /usr/src/php/ext/memcached/php-memcached-3.1.3/* /usr/src/php/ext/memcached/
 
-RUN docker-php-ext-configure memcached && docker-php-ext-install memcached \
-    && pecl install imagick \
-    && pecl install smbclient \
-    && pecl install apcu \
-    && docker-php-ext-enable apcu \
-    && docker-php-ext-install ldap \
-    && docker-php-ext-install mcrypt \
-    && docker-php-ext-install bcmath \
-    && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install mysql \
-    && docker-php-ext-install mysqli \
-    && docker-php-ext-install mbstring \
-    && docker-php-ext-install opcache \
-    && docker-php-ext-install zip \
-    && docker-php-ext-enable imagick \
-    && docker-php-ext-enable smbclient \
-    && docker-php-ext-install pdo pdo_pgsql \
-	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
-	&& docker-php-ext-install -j2 gd \
-    && rm -rf /var/lib/apt/lists/*
+RUN docker-php-ext-configure memcached
+RUN docker-php-ext-install memcached
+RUN pecl install imagick
+RUN pecl install smbclient
+RUN pecl install apcu
+RUN pecl install mcrypt-1.0.4
+RUN docker-php-ext-enable apcu
+RUN docker-php-ext-install ldap
+RUN docker-php-ext-enable mcrypt
+RUN docker-php-ext-install bcmath
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install mysql
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install opcache
+RUN docker-php-ext-install zip
+RUN docker-php-ext-enable imagick
+RUN docker-php-ext-enable smbclient
+RUN docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install -j2 gd
+RUN rm -rf /var/lib/apt/lists/*
