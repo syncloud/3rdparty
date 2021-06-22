@@ -12,11 +12,11 @@ ls -la ./build/php/usr/lib/ImageMagick-*/modules-*/coders
 ./build/php/bin/php.sh -c php.ini -i
 ./build/php/bin/php.sh -c php.ini -m
 ./build/php/bin/php.sh -c php.ini -i | grep -i svg
-./build/php/bin/php.sh -c php.ini -i | grep -i smbclient
-./build/php/bin/php.sh -c php.ini -i | grep -i imagemagick
-./build/php/bin/php.sh -c php.ini -i | grep -i gd
-./build/php/bin/php.sh -c php.ini -i | grep -i mysql
-./build/php/bin/php.sh -c php.ini -i | grep -i postgresql
+./build/php/bin/php.sh -c php.ini -m | grep -i smbclient
+./build/php/bin/php.sh -c php.ini -m | grep -i imagick
+./build/php/bin/php.sh -c php.ini -m | grep -i gd
+./build/php/bin/php.sh -c php.ini -m | grep -i pdo_mysql
+./build/php/bin/php.sh -c php.ini -m | grep -i pdo_pgsql
 ./build/php/bin/php.sh -c php.ini -m | grep -i ldap
 ./build/php/bin/php.sh -c php.ini -m | grep -i zip
 ./build/php/bin/php.sh -c php.ini -m | grep -i memcached
