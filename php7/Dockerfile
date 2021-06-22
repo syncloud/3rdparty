@@ -35,7 +35,13 @@ RUN docker-php-ext-configure memcached && docker-php-ext-install memcached \
     && pecl install apcu \
     && docker-php-ext-enable apcu \
     && docker-php-ext-install ldap \
-    && docker-php-ext-install mcrypt bcmath pdo_mysql mysql mysqli mbstring opcache \
+    && docker-php-ext-install mcrypt \
+    && docker-php-ext-install bcmath \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mysql \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install mbstring \
+    && docker-php-ext-install opcache \
     && docker-php-ext-install zip \
     && docker-php-ext-enable imagick \
     && docker-php-ext-enable smbclient \
