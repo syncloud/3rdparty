@@ -20,7 +20,7 @@ ls -la ./build/php/usr/lib/ImageMagick-*/modules-*/coders
 ./build/php/bin/php.sh -c php.ini -m | grep -i ldap
 ./build/php/bin/php.sh -c php.ini -m | grep -i zip
 ./build/php/bin/php.sh -c php.ini -m | grep -i memcached
-./build/php/bin/php.sh -c php.ini -m | grep -i acpu
+./build/php/bin/php.sh -c php.ini -m | grep -i apcu
 ./build/php/bin/php.sh -c php.ini -m | grep -i mcrypt
 ./build/php/bin/php.sh -c php.ini -m | grep -i opcache
 ./build/php/bin/php.sh -c php.ini -r "echo gethostbyname('apps.nextcloud.com');"
