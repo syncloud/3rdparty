@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y \
 		libwebp-dev \
 		libmemcached-dev \
 		zip \
+		wget \
+		unzip \
         libgmp-dev \
         libmagickwand-dev --no-install-recommends
 
