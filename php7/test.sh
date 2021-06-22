@@ -6,8 +6,6 @@ cd ${DIR}
 find $DIR/build/php -name "*.so"
 
 echo "extension_dir=\"$DIR/build/php/lib/php/extensions\"" > php.ini
-cat php.ini 
-ls -la ./build/php/usr/lib/ImageMagick-*/modules-*/coders
 
 ./build/php/bin/php.sh -c php.ini -i
 ./build/php/bin/php.sh -c php.ini -m
