@@ -22,6 +22,7 @@ cp ${DIR}/php.sh ${BUILD_DIR}/bin
 cp ${DIR}/php-fpm.sh ${BUILD_DIR}/bin
 mkdir -p ${BUILD_DIR}/lib/php/extensions
 mv ${BUILD_DIR}/usr/local/lib/php/extensions/*/*.so ${BUILD_DIR}/lib/php/extensions
+rm -rf ${BUILD_DIR}/usr/src
 cd ${DIR}/build
 tar czf $DIR/php7-${ARCH}.tar.gz php
 
