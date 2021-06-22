@@ -29,6 +29,8 @@ RUN mv /usr/src/php/ext/memcached/php-memcached-3.1.3/* /usr/src/php/ext/memcach
 RUN docker-php-ext-configure memcached && docker-php-ext-install memcached \
     && pecl install imagick \
     && pecl install smbclient \
+    && pecl install apcu \
+    && docker-php-ext-enable apcu \
     && docker-php-ext-install ldap \
     && docker-php-ext-install zip \
     && docker-php-ext-enable imagick \
