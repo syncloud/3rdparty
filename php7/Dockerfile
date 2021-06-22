@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
 		libtiff5-dev \
 		libwebp-dev \
 		libmemcached-dev \
+                libmcrypt-dev \
 		zip \
 		wget \
 		unzip \
@@ -34,6 +35,7 @@ RUN docker-php-ext-configure memcached && docker-php-ext-install memcached \
     && pecl install apcu \
     && docker-php-ext-enable apcu \
     && docker-php-ext-install ldap \
+    && docker-php-ext-install mcrypt bcmath pdo_mysql mysql mysqli mbstring opcache \
     && docker-php-ext-install zip \
     && docker-php-ext-enable imagick \
     && docker-php-ext-enable smbclient \
