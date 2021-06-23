@@ -67,7 +67,7 @@ local build(name, arch, image, native) = {
                 },
                 files: name + "/*.tar.gz",
                 title: "1"
-            }
+            },
             when: {
                 branch: [ "master" ]
             }
