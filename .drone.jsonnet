@@ -66,7 +66,9 @@ local build(name, arch, image, native) = {
                     from_secret: "github_token"
                 },
                 files: name + "/*.tar.gz",
-                title: "1"
+                title: "Latest",
+                overwrite: true,
+                file_exists: "overwrite"
             },
             when: {
                 event: [ "tag" ]
