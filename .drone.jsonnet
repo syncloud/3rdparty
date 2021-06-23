@@ -57,6 +57,20 @@ local build(name, arch, image, native) = {
             when: {
               status: [ "failure", "success" ]
             }
+        },
+        {
+            name: "publish to github",
+            image: "plugins/github-release",
+            settings:{
+                api_key: {
+                    from_secret: "github_token"
+                }
+                files: name + "/*.tar.gz",
+                title: "1"
+            }
+            when: {
+                branch: [ "master" ]
+            }
         }
     ],
     volumes: [
