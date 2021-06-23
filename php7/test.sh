@@ -23,6 +23,8 @@ echo "extension_dir=\"$DIR/build/php/lib/php/extensions\"" > php.ini
 ./build/php/bin/php.sh -c php.ini -m | grep -i apcu
 ./build/php/bin/php.sh -c php.ini -m | grep -i mcrypt
 ./build/php/bin/php.sh -c php.ini -m | grep -i opcache
+./build/php/bin/php.sh -c php.ini -m | grep -i exif
+./build/php/bin/php.sh -c php.ini -m | grep -i pcntl
 ./build/php/bin/php.sh -c php.ini -r "echo gethostbyname('apps.nextcloud.com');"
 ./build/php/bin/php.sh -c php.ini -r "echo gethostbyname('apps.nextcloud.com');" | grep -v apps.nextcloud.com
 
