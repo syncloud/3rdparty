@@ -52,7 +52,7 @@ local build(name, arch, image, native) = {
                 command_timeout: "2m",
                 target: "/home/artifact/repo/3rdparty/${DRONE_BUILD_NUMBER}-" + arch,
                 source: name + "/*.tar.gz",
-		             strip_components: 1
+		        strip_components: 1
             },
             when: {
               status: [ "failure", "success" ]
@@ -61,10 +61,10 @@ local build(name, arch, image, native) = {
         {
             name: "publish to github",
             image: "plugins/github-release",
-            settings:{
+            settings: {
                 api_key: {
                     from_secret: "github_token"
-                }
+                },
                 files: name + "/*.tar.gz",
                 title: "1"
             }
