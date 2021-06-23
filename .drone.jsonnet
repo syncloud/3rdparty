@@ -69,7 +69,7 @@ local build(name, arch, image, native) = {
                 title: "1"
             },
             when: {
-                branch: [ "master" ]
+                event: [ "tag" ]
             }
         }
     ],
