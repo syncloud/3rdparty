@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y \
 		unzip \
         libgmp-dev \
         libonig-dev \
+	libicu-dev \
         libmagickwand-dev --no-install-recommends
 
 RUN mkdir -p /usr/src/php/ext/memcached
@@ -32,10 +33,13 @@ RUN mv /usr/src/php/ext/memcached/php-memcached-*/* /usr/src/php/ext/memcached/
 
 RUN docker-php-ext-configure memcached
 RUN docker-php-ext-install memcached
+RUN docker-php-ext-install gmp
 RUN pecl install imagick
 RUN pecl install smbclient
 RUN pecl install apcu
 RUN pecl install mcrypt-1.0.4
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install intl
 RUN docker-php-ext-enable apcu
 RUN docker-php-ext-install ldap
 RUN docker-php-ext-enable mcrypt

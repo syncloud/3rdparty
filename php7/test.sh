@@ -11,6 +11,8 @@ echo "extension_dir=\"$DIR/build/php/lib/php/extensions\"" > php.ini
 ./build/php/bin/php.sh -c php.ini -m
 ./build/php/bin/php.sh -c php.ini -i | grep -i svg
 ./build/php/bin/php.sh -c php.ini -m | grep -i smbclient
+./build/php/bin/php.sh -c php.ini -m | grep -i intl
+./build/php/bin/php.sh -c php.ini -m | grep -i gmp
 ./build/php/bin/php.sh -c php.ini -m | grep -i imagick
 ./build/php/bin/php.sh -c php.ini -m | grep -i gd
 ./build/php/bin/php.sh -c php.ini -m | grep -i pdo_mysql
