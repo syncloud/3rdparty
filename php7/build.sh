@@ -16,7 +16,7 @@ cd ${BUILD_DIR}
 docker export php -o php.tar
 tar xf php.tar
 rm -rf php.tar
-mv ${BUILD_DIR}/usr/lib/*-linux*/ImageMagick-* ${BUILD_DIR}/usr/lib/ImageMagick
+mv ${BUILD_DIR}/usr/lib/*-linux*/ImageMagick-*/modules-*/coders ${BUILD_DIR}/usr/lib/ImageMagickCoders
 ls -la ${BUILD_DIR}/usr/lib/ImageMagick
 cp ${DIR}/php.sh ${BUILD_DIR}/bin
 cp ${DIR}/php-fpm.sh ${BUILD_DIR}/bin
