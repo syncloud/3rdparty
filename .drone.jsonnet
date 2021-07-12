@@ -25,14 +25,14 @@ local build(name, arch, image, native) = {
 	      },
         {
 	        name: "test",
-            image: "syncloud/platform-" + arch,
+            image: "debian:buster-slim",
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
 	      },
          {
 	        name: "test-jessie",
-            image: "syncloud/platform-jessie-" + arch,
+            image: "debian:jessie-slim",
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
