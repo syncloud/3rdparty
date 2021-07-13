@@ -12,7 +12,7 @@ SQLITE_VERSION=autoconf-3310100
 NAME=python3
 PREFIX=${DIR}/build/${NAME}
 apt update
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libbz2-dev libsqlite3-dev unzip libffi-dev
+apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libbz2-dev libsqlite3-dev unzip libffi-dev wget
 
 rm -rf build
 mkdir build
