@@ -29,14 +29,14 @@ local build(name, arch, image, native) = {
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
-	      },
+	      }] + if arch == "arm64" then [] else [
          {
 	        name: "test-jessie",
             image: "debian:jessie-slim",
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
-	      },
+	      }] + [
       	{
             name: "artifact",
             image: "appleboy/drone-scp",
@@ -98,7 +98,7 @@ local build(name, arch, image, native) = {
 };
 
 [ 
-    build(item.project, arch, item.image, item.native)
+    build(item.project, item.arch, item.image, item.native)
     for item in [
         #{project: "asterisk", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "bind9", image: "debian:buster-backports", archs: ["arm", "amd64"], native: true},
@@ -127,10 +127,11 @@ local build(name, arch, image, native) = {
         #{project: "postgresql-10", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "PyYAML", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "python", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
-        {project: "python3", image: "debian:jessie", archs: ["arm", "amd64", "arm64"], native: true},
+        {project: "python3", image: "debian:jessie", arch: "arm", native: true},
+        {project: "python3", image: "debian:jessie", arch: "amd64", native: true},
+        {project: "python3", image: "debian:buster", arch: "arm64", native: true},
         #{project: "redis", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "rsyslog", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "sqlite", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
     ]
-    for arch in item.archs
 ]
