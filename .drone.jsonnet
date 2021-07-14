@@ -29,14 +29,14 @@ local build(name, arch, image, native) = {
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
-	      }] + if arch == "arm64" then [] else [
+	      }] + (if arch == "arm64" then [] else [
          {
 	        name: "test-jessie",
             image: "debian:jessie-slim",
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
-	      }] + [
+	      }]) + [
       	{
             name: "artifact",
             image: "appleboy/drone-scp",
