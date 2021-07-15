@@ -39,7 +39,7 @@ local build(name, arch, image, native) = {
 	      }]) + [
       	{
             name: "artifact",
-            image: "appleboy/drone-scp",
+            image: "appleboy/drone-scp:latest",
             settings: {
                 host: {
                     from_secret: "artifact_host"
@@ -60,7 +60,7 @@ local build(name, arch, image, native) = {
         },
         {
             name: "publish to github",
-            image: "plugins/github-release",
+            image: "plugins/github-release:latest",
             settings: {
                 api_key: {
                     from_secret: "github_token"
