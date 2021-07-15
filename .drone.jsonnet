@@ -66,7 +66,6 @@ local build(name, arch, image, native) = {
                     from_secret: "github_token"
                 },
                 files: name + "/*.tar.gz",
-                title: "Latest",
                 overwrite: true,
                 file_exists: "overwrite"
             },

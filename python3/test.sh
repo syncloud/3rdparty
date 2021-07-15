@@ -12,4 +12,5 @@ apt install -y ca-certificates
 ./build/python/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
 
 ./build/python/bin/pip install pytest
+./build/python/bin/pip install beautifulsoup4==4.3.2
 ./build/python/bin/py.test.sh --help
