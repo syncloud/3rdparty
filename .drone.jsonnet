@@ -8,7 +8,7 @@ local build(name, arch, image, native) = {
     steps: [
         {
 	        name: "build",
-            image: if native then image else image + "-" + arch,
+            image: image,
 	        commands: [
               "./" + name + "/build.sh"
 	        ],
@@ -22,21 +22,21 @@ local build(name, arch, image, native) = {
                     path: "/var/run/docker.sock"
                 }
             ]
-	      },
+	    },
         {
 	        name: "test",
             image: "debian:buster-slim",
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
-	      }] + (if arch == "arm64" then [] else [
-         {
+	    },
+        {
 	        name: "test-jessie",
             image: "debian:jessie-slim",
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
-	      }]) + [
+	    },
       	{
             name: "artifact",
             image: "appleboy/drone-scp:latest",
@@ -97,7 +97,7 @@ local build(name, arch, image, native) = {
 };
 
 [ 
-    build(item.project, arch, item.image, item.native)
+    build(item.project, item.arch, item.image, item.native)
     for item in [
         #{project: "asterisk", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "bind9", image: "debian:buster-backports", archs: ["arm", "amd64"], native: true},
@@ -126,10 +126,11 @@ local build(name, arch, image, native) = {
         #{project: "postgresql-10", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "PyYAML", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "python", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
-        {project: "python3", image: "debian:jessie", archs: ["arm", "amd64", "arm64"], native: true},
+        {project: "python3", image: "syncloud/build-deps-arm", arch: "arm"},
+        {project: "python3", image: "syncloud/build-deps-amd64", arch: "amd64"},
+        {project: "python3", image: "syncloud/build-deps-arm64:2021.07", arch: "arm64"},
         #{project: "redis", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "rsyslog", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "sqlite", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
     ]
-    for arch in item.archs
 ]
