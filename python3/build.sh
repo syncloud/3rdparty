@@ -6,7 +6,7 @@ cd ${DIR}
 ARCH=$(uname -m)
 
 VERSION=3.8.9
-OPENSSL_VERSION=1.1.1h
+OPENSSL_VERSION=1.1.1k
 SQLITE_VERSION=autoconf-3310100
 
 PREFIX=${DIR}/build/pyhon
