@@ -1,3 +1,4 @@
-#!/bin/bash -e
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-${DIR}/python ${DIR}/..//usr/local/bin/pip "$@"
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )
+export LD_LIBRARY_PATH=${DIR}/lib
+${DIR}/bin/python3 ${DIR}/bin/pip3 "$@"
