@@ -9,8 +9,7 @@ VERSION=3.8.9
 OPENSSL_VERSION=1.1.1h
 SQLITE_VERSION=autoconf-3310100
 
-NAME=python3
-PREFIX=${DIR}/build/${NAME}
+PREFIX=${DIR}/build/pyhon
 
 apt update
 apt -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libbz2-dev libsqlite3-dev unzip libffi-dev wget curl
@@ -93,5 +92,5 @@ cd ${DIR}
 find ${PREFIX} \( -name "*.pyc" -o -name "*.pyo" \) -exec rm {} \;
 ${PREFIX}/bin/python --version
 
-rm -rf ${NAME}-${ARCH}.tar.gz
-tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+rm -rf python3-${ARCH}.tar.gz
+tar cpzf python3-${ARCH}.tar.gz -C ${DIR}/build python
