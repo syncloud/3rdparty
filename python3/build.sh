@@ -3,12 +3,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-if [[ -z "$1" ]]; then
-    echo "usage $0 architecture"
-    exit 1
-fi
-
-ARCH=$1
+ARCH=$(uname -m)
 
 VERSION=3.8.9
 OPENSSL_VERSION=1.1.1h
