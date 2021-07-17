@@ -48,10 +48,10 @@ wget https://www.python.org/ftp/python/${VERSION}/Python-${VERSION}.tar.xz
 tar xf Python-${VERSION}.tar.xz
 cd Python-${VERSION}
 
-echo "SSL=${PREFIX}" >> Modules/Setup.dist
-echo "_ssl _ssl.c \\" >> Modules/Setup.dist
-echo "       -DUSE_SSL -I\$(SSL)/include -I\$(SSL)/include/openssl \\" >> Modules/Setup.dist
-echo "       -L\$(SSL)/lib -lssl -lcrypto" >> Modules/Setup.dist
+echo "SSL=${PREFIX}" >> Modules/Setup
+echo "_ssl _ssl.c \\" >> Modules/Setup
+echo "       -DUSE_SSL -I\$(SSL)/include -I\$(SSL)/include/openssl \\" >> Modules/Setup
+echo "       -L\$(SSL)/lib -lssl -lcrypto" >> Modules/Setup
 
 export CPPFLAGS=-I${PREFIX}/include
 export LDFLAGS=-L${PREFIX}/lib
