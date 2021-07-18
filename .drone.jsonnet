@@ -127,7 +127,7 @@ local build(name, arch, image, native) = {
         #{project: "PyYAML", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "python", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         {project: "python3", image: "syncloud/build-deps-arm", arch: "arm"},
-        {project: "python3", image: "syncloud/build-deps-amd64", arch: "amd64"},
+        {project: "python3", image: "syncloud/build-deps-amd64:2021.07", arch: "amd64"},
         {project: "python3", image: "syncloud/build-deps-arm64:2021.07", arch: "arm64"},
         #{project: "redis", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "rsyslog", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
