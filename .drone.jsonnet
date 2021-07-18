@@ -25,7 +25,7 @@ local build(name, arch, image, native) = {
 	    },
         {
 	        name: "test",
-            image: "debian:buster-slim",
+            image: image,
 	        commands: [
               "./" + name + "/test.sh"
 	        ]

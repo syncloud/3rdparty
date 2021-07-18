@@ -6,6 +6,8 @@ cd ${DIR}
 apt update
 apt install -y ca-certificates
 
+file ./build/python/bin/python3
+
 ./build/python/bin/python --version
 
 ./build/python/bin/python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
