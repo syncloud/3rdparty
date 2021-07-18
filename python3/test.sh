@@ -4,7 +4,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
 apt update
-apt install -y ca-certificates
+apt install -y ca-certificates file
 
 file ./build/python/bin/python3
 

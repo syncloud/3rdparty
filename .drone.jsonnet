@@ -24,15 +24,15 @@ local build(name, arch, image, native) = {
             ]
 	    },
         {
-	        name: "test",
+	        name: "test-jessie",
             image: image,
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
 	    },
         {
-	        name: "test-jessie",
-            image: "debian:jessie-slim",
+	        name: "test-buster",
+            image: "debian:buster-slim",
 	        commands: [
               "./" + name + "/test.sh"
 	        ]
