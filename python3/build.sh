@@ -5,7 +5,7 @@ cd ${DIR}
 
 ARCH=$(uname -m)
 
-VERSION=3.8.9
+VERSION=3.7.11
 OPENSSL_VERSION=1.1.1h
 SQLITE_VERSION=autoconf-3310100
 
