@@ -11,10 +11,8 @@ NAME=nginx
 VERSION=1.21.1
 OPENSSL_VERSION=1.1.1
 PCRE_VERSION=8.40
-ROOT=/nonexistent/path
-PREFIX=${ROOT}/${NAME}
+PREFIX=${DIR}/build/nginx
 
-echo "building ${NAME}"
 apt update
 apt -y install build-essential flex bison libreadline-dev zlib1g-dev
 
@@ -53,5 +51,7 @@ make install
 cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
-tar cpzf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
+tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
+
+ME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
 
