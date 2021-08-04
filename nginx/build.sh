@@ -52,6 +52,3 @@ cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
-
-ME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
-
