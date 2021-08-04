@@ -42,7 +42,8 @@ cd ${NAME}-${VERSION}
     --with-pcre=../pcre-${PCRE_VERSION} \
     --with-ipv6 \
     --with-http_realip_module \
-    --with-http_v2_module
+    --with-http_v2_module \
+    --with-openssl-opt=no-asm
 
 sed -i "/CFLAGS/s/ \-O //g" objs/Makefile
 
