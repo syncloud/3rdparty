@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -15,8 +15,8 @@ ROOT=/nonexistent/path
 PREFIX=${ROOT}/${NAME}
 
 echo "building ${NAME}"
-
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev
+apt update
+apt -y install build-essential flex bison libreadline-dev zlib1g-dev
 
 rm -rf build
 mkdir -p build
