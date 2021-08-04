@@ -8,7 +8,7 @@ ARCH=$(uname -m)
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=nginx
-VERSION=1.15.12
+VERSION=1.21.1
 OPENSSL_VERSION=1.1.1
 PCRE_VERSION=8.40
 ROOT=/nonexistent/path
@@ -53,3 +53,4 @@ cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar cpzf ${NAME}-${ARCH}.tar.gz -C ${ROOT} ${NAME}
+
