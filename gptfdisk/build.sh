@@ -9,7 +9,8 @@ VERSION=1.0.4
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-apt-get -y install build-essential libpopt-dev libncursesw5-dev
+apt update
+apt -y install build-essential libpopt-dev libncursesw5-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
