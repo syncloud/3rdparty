@@ -10,8 +10,6 @@ fi
 
 ARCH=$1
 
-export TMPDIR=/tmp
-export TMP=/tmp
 NAME=gptfdisk
 VERSION=1.0.4
 BUILD=${DIR}/build
@@ -35,10 +33,6 @@ mkdir ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libuuid.so.* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so* ${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so* ${PREFIX}/lib
-
-export LD_LIBRARY_PATH=${PREFIX}/lib
-ldd ${PREFIX}/bin/gdisk
-${PREFIX}/bin/gdisk --help
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
