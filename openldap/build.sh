@@ -3,23 +3,15 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-if [[ -z "$1" ]]; then
-    echo "usage $0 architecture"
-    exit 1
-fi
-
-ARCH=$1
-
-export TMPDIR=/tmp
-export TMP=/tmp
+ARCH=$(uname -m)
 NAME=openldap
 VERSION=2.4.47
 BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
 
 echo "building ${NAME}"
-
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libdb5.3-dev libsasl2-dev groff
+apt update
+apt -y install build-essential flex bison libreadline-dev zlib1g-dev libpcre3-dev libdb5.3-dev libsasl2-dev groff
 
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
@@ -48,21 +40,6 @@ cp /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/li
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpthread.so* ${PREFIX}/lib/
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib/
 #cp /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib/
-
-${PREFIX}/sbin/slapadd.sh --help || true
-${PREFIX}/bin/ldapadd.sh --help || true
-
-export LD_LIBRARY_PATH=${PREFIX}/lib
-mkdir ${BUILD_DIR}/slapd.d
-mkdir ${BUILD_DIR}/data
-sed -i "s#@ETC_DIR@#${PREFIX}/etc/openldap#g" ${DIR}/slapd.test.config.ldif
-sed -i "s#@LIB_DIR@#${PREFIX}/libexec/openldap#g" ${DIR}/slapd.test.config.ldif
-sed -i "s#@DB_DIR@#${BUILD_DIR}/data#g" ${DIR}/slapd.test.config.ldif
-${PREFIX}/sbin/slapadd -v -F ${BUILD_DIR}/slapd.d -n 0 -l ${DIR}/slapd.test.config.ldif
-${PREFIX}/sbin/slapadd -v -F ${BUILD_DIR}/slapd.d -l ${DIR}/slapd.test.db.ldif
-
-#SOCKET=${BUILD_DIR}/ldap.socket
-#${PREFIX}/libexec/slapd -h "ldapi://${SOCKET//\//%2F}" -F ${BUILD_DIR}/slapd.d
 
 cd ${DIR}
 rm -rf ${NAME}-${ARCH}.tar.gz
