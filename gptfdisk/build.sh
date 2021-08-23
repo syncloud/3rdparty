@@ -10,7 +10,7 @@ BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
 apt update
-apt -y install build-essential libpopt-dev libncurses5-dev uuid-dev
+apt -y install build-essential libpopt-dev libncurses5-dev libncursesw5-dev uuid-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
