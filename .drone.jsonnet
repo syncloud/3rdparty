@@ -106,7 +106,7 @@ local build(name, arch, image, native) = {
         #{project: "git", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         {project: "gptfdisk", image: "syncloud/build-deps-arm", arch: "arm"},
         {project: "gptfdisk", image: "syncloud/build-deps-amd64", arch: "amd64"},
-        {project: "gptfdisk", image: "syncloud/build-deps-arm64", arch: "arm64"},
+        {project: "gptfdisk", image: "syncloud/build-deps-buster-arm64", arch: "arm64"},
         #{project: "ImageMagick", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "libvips", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "mariadb", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
