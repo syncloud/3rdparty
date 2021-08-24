@@ -17,8 +17,5 @@ cd ${BUILD_DIR}
 docker export openldap -o openldap.tar
 tar xf openldap.tar
 rm -rf openldap.tar
-cp ${DIR}/slapadd.sh ${BUILD_DIR}/sbin
-cp ${DIR}/ldapadd.sh ${BUILD_DIR}/bin
-
 cd ${DIR}/build
 tar czf $DIR/openldap-${ARCH}.tar.gz openldap
