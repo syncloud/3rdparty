@@ -4,6 +4,9 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 BUILD_DIR=${DIR}/build/openldap
 
+apt update
+apt install -y libltdl7 libnss3
+
 ARCH=$(uname -m)
 docker ps -a -q --filter ancestor=openldap:syncloud --format="{{.ID}}" | xargs docker stop | xargs docker rm || true
 docker rmi openldap:syncloud || true
