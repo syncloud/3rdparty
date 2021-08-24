@@ -7,7 +7,6 @@ BUILD_DIR=${DIR}/build/openldap
 ARCH=$(uname -m)
 docker ps -a -q --filter ancestor=openldap:syncloud --format="{{.ID}}" | xargs docker stop | xargs docker rm || true
 docker rmi openldap:syncloud || true
-docker pull osixia/openldap:1.5.0
 docker build -t openldap:syncloud .
 docker run openldap:syncloud openldap -i
 docker create --name=openldap openldap:syncloud

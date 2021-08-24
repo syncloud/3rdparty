@@ -6,8 +6,12 @@ cd ${DIR}
 ${DIR}/build/openldap/sbin/slapadd.sh --help || true
 ${DIR}/build/openldap/bin/ldapadd.sh --help || true
 
-mkdir -p ${DIR}/build/slapd.d
-mkdir -p ${DIR}/build/data
+rm -rf ${DIR}/build/slapd.d
+rm -rf ${DIR}/build/data
+
+mkdir ${DIR}/build/slapd.d
+mkdir ${DIR}/build/data
+
 sed -i "s#@ETC_DIR@#${DIR}/build/openldap/etc/openldap#g" ${DIR}/slapd.test.config.ldif
 sed -i "s#@LIB_DIR@#${DIR}/build/openldap/libexec/openldap#g" ${DIR}/slapd.test.config.ldif
 sed -i "s#@DB_DIR@#${DIR}/build/data#g" ${DIR}/slapd.test.config.ldif

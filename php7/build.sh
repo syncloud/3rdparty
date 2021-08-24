@@ -7,7 +7,6 @@ BUILD_DIR=${DIR}/build/php
 ARCH=$(uname -m)
 docker ps -a -q --filter ancestor=php:syncloud --format="{{.ID}}" | xargs docker stop | xargs docker rm || true
 docker rmi php:syncloud || true
-docker pull php:7.4-cli
 docker build -t php:syncloud .
 docker run php:syncloud php -i
 docker create --name=php php:syncloud
