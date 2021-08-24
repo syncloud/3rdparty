@@ -46,12 +46,12 @@ include: file://@ETC_DIR@/schema/inetorgperson.ldif
 include: file://@ETC_DIR@/schema/ppolicy.ldif
 
 # Load module
-#dn: cn=module{0},cn=config
-#objectClass: olcModuleList
-#cn: module{0}
+dn: cn=module{0},cn=config
+objectClass: olcModuleList
+cn: module{0}
 # Where the dynamically loaded modules are stored
-#olcModulePath: @LIB_DIR@
-#olcModuleLoad: back_mdb
+olcModulePath: @LIB_DIR@
+olcModuleLoad: back_mdb
 #olcModuleLoad: ppolicy.la
 
 # The database definition.
@@ -61,7 +61,7 @@ objectClass: olcMdbConfig
 olcDatabase: mdb
 # Checkpoint the database periodically in case of system
 # failure and to speed slapd shutdown.
-olcDbCheckpoint: 512 30
+olcDbCheckpoint: 1024 10
 # Save the time that the entry gets modified, for database #1
 olcLastMod: TRUE
 # The base of your directory in database #1
