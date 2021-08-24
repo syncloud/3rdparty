@@ -8,7 +8,6 @@ ARCH=$(uname -m)
 docker ps -a -q --filter ancestor=openldap:syncloud --format="{{.ID}}" | xargs docker stop | xargs docker rm || true
 docker rmi openldap:syncloud || true
 docker build -t openldap:syncloud .
-docker run openldap:syncloud openldap -i
 docker create --name=openldap openldap:syncloud
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
