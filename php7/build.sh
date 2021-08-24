@@ -4,6 +4,9 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 BUILD_DIR=${DIR}/build/php
 
+apt update
+apt install -y libltdl7 libnss3
+
 ARCH=$(uname -m)
 docker ps -a -q --filter ancestor=php:syncloud --format="{{.ID}}" | xargs docker stop | xargs docker rm || true
 docker rmi php:syncloud || true
