@@ -5,7 +5,7 @@ cd ${DIR}
 
 ARCH=$(uname -m)
 NAME=openldap
-VERSION=2.5.6
+VERSION=2.4.57
 BUILD_DIR=${DIR}/build
 PREFIX=${BUILD_DIR}/${NAME}
 
