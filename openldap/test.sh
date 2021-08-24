@@ -5,7 +5,7 @@ cd ${DIR}
 
 ${DIR}/build/openldap/sbin/slapadd.sh --help || true
 ${DIR}/build/openldap/bin/ldapadd.sh --help || true
-${DIR}/build/openldap/sbin/slapd.sh -V
+${DIR}/build/openldap/sbin/slapd.sh -V || true
 
 rm -rf ${DIR}/build/slapd.d
 rm -rf ${DIR}/build/data
