@@ -52,7 +52,7 @@ cn: module{0}
 # Where the dynamically loaded modules are stored
 olcModulePath: @LIB_DIR@
 olcModuleLoad: back_mdb
-#olcModuleLoad: ppolicy.la
+olcModuleLoad: ppolicy.la
 
 # The database definition.
 dn: olcDatabase=mdb,cn=config
