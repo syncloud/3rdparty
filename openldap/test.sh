@@ -7,8 +7,8 @@ ${DIR}/build/openldap/sbin/slapadd.sh --help || true
 ${DIR}/build/openldap/bin/ldapadd.sh --help || true
 
 export LD_LIBRARY_PATH=${DIR}/build/openldap/lib
-mkdir ${DIR}/build/slapd.d
-mkdir ${DIR}/build/data
+mkdir -p ${DIR}/build/slapd.d
+mkdir -p ${DIR}/build/data
 sed -i "s#@ETC_DIR@#${DIR}/build/openldap/etc/openldap#g" ${DIR}/slapd.test.config.ldif
 sed -i "s#@LIB_DIR@#${DIR}/build/openldap/libexec/openldap#g" ${DIR}/slapd.test.config.ldif
 sed -i "s#@DB_DIR@#${DIR}/build/data#g" ${DIR}/slapd.test.config.ldif
