@@ -46,13 +46,13 @@ include: file://@ETC_DIR@/schema/inetorgperson.ldif
 include: file://@ETC_DIR@/schema/ppolicy.ldif
 
 # Load module
-#dn: cn=module{0},cn=config
-#objectClass: olcModuleList
-#cn: module{0}
+dn: cn=module{0},cn=config
+objectClass: olcModuleList
+cn: module{0}
 # Where the dynamically loaded modules are stored
-#olcModulePath: @LIB_DIR@
-#olcModuleLoad: back_mdb
-#olcModuleLoad: ppolicy.la
+olcModulePath: @LIB_DIR@
+olcModuleLoad: back_mdb
+olcModuleLoad: ppolicy.la
 
 # The database definition.
 dn: olcDatabase=mdb,cn=config
