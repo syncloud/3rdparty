@@ -129,7 +129,7 @@ local build(name, arch, image, native) = {
         #{project: "phantomjs", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "php", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         {project: "php7", image: "debian:jessie", arch: "arm"},
-        {project: "php7", image: "debian:jessie", arch: "arm64"},
+        {project: "php7", image: "debian:buster", arch: "arm64"},
         {project: "php7", image: "debian:jessie", arch: "amd64"},
         #{project: "php8", image: "gcc:10", archs: ["arm", "amd64"], native: true},
         #{project: "postgresql", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
