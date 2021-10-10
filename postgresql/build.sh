@@ -1,17 +1,10 @@
-#!/bin/bash
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-if [[ -z "$1" ]]; then
-    echo "usage $0 architecture"
-    exit 1
-fi
+ARCH=$(uname -m)
 
-ARCH=$1
-
-export TMPDIR=/tmp
-export TMP=/tmp
 NAME=postgresql
 VERSION=9.4.20
 PREFIX=${DIR}/build/${NAME}
