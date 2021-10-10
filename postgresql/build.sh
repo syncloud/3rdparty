@@ -9,6 +9,7 @@ NAME=postgresql
 VERSION=9.4.20
 PREFIX=${DIR}/build/${NAME}
 
+apt-get update
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev
 
 rm -rf build
