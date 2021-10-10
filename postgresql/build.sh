@@ -10,7 +10,7 @@ VERSION=9.4.20
 PREFIX=${DIR}/build/${NAME}
 
 apt-get update
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev
+apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev wget
 
 rm -rf build
 mkdir -p build
