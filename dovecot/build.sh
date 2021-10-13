@@ -37,15 +37,21 @@ make install
 echo "original libs"
 ldd ${PREFIX}/sbin/dovecot
 
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib/dovecot
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/lib/dovecot
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib/dovecot
-#cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libdl.so* ${PREFIX}/lib/dovecot
-#cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libc.so* ${PREFIX}/lib/dovecot
+#cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib/dovecot
+#cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/lib/dovecot
+#cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib/dovecot
+cp --remove-destination /lib/*/libdl.so* ${PREFIX}/lib
+cp --remove-destination /lib/*/libc.so* ${PREFIX}/lib
+cp $(readlink -f /lib*/ld-linux-*.so*) ${PREFIX}/lib/ld.so
 
 echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/sbin/dovecot
 
+mkdir $DIR/build
+mv $PREFIX $DIR/build
+cp dovecot.sh $DIR/build/dovecot/bin
+cp doveadm.sh $DIR/build/dovecot/bin
+
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD_DIR} ${NAME}
+tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C $DIR/build ${NAME}
