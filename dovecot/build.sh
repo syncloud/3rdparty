@@ -50,8 +50,8 @@ ldd ${PREFIX}/sbin/dovecot
 
 mkdir $DIR/build
 mv $PREFIX $DIR/build
-cp dovecot.sh $DIR/build/dovecot/bin
-cp doveadm.sh $DIR/build/dovecot/bin
+cp $DIR/dovecot.sh $DIR/build/dovecot/bin
+cp $DIR/doveadm.sh $DIR/build/dovecot/bin
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C $DIR/build ${NAME}
