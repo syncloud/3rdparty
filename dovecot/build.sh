@@ -37,12 +37,26 @@ make install
 echo "original libs"
 ldd ${PREFIX}/sbin/dovecot
 
-#cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl*.so* ${PREFIX}/lib/dovecot
-#cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/lib/dovecot
-#cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib/dovecot
+cp --remove-destination /usr/lib/*/libssl*.so* ${PREFIX}/lib/dovecot
+cp --remove-destination /lib/*/libcrypt.so* ${PREFIX}/lib/dovecot
+cp --remove-destination /usr/lib/*/libcrypto.so* ${PREFIX}/lib/dovecot
 cp --remove-destination /lib/*/libdl.so* ${PREFIX}/lib
 cp --remove-destination /lib/*/libc.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/*/libldap_r*.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/liblber-2.4.so* ${PREFIX}/lib
+cp --remove-destination /lib/*/libresolv.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libsasl2.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libgnutls.so* ${PREFIX}/lib
+cp --remove-destination /lib/*/libpthread.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libp11-kit.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libidn2.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libunistring.so* (${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libtasn1.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libnettle.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libhogweed.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libgmp.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libffi.so* ${PREFIX}/lib
+
 cp $(readlink -f /lib*/ld-linux-*.so*) ${PREFIX}/lib/ld.so
 
 echo "embedded libs"
