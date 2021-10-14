@@ -8,7 +8,7 @@ ARCH=$(uname -m)
 export TMPDIR=/tmp
 export TMP=/tmp
 NAME=dovecot
-VERSION=2.2.27
+VERSION=2.3.16
 #TODO: It is impossible to override paths at runtime
 BUILD_DIR=/snap/mail/current
 PREFIX=${BUILD_DIR}/${NAME}
@@ -20,7 +20,7 @@ rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
-wget http://www.dovecot.org/releases/2.2/${NAME}-${VERSION}.tar.gz \
+wget http://www.dovecot.org/releases/2.3/${NAME}-${VERSION}.tar.gz \
     --progress dot:giga
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
@@ -31,7 +31,7 @@ cd ${NAME}-${VERSION}
     --with-ldap \
     --disable-rpath
 
-make
+make -j4
 make install
 
 echo "original libs"
