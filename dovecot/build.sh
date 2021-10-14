@@ -14,7 +14,7 @@ BUILD_DIR=/snap/mail/current
 PREFIX=${BUILD_DIR}/${NAME}
 
 apt-get update
-apt-get -y install build-essential cmake libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev wget
+apt-get -y install build-essential libncurses5-dev libldap2-dev libsasl2-dev libssl-dev libldb-dev wget
 
 rm -rf ${BUILD_DIR}
 mkdir -p ${BUILD_DIR}

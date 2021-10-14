@@ -117,9 +117,9 @@ local build(name, arch, image, native) = {
     for item in [
         #{project: "asterisk", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "bind9", image: "debian:buster-backports", archs: ["arm", "amd64"], native: true},
-        {project: "dovecot", image: "debian:buster-slim", arch: "arm"},
-        {project: "dovecot", image: "debian:buster-slim", arch: "amd64"},
-        {project: "dovecot", image: "debian:buster-slim", arch: "arm64"},
+        {project: "dovecot", image: "debian:buster", arch: "arm"},
+        {project: "dovecot", image: "debian:buster", arch: "amd64"},
+        {project: "dovecot", image: "debian:buster", arch: "arm64"},
         #{project: "gcc-5", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "git", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "gptfdisk", image: "syncloud/build-deps-arm", arch: "arm"},
