@@ -6,6 +6,6 @@ ${DIR}/build/dovecot/bin/doveadm.sh --version || true
 ${DIR}/build/dovecot/libexec/dovecot/auth.sh || true
 
 DOVECOT=${DIR}/build/dovecot
-export LD_LIBRARY_PATH=${DOVECOT}/lib:${DOVECOT}/lib/dovecot:${DIR}/lib/dovecot/stats
+export LD_LIBRARY_PATH=${DOVECOT}/lib:${DOVECOT}/lib/dovecot:${DOVECOT}/lib/dovecot/stats
 ldd ${DOVECOT}/libexec/dovecot/auth
 ${DOVECOT}/libexec/dovecot/auth || true
