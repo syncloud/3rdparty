@@ -72,7 +72,3 @@ cp $DIR/auth.sh $DIR/build/dovecot/libexec/dovecot
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C $DIR/build ${NAME}
-
-DIR}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C $DIR/build ${NAME}
-
