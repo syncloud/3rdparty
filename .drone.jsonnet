@@ -44,8 +44,8 @@ local build(name, arch, image, native) = {
             }
 	    },
         {
-	        name: "test platform 21.01",
-          image: "syncloud/platform-" + arch + ":21.01",
+	        name: "test platform",
+          image: "syncloud/platform-" + arch + ":latest",
 	        commands: [
               "./" + name + "/test.sh"
 	        ],
