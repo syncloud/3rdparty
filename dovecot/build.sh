@@ -50,7 +50,7 @@ cp --remove-destination /usr/lib/*/libgnutls.so* ${PREFIX}/lib
 cp --remove-destination /lib/*/libpthread.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/*/libp11-kit.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/*/libidn2.so* ${PREFIX}/lib
-cp --remove-destination /usr/lib/*/libunistring.so* (${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libunistring.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/*/libtasn1.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/*/libnettle.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/*/libhogweed.so* ${PREFIX}/lib
@@ -73,3 +73,4 @@ cp $DIR/auth $DIR/build/dovecot/libexec/dovecot/auth
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C $DIR/build ${NAME}
+
