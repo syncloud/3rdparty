@@ -25,7 +25,7 @@ local build(name, arch, image, native) = {
 	    },
         {
 	        name: "test",
-          image: name,
+          image: image,
 	        commands: [
               "./" + name + "/test.sh"
 	        ],
