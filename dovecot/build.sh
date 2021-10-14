@@ -42,6 +42,7 @@ ldd ${PREFIX}/sbin/dovecot
 #cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib/dovecot
 cp --remove-destination /lib/*/libdl.so* ${PREFIX}/lib
 cp --remove-destination /lib/*/libc.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libldap_r*.so* ${PREFIX}/lib
 cp $(readlink -f /lib*/ld-linux-*.so*) ${PREFIX}/lib/ld.so
 
 echo "embedded libs"
