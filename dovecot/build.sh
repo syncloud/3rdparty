@@ -52,8 +52,8 @@ mkdir $DIR/build
 mv $PREFIX $DIR/build
 cp $DIR/dovecot.sh $DIR/build/dovecot/bin
 cp $DIR/doveadm.sh $DIR/build/dovecot/bin
-mv $DIR/libexec/dovecot/auth $DIR/libexec/dovecot/auth.bin
-cp $DIR/auth $DIR/libexec/dovecot/auth
+mv $DIR/build/dovecot/libexec/dovecot/auth $DIR/build/dovecot/libexec/dovecot/auth.bin
+cp $DIR/auth $DIR/build/dovecot/libexec/dovecot/auth
 
 rm -rf ${DIR}/${NAME}-${ARCH}.tar.gz
 tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C $DIR/build ${NAME}
