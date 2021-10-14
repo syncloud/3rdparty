@@ -47,6 +47,7 @@ cp $(readlink -f /lib*/ld-linux-*.so*) ${PREFIX}/lib/ld.so
 echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd ${PREFIX}/sbin/dovecot
+ldd ${PREFIX}/libexec/dovecot/auth
 
 mkdir $DIR/build
 mv $PREFIX $DIR/build
