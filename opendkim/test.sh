@@ -3,35 +3,25 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
+export LD_LIBRARY_PATH=${DIR}/build/opendkim/lib
+ldd ${DIR}/build/opendkim/sbin/opendkim
 
-ARCH=$(uname -m)
+${DIR}/build/opendkim/sbin/opendkim --help || true
+${DIR}/build/opendkim/sbin/opendkim-genkey --help || true
+ib/*/libcrypt*.so* ${PREFIX}/lib
+cp --remove-destination /usr/lib/*/libssl*.so* ${PREFIX}/lib
 
-export TMPDIR=/tmp
-export TMP=/tmp
-NAME=opendkim
-VERSION=2.10.3
-BUILD=${DIR}/build
-PREFIX=${BUILD}/${NAME}
+ldd ${DIR}/build/opendkim/sbin/opendkim
 
-apt-get -y install libbsd-dev libmilter-dev
+${PREFIX}/sbin/opendkim --help || true
+${PREFIX}/sbin/opendkim-genkey --help || true
 
+PREFIX}/sbin/opendkim
 
-rm -rf ${BUILD}
-mkdir ${BUILD}
-cd ${BUILD}
+${PREFIX}/sbin/opendkim --help || true
+${PREFIX}/sbin/opendkim-genkey --help || true
 
-wget https://downloads.sourceforge.net/project/opendkim/opendkim-${VERSION}.tar.gz  --progress dot:giga -O ${NAME}-${VERSION}.tar.gz
-tar xzf ${NAME}-${VERSION}.tar.gz
-cd ${NAME}-${VERSION}
-./configure --prefix=${PREFIX}
-make
-make install
-
-ls -la ${PREFIX}
-ls -la ${PREFIX}/lib
-ls -la ${PREFIX}/sbin
-
-export LD_LIBRARY_PATH=${PREFIX}/lib
+H=${PREFIX}/lib
 cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libbsd.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libmilter*.so* ${PREFIX}/lib
 cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt*.so* ${PREFIX}/lib
