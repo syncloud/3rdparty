@@ -13,6 +13,7 @@ VERSION=2.10.3
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
+apt update
 apt-get -y install libbsd-dev libmilter-dev
 
 
