@@ -14,7 +14,7 @@ BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
 apt update
-apt-get -y install libbsd-dev libmilter-dev wget build-essential openssl
+apt-get -y install libbsd-dev libmilter-dev wget build-essential libssl-dev
 
 
 rm -rf ${BUILD}
