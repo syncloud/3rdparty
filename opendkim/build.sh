@@ -24,7 +24,7 @@ cd ${BUILD}
 wget https://downloads.sourceforge.net/project/opendkim/opendkim-${VERSION}.tar.gz  --progress dot:giga -O ${NAME}-${VERSION}.tar.gz
 tar xzf ${NAME}-${VERSION}.tar.gz
 cd ${NAME}-${VERSION}
-./configure --prefix=${PREFIX}
+./configure --prefix=${PREFIX} --disable-shared
 make
 make install
 
