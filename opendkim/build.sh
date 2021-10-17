@@ -14,7 +14,7 @@ BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
 apt update
-apt-get -y install libbsd-dev libmilter-dev wget
+apt-get -y install libbsd-dev libmilter-dev wget build-essential
 
 
 rm -rf ${BUILD}
