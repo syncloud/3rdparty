@@ -6,5 +6,5 @@ cd ${DIR}
 export LD_LIBRARY_PATH=${DIR}/build/opendkim/lib
 ldd ${DIR}/build/opendkim/sbin/opendkim
 
-${DIR}/build/opendkim/sbin/opendkim --help || true
-${DIR}/build/opendkim/bin/opendkim-genkey --help || true
+${DIR}/build/opendkim/bin/opendkim.sh -V
+${DIR}/build/opendkim/bin/opendkim-genkey --help
