@@ -73,7 +73,6 @@ cp $DIR/bin/* $PREFIX/bin
 export LD_LIBRARY_PATH=${PREFIX}/lib
 ldd $PREFIX/sbin/opendkim
 $PREFIX/sbin/opendkim -V
-ldd $PREFIX/bin/opendkim-genkey
 $PREFIX/bin/opendkim-genkey --help
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
