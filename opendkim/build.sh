@@ -76,4 +76,4 @@ $PREFIX/sbin/opendkim -V
 $PREFIX/bin/opendkim-genkey --help
 
 rm -rf ${BUILD}/${NAME}-${ARCH}.tar.gz
-tar czf ${DIR}/${NAME}-${ARCH}-${VERSION}.tar.gz -C ${BUILD} ${NAME}
+tar czf ${DIR}/${NAME}-${ARCH}.tar.gz -C ${BUILD} ${NAME}
