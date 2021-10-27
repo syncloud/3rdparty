@@ -155,9 +155,9 @@ local build(name, arch, image, native) = {
         #{project: "postgresql", image: "debian:buster-slim", arch: "arm"},
         #{project: "postgresql", image: "debian:buster-slim", arch: "amd64"},
         #{project: "postgresql", image: "debian:buster-slim", arch: "arm64"},
-        #{project: "postgresql-10", image: "debian:buster-slim", arch: "arm"},
-        #{project: "postgresql-10", image: "debian:buster-slim", arch: "amd64"},
-        #{project: "postgresql-10", image: "debian:buster-slim", arch: "arm64"},
+        {project: "postgresql-10", image: "debian:buster-slim", arch: "arm"},
+        {project: "postgresql-10", image: "debian:buster-slim", arch: "amd64"},
+        {project: "postgresql-10", image: "debian:buster-slim", arch: "arm64"},
         #{project: "PyYAML", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "python", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "python3", image: "syncloud/build-deps-arm", arch: "arm"},
@@ -168,3 +168,4 @@ local build(name, arch, image, native) = {
         #{project: "sqlite", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
     ]
 ]
+
