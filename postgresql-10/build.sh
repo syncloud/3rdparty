@@ -7,7 +7,7 @@ cd ${DIR}
 ARCH=$(uname -m)
 NAME=postgresql-10
 VERSION=10.10
-PREFIX=${DIR}/build/${NAME}
+PREFIX=${DIR}/build/postgresql
 
 apt-get update
 apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev wget
@@ -43,5 +43,5 @@ ldd ${PREFIX}/bin/psql.bin
 
 cd ../..
 
-rm -rf ${NAME}-${ARCH}.tar.gz
+mv ${DIR}/build/postgresql ${DIR}/build/${NAME} 
 tar czf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
