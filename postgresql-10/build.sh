@@ -9,7 +9,8 @@ NAME=postgresql-10
 VERSION=10.10
 PREFIX=${DIR}/build/${NAME}
 
-apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev
+apt-get update
+apt-get -y install build-essential flex bison libreadline-dev zlib1g-dev wget
 
 rm -rf build
 mkdir -p build
