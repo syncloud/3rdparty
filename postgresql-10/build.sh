@@ -3,15 +3,8 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-if [[ -z "$1" ]]; then
-    echo "usage $0 architecture"
-    exit 1
-fi
 
-ARCH=$1
-
-export TMPDIR=/tmp
-export TMP=/tmp
+ARCH=$(uname -m)
 NAME=postgresql-10
 VERSION=10.10
 PREFIX=${DIR}/build/${NAME}
@@ -51,5 +44,3 @@ cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
 tar czf ${NAME}-${ARCH}.tar.gz -C ${DIR}/build ${NAME}
-
-
