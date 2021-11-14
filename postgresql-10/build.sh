@@ -25,6 +25,7 @@ rm -rf ${PREFIX}
 make world
 make install
 
+mv ${PREFIX}/bin/pg_dump ${PREFIX}/bin/pg_dump.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 
 echo "original libs"
