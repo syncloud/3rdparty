@@ -37,6 +37,7 @@ cp /lib/*/libpthread.so* ${PREFIX}/lib
 cp /lib/*/librt.so* ${PREFIX}/lib
 cp /lib/*/libm.so* ${PREFIX}/lib
 cp /lib/*/libc.so* ${PREFIX}/lib
+cp /lib/*/libreadline.so* ${PREFIX}/lib
 
 echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
