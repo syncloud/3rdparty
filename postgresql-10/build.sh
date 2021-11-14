@@ -25,21 +25,22 @@ rm -rf ${PREFIX}
 make world
 make install
 
-mv ${PREFIX}/bin/pg_ctl ${PREFIX}/bin/pg_ctl.bin
-mv ${PREFIX}/bin/psql ${PREFIX}/bin/psql.bin
-mv ${PREFIX}/bin/pg_dumpall ${PREFIX}/bin/pg_dumpall.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 
 echo "original libs"
-ldd ${PREFIX}/bin/psql.bin
-
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libreadline.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libhistory.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtinfo.so* ${PREFIX}/lib
+ldd ${PREFIX}/bin/psql
+LD=$(readlink -f /lib*/ld-linux-*)
+cp $LD ${PREFIX}/lib/ld.so
+cp /lib/*/libhistory.so* ${PREFIX}/lib
+cp /lib/*/libtinfo.so* ${PREFIX}/lib
+cp /lib/*/libpthread.so* ${PREFIX}/lib
+cp /lib/*/librt.so* ${PREFIX}/lib
+cp /lib/*/libm.so* ${PREFIX}/lib
+cp /lib/*/libc.so* ${PREFIX}/lib
 
 echo "embedded libs"
 export LD_LIBRARY_PATH=${PREFIX}/lib
-ldd ${PREFIX}/bin/psql.bin
+ldd ${PREFIX}/bin/psql
 
 cd ../..
 
