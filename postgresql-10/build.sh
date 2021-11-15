@@ -26,6 +26,7 @@ make world
 make install
 
 mv ${PREFIX}/bin/pg_dump ${PREFIX}/bin/pg_dump.bin
+mv ${PREFIX}/bin/postgres ${PREFIX}/bin/postgres.bin
 cp ${DIR}/bin/* ${PREFIX}/bin
 
 echo "original libs"
