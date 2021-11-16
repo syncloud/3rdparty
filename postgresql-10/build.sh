@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -21,7 +21,10 @@ tar xjf postgresql-${VERSION}.tar.bz2
 cd postgresql-${VERSION}
 rm -rf ${PREFIX}
 
-./configure --prefix ${PREFIX} LDFLAGS=-static
+./configure --prefix ${PREFIX}
+make world
+make install
+./configure --prefix ${PREFIX} LDFLAGS=-static --disable-shared
 make world
 make install
 
