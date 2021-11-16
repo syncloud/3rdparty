@@ -21,8 +21,8 @@ tar xjf postgresql-${VERSION}.tar.bz2
 cd postgresql-${VERSION}
 rm -rf ${PREFIX}
 
-./configure --prefix ${PREFIX}
-LDFLAGS=-static make world
+./configure --prefix ${PREFIX} LDFLAGS=-static
+make world
 make install
 
 mv ${PREFIX}/bin/pg_dump ${PREFIX}/bin/pg_dump.bin
