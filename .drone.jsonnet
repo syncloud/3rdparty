@@ -116,7 +116,9 @@ local build(name, arch, image, native) = {
     build(item.project, item.arch, item.image, item.native)
     for item in [
         #{project: "asterisk", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
-        #{project: "bind9", image: "debian:buster-backports", archs: ["arm", "amd64"], native: true},
+        {project: "bind9", image: "debian:buster-backports", arch: "arm"},
+        {project: "bind9", image: "debian:buster-backports", arch: "amd64"},
+        {project: "bind9", image: "debian:buster-backports", arch: "arm64"},
         #{project: "dovecot", image: "debian:buster", arch: "arm"},
         #{project: "dovecot", image: "debian:buster", arch: "amd64"},
         #{project: "dovecot", image: "debian:buster", arch: "arm64"},
@@ -155,9 +157,9 @@ local build(name, arch, image, native) = {
         #{project: "postgresql", image: "debian:buster-slim", arch: "arm"},
         #{project: "postgresql", image: "debian:buster-slim", arch: "amd64"},
         #{project: "postgresql", image: "debian:buster-slim", arch: "arm64"},
-        {project: "postgresql-10", image: "debian:buster-slim", arch: "arm"},
-        {project: "postgresql-10", image: "debian:buster-slim", arch: "amd64"},
-        {project: "postgresql-10", image: "debian:buster-slim", arch: "arm64"},
+        #{project: "postgresql-10", image: "debian:buster-slim", arch: "arm"},
+        #{project: "postgresql-10", image: "debian:buster-slim", arch: "amd64"},
+        #{project: "postgresql-10", image: "debian:buster-slim", arch: "arm64"},
         #{project: "PyYAML", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "python", image: "syncloud/build-deps", archs: ["arm", "amd64"], native: false},
         #{project: "python3", image: "syncloud/build-deps-arm", arch: "arm"},
