@@ -12,7 +12,7 @@ VERSION=5.18.1
 PREFIX=${DIR}/build/${NAME}
 
 apt update
-apt -y install build-essential wget pkg-config autoconf python3-sphinx e2fslibs-dev reiserfsprogs
+apt -y install build-essential wget pkg-config autoconf python3-sphinx e2fslibs-dev reiserfsprogs libblkid-dev liblzo2-dev
 
 rm -rf build
 mkdir -p build
