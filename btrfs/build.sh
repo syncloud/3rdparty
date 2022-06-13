@@ -26,12 +26,25 @@ cd btrfs-progs-*
 ./configure --help
 ./configure --disable-convert --disable-python
 make btrfs.box
-mkdir -p $PREFIX
-mv btrfs.box $PREFIX/btrfs
-ls -la $PREFIX
-chmod +x $PREFIX/btrfs
-ldd $PREFIX/btrfs
-$PREFIX/btrfs --help
+mkdir -p $PREFIX/bin
+mkdir -p $PREFIX/lib
+mv btrfs.box $PREFIX/bin/btrfs
+chmod +x $PREFIX/bin/btrfs
+ldd $PREFIX/bin/btrfs
+
+cp $(readlink -f /lib*/ld-linux-*.so*) ${PREFIX}/lib/ld.so
+cp /lib/*/libuuid.so* ${PREFIX}/lib
+cp /lib/*/libblkid.so* ${PREFIX}/lib
+cp /lib/*/libudev.so* ${PREFIX}/lib
+cp /lib/*/libz.so* ${PREFIX}/lib
+cp /lib/*/liblzo2.so* ${PREFIX}/lib
+cp /lib/*/libpthread.so* ${PREFIX}/lib
+cp /lib/*/libc.so* ${PREFIX}/lib
+cp /lib/*/librt.so* ${PREFIX}/lib
+cp /usr/lib/*/libzstd.so* ${PREFIX}/lib
+
+cp ${DIR}/btrfs.sh ${PREFIX}/bin/
+
 cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
