@@ -26,6 +26,7 @@ cd btrfs-progs-*
 ./configure --help
 ./configure --disable-convert
 make btrfs.box
+mkdir -p $PREFIX
 mv btrfs.box $PREFIX/btrfs
 ./$PREFIX/btrfs --help
 cd ../..
