@@ -23,6 +23,7 @@ tar xf v${VERSION}.tar.gz
 
 cd btrfs-progs-*
 ./autogen.sh
+./configure --help
 ./configure --disable-convert
 make btrfs.box
 mv btrfs.box $PREFIX/btrfs
