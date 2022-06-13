@@ -11,8 +11,8 @@ NAME=btrfs
 VERSION=5.18.1
 PREFIX=${DIR}/build/${NAME}
 
-#apt update
-#apt -y install build-essential flex bison libreadline-dev zlib1g-dev
+apt update
+apt -y install build-essential wget
 
 rm -rf build
 mkdir -p build
