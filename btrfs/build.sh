@@ -29,9 +29,9 @@ make btrfs.box
 mkdir -p $PREFIX
 mv btrfs.box $PREFIX/btrfs
 ls -la $PREFIX
-chmod +x ./$PREFIX/btrfs
-ldd ./$PREFIX/btrfs
-./$PREFIX/btrfs --help
+chmod +x $PREFIX/btrfs
+ldd $PREFIX/btrfs
+$PREFIX/btrfs --help
 cd ../..
 
 rm -rf ${NAME}-${ARCH}.tar.gz
