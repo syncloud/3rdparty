@@ -24,7 +24,7 @@ tar xf v${VERSION}.tar.gz
 cd btrfs-progs-*
 ./autogen.sh
 ./configure --help
-./configure --disable-convert
+./configure --disable-convert --disable-python
 make btrfs.box
 mkdir -p $PREFIX
 mv btrfs.box $PREFIX/btrfs
