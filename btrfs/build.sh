@@ -12,7 +12,7 @@ VERSION=5.18.1
 PREFIX=${DIR}/build/${NAME}
 
 apt update
-apt -y install build-essential wget pkg-config
+apt -y install build-essential wget pkg-config autoconf
 
 rm -rf build
 mkdir -p build
