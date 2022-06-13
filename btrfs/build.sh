@@ -29,6 +29,8 @@ make btrfs.box
 mkdir -p $PREFIX
 mv btrfs.box $PREFIX/btrfs
 ls -la $PREFIX
+chmod +x ./$PREFIX/btrfs
+ldd ./$PREFIX/btrfs
 ./$PREFIX/btrfs --help
 cd ../..
 
