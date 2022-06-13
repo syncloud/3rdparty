@@ -28,6 +28,7 @@ cd btrfs-progs-*
 make btrfs.box
 mkdir -p $PREFIX
 mv btrfs.box $PREFIX/btrfs
+ls -la $PREFIX
 ./$PREFIX/btrfs --help
 cd ../..
 
