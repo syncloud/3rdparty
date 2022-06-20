@@ -28,9 +28,10 @@ cd btrfs-progs-*
 make btrfs.box
 mkdir -p $PREFIX/bin
 mkdir -p $PREFIX/lib
-mv btrfs.box $PREFIX/bin/btrfs
-chmod +x $PREFIX/bin/btrfs
-ldd $PREFIX/bin/btrfs
+chmod +x btrfs.box
+mv btrfs.box $PREFIX/bin
+cp $PREFIX/bin/btrfs.box $PREFIX/bin/mkfs.btrfs
+ldd $PREFIX/bin/btrfs.box
 
 cp $(readlink -f /lib*/ld-linux-*.so*) ${PREFIX}/lib/ld.so
 cp /lib/*/libuuid.so* ${PREFIX}/lib
@@ -44,6 +45,7 @@ cp /lib/*/librt.so* ${PREFIX}/lib
 cp /usr/lib/*/libzstd.so* ${PREFIX}/lib
 
 cp ${DIR}/btrfs.sh ${PREFIX}/bin/
+cp ${DIR}/mkfs.sh ${PREFIX}/bin/
 
 cd ../..
 

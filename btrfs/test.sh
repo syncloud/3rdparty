@@ -5,3 +5,4 @@ cd ${DIR}
 
 ${DIR}/build/btrfs/bin/btrfs.sh --help
 ${DIR}/build/btrfs/bin/btrfs.sh version
+${DIR}/build/btrfs/bin/mkfs.sh --help
