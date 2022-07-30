@@ -5,7 +5,7 @@ cd ${DIR}
 
 ARCH=$(uname -m)
 NAME=mariadb
-VERSION=10.6.8
+VERSION=10.3.23
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
@@ -39,10 +39,10 @@ cp /usr/lib/*/libstdc++.so* ${PREFIX}/lib
 cp /lib/*/libgcc_s.so* ${PREFIX}/lib
 cp /lib/*/libtinfo.so* ${PREFIX}/lib
 
-ldd ${PREFIX}/bin/mysqld
+ldd ${PREFIX}/bin/mysqld || true
 ${PREFIX}/bin/mysqld --help
 
-ldd ${PREFIX}/bin/mysql
+ldd ${PREFIX}/bin/mysql || true
 ${PREFIX}/bin/mysql --help
 
 du -h --max-depth=1 ${PREFIX} | sort -h
