@@ -10,7 +10,7 @@ BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
 apt update
-apt -y install build-essential cmake libncurses5-dev zlib1g-dev wget
+apt -y install build-essential cmake libncurses5-dev zlib1g-dev wget gnutls-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
