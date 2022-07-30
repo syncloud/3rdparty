@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
@@ -10,7 +10,7 @@ BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
 apt update
-apt -y install build-essential cmake libncurses5-dev zlib1g-dev
+apt -y install build-essential cmake libncurses5-dev zlib1g-dev wget
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
