@@ -9,7 +9,8 @@ VERSION=10.3.23
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
-apt-get -y install build-essential cmake libncurses5-dev zlib1g-dev
+apt update
+apt -y install build-essential cmake libncurses5-dev zlib1g-dev
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
