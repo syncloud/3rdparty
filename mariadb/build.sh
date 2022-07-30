@@ -3,24 +3,13 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${DIR}
 
-if [[ -z "$1" ]]; then
-    echo "usage $0 architecture"
-    exit 1
-fi
-
-ARCH=$1
-
-export TMPDIR=/tmp
-export TMP=/tmp
+ARCH=$(uname -m)
 NAME=mariadb
 VERSION=10.3.23
 BUILD=${DIR}/build
 PREFIX=${BUILD}/${NAME}
 
 apt-get -y install build-essential cmake libncurses5-dev zlib1g-dev
-
-cat /etc/apt/sources.list
-strings /lib/x86_64-linux-gnu/libc.so.* | grep GLIBC
 
 rm -rf ${BUILD}
 mkdir ${BUILD}
@@ -36,17 +25,18 @@ make -j4
 make install
 
 export LD_LIBRARY_PATH=${PREFIX}/lib
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/liblz4.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libbz2.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypt.so* ${PREFIX}/lib
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libssl.so* ${PREFIX}/lib
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libcrypto.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libncurses.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libz.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libpcre.so.* ${PREFIX}/lib
-cp --remove-destination /usr/lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libstdc++.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libgcc_s.so* ${PREFIX}/lib
-cp --remove-destination /lib/$(dpkg-architecture -q DEB_HOST_GNU_TYPE)/libtinfo.so* ${PREFIX}/lib
+cp $(readlink -f /lib*/ld-linux-*.so*) ${PREFIX}/lib/ld.so
+cp /usr/lib/*/liblz4.so* ${PREFIX}/lib
+cp /lib/*/libbz2.so* ${PREFIX}/lib
+cp /lib/*/libcrypt.so* ${PREFIX}/lib
+cp /usr/lib/*/libssl.so* ${PREFIX}/lib
+cp /usr/lib/*/libcrypto.so* ${PREFIX}/lib
+cp /lib/*/libncurses.so* ${PREFIX}/lib
+cp /lib/*/libz.so* ${PREFIX}/lib
+cp /lib/*/libpcre.so.* ${PREFIX}/lib
+cp /usr/lib/*/libstdc++.so* ${PREFIX}/lib
+cp /lib/*/libgcc_s.so* ${PREFIX}/lib
+cp /lib/*/libtinfo.so* ${PREFIX}/lib
 
 ldd ${PREFIX}/bin/mysqld
 ${PREFIX}/bin/mysqld --help
