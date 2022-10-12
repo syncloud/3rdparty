@@ -2,6 +2,4 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )
 
-export LD_LIBRARY_PATH=${DIR}/lib
-export PATH=${DIR}/bin:${PATH}
-exec ${DIR}/lib/ld.so ${DIR}/bin/mkfs.btrfs "$@"
+exec ${DIR}/lib/ld.so --library-path ${DIR}/lib ${DIR}/bin/mkfs.btrfs "$@"
